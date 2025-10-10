@@ -3,6 +3,12 @@ LibraryService - Tier-based library management and semantic search.
 
 This service manages the content library with quality-based tier organization,
 semantic search capabilities, and comprehensive statistics.
+
+Tier System:
+- Tier A: 9.0-10.0 (Exceptional quality)
+- Tier B: 7.0-8.9 (High quality)
+- Tier C: 5.0-6.9 (Medium quality)
+- Tier D: 0.0-4.9 (Low quality)
 """
 import asyncio
 import json
@@ -19,6 +25,18 @@ from app.repositories.postgres_repository import PostgresRepository
 from app.repositories.redis_repository import RedisRepository
 from app.repositories.qdrant_repository import QdrantRepository
 from app.repositories.minio_repository import MinIORepository
+
+
+# Constants
+TIER_THRESHOLDS = {
+    'tier-a': 9.0,
+    'tier-b': 7.0,
+    'tier-c': 5.0,
+    'tier-d': 0.0
+}
+
+SEARCH_CACHE_TTL = 3600  # 1 hour in seconds
+RECENT_ADDITIONS_DAYS = 7
 
 
 # Placeholder function for embedding generation
@@ -60,6 +78,54 @@ class LibraryService:
         self.qdrant_repo = qdrant_repo
         self.minio_repo = minio_repo
     
+    @staticmethod
+    def _determine_tier(quality_score: float) -> str:
+        """
+        Determine content tier based on quality score.
+        
+        Args:
+            quality_score: Quality score (0-10)
+            
+        Returns:
+            Tier identifier (tier-a, tier-b, tier-c, tier-d)
+        """
+        if quality_score >= TIER_THRESHOLDS['tier-a']:
+            return "tier-a"
+        elif quality_score >= TIER_THRESHOLDS['tier-b']:
+            return "tier-b"
+        elif quality_score >= TIER_THRESHOLDS['tier-c']:
+            return "tier-c"
+        else:
+            return "tier-d"
+    
+    @staticmethod
+    def _extract_tier_letter(tier: str) -> str:
+        """
+        Extract single letter from tier identifier.
+        
+        Args:
+            tier: Tier identifier (e.g., 'tier-b')
+            
+        Returns:
+            Single letter (e.g., 'b')
+        """
+        return tier.split('-')[1]
+    
+    @staticmethod
+    def _get_bucket_prefix(bucket_name: str) -> str:
+        """
+        Extract bucket prefix, removing tier suffix if present.
+        
+        Args:
+            bucket_name: Bucket name (e.g., 'test-library' or 'test-library-a')
+            
+        Returns:
+            Bucket prefix without tier suffix
+        """
+        if bucket_name.endswith(('-a', '-b', '-c', '-d')):
+            return bucket_name.rsplit('-', 1)[0]
+        return bucket_name
+    
     async def add_to_library(self, content: ProcessedContent) -> LibraryFile:
         """
         Add processed content to the library.
@@ -72,14 +138,7 @@ class LibraryService:
         """
         # Determine tier based on quality score
         quality = content.screening_result.estimated_quality
-        if quality >= 9.0:
-            tier = "tier-a"
-        elif quality >= 7.0:
-            tier = "tier-b"
-        elif quality >= 5.0:
-            tier = "tier-c"
-        else:
-            tier = "tier-d"
+        tier = self._determine_tier(quality)
         
         # Create file key from URL
         file_key = f"{str(content.url).replace('://', '_').replace('/', '_')}.json"
@@ -87,8 +146,7 @@ class LibraryService:
         
         # Store in MinIO (tier-based bucket)
         content_json = content.model_dump_json()
-        # Extract tier letter (e.g., "tier-b" -> "b") for bucket naming
-        tier_letter = tier.split('-')[1]
+        tier_letter = self._extract_tier_letter(tier)
         await asyncio.to_thread(
             self.minio_repo.upload_to_tier,
             key=file_key,
@@ -239,15 +297,9 @@ class LibraryService:
         file_key = f"{file_id.replace('://', '_').replace('/', '_')}.json"
         
         # Move file in MinIO
-        # Extract tier letters (e.g., "tier-b" -> "b") for bucket naming
-        from_tier_letter = from_tier.split('-')[1]
-        to_tier_letter = to_tier.split('-')[1]
-        # Get bucket prefix - if bucket name ends with a tier letter (a/b/c/d), strip it
-        bucket_name = self.minio_repo.bucket_name
-        if bucket_name.endswith('-a') or bucket_name.endswith('-b') or bucket_name.endswith('-c') or bucket_name.endswith('-d'):
-            bucket_prefix = bucket_name.rsplit('-', 1)[0]
-        else:
-            bucket_prefix = bucket_name
+        from_tier_letter = self._extract_tier_letter(from_tier)
+        to_tier_letter = self._extract_tier_letter(to_tier)
+        bucket_prefix = self._get_bucket_prefix(self.minio_repo.bucket_name)
         from_bucket = f"{bucket_prefix}-{from_tier_letter}"
         to_bucket = f"{bucket_prefix}-{to_tier_letter}"
         
@@ -333,7 +385,7 @@ class LibraryService:
             List of SearchResult objects
         """
         # Check cache first
-        cache_key = f"library_search:{query}:{json.dumps(filters or {})}:{limit}"
+        cache_key = f"library_search:{query}:{json.dumps(filters or {}, sort_keys=True)}:{limit}"
         cached = await self.redis_repo.get(cache_key)
         if cached:
             results_data = json.loads(cached)
@@ -374,9 +426,9 @@ class LibraryService:
                 matched_content=metadata.get('summary', '')[:200] if metadata.get('summary') else ''
             ))
         
-        # Cache results for 1 hour
+        # Cache results
         results_json = [r.model_dump() for r in results]
-        await self.redis_repo.set(cache_key, json.dumps(results_json), ttl=3600)
+        await self.redis_repo.set(cache_key, json.dumps(results_json), ttl=SEARCH_CACHE_TTL)
         
         return results
     
@@ -417,7 +469,7 @@ class LibraryService:
         quality_scores = []
         all_tags = set()
         recent_additions = 0
-        seven_days_ago = datetime.now() - timedelta(days=7)
+        recent_cutoff = datetime.now() - timedelta(days=RECENT_ADDITIONS_DAYS)
         
         for record in records:
             # Count by tier
@@ -442,7 +494,7 @@ class LibraryService:
             
             # Count recent additions
             if record.get('started_at'):
-                if record['started_at'] >= seven_days_ago:
+                if record['started_at'] >= recent_cutoff:
                     recent_additions += 1
         
         # Calculate average quality
