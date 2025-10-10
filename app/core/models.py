@@ -4,6 +4,7 @@ This module contains the primary domain models that represent business entities.
 All models use Pydantic for validation and serialization.
 """
 from datetime import datetime
+from pathlib import Path
 from typing import Any, Literal
 from pydantic import BaseModel, Field, HttpUrl, field_validator
 
@@ -174,3 +175,64 @@ class ProcessedContent(BaseModel):
         if not v.strip():
             raise ValueError("Field cannot be empty or whitespace")
         return v
+
+
+class LibraryFile(BaseModel):
+    """File stored in the quality-tiered library.
+    
+    This model represents a markdown file saved in one of the quality tiers
+    (tier-a through tier-d) of the content library.
+    
+    Attributes:
+        file_path: Path to the file in the library
+        url: Original source URL
+        source_type: Type of source (web, youtube, pdf, text)
+        tier: Quality tier (tier-a, tier-b, tier-c, tier-d)
+        quality_score: Quality score (0-10)
+        title: Content title
+        tags: List of tags
+        created_at: Timestamp when file was created
+    """
+    
+    file_path: Path = Field(
+        ...,
+        description="Path to the file in the library"
+    )
+    
+    url: HttpUrl = Field(
+        ...,
+        description="Original source URL"
+    )
+    
+    source_type: ContentSource = Field(
+        ...,
+        description="Type of content source"
+    )
+    
+    tier: Literal["tier-a", "tier-b", "tier-c", "tier-d"] = Field(
+        ...,
+        description="Quality tier: tier-a (9.0+), tier-b (7.0-8.9), tier-c (5.0-6.9), tier-d (<5.0)"
+    )
+    
+    quality_score: float = Field(
+        ...,
+        ge=0.0,
+        le=10.0,
+        description="Quality score (0-10)"
+    )
+    
+    title: str = Field(
+        ...,
+        min_length=1,
+        description="Content title"
+    )
+    
+    tags: list[str] = Field(
+        default_factory=list,
+        description="List of relevant tags"
+    )
+    
+    created_at: datetime = Field(
+        default_factory=datetime.now,
+        description="Timestamp when file was created"
+    )
