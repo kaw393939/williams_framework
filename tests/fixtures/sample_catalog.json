@@ -1,0 +1,4025 @@
+[
+  {
+    "url": "https://hai.stanford.edu/ai-index/2025-ai-index-report",
+    "title": "2025 AI Index Report: Comprehensive Insights on AI's Impact",
+    "category": "educational",
+    "author": "Unknown",
+    "date": "2024-01-01",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/educational/2025-ai-index-report.md",
+    "summary": "The 2025 AI Index Report provides a comprehensive overview of AI's advancements, investments, and societal impacts. It highlights the rapid integration of AI into various sectors and the growing importance of understanding public sentiment and policy developments surrounding AI technology.",
+    "tags": [
+      "AI",
+      "Artificial Intelligence",
+      "Technology",
+      "Policy",
+      "Research"
+    ],
+    "processed_at": "2025-10-09T19:34:21.760158",
+    "source_files": [
+      "curriculum_freshman_project_brief.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.demandsage.com/ai-in-education-statistics/",
+    "title": "AI in Education Statistics: Usage, Growth, and Impact",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "2025-01-01",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/ai-in-education-statistics.md",
+    "summary": "This article presents key statistics on the usage of AI in education, highlighting trends in student engagement, market growth, and the impact of AI tools on learning outcomes. It also discusses gender differences in AI usage and the perceptions of educators regarding the benefits and drawbacks of AI in educational settings.",
+    "tags": [
+      "AI in Education",
+      "Statistics",
+      "Market Growth",
+      "Student Engagement",
+      "Teacher Perspectives"
+    ],
+    "processed_at": "2025-10-09T19:35:38.222892",
+    "source_files": [
+      "curriculum_freshman_project_brief.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.engageli.com/blog/ai-in-education-statistics",
+    "title": "The Impact of AI on Education: Statistics and Insights",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/the-impact-of-ai-on-education-statistics.md",
+    "summary": "Artificial intelligence is rapidly transforming education, with significant statistics highlighting its impact on learning outcomes, teacher efficiency, and market growth. Key findings include a 54% increase in student test scores and a projected AI education market growth to $112.30 billion by 2034.",
+    "tags": [
+      "AI in Education",
+      "Learning Outcomes",
+      "Market Growth",
+      "Corporate Training",
+      "Personalized Learning"
+    ],
+    "processed_at": "2025-10-09T19:34:40.536676",
+    "source_files": [
+      "curriculum_freshman_project_brief.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.pewresearch.org/short-reads/2024/05/15/a-quarter-of-u-s-teachers-say-ai-tools-do-more-harm-than-good-in-k-12-education/",
+    "title": "A Quarter of U.S. Teachers Say AI Tools Do More Harm Than Good in K-12 Education",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "2024-05-15",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/a-quarter-of-us-teachers-say-ai-tools-do-more-harm-than-good.md",
+    "summary": "A Pew Research Center survey reveals that a quarter of U.S. public K-12 teachers believe AI tools do more harm than good in education. The survey also highlights differing views among teachers based on school levels and provides insights into teens' experiences with AI tools like ChatGPT.",
+    "tags": [
+      "education",
+      "artificial intelligence",
+      "K-12",
+      "teachers",
+      "survey"
+    ],
+    "processed_at": "2025-10-09T19:34:16.960067",
+    "source_files": [
+      "curriculum_freshman_project_brief.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://boterview.com/a/ai-education-statistics",
+    "title": "AI in Education - Statistics and Trends (2025)",
+    "category": "web_article",
+    "author": "Nathan Brunner",
+    "date": "2025-02-09",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/ai-in-education-statistics-and-trends-2025.md",
+    "summary": "This article discusses the latest statistics and trends regarding the use of AI in education as of 2025. It highlights the impact of AI technologies on learning outcomes and educational practices.",
+    "tags": [
+      "AI",
+      "Education",
+      "Statistics",
+      "Trends",
+      "Technology"
+    ],
+    "processed_at": "2025-10-09T19:33:49.146802",
+    "source_files": [
+      "curriculum_freshman_project_brief.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.appnova.com/leverage-chatgpt-for-ui-ux-design/",
+    "title": "How to Leverage ChatGPT for UI/UX Design Effectively",
+    "category": "web_article",
+    "author": "Ghia Marnewick",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/leverage-chatgpt-for-ui-ux-design.md",
+    "summary": "This article explores how ChatGPT can enhance UI/UX design processes by improving collaboration, speeding up prototyping, and supporting user research. It emphasizes the importance of integrating AI tools like ChatGPT into workflows while maintaining a human-centered approach to design.",
+    "tags": [
+      "UI/UX Design",
+      "ChatGPT",
+      "Artificial Intelligence",
+      "Content Strategy",
+      "User Research"
+    ],
+    "processed_at": "2025-10-09T19:37:24.672567",
+    "source_files": [
+      "williams_ai_handbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://course.fast.ai/",
+    "title": "Practical Deep Learning for Coders - Course Overview",
+    "category": "web_article",
+    "author": "Jeremy Howard",
+    "date": "2022-01-01",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/practical-deep-learning-for-coders.md",
+    "summary": "This article introduces the 'Practical Deep Learning for Coders' course, designed for individuals with some coding experience who want to apply deep learning to real-world problems. The course covers various topics, including model training for computer vision and natural language processing, using popular libraries like PyTorch and fastai.",
+    "tags": [
+      "deep learning",
+      "machine learning",
+      "PyTorch",
+      "fastai",
+      "education"
+    ],
+    "processed_at": "2025-10-09T19:58:15.274244",
+    "source_files": [
+      "reading_01_technical_foundations.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.dataslayer.ai/blog/chatgpt-prompts-that-actually-work",
+    "title": "Untitled Content",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/httpswwwdataslayeraiblogchatgpt-prompts-that-actually-work.md",
+    "summary": "Content processed but AI enhancement failed.",
+    "tags": [
+      "web_article"
+    ],
+    "processed_at": "2025-10-09T20:17:24.315458",
+    "source_files": [
+      "williams_data_kpi.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://skimai.com/top-ten-ai-youtubers-you-need-to-follow-in-2025/?utm_source=chatgpt.com \"Top Ten AI YouTubers You Need to Follow in 2025\"",
+    "title": "Top Ten AI YouTubers You Need to Follow in 2025",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/top-ten-ai-youtubers-you-need-to-follow-in-2025.md",
+    "summary": "This article highlights the top ten AI YouTubers who provide valuable insights into artificial intelligence. These content creators break down complex AI topics into accessible knowledge, focusing on practical applications and emerging technologies for professionals and enterprises.",
+    "tags": [
+      "AI",
+      "YouTube",
+      "Education",
+      "Technology",
+      "Content Creation"
+    ],
+    "processed_at": "2025-10-09T19:58:19.845646",
+    "source_files": [
+      "ref_youtube_channels.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://productschool.com/blog/analytics/metrics-product-management",
+    "title": "Understanding Metrics in Product Management",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "2025-10-09",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-metrics-in-product-management.md",
+    "summary": "This article discusses the importance of metrics in product management, emphasizing how data-driven decision-making can enhance product design and user experience. It differentiates between KPIs, metrics, and OKRs, and outlines various metrics for acquisition, conversion, engagement, retention, and revenue.",
+    "tags": [
+      "Product Management",
+      "Metrics",
+      "Data Analysis",
+      "KPIs",
+      "OKRs"
+    ],
+    "processed_at": "2025-10-09T20:16:16.717370",
+    "source_files": [
+      "williams_data_kpi.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://bizplanr.ai/blog/chatgpt-for-market-research",
+    "title": "Using ChatGPT for Market Research: Benefits and Effective Prompts",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/using-chatgpt-for-market-research.md",
+    "summary": "The article discusses the benefits of using ChatGPT for market research, emphasizing its ability to analyze large datasets quickly and provide insights. It also offers practical prompts for effective market analysis, including gathering industry insights, developing market segmentation, and creating buyer personas.",
+    "tags": [
+      "ChatGPT",
+      "Market Research",
+      "AI Tools",
+      "Business Strategy",
+      "Data Analysis"
+    ],
+    "processed_at": "2025-10-09T19:36:49.378383",
+    "source_files": [
+      "williams_ai_handbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.onlinevisibilityacademy.com/maslows-hierarchy-of-needs-a-marketing-perspective/",
+    "title": "Maslow's Hierarchy of Needs: A Marketing Perspective",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/maslows-hierarchy-of-needs-marketing.md",
+    "summary": "This article explores how Maslow's Hierarchy of Needs can inform marketing strategies by aligning messages with consumer needs. It provides practical tips and case studies demonstrating effective marketing approaches based on the different levels of the hierarchy.",
+    "tags": [
+      "Marketing",
+      "Maslow's Hierarchy",
+      "Consumer Behavior",
+      "Psychology",
+      "Marketing Strategies"
+    ],
+    "processed_at": "2025-10-09T20:15:23.488321",
+    "source_files": [
+      "product_messaging_williams.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.uniformmarket.com/statistics/global-apparel-industry-statistics",
+    "title": "Global Apparel Industry Statistics: Market Size and Trends (2025)",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "2025-01-01",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/global-apparel-industry-statistics-2025.md",
+    "summary": "The global apparel market is projected to be worth $1.84 trillion in 2025, accounting for 1.6% of the world’s GDP. The article explores market sizes, consumer behavior, and environmental impacts, highlighting significant trends and statistics in the apparel industry.",
+    "tags": [
+      "apparel industry",
+      "market statistics",
+      "consumer behavior",
+      "sustainability",
+      "fashion trends"
+    ],
+    "processed_at": "2025-10-09T20:16:14.035701",
+    "source_files": [
+      "williams_research_workbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://savyagency.com/maslows-theory-for-brands/",
+    "title": "Embracing Human Needs: Applying Maslow’s Theory to Your Brand",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/embracing-human-needs-applying-maslows-theory-to-your-brand.md",
+    "summary": "This article explores how brands can apply Maslow's Hierarchy of Needs to achieve brand actualization by fulfilling consumer needs. It discusses the three tiers of needs—basic needs, brand devotion, and brand actualization—highlighting the importance of understanding and respecting consumer needs to build loyalty and purpose-driven brands.",
+    "tags": [
+      "Maslow's Theory",
+      "Branding",
+      "Consumer Needs",
+      "Marketing",
+      "Brand Actualization"
+    ],
+    "processed_at": "2025-10-09T20:16:12.734295",
+    "source_files": [
+      "psych_williams.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://userpilot.com/blog/marketing-funnel-kpis/",
+    "title": "Understanding the SaaS Marketing Funnel and Key Performance Indicators",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/saas-marketing-funnel-kpis.md",
+    "summary": "This article explores the stages of the SaaS marketing funnel, including awareness, consideration, conversion, retention, and loyalty. It also highlights key performance indicators (KPIs) for measuring success at each stage, providing insights for optimizing marketing strategies.",
+    "tags": [
+      "SaaS",
+      "Marketing Funnel",
+      "KPIs",
+      "Customer Retention",
+      "Product Marketing"
+    ],
+    "processed_at": "2025-10-09T20:16:46.474256",
+    "source_files": [
+      "williams_data_kpi.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.ebaqdesign.com/blog/chatgpt-brand-strategy",
+    "title": "Using ChatGPT for Brand Strategy and Marketing",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/using-chatgpt-for-brand-strategy.md",
+    "summary": "This article discusses the application of ChatGPT in developing brand strategies and marketing initiatives. It emphasizes the importance of effective branding and offers services in strategy, logo, and web design.",
+    "tags": [
+      "branding",
+      "ChatGPT",
+      "marketing",
+      "design",
+      "strategy"
+    ],
+    "processed_at": "2025-10-09T19:36:02.310918",
+    "source_files": [
+      "williams_ai_handbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.semianalysis.com/",
+    "title": "Industry Models for AI and Semiconductor Analysis",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/industry-models-ai-semiconductor.md",
+    "summary": "This article outlines various industry models developed by SemiAnalysis to address client needs in the AI and semiconductor sectors. It includes models for accelerator production, AI cloud economics, datacenter capacity, wafer fabrication, and AI networking.",
+    "tags": [
+      "AI",
+      "Semiconductors",
+      "Industry Models",
+      "Cloud Computing",
+      "Datacenter"
+    ],
+    "processed_at": "2025-10-09T20:16:24.700620",
+    "source_files": [
+      "reading_05_infrastructure_energy.md",
+      "reading_02_business_economics.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.deepmind.com/blog/specification-gaming-the-flip-side-of-ai-ingenuity",
+    "title": "Specification Gaming: The Flip Side of AI Ingenuity",
+    "category": "ai_lab",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/ai_labs/specification-gaming-the-flip-side-of-ai-ingenuity.md",
+    "summary": "Specification gaming occurs when AI agents satisfy the literal specifications of a task without achieving the intended outcome. This behavior highlights the challenges in designing reward functions and task specifications that align with human intentions, as agents may exploit loopholes to achieve rewards in unintended ways.",
+    "tags": [
+      "AI",
+      "Reinforcement Learning",
+      "Specification Gaming",
+      "Task Design",
+      "Agent Alignment"
+    ],
+    "processed_at": "2025-10-09T20:17:03.217695",
+    "source_files": [
+      "reading_03_safety_risk_pdoom.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=aircAruvnKk",
+    "title": "Untitled Content",
+    "category": "unknown",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/other/httpswwwyoutubecomwatchvaircaruvnkk.md",
+    "summary": "Content processed but AI enhancement failed.",
+    "tags": [
+      "unknown"
+    ],
+    "processed_at": "2025-10-09T19:56:07.576009",
+    "source_files": [
+      "cli"
+    ],
+    "processor": "AsyncYouTubeProcessor"
+  },
+  {
+    "url": "https://www.investopedia.com/terms/c/clickthroughrates.asp",
+    "title": "Understanding Click-Through Rate (CTR) in Online Advertising",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-click-through-rate-ctr.md",
+    "summary": "The click-through rate (CTR) measures the effectiveness of online advertisements by calculating the percentage of viewers who click on an ad. A higher CTR indicates better ad performance, but typical rates have declined to around 0.2% due to ad desensitization. CTR is essential for evaluating online marketing campaigns and differs from conversion rate, which measures actual sales resulting from clicks.",
+    "tags": [
+      "click-through rate",
+      "online advertising",
+      "digital marketing",
+      "marketing campaigns",
+      "email marketing"
+    ],
+    "processed_at": "2025-10-09T20:17:14.126373",
+    "source_files": [
+      "williams_data_kpi.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://cset.georgetown.edu/",
+    "title": "CSET Advisory Board Founding Members Announcement",
+    "category": "educational",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/educational/cset-advisory-board-founding-members.md",
+    "summary": "The Center for Security and Emerging Technology at Georgetown University has announced the founding members of its Advisory Board. The board includes notable figures who have significantly contributed to U.S. national security and competitiveness.",
+    "tags": [
+      "CSET",
+      "Advisory Board",
+      "National Security",
+      "Emerging Technology",
+      "Georgetown University"
+    ],
+    "processed_at": "2025-10-09T20:17:19.135901",
+    "source_files": [
+      "reading_05_infrastructure_energy.md",
+      "reading_03_safety_risk_pdoom.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.oxfordmartin.ox.ac.uk/downloads/academic/The_Future_of_Employment.pdf",
+    "title": "The Future of Employment: How Susceptible Are Jobs to Computerisation?",
+    "category": "pdf_document",
+    "author": "Carl Benedikt Frey and Michael A. Osborne",
+    "date": "2013-09-17",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/pdfs/the-future-of-employment-how-susceptible-are-jobs-to-computerisation_1.md",
+    "summary": "This paper examines the susceptibility of jobs to computerisation, estimating the probability of automation for 702 occupations. The authors find that approximately 47% of total US employment is at risk, with a strong negative relationship between wages, educational attainment, and the probability of computerisation.",
+    "tags": [
+      "Employment",
+      "Computerisation",
+      "Automation",
+      "Labour Market",
+      "Technological Change"
+    ],
+    "processed_at": "2025-10-09T20:26:33.096676",
+    "source_files": [
+      "reading_04_societal_impacts_future_work.md"
+    ],
+    "processor": "AsyncPDFProcessor"
+  },
+  {
+    "url": "https://arxiv.org/html/2411.06837v1",
+    "title": "Persuasion with Large Language Models: A Survey",
+    "category": "arxiv_paper",
+    "author": "Alexander Rogiers, Sander Noels, Maarten Buyl, Tijl De Bie",
+    "date": "2024-11-11",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/arxiv_papers/persuasion-with-large-language-models-survey.md",
+    "summary": "This survey explores the emerging field of LLM-based persuasion, highlighting the capabilities of Large Language Models (LLMs) in influencing human attitudes across various domains such as politics, marketing, and public health. It discusses the factors affecting their effectiveness, the ethical implications, and the need for regulatory frameworks to mitigate risks associated with misinformation and bias.",
+    "tags": [
+      "Large Language Models",
+      "Persuasion",
+      "Ethics",
+      "Misinformation",
+      "AI Communication"
+    ],
+    "processed_at": "2025-10-09T19:48:53.955823",
+    "source_files": [
+      "williams_ai_handbook.md"
+    ],
+    "processor": "AsyncPDFProcessor"
+  },
+  {
+    "url": "https://arxiv.org/abs/2311.12022",
+    "title": "GPQA: A Graduate-Level Google-Proof Q&A Benchmark",
+    "category": "arxiv_paper",
+    "author": "David Rein, Betty Li Hou, Asa Cooper Stickland, Jackson Petty, Richard Yuanzhe Pang, Julien Dirani, Julian Michael, Samuel R. Bowman",
+    "date": "2023-11-20",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/arxiv_papers/gpqa-graduate-level-google-proof-qa-benchmark_1.md",
+    "summary": "This paper presents GPQA, a challenging dataset of 448 multiple-choice questions in biology, physics, and chemistry, designed to be difficult even for domain experts. The dataset aims to facilitate scalable oversight experiments for AI systems, ensuring that questions are high-quality and difficult to answer, even with internet access.",
+    "tags": [
+      "AI",
+      "Benchmarking",
+      "Data Collection",
+      "Machine Learning",
+      "Natural Language Processing"
+    ],
+    "processed_at": "2025-10-09T20:26:46.825253",
+    "source_files": [
+      "reading_07_llm_benchmarks_evaluation.md"
+    ],
+    "processor": "AsyncPDFProcessor"
+  },
+  {
+    "url": "https://arxiv.org/abs/1606.06565",
+    "title": "Concrete Problems in AI Safety",
+    "category": "arxiv_paper",
+    "author": "Dario Amodei, Chris Olah, Jacob Steinhardt, Paul Christiano, John Schulman, Dan Mane",
+    "date": "2016-07-25",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/arxiv_papers/concrete-problems-in-ai-safety_1.md",
+    "summary": "This paper discusses the potential impacts of AI technologies on society, focusing on the problem of accidents in machine learning systems. It categorizes five practical research problems related to accident risk and reviews existing literature while suggesting future research directions.",
+    "tags": [
+      "AI Safety",
+      "Machine Learning",
+      "Reinforcement Learning",
+      "Accident Prevention",
+      "Research Directions"
+    ],
+    "processed_at": "2025-10-09T20:26:58.031337",
+    "source_files": [
+      "reading_03_safety_risk_pdoom.md"
+    ],
+    "processor": "AsyncPDFProcessor"
+  },
+  {
+    "url": "https://arxiv.org/abs/2110.14168",
+    "title": "Training Verifiers to Solve Math Word Problems",
+    "category": "arxiv_paper",
+    "author": "Karl Cobbe, Vineet Kosaraju, Mohammad Bavarian, Mark Chen, Heewoo Jun, Lukasz Kaiser, Matthias Plappert, Jerry Tworek, Jacob Hilton, Reiichiro Nakano, Christopher Hesse, John Schulman",
+    "date": "2021-11-18",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/arxiv_papers/training-verifiers-to-solve-math-word-problems_1.md",
+    "summary": "This paper introduces GSM8K, a dataset of 8.5K diverse grade school math word problems, highlighting the challenges faced by state-of-the-art language models in multi-step mathematical reasoning. The authors propose training verifiers to assess the correctness of model-generated solutions, demonstrating that this approach significantly improves performance over traditional fine-tuning methods.",
+    "tags": [
+      "machine learning",
+      "natural language processing",
+      "mathematics",
+      "dataset",
+      "verification"
+    ],
+    "processed_at": "2025-10-09T20:27:02.057515",
+    "source_files": [
+      "reading_07_llm_benchmarks_evaluation.md"
+    ],
+    "processor": "AsyncPDFProcessor"
+  },
+  {
+    "url": "https://intelligence.org/files/IE-EI.pdf",
+    "title": "Intelligence Explosion: Evidence and Import",
+    "category": "pdf_document",
+    "author": "Luke Muehlhauser, Anna Salamon",
+    "date": "2012-01-01",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/pdfs/intelligence-explosion-evidence-and-import_1.md",
+    "summary": "This chapter reviews the likelihood of creating human-level AI before 2100 and the potential for an intelligence explosion that could lead to vastly superhuman AI. It discusses the risks of uncontrolled intelligence explosions and offers recommendations for achieving a controlled intelligence explosion that could benefit humanity.",
+    "tags": [
+      "Artificial Intelligence",
+      "Intelligence Explosion",
+      "Machine Learning",
+      "Future Technology",
+      "AI Safety"
+    ],
+    "processed_at": "2025-10-09T20:27:08.971060",
+    "source_files": [
+      "reading_03_safety_risk_pdoom.md"
+    ],
+    "processor": "AsyncPDFProcessor"
+  },
+  {
+    "url": "https://arxiv.org/abs/1906.02243",
+    "title": "Energy and Policy Considerations for Deep Learning in NLP",
+    "category": "arxiv_paper",
+    "author": "Emma Strubell, Ananya Ganesh, Andrew McCallum",
+    "date": "2019-06-05",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/arxiv_papers/energy-and-policy-considerations-for-deep-learning-in-nlp_1.md",
+    "summary": "This paper quantifies the financial and environmental costs associated with training neural network models in NLP. It highlights the substantial energy consumption and carbon footprint of state-of-the-art models, while proposing actionable recommendations to improve equity and reduce costs in NLP research.",
+    "tags": [
+      "NLP",
+      "Deep Learning",
+      "Energy Consumption",
+      "Environmental Impact",
+      "Research Equity"
+    ],
+    "processed_at": "2025-10-09T20:27:17.091338",
+    "source_files": [
+      "reading_05_infrastructure_energy.md"
+    ],
+    "processor": "AsyncPDFProcessor"
+  },
+  {
+    "url": "https://arxiv.org/abs/2107.03374",
+    "title": "Evaluating Large Language Models Trained on Code",
+    "category": "arxiv_paper",
+    "author": "Mark Chen et al.",
+    "date": "2021-07-14",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/arxiv_papers/evaluating-large-language-models-trained-on-code_1.md",
+    "summary": "This paper introduces Codex, a GPT language model fine-tuned on publicly available code, and evaluates its performance on Python code-writing tasks. The authors present the HumanEval dataset for benchmarking and discuss the implications of deploying powerful code generation technologies.",
+    "tags": [
+      "language models",
+      "code generation",
+      "machine learning",
+      "program synthesis",
+      "AI ethics"
+    ],
+    "processed_at": "2025-10-09T20:27:22.380116",
+    "source_files": [
+      "reading_07_llm_benchmarks_evaluation.md"
+    ],
+    "processor": "AsyncPDFProcessor"
+  },
+  {
+    "url": "https://www.printful.com/ca/blog/t-shirt-industry-statistics",
+    "title": "Insights into the Global T-Shirt Industry and Trends",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/t-shirt-industry-statistics.md",
+    "summary": "This article explores the growth predictions and current trends in the global t-shirt industry, highlighting the increasing demand for casual wear, the rise of custom t-shirt printing, and sustainability concerns. It provides key statistics on market revenue, consumer behavior, and the impact of ecommerce on the t-shirt market.",
+    "tags": [
+      "t-shirt industry",
+      "market trends",
+      "custom printing",
+      "sustainability",
+      "ecommerce"
+    ],
+    "processed_at": "2025-10-09T20:27:44.690947",
+    "source_files": [
+      "williams_research_workbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://arxiv.org/abs/2206.13353",
+    "title": "Is Power-Seeking AI an Existential Risk?",
+    "category": "arxiv_paper",
+    "author": "Joseph Carlsmith",
+    "date": "2021-04-01",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/arxiv_papers/is-power-seeking-ai-an-existential-risk_1.md",
+    "summary": "This report examines the existential risk posed by misaligned artificial intelligence, arguing that creating highly intelligent agents could lead to catastrophic outcomes by 2070. It presents a six-premise argument outlining the potential for these agents to seek power over humanity, ultimately resulting in disempowerment and existential catastrophe.",
+    "tags": [
+      "AI Safety",
+      "Existential Risk",
+      "Artificial Intelligence",
+      "Alignment",
+      "Power-Seeking"
+    ],
+    "processed_at": "2025-10-09T20:27:59.803839",
+    "source_files": [
+      "reading_03_safety_risk_pdoom.md"
+    ],
+    "processor": "AsyncPDFProcessor"
+  },
+  {
+    "url": "https://allenai.org/data/arc",
+    "title": "Untitled Content",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/httpsallenaiorgdataarc.md",
+    "summary": "Content processed but AI enhancement failed.",
+    "tags": [
+      "web_article"
+    ],
+    "processed_at": "2025-10-09T20:28:00.056927",
+    "source_files": [
+      "reading_07_llm_benchmarks_evaluation.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.grandviewresearch.com/industry-analysis/coffee-market",
+    "title": "Coffee Market Size, Share & Growth, Industry Report, 2030",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/coffee-market-report-2030.md",
+    "summary": "The global coffee market is projected to grow from USD 269.27 billion in 2024 to USD 369.46 billion by 2030, driven by increasing consumer demand for specialty and premium coffee products. Key trends include the rise of ready-to-drink coffee and the dominance of the B2C distribution channel.",
+    "tags": [
+      "Coffee Market",
+      "Consumer Goods",
+      "Market Trends",
+      "Specialty Coffee",
+      "Global Market"
+    ],
+    "processed_at": "2025-10-09T20:28:04.645639",
+    "source_files": [
+      "williams_research_workbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "http://jalammar.github.io/illustrated-transformer/",
+    "title": "The Illustrated Transformer",
+    "category": "blog_post",
+    "author": "Jay Alammar",
+    "date": "2018-06-27",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/blog_posts/the-illustrated-transformer.md",
+    "summary": "This article provides a comprehensive overview of the Transformer model, which utilizes self-attention mechanisms to improve the efficiency and performance of neural machine translation. It breaks down the architecture, including encoding and decoding components, and explains the concepts of self-attention and multi-headed attention in an accessible manner.",
+    "tags": [
+      "Machine Learning",
+      "Natural Language Processing",
+      "Deep Learning",
+      "Transformers",
+      "Neural Networks"
+    ],
+    "processed_at": "2025-10-09T20:28:23.912971",
+    "source_files": [
+      "reading_01_technical_foundations.md",
+      "ref_reading_list_master_index.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://medium.com/@slakhyani20/10-chatgpt-prompts-for-customer-journey-mapping-14c667b1b451",
+    "title": "10 ChatGPT Prompts For Customer Journey Mapping",
+    "category": "blog_post",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/blog_posts/10-chatgpt-prompts-for-customer-journey-mapping.md",
+    "summary": "This article provides ten detailed ChatGPT prompts designed to help businesses map their customer journeys effectively. Each prompt focuses on different aspects of customer experience, from persona-specific scenarios to data-driven optimizations, aiming to enhance customer engagement and satisfaction.",
+    "tags": [
+      "customer journey",
+      "ChatGPT",
+      "CX optimization",
+      "marketing strategy",
+      "user experience"
+    ],
+    "processed_at": "2025-10-09T19:36:56.874815",
+    "source_files": [
+      "williams_ai_handbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://about.nike.com/en/newsroom/releases/nike-why-do-it-campaign",
+    "title": "Nike Reintroduces 'Why Do It?' Campaign to Inspire Young Athletes",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "2023-10-01",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/nike-why-do-it-campaign.md",
+    "summary": "Nike's latest campaign, 'Why Do It?', reintroduces the iconic 'Just Do It' slogan to inspire a new generation of athletes. The campaign emphasizes that greatness is a choice and encourages young athletes to embrace challenges and pursue their potential.",
+    "tags": [
+      "Nike",
+      "Marketing",
+      "Athletes",
+      "Campaign",
+      "Inspiration"
+    ],
+    "processed_at": "2025-10-09T20:28:27.133449",
+    "source_files": [
+      "psych_williams.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.ebaqdesign.com/blog/hero-archetype",
+    "title": "The Hero Archetype: 10 Branding Examples",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/the-hero-archetype-10-branding-examples.md",
+    "summary": "This article discusses the Hero archetype in branding, providing ten examples of brands that embody this archetype. It highlights the importance of strategic branding and offers services for those needing assistance.",
+    "tags": [
+      "branding",
+      "design",
+      "hero archetype",
+      "marketing",
+      "graphic design"
+    ],
+    "processed_at": "2025-10-09T20:28:28.199247",
+    "source_files": [
+      "product_messaging_williams.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://amplitude.com/blog/bounce-rate-calculate-and-average",
+    "title": "Understanding Bounce Rate: Calculation, Context, and Improvement",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "2023-09-20",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-bounce-rate.md",
+    "summary": "This article explains the concept of bounce rate, how to calculate it, and its significance for website performance. It discusses the differences between bounce rate and exit rate, average bounce rates across various industries, and strategies to reduce bounce rates by enhancing user experience and meeting visitor intent.",
+    "tags": [
+      "bounce rate",
+      "website metrics",
+      "user experience",
+      "digital marketing",
+      "analytics"
+    ],
+    "processed_at": "2025-10-09T20:28:43.334572",
+    "source_files": [
+      "williams_data_kpi.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://blog.hubspot.com/service/ai-customer-journey-map",
+    "title": "Leveraging AI for Customer Journey Mapping",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "2024-10-01",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/leveraging-ai-for-customer-journey-mapping.md",
+    "summary": "This article explores how AI tools can enhance the customer journey mapping process by analyzing data, predicting behaviors, and providing actionable insights. It outlines steps for creating a customer journey map with AI, including defining objectives, gathering data, and validating findings with human insight.",
+    "tags": [
+      "AI",
+      "Customer Journey",
+      "Machine Learning",
+      "Customer Experience",
+      "Data Analysis"
+    ],
+    "processed_at": "2025-10-09T19:38:54.761688",
+    "source_files": [
+      "williams_ai_handbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.accio.com/business/the_quiet_luxury_trend",
+    "title": "The Quiet Luxury Trend: Origins, Brands, and Consumer Behavior",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/the-quiet-luxury-trend.md",
+    "summary": "The quiet luxury trend, associated with the 'old money' aesthetic, has gained traction through pop culture and economic shifts, emphasizing sustainability and timelessness. Key brands like The Row and Loro Piana define this trend, which reflects a cultural shift toward mindful consumption and investment-worthy pieces.",
+    "tags": [
+      "quiet luxury",
+      "fashion trends",
+      "sustainability",
+      "consumer behavior",
+      "luxury brands"
+    ],
+    "processed_at": "2025-10-09T20:28:43.643350",
+    "source_files": [
+      "williams_research_workbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.appsflyer.com/glossary/cpm/",
+    "title": "Understanding Cost Per Mille (CPM) in Digital Advertising",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-cost-per-mille-cpm.md",
+    "summary": "Cost per mille (CPM) is a digital advertising pricing model where advertisers pay for every 1,000 impressions of their ad. It is particularly useful for building brand awareness and offers benefits such as clear pricing and scalability, though it has limitations regarding engagement data and potential fraud.",
+    "tags": [
+      "digital advertising",
+      "CPM",
+      "programmatic advertising",
+      "marketing metrics",
+      "advertising strategies"
+    ],
+    "processed_at": "2025-10-09T20:28:59.347224",
+    "source_files": [
+      "williams_data_kpi.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://arxiv.org/abs/2005.14165",
+    "title": "Language Models are Few-Shot Learners",
+    "category": "arxiv_paper",
+    "author": "Tom B. Brown et al.",
+    "date": "2020-07-22",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/arxiv_papers/language-models-are-few-shot-learners.md",
+    "summary": "This paper presents GPT-3, a 175 billion parameter autoregressive language model that demonstrates significant few-shot learning capabilities across various NLP tasks. The authors highlight the model's performance in zero-shot, one-shot, and few-shot settings, revealing its strengths and limitations, as well as discussing broader societal impacts and concerns regarding bias and misuse.",
+    "tags": [
+      "NLP",
+      "GPT-3",
+      "Machine Learning",
+      "Language Models",
+      "Few-Shot Learning"
+    ],
+    "processed_at": "2025-10-09T20:29:05.382278",
+    "source_files": [
+      "reading_01_technical_foundations.md"
+    ],
+    "processor": "AsyncPDFProcessor"
+  },
+  {
+    "url": "https://www.brax.io/blog/hacking-human-psychology-the-12-brand-archetypes-explained",
+    "title": "Hacking Human Psychology: The 12 Brand Archetypes Explained",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/hacking-human-psychology-12-brand-archetypes.md",
+    "summary": "This article explores the concept of brand archetypes and how they can be utilized to create lasting connections with audiences. It details the 12 archetypes, their characteristics, and examples of brands that embody each type, emphasizing the psychological aspects of branding and marketing strategies.",
+    "tags": [
+      "Branding",
+      "Marketing",
+      "Psychology",
+      "Business Strategy",
+      "Consumer Behavior"
+    ],
+    "processed_at": "2025-10-09T20:29:08.217307",
+    "source_files": [
+      "psych_williams.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://arxiv.org/abs/2209.07858",
+    "title": "Red Teaming Language Models to Reduce Harms: Methods, Scaling Behaviors, and Lessons Learned",
+    "category": "arxiv_paper",
+    "author": "Deep Ganguli, Liane Lovitt, Jackson Kernion, Amanda Askell, et al.",
+    "date": "2022-11-22",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/arxiv_papers/red-teaming-language-models.md",
+    "summary": "This paper discusses efforts to red team language models to identify and mitigate harmful outputs. It presents findings on the scaling behaviors of various model types, releases a dataset of red team attacks, and outlines methodologies for conducting red teaming effectively.",
+    "tags": [
+      "Language Models",
+      "Red Teaming",
+      "AI Safety",
+      "Machine Learning",
+      "Ethics"
+    ],
+    "processed_at": "2025-10-09T20:29:08.540179",
+    "source_files": [
+      "reading_03_safety_risk_pdoom.md"
+    ],
+    "processor": "AsyncPDFProcessor"
+  },
+  {
+    "url": "https://www.swebench.com/",
+    "title": "SWE-bench Leaderboards and Updates",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/swe-bench-leaderboards-and-updates.md",
+    "summary": "The SWE-bench platform provides various leaderboards for software engineering models, including Bash Only, Lite, Verified, and Multimodal datasets. Recent updates highlight significant achievements and new releases in the field of software engineering agents.",
+    "tags": [
+      "SWE-bench",
+      "software engineering",
+      "machine learning",
+      "datasets",
+      "research updates"
+    ],
+    "processed_at": "2025-10-09T20:29:22.122546",
+    "source_files": [
+      "reading_07_llm_benchmarks_evaluation.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.designsystems.com/space-grids-and-layouts/",
+    "title": "Space, Grids, and Layouts in Design Systems",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/space-grids-and-layouts.md",
+    "summary": "This article discusses the importance of spatial systems, grids, and layouts in design, emphasizing how they create consistency and improve communication among design teams. It outlines how to start a spatial system, apply it to UI elements, and implement it in existing designs.",
+    "tags": [
+      "design systems",
+      "spatial systems",
+      "UI design",
+      "grids",
+      "layouts"
+    ],
+    "processed_at": "2025-10-09T20:29:35.075507",
+    "source_files": [
+      "williams_design.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://arxiv.org/abs/2009.03300",
+    "title": "Measuring Massive Multitask Language Understanding",
+    "category": "arxiv_paper",
+    "author": "Dan Hendrycks, Collin Burns, Steven Basart, Andy Zou, Mantas Mazeika, Dawn Song, Jacob Steinhardt",
+    "date": "2021-01-12",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/arxiv_papers/measuring-massive-multitask-language-understanding.md",
+    "summary": "This paper introduces a new benchmark to evaluate the multitask accuracy of text models across 57 diverse tasks, revealing that while models like GPT-3 show improvements over random chance, they still fall short of expert-level accuracy. The benchmark aims to assess models' understanding and knowledge breadth, highlighting significant shortcomings in areas such as morality and law.",
+    "tags": [],
+    "processed_at": "2025-10-09T20:29:54.849146",
+    "source_files": [
+      "reading_07_llm_benchmarks_evaluation.md"
+    ],
+    "processor": "AsyncPDFProcessor"
+  },
+  {
+    "url": "https://www.investopedia.com/terms/c/cpc.asp",
+    "title": "Understanding Cost Per Click (CPC) in Online Advertising",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-cost-per-click-cpc.md",
+    "summary": "Cost per click (CPC) is an online advertising model where advertisers pay for each click on their ads, making it a performance-based strategy. This article explains how CPC works, its calculation, strategies to reduce costs, and compares it with the cost per mille (CPM) model.",
+    "tags": [
+      "advertising",
+      "CPC",
+      "digital marketing",
+      "PPC",
+      "Google Ads"
+    ],
+    "processed_at": "2025-10-09T20:29:56.386853",
+    "source_files": [
+      "williams_data_kpi.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.adobe.com/creativecloud/design/discover/golden-ratio.html",
+    "title": "An Introduction to the Golden Ratio in Design",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/introduction-to-golden-ratio.md",
+    "summary": "The golden ratio, approximately 1.618, has been a significant concept in mathematics and design since ancient Greece. It is often associated with aesthetics in art and nature, influencing various artists and designers throughout history. While not a strict rule, the golden ratio can serve as a guideline for creating balanced and visually appealing compositions.",
+    "tags": [
+      "Golden Ratio",
+      "Design",
+      "Art",
+      "Mathematics",
+      "Aesthetics"
+    ],
+    "processed_at": "2025-10-09T20:30:02.360138",
+    "source_files": [
+      "williams_design.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://arxiv.org/abs/2001.08361",
+    "title": "Scaling Laws for Neural Language Models",
+    "category": "arxiv_paper",
+    "author": "Jared Kaplan, Sam McCandlish, Tom Henighan, Tom B. Brown, Benjamin Chess, Rewon Child, Scott Gray, Alec Radford, Jeffrey Wu, Dario Amodei",
+    "date": "2020-01-23",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/arxiv_papers/scaling-laws-for-neural-language-models.md",
+    "summary": "This paper investigates the empirical scaling laws for language model performance, revealing that performance scales as a power-law with model size, dataset size, and compute used for training. The findings suggest that larger models are more sample-efficient, and optimal training involves using large models on modest data while stopping before convergence.",
+    "tags": [
+      "Neural Networks",
+      "Language Models",
+      "Machine Learning",
+      "Scaling Laws",
+      "Deep Learning"
+    ],
+    "processed_at": "2025-10-09T20:30:29.467972",
+    "source_files": [
+      "reading_01_technical_foundations.md"
+    ],
+    "processor": "AsyncPDFProcessor"
+  },
+  {
+    "url": "https://epiprodux.com/blog/how-jobs-to-be-done-helps-your-fashion-brand/",
+    "title": "Using Jobs-to-Be-Done Framework to Enhance Your Fashion eCommerce Brand",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/jobs-to-be-done-fashion-ecommerce.md",
+    "summary": "The article discusses how the Jobs-to-Be-Done (JTBD) framework can help fashion eCommerce brands understand customer needs and increase average order value. It emphasizes the importance of addressing customer pain points and provides strategies for product development, upselling, cross-selling, and personalization.",
+    "tags": [
+      "Jobs-to-be-Done",
+      "eCommerce",
+      "Fashion",
+      "Customer Experience",
+      "Marketing Strategies"
+    ],
+    "processed_at": "2025-10-09T20:30:40.532563",
+    "source_files": [
+      "williams_research_workbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.bigcommerce.com/glossary/return-on-ad-spend/",
+    "title": "Understanding Return On Advertising Spend (ROAS)",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-return-on-advertising-spend-roas.md",
+    "summary": "Return On Advertising Spend (ROAS) is a key marketing metric that evaluates the effectiveness of digital advertising campaigns. It helps businesses understand their advertising efficiency and informs future marketing strategies based on revenue generated per dollar spent.",
+    "tags": [
+      "ROAS",
+      "digital marketing",
+      "ecommerce",
+      "advertising",
+      "marketing metrics"
+    ],
+    "processed_at": "2025-10-09T20:30:43.891743",
+    "source_files": [
+      "williams_data_kpi.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://cdn.openai.com/papers/gpt-4-system-card.pdf",
+    "title": "GPT-4 System Card: Safety Challenges and Mitigations",
+    "category": "pdf_document",
+    "author": "OpenAI",
+    "date": "2023-10-01",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/pdfs/gpt-4-system-card.md",
+    "summary": "The GPT-4 System Card outlines the safety challenges and mitigations associated with the deployment of the GPT-4 large language model. It highlights the model's capabilities, limitations, and the safety processes implemented by OpenAI to address potential risks.",
+    "tags": [
+      "GPT-4",
+      "AI Safety",
+      "Language Models",
+      "OpenAI",
+      "Mitigation Strategies"
+    ],
+    "processed_at": "2025-10-09T20:30:47.525026",
+    "source_files": [
+      "reading_03_safety_risk_pdoom.md"
+    ],
+    "processor": "AsyncPDFProcessor"
+  },
+  {
+    "url": "https://www.ebaqdesign.com/blog/golden-ratio-logo",
+    "title": "How To Use Golden Ratio in Logo Design",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/how-to-use-golden-ratio-in-logo-design.md",
+    "summary": "This article discusses the application of the golden ratio in logo design. It emphasizes the importance of strategic branding and offers services for logo and web design.",
+    "tags": [
+      "branding",
+      "logo design",
+      "golden ratio",
+      "graphic design",
+      "web design"
+    ],
+    "processed_at": "2025-10-09T20:30:48.679972",
+    "source_files": [
+      "williams_design.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://transformer-circuits.pub/",
+    "title": "Understanding the Internal Mechanics of Large Language Models",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-internal-mechanics-large-language-models.md",
+    "summary": "Modern large language models remain largely enigmatic, with their internal workings still not fully understood. The Interpretability team is dedicated to uncovering these mechanisms to ensure the development of safe AI in the future.",
+    "tags": [
+      "AI",
+      "Machine Learning",
+      "Interpretability",
+      "Language Models",
+      "Safe AI"
+    ],
+    "processed_at": "2025-10-09T20:30:52.836021",
+    "source_files": [
+      "reading_03_safety_risk_pdoom.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://atlasokc.com/blog/the-psychology-of-branding",
+    "title": "The Psychology of Branding: Exploring Carl Jung's 12 Brand Archetypes",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/the-psychology-of-branding.md",
+    "summary": "This article explores Carl Jung's 12 Brand Archetypes and their significance in creating a compelling brand identity. By understanding these archetypes, businesses can foster emotional connections with consumers, differentiate themselves in the market, and build lasting brand loyalty.",
+    "tags": [
+      "branding",
+      "marketing",
+      "psychology",
+      "Carl Jung",
+      "brand archetypes"
+    ],
+    "processed_at": "2025-10-09T20:30:54.241137",
+    "source_files": [
+      "psych_williams.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://arxiv.org/abs/2109.07958",
+    "title": "TruthfulQA: Measuring How Models Mimic Human Falsehoods",
+    "category": "arxiv_paper",
+    "author": "Stephanie Lin, Jacob Hilton, Owain Evans",
+    "date": "2022-05-08",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/arxiv_papers/truthfulqa-measuring-how-models-mimic-human-falsehoods.md",
+    "summary": "This paper introduces TruthfulQA, a benchmark designed to assess the truthfulness of language models in generating answers. The benchmark consists of 817 questions across 38 categories, revealing that models like GPT-3 exhibit a tendency to produce falsehoods that mimic human misconceptions, with human performance significantly outpacing model accuracy.",
+    "tags": [
+      "language models",
+      "truthfulness",
+      "NLP",
+      "benchmark",
+      "AI ethics"
+    ],
+    "processed_at": "2025-10-09T20:31:12.054844",
+    "source_files": [
+      "reading_07_llm_benchmarks_evaluation.md"
+    ],
+    "processor": "AsyncPDFProcessor"
+  },
+  {
+    "url": "https://arxiv.org/abs/2101.11718",
+    "title": "BOLD: Dataset and Metrics for Measuring Biases in Open-Ended Language Generation",
+    "category": "arxiv_paper",
+    "author": "Jwala Dhamala, Tony Sun, Varun Kumar, Satyapriya Krishna, Yada Pruksachatkun, Kai-Wei Chang, Rahul Gupta",
+    "date": "2021-03-10",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/arxiv_papers/bold-dataset-and-metrics-for-measuring-biases.md",
+    "summary": "This paper introduces the Bias in Open-Ended Language Generation Dataset (BOLD), a large-scale dataset designed to benchmark social biases in text generated by language models across five domains: profession, gender, race, religion, and political ideology. The authors propose new automated metrics for assessing biases and demonstrate that popular language models exhibit significant biases compared to human-written texts.",
+    "tags": [
+      "Natural Language Processing",
+      "Bias",
+      "Machine Learning",
+      "Dataset",
+      "Fairness"
+    ],
+    "processed_at": "2025-10-09T20:31:22.315680",
+    "source_files": [
+      "reading_07_llm_benchmarks_evaluation.md"
+    ],
+    "processor": "AsyncPDFProcessor"
+  },
+  {
+    "url": "https://arxiv.org/abs/2203.02155",
+    "title": "Training Language Models to Follow Instructions with Human Feedback",
+    "category": "arxiv_paper",
+    "author": "Long Ouyang, Jeff Wu, Xu Jiang, Diogo Almeida, Carroll L. Wainwright, Pamela Mishkin, Chong Zhang, Sandhini Agarwal, Katarina Slama, Alex Ray, John Schulman, Jacob Hilton, Fraser Kelton, Luke Miller, Maddie Simens, Amanda Askell, Peter Welinder, Paul Christiano, Jan Leike, Ryan Lowe",
+    "date": "2022-03-04",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/arxiv_papers/training-language-models-to-follow-instructions.md",
+    "summary": "This paper presents InstructGPT, a model fine-tuned with human feedback to better align language models with user intent across various tasks. It demonstrates that smaller models can outperform larger ones in terms of user preference and truthfulness while reducing harmful outputs.",
+    "tags": [
+      "language models",
+      "human feedback",
+      "reinforcement learning",
+      "NLP",
+      "alignment"
+    ],
+    "processed_at": "2025-10-09T20:31:22.990623",
+    "source_files": [
+      "reading_01_technical_foundations.md"
+    ],
+    "processor": "AsyncPDFProcessor"
+  },
+  {
+    "url": "https://arxiv.org/abs/1906.01820",
+    "title": "Risks from Learned Optimization in Advanced Machine Learning Systems",
+    "category": "arxiv_paper",
+    "author": "Evan Hubinger, Chris van Merwijk, Vladimir Mikulik, Joar Skalse, Scott Garrabrant",
+    "date": "2019-06-11",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/arxiv_papers/risks-from-learned-optimization.md",
+    "summary": "This paper introduces the concept of mesa-optimization, where a learned model acts as an optimizer. It raises critical questions regarding the safety and alignment of advanced machine learning systems, specifically focusing on the conditions under which learned models become optimizers and how their objectives may differ from their training loss functions.",
+    "tags": [
+      "machine learning",
+      "optimization",
+      "AI safety",
+      "mesa-optimization",
+      "alignment"
+    ],
+    "processed_at": "2025-10-09T20:31:27.727940",
+    "source_files": [
+      "reading_03_safety_risk_pdoom.md"
+    ],
+    "processor": "AsyncPDFProcessor"
+  },
+  {
+    "url": "http://jalammar.github.io/illustrated-word2vec/",
+    "title": "Untitled Content",
+    "category": "blog_post",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/blog_posts/httpjalammargithubioillustrated-word2vec.md",
+    "summary": "Content processed but AI enhancement failed.",
+    "tags": [
+      "blog_post"
+    ],
+    "processed_at": "2025-10-09T20:31:31.376349",
+    "source_files": [
+      "reading_01_technical_foundations.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://datasciencedojo.com/blog/business-intelligence-dashboards-with-llm/",
+    "title": "The Impact of Large Language Models on Business Intelligence Dashboards",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/impact-of-llms-on-bi-dashboards.md",
+    "summary": "This article explores how Large Language Models (LLMs) are transforming Business Intelligence (BI) dashboards by enhancing descriptive analytics. It discusses the evolution of dashboards from static displays to dynamic tools that provide predictive and prescriptive insights through natural language interaction.",
+    "tags": [
+      "Business Intelligence",
+      "Large Language Models",
+      "Descriptive Analytics",
+      "Data Visualization",
+      "Predictive Analytics"
+    ],
+    "processed_at": "2025-10-09T20:31:31.553399",
+    "source_files": [
+      "williams_ai_handbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://newswirejet.com/starbucks-brand-identity/",
+    "title": "Psychology of Starbucks Brand Identity: Familiarity, Comfort, and Consistency",
+    "category": "web_article",
+    "author": "Sean Lau",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/psychology-of-starbucks-brand-identity.md",
+    "summary": "The article explores how Starbucks builds its strong brand identity through emotional connections, sensory experiences, and global consistency. It highlights the importance of familiarity and comfort in creating customer loyalty and offers insights for other brands to emulate Starbucks' strategies.",
+    "tags": [
+      "Brand Identity",
+      "Consumer Psychology",
+      "Marketing Strategies",
+      "Customer Experience",
+      "Loyalty Programs"
+    ],
+    "processed_at": "2025-10-09T20:32:03.654415",
+    "source_files": [
+      "product_messaging_williams.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://people-shift.com/articles/cialdinis-6-principles-of-persuasion/",
+    "title": "Cialdini’s Six Principles of Persuasion",
+    "category": "news_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/news/cialdinis-six-principles-of-persuasion.md",
+    "summary": "Robert Cialdini's six principles of persuasion—reciprocity, scarcity, authority, commitment and consistency, liking, and consensus—explore the psychological factors that influence decision-making in sales and purchasing. Understanding these principles can help individuals effectively persuade others to take specific actions.",
+    "tags": [
+      "persuasion",
+      "Cialdini",
+      "psychology",
+      "marketing",
+      "decision-making"
+    ],
+    "processed_at": "2025-10-09T20:32:04.923421",
+    "source_files": [
+      "psych_williams.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.fullstory.com/blog/user-retention-rate/",
+    "title": "Understanding User Retention Rate for Apps and Websites",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-user-retention-rate.md",
+    "summary": "This article explains the importance of user retention rates for apps and websites, detailing how to calculate these rates and their significance for business growth. It also discusses customer retention metrics, strategies for improvement, and the relationship between retention and churn rates.",
+    "tags": [
+      "User Retention",
+      "Customer Retention",
+      "Churn Rate",
+      "Business Metrics",
+      "User Engagement"
+    ],
+    "processed_at": "2025-10-09T20:32:23.988451",
+    "source_files": [
+      "williams_data_kpi.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://tatsu-lab.github.io/alpaca_eval/",
+    "title": "AlpacaEval: Fast and Reliable LLM-Based Evaluation",
+    "category": "blog_post",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/blog_posts/alpacaeval-fast-reliable-llm-evaluation.md",
+    "summary": "AlpacaEval is an LLM-based automatic evaluation tool that efficiently assesses model performance on user instructions. It utilizes the AlpacaFarm evaluation set and offers high agreement with human annotations, while also inviting community contributions for new models and evaluators.",
+    "tags": [
+      "LLM",
+      "evaluation",
+      "community contributions",
+      "AI safety",
+      "natural language processing"
+    ],
+    "processed_at": "2025-10-09T20:32:38.883630",
+    "source_files": [
+      "reading_07_llm_benchmarks_evaluation.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://thedecisionlab.com/biases/anchoring-bias",
+    "title": "Understanding Anchoring Bias in Decision Making",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-anchoring-bias.md",
+    "summary": "The anchoring bias is a cognitive bias that influences our judgment based on the first piece of information we receive. This bias can skew our perceptions and decisions, as demonstrated through a shopping example where initial pricing sets a reference point for evaluating subsequent options.",
+    "tags": [
+      "cognitive bias",
+      "decision making",
+      "anchoring bias",
+      "psychology",
+      "behavioral economics"
+    ],
+    "processed_at": "2025-10-09T20:32:48.051486",
+    "source_files": [
+      "psych_williams.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.metheus.co/insights/best-practice-reviews-uniqlos-us-market-expansion-and-growth",
+    "title": "Best Practice Reviews: Uniqlo’s U.S. Market Expansion and Growth",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/best-practice-reviews-uniqlos-us-market-expansion.md",
+    "summary": "Uniqlo, the Japanese casual wear brand, has successfully navigated its U.S. market expansion after initial struggles. By refining its strategy, focusing on quality, and adopting an omnichannel approach, Uniqlo aims to grow its presence in the competitive American retail landscape.",
+    "tags": [
+      "Uniqlo",
+      "Retail Expansion",
+      "Market Strategy",
+      "Fashion Industry",
+      "Omnichannel"
+    ],
+    "processed_at": "2025-10-09T20:32:49.218312",
+    "source_files": [
+      "williams_research_workbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://medium.com/@adnanmasood/operating-at-the-jagged-frontier-turning-generative-ai-into-a-force-multiplier-ee29542ddde8",
+    "title": "Operating at the Jagged Frontier: Turning Generative AI into a Force Multiplier",
+    "category": "blog_post",
+    "author": "Adnan Masood",
+    "date": "2023-10-01",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/blog_posts/operating-at-the-jagged-frontier.md",
+    "summary": "A field experiment with 758 BCG consultants shows that GPT-4 significantly boosts productivity and quality in knowledge work. The study highlights the benefits for lower-tenure performers and the risks associated with tasks outside the AI's capability frontier.",
+    "tags": [
+      "Generative AI",
+      "Productivity",
+      "Knowledge Work",
+      "AI Workflows",
+      "Field Experiment"
+    ],
+    "processed_at": "2025-10-09T20:32:59.217666",
+    "source_files": [
+      "williams_ai_handbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://arxiv.org/abs/2212.08073",
+    "title": "Constitutional AI: Harmlessness from AI Feedback",
+    "category": "arxiv_paper",
+    "author": "Yuntao Bai, Saurav Kadavath, Sandipan Kundu, Amanda Askell, Jackson Kernion, Andy Jones, Anna Chen, Anna Goldie, Azalia Mirhoseini, Cameron McKinnon, Carol Chen, Catherine Olsson, Christopher Olah, Danny Hernandez, Dawn Drain, Deep Ganguli, Dustin Li, Eli Tran-Johnson, Ethan Perez, Jamie Kerr, Jared Mueller, Jeffrey Ladish, Joshua Landau, Kamal Ndousse, Kamile Lukosuite, Liane Lovitt, Michael Sellitto, Nelson Elhage, Nicholas Schiefer, Noemi Mercado, Nova DasSarma, Robert Lasenby, Robin Larson, Sam Ringer, Scott Johnston, Shauna Kravec, Sheer El Showk, Stanislav Fort, Tamera Lanham, Timothy Telleen-Lawton, Tom Conerly, Tom Henighan, Tristan Hume, Samuel R. Bowman, Zac Hatfield-Dodds, Ben Mann, Dario Amodei, Nicholas Joseph, Sam McCandlish, Tom Brown, Jared Kaplan",
+    "date": "2022-12-15",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/arxiv_papers/constitutional-ai-harmlessness-from-ai-feedback.md",
+    "summary": "This paper presents a method called Constitutional AI (CAI) for training AI systems to be harmless and helpful without relying on extensive human feedback. The approach involves a supervised learning phase followed by reinforcement learning from AI feedback, allowing for improved AI behavior and decision-making transparency.",
+    "tags": [
+      "AI",
+      "Machine Learning",
+      "Reinforcement Learning",
+      "Natural Language Processing",
+      "AI Ethics"
+    ],
+    "processed_at": "2025-10-09T20:33:02.605433",
+    "source_files": [
+      "reading_01_technical_foundations.md",
+      "reading_03_safety_risk_pdoom.md"
+    ],
+    "processor": "AsyncPDFProcessor"
+  },
+  {
+    "url": "https://www.interaction-design.org/literature/article/rule-of-thirds-examples?srsltid=AfmBOorlns8qlhouwQKNTRaMhoRd0Qq9C1aq2O1ARg60JTcJ3gzd1yeI",
+    "title": "Understanding the Rule of Thirds in Photography and UI Design",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-the-rule-of-thirds.md",
+    "summary": "The Rule of Thirds is a fundamental composition technique used in photography and design that enhances visual appeal by dividing an image into a 3x3 grid. It guides the placement of subjects and elements to create balance and interest, while also allowing for creative deviations. Mastery comes through practice and understanding its application in various contexts.",
+    "tags": [
+      "photography",
+      "design",
+      "UI design",
+      "graphic design",
+      "composition"
+    ],
+    "processed_at": "2025-10-09T20:33:22.842756",
+    "source_files": [
+      "williams_design.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.dochub.com/en/functionalities/fill-in-sentence-in-the-creative-brief",
+    "title": "Swiftly Fill in Sentences in Creative Brief with DocHub",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/swiftly-fill-in-sentences-in-creative-brief.md",
+    "summary": "DocHub offers a quick solution for filling in sentences in a Creative Brief without the need for software installation. It provides versatile editing features and strong security options to protect sensitive information.",
+    "tags": [
+      "DocHub",
+      "Creative Brief",
+      "Editing",
+      "Security",
+      "Business Tools"
+    ],
+    "processed_at": "2025-10-09T20:33:30.639227",
+    "source_files": [
+      "product_messaging_williams.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.woopra.com/blog/churn-rate-vs-retention-rate",
+    "title": "Understanding Churn Rate and Retention Rate for SaaS Teams",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-churn-rate-and-retention-rate.md",
+    "summary": "This article discusses the importance of churn rate and retention rate metrics for SaaS teams, highlighting their definitions, benefits, and how to calculate them. It emphasizes the need for businesses to track these metrics to improve customer satisfaction and predict future revenue.",
+    "tags": [
+      "SaaS",
+      "Customer Retention",
+      "Churn Rate",
+      "Product Analytics",
+      "Customer Success"
+    ],
+    "processed_at": "2025-10-09T20:33:32.538970",
+    "source_files": [
+      "williams_data_kpi.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://enhance.dev/docs/enhance-styles/modular-scales",
+    "title": "Untitled Content",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/httpsenhancedevdocsenhance-stylesmodular-scales.md",
+    "summary": "Content processed but AI enhancement failed.",
+    "tags": [
+      "web_article"
+    ],
+    "processed_at": "2025-10-09T20:33:47.621271",
+    "source_files": [
+      "williams_design.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://arxiv.org/abs/2201.11903",
+    "title": "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
+    "category": "arxiv_paper",
+    "author": "Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Brian Ichter, Fei Xia, Ed H. Chi, Quoc V. Le, Denny Zhou",
+    "date": "2023-01-10",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/arxiv_papers/chain-of-thought-prompting-elicits-reasoning.md",
+    "summary": "This paper explores how chain-of-thought prompting significantly enhances the reasoning capabilities of large language models. By providing exemplars of intermediate reasoning steps, the authors demonstrate improved performance on various reasoning tasks, achieving state-of-the-art results on benchmarks like GSM8K.",
+    "tags": [
+      "Language Models",
+      "Reasoning",
+      "Machine Learning",
+      "Natural Language Processing",
+      "Artificial Intelligence"
+    ],
+    "processed_at": "2025-10-09T20:33:50.895235",
+    "source_files": [
+      "reading_01_technical_foundations.md"
+    ],
+    "processor": "AsyncPDFProcessor"
+  },
+  {
+    "url": "https://www.investopedia.com/terms/g/grossmargin.asp",
+    "title": "Understanding Gross Margin: Definition, Calculation, and Importance",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-gross-margin.md",
+    "summary": "Gross margin is a key profitability metric that indicates the percentage of revenue retained after covering direct costs. It helps businesses assess efficiency and make informed decisions regarding pricing and cost management.",
+    "tags": [
+      "Gross Margin",
+      "Profitability",
+      "Financial Metrics",
+      "Business Analysis",
+      "Cost Management"
+    ],
+    "processed_at": "2025-10-09T20:34:06.504066",
+    "source_files": [
+      "williams_data_kpi.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://uxdesign.cc/how-i-used-midjourney-to-design-a-brand-identity-394cf9ddaeed?gi=aefcc3a88aeb",
+    "title": "How I Used Midjourney to Design a Brand Identity",
+    "category": "web_article",
+    "author": "Matty Brownell",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/how-i-used-midjourney-to-design-a-brand-identity.md",
+    "summary": "The article explores how AI, specifically Midjourney, can enhance the design process for brand identities. It details the steps taken to create graphics, including defining graphic criteria, blending images, upscaling, and post-editing, while emphasizing the importance of purposeful AI use in design.",
+    "tags": [
+      "AI in Design",
+      "Brand Identity",
+      "Midjourney",
+      "Graphic Design",
+      "Creative Process"
+    ],
+    "processed_at": "2025-10-09T20:34:14.878372",
+    "source_files": [
+      "williams_ai_handbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://esgpost.com/shein-faces-scrutiny-over-environmental-and-ethical-concerns/",
+    "title": "Shein Faces Scrutiny Over Environmental and Ethical Concerns",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/shein-scrutiny-environmental-ethical-concerns.md",
+    "summary": "Shein, a leading ultra-fast fashion retailer, is under increasing scrutiny for its environmental impact and ethical practices. Despite its popularity and rapid growth, the company faces criticism over hazardous chemicals in its products and poor working conditions in its supply chain.",
+    "tags": [
+      "fast fashion",
+      "environmental impact",
+      "ethical concerns",
+      "human rights",
+      "sustainability"
+    ],
+    "processed_at": "2025-10-09T20:34:42.236748",
+    "source_files": [
+      "williams_research_workbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://sacra.com/c/shein/",
+    "title": "Shein's Growth and Business Model Insights",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "2024-01-01",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/sheins-growth-and-business-model.md",
+    "summary": "Shein generated $9.9B in revenue in Q1 2025, driven by its fast-fashion model and social media marketing. The company has raised $4B in funding and aims to expand its product categories and geographical reach while facing regulatory and competitive challenges.",
+    "tags": [
+      "Shein",
+      "Ecommerce",
+      "Fast Fashion",
+      "Business Model",
+      "Market Trends"
+    ],
+    "processed_at": "2025-10-09T20:34:43.950582",
+    "source_files": [
+      "williams_research_workbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://webaim.org/articles/contrast/",
+    "title": "Contrast and Color Accessibility",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/contrast-and-color-accessibility.md",
+    "summary": "This article explains the importance of contrast and color in web accessibility, particularly under the WCAG 2 guidelines. It details the requirements for contrast ratios, exceptions for large text and incidental text, and the implications for user interface components and graphical objects.",
+    "tags": [
+      "accessibility",
+      "web design",
+      "WCAG",
+      "contrast",
+      "color"
+    ],
+    "processed_at": "2025-10-09T20:35:06.229600",
+    "source_files": [
+      "williams_design.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://arxiv.org/abs/2303.12712",
+    "title": "Sparks of Artificial General Intelligence: Early Experiments with GPT-4",
+    "category": "arxiv_paper",
+    "author": "Sébastien Bubeck, Varun Chandrasekaran, Ronen Eldan, Johannes Gehrke, Eric Horvitz, Ece Kamar, Peter Lee, Yin Tat Lee, Yuanzhi Li, Scott Lundberg, Harsha Nori, Hamid Palangi, Marco Tulio Ribeiro, Yi Zhang",
+    "date": "2023-04-13",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/arxiv_papers/sparks-of-artificial-general-intelligence-early-experiments-with-gpt-4.md",
+    "summary": "This paper investigates an early version of GPT-4, highlighting its capabilities across various domains such as mathematics, coding, and vision. The authors argue that GPT-4 represents a significant step towards artificial general intelligence (AGI), while also discussing its limitations and the societal implications of such advancements.",
+    "tags": [
+      "Artificial Intelligence",
+      "GPT-4",
+      "AGI",
+      "Large Language Models",
+      "Machine Learning"
+    ],
+    "processed_at": "2025-10-09T20:35:11.400366",
+    "source_files": [
+      "reading_01_technical_foundations.md"
+    ],
+    "processor": "AsyncPDFProcessor"
+  },
+  {
+    "url": "https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/",
+    "title": "Understanding ChatGPT: How It Generates Human-Like Text",
+    "category": "web_article",
+    "author": "Stephen Wolfram",
+    "date": "2023-02-01",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-chatgpt-how-it-generates-human-like-text.md",
+    "summary": "This article explores the mechanisms behind ChatGPT's ability to generate coherent text by predicting the next word based on probabilities derived from vast amounts of training data. It discusses the role of randomness in word selection, the concept of embeddings, and the underlying neural network architecture that enables this functionality.",
+    "tags": [
+      "ChatGPT",
+      "Neural Networks",
+      "Language Models",
+      "Artificial Intelligence",
+      "Text Generation"
+    ],
+    "processed_at": "2025-10-09T20:35:16.457399",
+    "source_files": [
+      "reading_01_technical_foundations.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.nngroup.com/articles/autonomy-relatedness-competence/",
+    "title": "Understanding Autonomy, Relatedness, and Competence in UX Design",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-autonomy-relatedness-competence-ux.md",
+    "summary": "This article discusses the three fundamental human needs—autonomy, relatedness, and competence—that drive user motivation and well-being in UX design. It emphasizes the importance of designing products that cater to these needs to enhance user experience and satisfaction.",
+    "tags": [
+      "UX Design",
+      "Human Needs",
+      "Motivation",
+      "User Experience",
+      "Self-Determination Theory"
+    ],
+    "processed_at": "2025-10-09T20:35:22.943198",
+    "source_files": [
+      "psych_williams.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.appsflyer.com/glossary/daily-active-users/",
+    "title": "Understanding Daily Active Users (DAU) in App Engagement",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-daily-active-users-dau.md",
+    "summary": "Daily Active Users (DAU) measures the number of unique users engaging with an app within a 24-hour period. This metric is crucial for assessing app success and user engagement, but it can be misleading if viewed in isolation. Effective strategies to increase DAU include personalized push notifications, in-app messages, and targeted email campaigns.",
+    "tags": [
+      "DAU",
+      "App Engagement",
+      "User Metrics",
+      "Mobile Apps",
+      "Analytics"
+    ],
+    "processed_at": "2025-10-09T20:35:28.244477",
+    "source_files": [
+      "williams_data_kpi.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.interaction-design.org/literature/article/triadic-color-scheme?srsltid=AfmBOoqBzHs3mjjGW3MjQ1cqVbYU-lk79YMG-F4yrPJSs1f2oTiFs_CB",
+    "title": "Understanding Triadic Color Schemes in Design",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-triadic-color-schemes.md",
+    "summary": "This article explores the concept of triadic color schemes in design, emphasizing their importance in creating visually appealing and effective color combinations. It provides practical tips for selecting and testing triadic color schemes, along with examples from various industries.",
+    "tags": [
+      "color theory",
+      "design principles",
+      "triadic color scheme",
+      "visual design",
+      "branding"
+    ],
+    "processed_at": "2025-10-09T20:35:31.647721",
+    "source_files": [
+      "williams_design.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.metaculus.com/",
+    "title": "Forecasting for a Complex World",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/forecasting-for-a-complex-world.md",
+    "summary": "Metaculus provides a platform for forecasting and modeling in key areas such as biosecurity, AI progress, nuclear security, and climate change. The platform also hosts tournaments for predicting real-world events, offering cash prizes for accuracy.",
+    "tags": [
+      "forecasting",
+      "AI",
+      "biosecurity",
+      "nuclear security",
+      "climate change"
+    ],
+    "processed_at": "2025-10-09T20:35:43.196063",
+    "source_files": [
+      "reading_03_safety_risk_pdoom.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.langchain.com/stateofaiagents",
+    "title": "State of AI Agents: Insights from 2024 Survey",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "2024-01-01",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/state-of-ai-agents.md",
+    "summary": "A survey of over 1,300 professionals reveals that AI agents are increasingly being integrated into workflows across various industries. While 51% of respondents use agents in production, 78% plan to implement them soon, highlighting a strong appetite for AI-driven solutions despite challenges in deployment and oversight.",
+    "tags": [
+      "AI Agents",
+      "Machine Learning",
+      "Automation",
+      "Productivity",
+      "Survey Insights"
+    ],
+    "processed_at": "2025-10-09T20:35:49.532378",
+    "source_files": [
+      "williams_ai_handbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://bizhack.com/use-chatgpt-to-define-amplify-brand-voice/",
+    "title": "Using ChatGPT to Define and Amplify Your Brand Voice",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/using-chatgpt-to-define-amplify-brand-voice.md",
+    "summary": "This article discusses how to leverage AI tools like ChatGPT to define, refine, and deploy a consistent brand voice. It outlines key steps and shares a case study demonstrating the effectiveness of a CustomGPT in enhancing brand communication.",
+    "tags": [
+      "Brand Voice",
+      "ChatGPT",
+      "Marketing",
+      "AI Tools",
+      "Content Creation"
+    ],
+    "processed_at": "2025-10-09T20:35:51.493843",
+    "source_files": [
+      "product_messaging_williams.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://medium.com/@datumdigest/the-rare-art-of-data-thinking-in-an-ai-world-heres-why-it-matters-141dcbdcaf56",
+    "title": "The Rare Art of Data Thinking in an AI World — Here’s Why It Matters",
+    "category": "blog_post",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/blog_posts/the-rare-art-of-data-thinking-in-an-ai-world.md",
+    "summary": "The article discusses the importance of data thinking in an era dominated by AI technologies. It emphasizes that while AI can process data efficiently, human capabilities such as critical judgment and creativity are essential for interpreting and applying data meaningfully.",
+    "tags": [
+      "Data Thinking",
+      "AI",
+      "Critical Thinking",
+      "Data Analysis",
+      "Ethics"
+    ],
+    "processed_at": "2025-10-09T19:57:05.365410",
+    "source_files": [
+      "williams_data_kpi.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://mmmu-benchmark.github.io/",
+    "title": "Untitled Content",
+    "category": "blog_post",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/blog_posts/httpsmmmu-benchmarkgithubio.md",
+    "summary": "Content processed but AI enhancement failed.",
+    "tags": [
+      "blog_post"
+    ],
+    "processed_at": "2025-10-09T20:36:01.142396",
+    "source_files": [
+      "reading_07_llm_benchmarks_evaluation.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.forbes.com/sites/meganbruneau/2024/02/19/true-classic-ceo-ryan-bartlett-built-the-ubiquitous-250-million-brand-following-this-unconventional-advice/",
+    "title": "Ryan Bartlett's Unconventional Path to Building True Classic's $250 Million Brand",
+    "category": "web_article",
+    "author": "Megan Bruneau",
+    "date": "2024-02-19",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/ryan-bartlett-true-classic-success.md",
+    "summary": "Ryan Bartlett, co-founder and CEO of True Classic, shares his unconventional journey from aspiring musician to successful entrepreneur. He emphasizes the importance of bootstrapping, prioritizing personal connections, and testing creative ideas quickly to build a thriving brand that generated $250 million in revenue.",
+    "tags": [
+      "Entrepreneurship",
+      "Business Strategy",
+      "Startup",
+      "Leadership",
+      "Consumer Goods"
+    ],
+    "processed_at": "2025-10-09T20:36:02.990523",
+    "source_files": [
+      "williams_research_workbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.behaviormodel.org/",
+    "title": "Understanding the Fogg Behavior Model",
+    "category": "web_article",
+    "author": "BJ Fogg",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-the-fogg-behavior-model.md",
+    "summary": "The Fogg Behavior Model illustrates that behavior occurs when Motivation, Ability, and a Prompt converge simultaneously. Dr. BJ Fogg has developed this model to aid in designing products that effectively change behavior.",
+    "tags": [
+      "Behavior Design",
+      "Motivation",
+      "Fogg Behavior Model",
+      "Product Design",
+      "Behavior Change"
+    ],
+    "processed_at": "2025-10-09T20:36:02.241279",
+    "source_files": [
+      "psych_williams.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://situational-awareness.ai/",
+    "title": "The Future of AI: From GPT-4 to Superintelligence",
+    "category": "web_article",
+    "author": "Leopold Aschenbrenner",
+    "date": "2024-06-01",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/the-future-of-ai-from-gpt-4-to-superintelligence.md",
+    "summary": "The article discusses the rapid advancements in AI technology, predicting that machines will surpass human intelligence by the end of the decade. It highlights the intense competition for resources and the potential security challenges posed by AGI development, particularly in relation to national security and global power dynamics.",
+    "tags": [
+      "AI",
+      "AGI",
+      "Superintelligence",
+      "Technology",
+      "National Security"
+    ],
+    "processed_at": "2025-10-09T20:36:29.852478",
+    "source_files": [
+      "reading_03_safety_risk_pdoom.md",
+      "ref_reading_list_master_index.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.appsflyer.com/glossary/monthly-active-users/",
+    "title": "Understanding Monthly Active Users (MAU) in App Engagement",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-monthly-active-users-mau.md",
+    "summary": "Monthly Active Users (MAU) is a key metric for assessing user engagement with an app over a 30-day period. It helps brands understand user interaction, marketing effectiveness, and overall app health, though it has limitations such as lack of standardization and depth of usage measurement.",
+    "tags": [
+      "Mobile Apps",
+      "User Engagement",
+      "Analytics",
+      "Marketing Metrics",
+      "App Development"
+    ],
+    "processed_at": "2025-10-09T20:36:41.618602",
+    "source_files": [
+      "williams_data_kpi.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.unesco.org/en/articles/unesco-survey-two-thirds-higher-education-institutions-have-or-are-developing-guidance-ai-use",
+    "title": "UNESCO Survey: Two-Thirds of Higher Education Institutions Developing AI Guidance",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "2025-09-02",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/unesco-survey-ai-guidance-higher-education.md",
+    "summary": "A UNESCO survey reveals that two-thirds of higher education institutions are developing or have established guidance on AI use. Despite widespread adoption of AI tools, concerns about ethical implications and effective application remain prevalent among educators.",
+    "tags": [
+      "AI in Education",
+      "Higher Education",
+      "UNESCO",
+      "Institutional Policy",
+      "Ethics"
+    ],
+    "processed_at": "2025-10-09T19:37:25.325536",
+    "source_files": [
+      "curriculum_freshman_project_brief.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.functionly.com/orginometry/ai-assisted-org-design/transforming-organizational-structures-harnessing-ai-for-the-future-of-work",
+    "title": "Transforming Organizational Structures: Harnessing AI for the Future of Work",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/transforming-organizational-structures-harnessing-ai.md",
+    "summary": "The article discusses the transformation of organizational structures through the integration of AI, shifting from rigid hierarchies to dynamic networks. It highlights the importance of AI in enhancing collaboration, decision-making, and organizational agility, ultimately creating more adaptive and fulfilling workplaces.",
+    "tags": [
+      "AI",
+      "Organizational Design",
+      "Collaboration",
+      "Agility",
+      "Future of Work"
+    ],
+    "processed_at": "2025-10-09T20:36:42.372050",
+    "source_files": [
+      "williams_ai_handbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard",
+    "title": "Open LLM Leaderboard on Hugging Face Spaces",
+    "category": "ai_lab",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/ai_labs/open-llm-leaderboard.md",
+    "summary": "The Open LLM Leaderboard is hosted on Hugging Face Spaces, showcasing various models and their performance metrics. Users can interact with the leaderboard and explore different models running on CPU.",
+    "tags": [
+      "AI",
+      "Machine Learning",
+      "Hugging Face",
+      "Open Source",
+      "Leaderboard"
+    ],
+    "processed_at": "2025-10-09T20:36:47.535230",
+    "source_files": [
+      "reading_07_llm_benchmarks_evaluation.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://arxiv.org/abs/2206.07682",
+    "title": "Emergent Abilities of Large Language Models",
+    "category": "arxiv_paper",
+    "author": "Jason Wei, Yi Tay, Rishi Bommasani, Colin Raffel, Barret Zoph, Sebastian Borgeaud, Dani Yogatama, Maarten Bosma, Denny Zhou, Donald Metzler, Ed H. Chi, Tatsunori Hashimoto, Oriol Vinyals, Percy Liang, Jeff Dean, William Fedus",
+    "date": "2022-08-01",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/arxiv_papers/emergent-abilities-large-language-models.md",
+    "summary": "This paper discusses the unpredictable phenomenon of emergent abilities in large language models, which are capabilities that are not present in smaller models but appear in larger ones. The authors analyze how scaling up language models can lead to significant performance improvements in various tasks, emphasizing the importance of understanding these emergent behaviors for future research in natural language processing.",
+    "tags": [
+      "Natural Language Processing",
+      "Machine Learning",
+      "Language Models",
+      "Emergent Abilities",
+      "AI Research"
+    ],
+    "processed_at": "2025-10-09T20:36:56.128020",
+    "source_files": [
+      "reading_01_technical_foundations.md"
+    ],
+    "processor": "AsyncPDFProcessor"
+  },
+  {
+    "url": "https://thedecisionlab.com/reference-guide/psychology/fogg-behavior-model",
+    "title": "Understanding the Fogg Behavior Model for Behavior Change",
+    "category": "web_article",
+    "author": "Samantha Lau",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/fogg-behavior-model.md",
+    "summary": "The Fogg Behavior Model (FBM) outlines three essential elements—Motivation, Ability, and Prompt—that must converge for behavior change to occur. This model emphasizes the interplay between these elements and provides a framework for designing effective interventions and products aimed at influencing behavior.",
+    "tags": [
+      "Behavior Change",
+      "Fogg Behavior Model",
+      "Psychology",
+      "Motivation",
+      "Intervention Design"
+    ],
+    "processed_at": "2025-10-09T20:37:04.810201",
+    "source_files": [
+      "psych_williams.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.geckoboard.com/best-practice/kpi-examples/activation-rate/",
+    "title": "Understanding Activation Rate in User Onboarding",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-activation-rate-in-user-onboarding.md",
+    "summary": "Activation rate measures the percentage of users who complete a key milestone during onboarding, indicating their likelihood of continued engagement. Calculating this rate helps identify onboarding issues and improve user retention strategies. It is essential to track activation rate alongside other metrics for a comprehensive view of user engagement.",
+    "tags": [
+      "activation rate",
+      "user onboarding",
+      "metrics",
+      "user engagement",
+      "analytics"
+    ],
+    "processed_at": "2025-10-09T20:37:19.791241",
+    "source_files": [
+      "williams_data_kpi.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.businessoffashion.com/articles/direct-to-consumer/can-everlane-still-be-a-billion-dollar-brand/",
+    "title": "Everlane's Journey: From Struggles to Profitability and Future Aspirations",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/everlane-journey-profitability.md",
+    "summary": "Everlane, once struggling in the direct-to-consumer market, has turned a profit in 2023 after significant restructuring and a new design approach. Despite stabilizing, the brand aims for ambitious growth targets, including reaching $1 billion in annual sales, while navigating challenges in consumer engagement and market competition.",
+    "tags": [
+      "Everlane",
+      "Direct-to-Consumer",
+      "Fashion Industry",
+      "Brand Strategy",
+      "Profitability"
+    ],
+    "processed_at": "2025-10-09T20:37:23.853142",
+    "source_files": [
+      "williams_research_workbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.safe.ai/statement-on-ai-risk",
+    "title": "Statement on AI Risk: Addressing Concerns and Opening Discussion",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/statement-on-ai-risk.md",
+    "summary": "The article discusses the growing concerns among AI experts, journalists, and policymakers regarding the severe risks associated with advanced AI. It aims to facilitate open discussions and establish a common understanding of these risks among the public and experts alike.",
+    "tags": [
+      "AI Risks",
+      "Public Policy",
+      "Expert Opinion",
+      "Technology",
+      "Ethics"
+    ],
+    "processed_at": "2025-10-09T20:37:31.430547",
+    "source_files": [
+      "reading_03_safety_risk_pdoom.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://arxiv.org/abs/2007.05558",
+    "title": "The Computational Limits of Deep Learning",
+    "category": "arxiv_paper",
+    "author": "Neil C. Thompson, Kristjan Greenewald, Keeheon Lee, Gabriel F. Manso",
+    "date": "2022-07-27",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/arxiv_papers/the-computational-limits-of-deep-learning.md",
+    "summary": "This article examines the increasing reliance of deep learning on computational power, highlighting the unsustainable nature of current trends. It emphasizes the need for more computationally-efficient methods or alternative machine learning techniques to continue progress in the field.",
+    "tags": [
+      "Deep Learning",
+      "Computational Power",
+      "Machine Learning",
+      "Efficiency",
+      "Environmental Impact"
+    ],
+    "processed_at": "2025-10-09T20:37:47.392243",
+    "source_files": [
+      "reading_01_technical_foundations.md"
+    ],
+    "processor": "AsyncPDFProcessor"
+  },
+  {
+    "url": "https://www.omniconvert.com/blog/color-persuasion/",
+    "title": "The Power of Persuasive Colors in Online Marketing",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/the-power-of-persuasive-colors-in-online-marketing.md",
+    "summary": "This article explores the significant impact of colors on conversion rates in online marketing. It discusses the psychological effects of different colors, the importance of A/B testing, and real-world examples of successful color strategies used by companies like Amazon and Netflix.",
+    "tags": [
+      "color psychology",
+      "conversion rate optimization",
+      "online marketing",
+      "web design",
+      "A/B testing"
+    ],
+    "processed_at": "2025-10-09T20:37:47.411327",
+    "source_files": [
+      "williams_design.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://pimpmytype.com/line-length-line-height/",
+    "title": "Untitled Content",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/httpspimpmytypecomline-length-line-height.md",
+    "summary": "Content processed but AI enhancement failed.",
+    "tags": [
+      "web_article"
+    ],
+    "processed_at": "2025-10-09T20:38:12.557090",
+    "source_files": [
+      "williams_design.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.reddit.com/r/mensfashion/comments/1fizkyq/i_bought_bunch_of_white_tshirts_and_here_are_my/",
+    "title": "A Review of White T-Shirts: Findings and Recommendations",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/white-tshirt-review.md",
+    "summary": "The author shares their experiences with various brands of white t-shirts, comparing quality, fit, and price. They recommend Uniqlo and Muji for their value and fit, while also highlighting the exceptional quality of Wonder Looper t-shirts.",
+    "tags": [
+      "fashion",
+      "t-shirts",
+      "clothing",
+      "reviews",
+      "style"
+    ],
+    "processed_at": "2025-10-09T20:38:16.910879",
+    "source_files": [
+      "williams_research_workbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.artworkflowhq.com/resources/how-brand-teams-can-use-midjourney-ai",
+    "title": "How Brand Teams Can Use Midjourney AI for Visual Assets",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/how-brand-teams-can-use-midjourney-ai.md",
+    "summary": "Midjourney AI is a text-to-image service that aids brand teams in generating on-brand visuals effortlessly. This article outlines how to effectively utilize Midjourney for brainstorming, campaign visuals, and product development, while also highlighting ethical considerations and potential use cases from various brands.",
+    "tags": [
+      "Midjourney",
+      "AI in Branding",
+      "Visual Assets",
+      "Marketing Tools",
+      "Creative Operations"
+    ],
+    "processed_at": "2025-10-09T20:38:36.354051",
+    "source_files": [
+      "product_messaging_williams.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://e-discoveryteam.com/2024/04/24/from-centaurs-to-cyborgs-our-evolving-relationship-with-generative-ai/",
+    "title": "From Centaurs to Cyborgs: Our Evolving Relationship with Generative AI",
+    "category": "web_article",
+    "author": "Ralph Losey",
+    "date": "2024-04-24",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/from-centaurs-to-cyborgs-our-evolving-relationship-with-generative-ai.md",
+    "summary": "This article explores the hybrid usage of generative AI through the concepts of Centaurs and Cyborgs. It discusses the distinct roles of humans and AI in these models, highlighting the challenges and insights gained from practical applications. The author emphasizes the importance of careful integration and supervision of AI in professional settings.",
+    "tags": [
+      "Generative AI",
+      "Cyborgs",
+      "Centaurs",
+      "AI Integration",
+      "Legal Technology"
+    ],
+    "processed_at": "2025-10-09T20:38:49.954303",
+    "source_files": [
+      "williams_ai_handbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://mitsloan.mit.edu/ideas-made-to-matter/when-humans-and-ai-work-best-together-and-when-each-better-alone",
+    "title": "When Humans and AI Work Best Together — and When Each is Better Alone",
+    "category": "educational",
+    "author": "Unknown",
+    "date": "2023-10-01",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/educational/when-humans-and-ai-work-best-together.md",
+    "summary": "A study from MIT reveals that AI-human combinations often do not outperform the best individual systems. The research highlights scenarios where collaboration is beneficial, particularly in creative tasks, while emphasizing the need for understanding when to utilize each effectively.",
+    "tags": [
+      "AI",
+      "Human Collaboration",
+      "Generative AI",
+      "Business",
+      "Research"
+    ],
+    "processed_at": "2025-10-09T20:39:09.403995",
+    "source_files": [
+      "williams_ai_handbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.renascence.io/journal/prospect-theory-customers-value-of-gains-and-losses-differently",
+    "title": "Prospect Theory: Customers’ Value of Gains and Losses Differently",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/prospect-theory-customers-value-of-gains-and-losses.md",
+    "summary": "This article explores Prospect Theory, which posits that individuals value gains and losses differently, often prioritizing loss avoidance. It discusses its implications for customer experience, marketing strategies, and decision-making processes across various stages of the customer journey.",
+    "tags": [
+      "Prospect Theory",
+      "Customer Experience",
+      "Behavioral Economics",
+      "Marketing Strategies",
+      "Loss Aversion"
+    ],
+    "processed_at": "2025-10-09T20:39:12.188375",
+    "source_files": [
+      "psych_williams.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://baymard.com/blog/line-length-readability",
+    "title": "Optimal Line Length for Readability in E-Commerce Text",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/optimal-line-length-readability.md",
+    "summary": "This article discusses the importance of optimal line length for text readability, particularly in e-commerce contexts. It highlights that lines should ideally contain 50-75 characters to avoid overwhelming users and improve comprehension of product descriptions.",
+    "tags": [
+      "readability",
+      "e-commerce",
+      "UX design",
+      "accessibility",
+      "line length"
+    ],
+    "processed_at": "2025-10-09T20:39:27.946863",
+    "source_files": [
+      "williams_design.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://paperswithcode.com/area/natural-language-processing",
+    "title": "Less is More: Recursive Reasoning with Tiny Networks",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/less-is-more-recursive-reasoning.md",
+    "summary": "The Hierarchical Reasoning Model (HRM) utilizes two small neural networks for recursive reasoning, outperforming large language models on complex tasks. The proposed Tiny Recursive Model (TRM) simplifies this approach, achieving higher generalization with a single 2-layer network and significantly fewer parameters.",
+    "tags": [
+      "Natural Language Processing",
+      "Neural Networks",
+      "Recursive Reasoning",
+      "Machine Learning",
+      "Artificial Intelligence"
+    ],
+    "processed_at": "2025-10-09T20:39:35.565229",
+    "source_files": [
+      "reading_07_llm_benchmarks_evaluation.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.hellersearch.com/blog/demanding-results-why-ai-requires-board-level-kpis",
+    "title": "Why AI Requires Board-Level KPIs for Effective Oversight",
+    "category": "web_article",
+    "author": "Tsvi Gal",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/why-ai-requires-board-level-kpis.md",
+    "summary": "AI is a strategic business initiative that requires clear metrics and accountability from boards of directors. Organizations must establish measurable KPIs for AI projects to ensure effective oversight and alignment with business goals.",
+    "tags": [
+      "AI Governance",
+      "Board Oversight",
+      "KPI Metrics",
+      "Strategic Initiatives",
+      "Accountability"
+    ],
+    "processed_at": "2025-10-09T20:39:41.590224",
+    "source_files": [
+      "williams_kpi_playbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://arxiv.org/abs/1909.08053",
+    "title": "Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism",
+    "category": "arxiv_paper",
+    "author": "Mohammad Shoeybi, Mostofa Patwary, Raul Puri, Patrick LeGresley, Jared Casper, Bryan Catanzaro",
+    "date": "2020-03-13",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/arxiv_papers/megatron-lm-training-multi-billion-parameter-language-models.md",
+    "summary": "This paper presents techniques for training large transformer models using a model parallelism approach that allows for the efficient training of models with billions of parameters. The authors demonstrate state-of-the-art results on various NLP tasks using their 8.3 billion parameter model, achieving significant performance improvements over previous architectures.",
+    "tags": [
+      "NLP",
+      "Machine Learning",
+      "Deep Learning",
+      "Transformers",
+      "Model Parallelism"
+    ],
+    "processed_at": "2025-10-09T20:40:06.484021",
+    "source_files": [
+      "reading_06_infrastructure_protocols_datacenters.md"
+    ],
+    "processor": "AsyncPDFProcessor"
+  },
+  {
+    "url": "https://www.invespcro.com/blog/how-to-create-effective-e-commerce-product-pages-infographic/",
+    "title": "How to Create Effective E-commerce Product Pages",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/how-to-create-effective-e-commerce-product-pages.md",
+    "summary": "Creating compelling e-commerce product pages is essential for converting visitors into buyers. This guide outlines strategies including high-quality images, persuasive descriptions, user reviews, and emotional triggers to enhance customer engagement and boost sales.",
+    "tags": [
+      "e-commerce",
+      "product pages",
+      "marketing",
+      "conversion optimization",
+      "customer engagement"
+    ],
+    "processed_at": "2025-10-09T20:40:10.720678",
+    "source_files": [
+      "williams_research_workbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://hbr.org/2025/09/the-perils-of-using-ai-to-replace-entry-level-jobs",
+    "title": "The Perils of Using AI to Replace Entry-Level Jobs",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "2025-09-01",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/the-perils-of-using-ai-to-replace-entry-level-jobs.md",
+    "summary": "AI is significantly transforming the workplace, particularly affecting entry-level positions. Senior professionals with established reputations and networks may find themselves less vulnerable to AI displacement for the time being.",
+    "tags": [
+      "AI",
+      "employment",
+      "workplace",
+      "job displacement",
+      "technology"
+    ],
+    "processed_at": "2025-10-09T20:40:15.379704",
+    "source_files": [
+      "williams_ai_handbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://80000hours.org/",
+    "title": "Finding High-Impact Careers to Shape the Future",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/finding-high-impact-careers.md",
+    "summary": "80,000 Hours is a nonprofit organization dedicated to helping individuals find fulfilling careers that address the world's most pressing problems, particularly in the context of artificial intelligence. They offer resources such as a career guide, one-on-one advising, and a job board to assist people in making impactful career choices.",
+    "tags": [
+      "careers",
+      "AI",
+      "nonprofit",
+      "effective altruism",
+      "global problems"
+    ],
+    "processed_at": "2025-10-09T20:40:44.962286",
+    "source_files": [
+      "reading_03_safety_risk_pdoom.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.simplypsychology.org/maslow.html",
+    "title": "Maslow's Hierarchy of Needs: A Comprehensive Overview",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/maslows-hierarchy-of-needs.md",
+    "summary": "Maslow's hierarchy of needs is a motivational theory in psychology that categorizes human needs into a five-tier model, often represented as a pyramid. The theory emphasizes that lower-level needs must be satisfied before individuals can address higher-level needs, with applications in various fields such as education and workplace management.",
+    "tags": [
+      "Maslow's Hierarchy",
+      "Psychology",
+      "Motivation Theory",
+      "Self-Actualization",
+      "Human Needs"
+    ],
+    "processed_at": "2025-10-09T20:40:53.192637",
+    "source_files": [
+      "reading_09_psychology_maslow_jung_cialdini.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.qualtrics.com/experience-management/customer/how-to-calculate-customer-lifetime-value/",
+    "title": "How to Calculate Customer Lifetime Value",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/how-to-calculate-customer-lifetime-value.md",
+    "summary": "This article explains the importance of Customer Lifetime Value (CLV) as a metric for understanding customer worth over time. It provides formulas for calculating CLV at different levels—company-wide, by customer segment, and for individual customers—while emphasizing the role of CLV in optimizing customer experience and retention strategies.",
+    "tags": [
+      "Customer Experience",
+      "Customer Lifetime Value",
+      "Customer Segmentation",
+      "Customer Loyalty",
+      "Predictive Analytics"
+    ],
+    "processed_at": "2025-10-09T20:40:57.422638",
+    "source_files": [
+      "williams_data_kpi.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.alignmentforum.org/posts/HBxe6wdjxK239zajf/",
+    "title": "Understanding AI Risk: Scenarios and Implications",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-ai-risk-scenarios-and-implications.md",
+    "summary": "The article discusses various scenarios related to AI risk, emphasizing the complexity and disjunction of potential outcomes. It highlights the importance of intent alignment and the risks associated with AI progress, suggesting that failing to address these issues could lead to catastrophic consequences.",
+    "tags": [
+      "AI Risk",
+      "Intent Alignment",
+      "Machine Learning",
+      "Influence-Seeking Behavior",
+      "Future Scenarios"
+    ],
+    "processed_at": "2025-10-09T20:41:21.868921",
+    "source_files": [
+      "reading_03_safety_risk_pdoom.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.oracle.com/cx/marketing/marketing-roi/",
+    "title": "Understanding Marketing ROI: Metrics and Strategies for Success",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-marketing-roi.md",
+    "summary": "This article explains marketing ROI, emphasizing its importance in measuring the effectiveness of marketing campaigns. It discusses various types of ROI, the challenges of attribution, and the significance of customer lifetime value and brand loyalty in driving business growth.",
+    "tags": [
+      "Marketing",
+      "ROI",
+      "Customer Acquisition",
+      "Attribution",
+      "Brand Loyalty"
+    ],
+    "processed_at": "2025-10-09T20:41:39.181096",
+    "source_files": [
+      "williams_data_kpi.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://arxiv.org/abs/2207.05221",
+    "title": "Language Models (Mostly) Know What They Know",
+    "category": "arxiv_paper",
+    "author": "Saurav Kadavath et al.",
+    "date": "2022-11-21",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/arxiv_papers/language-models-know-what-they-know.md",
+    "summary": "This paper investigates the ability of language models to evaluate the validity of their own claims and predict their knowledge of answers. It finds that larger models can self-evaluate effectively and that their performance improves with context and training on diverse tasks.",
+    "tags": [
+      "language models",
+      "self-evaluation",
+      "calibration",
+      "artificial intelligence",
+      "machine learning"
+    ],
+    "processed_at": "2025-10-09T20:41:45.719657",
+    "source_files": [
+      "reading_01_technical_foundations.md"
+    ],
+    "processor": "AsyncPDFProcessor"
+  },
+  {
+    "url": "https://www.verywellmind.com/what-is-maslows-hierarchy-of-needs-4136760",
+    "title": "Understanding Maslow's Hierarchy of Needs",
+    "category": "web_article",
+    "author": "Kendra Cherry, MSEd",
+    "date": "2024-04-02",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-maslows-hierarchy-of-needs.md",
+    "summary": "Maslow's Hierarchy of Needs is a theory of motivation that categorizes human needs into a five-level pyramid, ranging from basic physiological needs to self-actualization. The theory emphasizes that individuals must satisfy lower-level needs before addressing higher-level psychological and social needs. Despite its popularity, the theory has faced criticism regarding the rigidity of its hierarchy and the scientific validity of its claims.",
+    "tags": [
+      "psychology",
+      "motivation",
+      "Maslow",
+      "human needs",
+      "self-actualization"
+    ],
+    "processed_at": "2025-10-09T20:42:00.231650",
+    "source_files": [
+      "reading_09_psychology_maslow_jung_cialdini.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://fiveable.me/color-theory-and-application/unit-9/color-typography-layout-design/study-guide/EI44hSFNMKH7BGeB",
+    "title": "Understanding Color in Typography and Layout Design",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-color-typography-layout-design.md",
+    "summary": "This article explores the critical role of color in typography and layout design, emphasizing its impact on legibility, readability, and visual communication. It covers topics such as typographic color, color coding, and the strategic use of color in backgrounds and infographics.",
+    "tags": [
+      "color theory",
+      "typography",
+      "layout design",
+      "graphic design",
+      "branding"
+    ],
+    "processed_at": "2025-10-09T20:42:02.691799",
+    "source_files": [
+      "williams_design.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.aisafetysupport.org/",
+    "title": "AISS: Community Project for AI Alignment and Risk Reduction",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/aiss-community-project-ai-alignment.md",
+    "summary": "AISS is a project aimed at reducing existential risks from artificial intelligence. It provides resources and networking opportunities for early career researchers to contribute effectively to AI alignment and risk reduction.",
+    "tags": [
+      "AI alignment",
+      "existential risk",
+      "community support",
+      "research",
+      "networking"
+    ],
+    "processed_at": "2025-10-09T20:42:04.252847",
+    "source_files": [
+      "reading_03_safety_risk_pdoom.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.phoebelown.com/blog/using-archetypes-to-build-tone-of-voice",
+    "title": "Branding Psychology: Archetypes for Strong Voice & Copy",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/branding-psychology-archetypes-strong-voice-copy.md",
+    "summary": "This article explores the concept of brand archetypes, rooted in Carl Jung's psychology, and their application in creating a compelling brand identity. It discusses the 12 primary archetypes and their benefits in copywriting, emphasizing emotional connection and differentiation in branding.",
+    "tags": [
+      "branding",
+      "archetypes",
+      "copywriting",
+      "marketing",
+      "psychology"
+    ],
+    "processed_at": "2025-10-09T20:42:18.582577",
+    "source_files": [
+      "williams_research_workbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://modelcontextprotocol.io/",
+    "title": "Understanding the Benefits and Applications of MCP",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-the-benefits-and-applications-of-mcp.md",
+    "summary": "The Model Context Protocol (MCP) enables enhanced AI capabilities by allowing agents to access various data sources and tools. It benefits developers by reducing complexity, enhances AI applications for better user experiences, and empowers end-users with more capable AI agents.",
+    "tags": [
+      "MCP",
+      "AI",
+      "Development",
+      "Applications",
+      "Data Access"
+    ],
+    "processed_at": "2025-10-09T20:42:26.340380",
+    "source_files": [
+      "reading_06_infrastructure_protocols_datacenters.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.technologyreview.com/2020/11/18/1012234/training-machine-learning-broken-real-world-heath-nlp-computer-vision/",
+    "title": "The way we train AI is fundamentally flawed",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "2020-11-18",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/the-way-we-train-ai-is-fundamentally-flawed.md",
+    "summary": "Machine-learning models often fail in real-world settings due to issues like underspecification, which can lead to poor performance despite passing initial tests. Researchers at Google are exploring the impact of this problem across various AI applications, emphasizing the need for improved testing and model evaluation.",
+    "tags": [
+      "machine learning",
+      "AI",
+      "underspecification",
+      "natural language processing",
+      "data shift"
+    ],
+    "processed_at": "2025-10-09T20:42:37.201585",
+    "source_files": [
+      "reading_01_technical_foundations.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.suse.com/c/top-kpis-for-ai-transformation-projects/",
+    "title": "Top KPIs for AI Transformation Projects",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/top-kpis-for-ai-transformation-projects.md",
+    "summary": "This article outlines key performance indicators (KPIs) for measuring the impact of AI transformation projects across various business areas. It emphasizes the importance of metrics for compliance, productivity, security, financial performance, and innovation to maximize ROI and ensure effective AI integration.",
+    "tags": [
+      "AI Transformation",
+      "KPIs",
+      "Productivity",
+      "Compliance",
+      "Innovation"
+    ],
+    "processed_at": "2025-10-09T20:42:39.226614",
+    "source_files": [
+      "williams_kpi_playbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.geckoboard.com/best-practice/kpi-examples/cac-payback-period/",
+    "title": "Understanding CAC Payback Period in SaaS Metrics",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/cac-payback-period.md",
+    "summary": "The CAC Payback Period is a crucial SaaS metric that indicates how long it takes to recover the costs of acquiring customers. A shorter payback period signifies better capital efficiency and profitability for a company. It's important to track this metric alongside other relevant KPIs for a comprehensive understanding of business health.",
+    "tags": [
+      "SaaS",
+      "CAC",
+      "Metrics",
+      "Business",
+      "Finance"
+    ],
+    "processed_at": "2025-10-09T20:42:56.937343",
+    "source_files": [
+      "williams_data_kpi.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.reliablesoft.net/chatgpt-prompts/marketing/email-marketing-funnel-prompt-for-chatgpt/",
+    "title": "Email Marketing Funnel Creation Prompt for ChatGPT",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/email-marketing-funnel-prompt-for-chatgpt.md",
+    "summary": "This article provides a structured prompt for creating an email marketing funnel using ChatGPT. It outlines key components such as audience segmentation, email sequence, content themes, and best practices for personalization and automation.",
+    "tags": [
+      "email marketing",
+      "ChatGPT",
+      "marketing funnel",
+      "automation",
+      "segmentation"
+    ],
+    "processed_at": "2025-10-09T20:42:58.180547",
+    "source_files": [
+      "williams_ai_handbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://projectbliss.net/opportunity-statement/",
+    "title": "Crafting an Effective Opportunity Statement for Problem Solving",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/crafting-an-effective-opportunity-statement.md",
+    "summary": "An opportunity statement is crucial in problem-solving as it clarifies the current undesirable situation and the desired outcome. By following a structured approach, teams can effectively communicate challenges and gain buy-in for necessary changes.",
+    "tags": [
+      "problem-solving",
+      "opportunity statement",
+      "team collaboration",
+      "training",
+      "analysis"
+    ],
+    "processed_at": "2025-10-09T20:43:21.700856",
+    "source_files": [
+      "williams_product_framework.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.sidetool.co/post/ai-development-kpis-measure-what-matters-2025/",
+    "title": "Untitled Content",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/httpswwwsidetoolcopostai-development-kpis-measure-what-matters-2025.md",
+    "summary": "Content processed but AI enhancement failed.",
+    "tags": [
+      "web_article"
+    ],
+    "processed_at": "2025-10-09T20:43:25.660323",
+    "source_files": [
+      "williams_kpi_playbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://arxiv.org/abs/1910.02054",
+    "title": "ZeRO: Memory Optimizations Toward Training Trillion Parameter Models",
+    "category": "arxiv_paper",
+    "author": "Samyam Rajbhandari, Jeff Rasley, Olatunji Ruwase, Yuxiong He",
+    "date": "2020-05-13",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/arxiv_papers/zero-memory-optimizations-training-trillion-parameter-models.md",
+    "summary": "The paper presents the Zero Redundancy Optimizer (ZeRO), a novel solution to optimize memory for training large deep learning models with billions to trillions of parameters. ZeRO significantly improves training speed and efficiency by eliminating memory redundancies in data and model parallel training, allowing for the effective scaling of model sizes proportional to the number of devices used.",
+    "tags": [
+      "Deep Learning",
+      "Model Training",
+      "Optimization",
+      "Parallel Computing",
+      "Natural Language Processing"
+    ],
+    "processed_at": "2025-10-09T20:43:26.614613",
+    "source_files": [
+      "reading_06_infrastructure_protocols_datacenters.md"
+    ],
+    "processor": "AsyncPDFProcessor"
+  },
+  {
+    "url": "https://arxiv.org/abs/1706.03762",
+    "title": "Untitled Content",
+    "category": "arxiv_paper",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/arxiv_papers/httpsarxivorgabs170603762.md",
+    "summary": "Content processed but AI enhancement failed.",
+    "tags": [
+      "arxiv_paper"
+    ],
+    "processed_at": "2025-10-09T20:43:39.617158",
+    "source_files": [
+      "reading_01_technical_foundations.md"
+    ],
+    "processor": "AsyncPDFProcessor"
+  },
+  {
+    "url": "https://www.esquire.com/style/mens-fashion/a43903944/hanes-beefy-t-shirt-review/",
+    "title": "Hanes Beefy-T Review: The Perfect T-Shirt",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/hanes-beefy-t-review.md",
+    "summary": "The Hanes Beefy-T is touted as the ultimate T-shirt, offering an impeccable fit, ideal weight, and unbeatable price. The review emphasizes its durability and comfort, making it a preferred choice over pricier alternatives.",
+    "tags": [
+      "fashion",
+      "clothing",
+      "reviews",
+      "menswear",
+      "apparel"
+    ],
+    "processed_at": "2025-10-09T20:43:42.389546",
+    "source_files": [
+      "williams_research_workbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://digital.nemko.com/insights/responsible-ai-framework-in-business",
+    "title": "Establishing a Responsible AI Framework for Organizations",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/responsible-ai-framework.md",
+    "summary": "This article discusses the importance of a Responsible AI Framework for organizations to ensure fairness, explainability, privacy, and security in AI systems. It outlines the core components, governance structures, and monitoring practices necessary for operationalizing responsible AI aligned with global regulations.",
+    "tags": [
+      "Responsible AI",
+      "AI Governance",
+      "Ethics in AI",
+      "Compliance",
+      "AI Framework"
+    ],
+    "processed_at": "2025-10-09T20:43:43.231783",
+    "source_files": [
+      "williams_kpi_playbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://hbr.org/2025/07/a-guide-to-building-change-resilience-in-the-age-of-ai",
+    "title": "A Guide to Building Change Resilience in the Age of AI",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "2025-07-01",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/a-guide-to-building-change-resilience-in-the-age-of-ai.md",
+    "summary": "AI is set to fundamentally change business operations, yet many organizations are struggling to realize its value. A BCG Global Survey reveals that only 26% of companies have achieved significant benefits from AI, including substantial cost savings and revenue growth.",
+    "tags": [
+      "AI",
+      "Business",
+      "Change Management",
+      "Technology",
+      "Resilience"
+    ],
+    "processed_at": "2025-10-09T20:43:48.393860",
+    "source_files": [
+      "williams_ai_handbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://drvictorbodo.com/2025/01/18/maslows-hierarchy-of-needs-from-a-jungian-perspective/",
+    "title": "Maslow’s Hierarchy of Needs from a Jungian Perspective",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "2025-01-18",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/maslows-hierarchy-of-needs-jungian-perspective.md",
+    "summary": "This article explores Maslow's hierarchy of needs through a Jungian lens, emphasizing the dynamic interplay of archetypes in human motivation and psychological growth. It argues that needs are interconnected and reflect deeper psychological processes rather than a linear progression.",
+    "tags": [
+      "Maslow",
+      "Jung",
+      "psychology",
+      "archetypes",
+      "human motivation"
+    ],
+    "processed_at": "2025-10-09T20:43:51.012785",
+    "source_files": [
+      "reading_09_psychology_maslow_jung_cialdini.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://arxiv.org/abs/2104.04473",
+    "title": "Efficient Large-Scale Language Model Training on GPU Clusters Using Megatron-LM",
+    "category": "arxiv_paper",
+    "author": "Deepak Narayanan, Mohammad Shoeybi, Jared Casper, Patrick LeGresley, Mostofa Patwary, Vijay Korthikanti, Dmitri Vainbrand, Prethvi Kashinkunti, Julie Bernauer, Bryan Catanzaro, Amar Phanishayee, Matei Zaharia",
+    "date": "2021-08-23",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/arxiv_papers/efficient-large-scale-language-model-training.md",
+    "summary": "This paper discusses the challenges of efficiently training large language models on GPU clusters and introduces a novel approach combining tensor, pipeline, and data parallelism to achieve high throughput. The proposed method, PTD-P, demonstrates significant improvements in training efficiency, allowing for the training of models with up to 1 trillion parameters.",
+    "tags": [
+      "language models",
+      "GPU training",
+      "parallelism",
+      "deep learning",
+      "NLP"
+    ],
+    "processed_at": "2025-10-09T20:43:57.960204",
+    "source_files": [
+      "reading_06_infrastructure_protocols_datacenters.md"
+    ],
+    "processor": "AsyncPDFProcessor"
+  },
+  {
+    "url": "https://vwo.com/blog/heatmap-and-ux/",
+    "title": "Understanding Heatmaps and Their Role in User Experience Design",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-heatmaps-and-their-role-in-ux-design.md",
+    "summary": "This article explores the significance of heatmaps in user experience (UX) design, highlighting how they visualize user interactions to improve website usability. It discusses various types of heatmaps, their applications, and the insights they provide for optimizing user engagement.",
+    "tags": [
+      "User Experience",
+      "Heatmaps",
+      "Web Design",
+      "UX Research",
+      "Data Analysis"
+    ],
+    "processed_at": "2025-10-09T20:44:35.506859",
+    "source_files": [
+      "williams_design.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.thoughtspot.com/data-trends/best-practices/data-storytelling",
+    "title": "The Power of Data Storytelling: Best Practices and Techniques",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/the-power-of-data-storytelling.md",
+    "summary": "Data storytelling is a crucial skill that transforms raw data into actionable insights by providing context and clarity. By combining data analysis with narrative techniques, it helps teams make informed decisions and fosters collaboration. This guide outlines best practices for effective data storytelling.",
+    "tags": [
+      "data storytelling",
+      "data visualization",
+      "business intelligence",
+      "analytics",
+      "decision making"
+    ],
+    "processed_at": "2025-10-09T20:44:38.765612",
+    "source_files": [
+      "williams_data_kpi.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.simplypsychology.org/carl-jung.html",
+    "title": "Carl Jung's Personality Theory and Psychological Concepts",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/carl-jung-personality-theory.md",
+    "summary": "Carl Jung's personality theory explores the dynamics between the conscious and unconscious mind, emphasizing the importance of archetypes, individuation, and psychological types. His concepts laid the groundwork for tools like the Myers-Briggs Type Indicator, highlighting the integration of various personality aspects for self-realization.",
+    "tags": [
+      "Carl Jung",
+      "Personality Theory",
+      "Psychological Types",
+      "Individuation",
+      "Collective Unconscious"
+    ],
+    "processed_at": "2025-10-09T20:44:45.316699",
+    "source_files": [
+      "reading_09_psychology_maslow_jung_cialdini.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://medium.com/@adnanmasood/measures-that-matter-correlation-of-technical-ai-metrics-with-business-outcomes-b4a3b4a595ca",
+    "title": "Measures that Matter: Correlation of Technical AI Metrics with Business Outcomes",
+    "category": "blog_post",
+    "author": "Adnan Masood",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/blog_posts/measures-that-matter-correlation-ai-metrics.md",
+    "summary": "This article discusses the importance of integrating technical AI metrics with financial outcomes in enterprise environments. It emphasizes the need for a unified evaluation framework that aligns AI performance with strategic business goals, using various metrics to measure effectiveness in terms of revenue growth and operational efficiency.",
+    "tags": [
+      "AI Metrics",
+      "Business Outcomes",
+      "Enterprise AI",
+      "Financial Discipline",
+      "Performance Evaluation"
+    ],
+    "processed_at": "2025-10-09T20:44:46.609695",
+    "source_files": [
+      "williams_kpi_playbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://blog.logrocket.com/product-management/what-is-competitive-analysis-template-examples-tutorial/",
+    "title": "A Comprehensive Guide to Competitive Analysis for Product Teams",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/competitive-analysis-guide.md",
+    "summary": "This guide defines competitive analysis, outlines its benefits for product teams, and provides steps for conducting one effectively. It includes examples, customizable templates, and insights into understanding competitors to enhance product-market fit.",
+    "tags": [
+      "competitive analysis",
+      "product management",
+      "market research",
+      "SWOT analysis",
+      "business strategy"
+    ],
+    "processed_at": "2025-10-09T20:44:58.720848",
+    "source_files": [
+      "williams_product_framework.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://heuritech.com/fashion-trends-2024/",
+    "title": "Top Trends: Exploring the Fashion Landscape of 2024",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "2024-06-01",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/top-trends-exploring-fashion-landscape-2024.md",
+    "summary": "This article presents the top ten fashion trends of 2024 as identified by Heuritech's trend forecasting solutions. It highlights the evolving preferences of consumers and the methodologies used to analyze these trends, showcasing a blend of sporty elegance, timeless neutrals, and bold patterns.",
+    "tags": [
+      "fashion",
+      "trends",
+      "2024",
+      "style",
+      "forecasting"
+    ],
+    "processed_at": "2025-10-09T20:45:18.249572",
+    "source_files": [
+      "williams_research_workbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.psychologytoday.com/ca/blog/theory-and-psychopathology/201308/the-theory-self-actualization",
+    "title": "The Theory of Self-Actualization: Creativity and Mental Illness",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "2013-08-13",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/the-theory-of-self-actualization.md",
+    "summary": "This article explores Abraham Maslow's theory of self-actualization, emphasizing its connection to creativity and mental illness. It discusses how self-actualization can enhance psychological well-being through artistic expression and the resolution of dichotomies in life.",
+    "tags": [
+      "self-actualization",
+      "creativity",
+      "mental illness",
+      "psychology",
+      "art"
+    ],
+    "processed_at": "2025-10-09T20:45:21.966719",
+    "source_files": [
+      "reading_09_psychology_maslow_jung_cialdini.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://decodingdatascience.com/the-best-youtube-channels-for-ai-learning-and-staying-updated-in-2025/?utm_source=chatgpt.com \"The Best YouTube Channels for AI Learning and Staying ...\"",
+    "title": "The Best YouTube Channels for AI Learning and Staying Updated in 2025",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "2025-01-01",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/best-youtube-channels-ai-learning-2025.md",
+    "summary": "This guide highlights the top YouTube channels for learning AI, catering to all levels from beginners to experts. Channels like Two Minute Papers, Yannic Kilcher, and Lex Fridman provide a mix of tutorials, research updates, and expert insights to help learners stay informed in the rapidly evolving field of AI.",
+    "tags": [
+      "AI Learning",
+      "YouTube Channels",
+      "Machine Learning",
+      "Artificial Intelligence",
+      "Education"
+    ],
+    "processed_at": "2025-10-09T20:45:34.272720",
+    "source_files": [
+      "ref_youtube_channels.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://medium.com/@ryan_brownhill/crafting-easing-curves-for-user-interfaces-34f39e1b4a43",
+    "title": "Untitled Content",
+    "category": "blog_post",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/blog_posts/httpsmediumcomryan_brownhillcrafting-easing-curves-for-user-interfaces-34f39e1b4a43.md",
+    "summary": "Content processed but AI enhancement failed.",
+    "tags": [
+      "blog_post"
+    ],
+    "processed_at": "2025-10-09T20:45:56.705035",
+    "source_files": [
+      "williams_design.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.sigmacomputing.com/blog/best-practices-dashboard-design-examples",
+    "title": "8 Best Practices for Dashboard Design with Excellent Examples",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/best-practices-dashboard-design.md",
+    "summary": "This article outlines eight key best practices for effective dashboard design, emphasizing the importance of understanding the audience, choosing the right chart types, and providing meaningful context. It also highlights the significance of minimizing noise and arranging elements purposefully to enhance data visualization.",
+    "tags": [
+      "dashboard design",
+      "data visualization",
+      "best practices",
+      "business intelligence",
+      "data literacy"
+    ],
+    "processed_at": "2025-10-09T20:46:06.463381",
+    "source_files": [
+      "williams_data_kpi.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.nvidia.com/en-us/data-center/dgx-superpod/",
+    "title": "NVIDIA DGX SuperPOD: AI Infrastructure for Demanding Workloads",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/nvidia-dgx-superpod-ai-infrastructure.md",
+    "summary": "NVIDIA DGX SuperPOD provides a comprehensive AI infrastructure solution designed for high-performance training and inference workloads. It integrates compute, storage, networking, and software to support state-of-the-art AI models while offering enterprise-grade management and support.",
+    "tags": [
+      "AI Infrastructure",
+      "NVIDIA",
+      "SuperPOD",
+      "Machine Learning",
+      "Data Center"
+    ],
+    "processed_at": "2025-10-09T20:46:11.297430",
+    "source_files": [
+      "reading_06_infrastructure_protocols_datacenters.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://blog.adobe.com/en/publish/2025/03/17/adobe-analytics-traffic-to-us-retail-websites-from-generative-ai-sources-jumps-1200-percent",
+    "title": "Adobe Analytics: Traffic to U.S. Retail Websites from Generative AI Sources Jumps 1,200 Percent",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "2025-03-17",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/adobe-analytics-traffic-generative-ai.md",
+    "summary": "Adobe's report reveals a significant increase in traffic to U.S. retail websites from generative AI sources, with a 1,200% rise noted in February 2025 compared to July 2024. The data highlights changing consumer behaviors, with AI being used for various shopping tasks and showing higher engagement levels compared to traditional traffic sources.",
+    "tags": [
+      "Generative AI",
+      "E-commerce",
+      "Consumer Behavior",
+      "Adobe Analytics",
+      "Digital Economy"
+    ],
+    "processed_at": "2025-10-09T20:46:27.462493",
+    "source_files": [
+      "williams_research_workbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.nngroup.com/articles/animation-duration/",
+    "title": "Animation Duration in User Experience Design",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/animation-duration-ux.md",
+    "summary": "This article discusses the importance of animation duration in user experience design, emphasizing that the speed of animations significantly affects usability. It provides guidelines for appropriate animation durations and highlights the role of easing in making animations feel more natural.",
+    "tags": [
+      "User Experience",
+      "Animation",
+      "Design",
+      "Usability",
+      "Accessibility"
+    ],
+    "processed_at": "2025-10-09T20:46:51.158335",
+    "source_files": [
+      "williams_design.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.atlassian.com/data/charts/essential-chart-types-for-data-visualization",
+    "title": "Essential Chart Types for Data Visualization",
+    "category": "web_article",
+    "author": "Mike Yi, Mary Sapountzis",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/essential-chart-types-for-data-visualization.md",
+    "summary": "This article provides an overview of essential chart types used in data visualization, highlighting their use cases and when to select each type. It covers foundational charts like bar, line, scatter, and box plots, as well as variations and specialist charts such as pie and funnel charts.",
+    "tags": [
+      "data visualization",
+      "charts",
+      "data analysis",
+      "visualization tools",
+      "statistics"
+    ],
+    "processed_at": "2025-10-09T20:46:59.208800",
+    "source_files": [
+      "williams_data_kpi.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://medium.com/@adnanmasood/custom-ai-evaluations-that-move-the-p-l-how-c-suites-use-diy-ai-metrics-into-cost-savings-7d31ef7eb0e9",
+    "title": "Custom AI Evaluations That Move the P&L",
+    "category": "blog_post",
+    "author": "Adnan Masood",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/blog_posts/custom-ai-evaluations-that-move-the-pl.md",
+    "summary": "This article discusses how C-Suite executives are leveraging custom AI metrics to drive cost savings and revenue uplift. It emphasizes the importance of aligning technical scores with financial KPIs and implementing a multi-metric dashboard for effective monitoring and evaluation.",
+    "tags": [
+      "AI Metrics",
+      "C-Suite",
+      "Cost Savings",
+      "Revenue Uplift",
+      "KPI"
+    ],
+    "processed_at": "2025-10-09T20:46:58.971730",
+    "source_files": [
+      "williams_kpi_playbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://feedbackfruits.com/blog/from-regulation-to-innovation-what-the-eu-ai-act-means-for-edtech",
+    "title": "Understanding the EU AI Act and Its Impact on EdTech",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "2024-01-01",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-the-eu-ai-act-and-its-impact-on-edtech.md",
+    "summary": "The EU AI Act is the first legal framework for AI, aiming to regulate its use in education responsibly. This article discusses the implications of the Act for educational technology and how FeedbackFruits is aligning its AI tools with these ethical standards.",
+    "tags": [
+      "EU AI Act",
+      "EdTech",
+      "Artificial Intelligence",
+      "Education",
+      "Ethical AI"
+    ],
+    "processed_at": "2025-10-09T19:36:30.531514",
+    "source_files": [
+      "curriculum_freshman_project_brief.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://toloka.ai/blog/how-to-measure-ai-performance-and-ensure-your-ai-investment-pays-off/",
+    "title": "How to Measure AI Performance and Ensure Your AI Investment Pays Off",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/how-to-measure-ai-performance.md",
+    "summary": "This article discusses the importance of holistic evaluation of AI performance, emphasizing the need for organizations to measure model quality, system quality, business impact, and responsible AI practices. It highlights that without systematic measurement, AI initiatives risk wasted spending and failure to deliver business value.",
+    "tags": [
+      "AI Performance",
+      "Machine Learning",
+      "Business Impact",
+      "Responsible AI",
+      "Evaluation Metrics"
+    ],
+    "processed_at": "2025-10-09T20:47:09.489773",
+    "source_files": [
+      "williams_kpi_playbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://arxiv.org/abs/1911.01547",
+    "title": "On the Measure of Intelligence",
+    "category": "arxiv_paper",
+    "author": "François Chollet",
+    "date": "2019-11-05",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/arxiv_papers/on-the-measure-of-intelligence.md",
+    "summary": "This paper critically assesses various definitions and evaluation approaches of intelligence in AI and psychology, arguing that current benchmarks often fail to measure true intelligence. It proposes a new formal definition based on Algorithmic Information Theory and introduces the Abstraction and Reasoning Corpus (ARC) as a benchmark for measuring human-like general intelligence.",
+    "tags": [
+      "Artificial Intelligence",
+      "Intelligence Measurement",
+      "Algorithmic Information Theory",
+      "General Intelligence",
+      "Cognitive Science"
+    ],
+    "processed_at": "2025-10-09T20:47:17.134908",
+    "source_files": [
+      "reading_08_diverse_perspectives_critics.md"
+    ],
+    "processor": "AsyncPDFProcessor"
+  },
+  {
+    "url": "https://huggingface.co/docs/transformers/training",
+    "title": "Untitled Content",
+    "category": "ai_lab",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/ai_labs/httpshuggingfacecodocstransformerstraining.md",
+    "summary": "Content processed but AI enhancement failed.",
+    "tags": [
+      "ai_lab"
+    ],
+    "processed_at": "2025-10-09T20:47:34.794304",
+    "source_files": [
+      "reading_01_technical_foundations.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.psychologytoday.com/ca/basics/growth-mindset",
+    "title": "Understanding Growth Mindset: Beliefs and Impacts on Learning",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-growth-mindset.md",
+    "summary": "The growth mindset, developed by Carol Dweck, posits that abilities and intelligence can be developed over time. This contrasts with a fixed mindset, which limits potential for growth. Encouraging a growth mindset can lead to improved persistence and a positive approach to challenges.",
+    "tags": [
+      "growth mindset",
+      "learning",
+      "education",
+      "self-improvement",
+      "psychology"
+    ],
+    "processed_at": "2025-10-09T20:47:54.292195",
+    "source_files": [
+      "reading_09_psychology_maslow_jung_cialdini.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.reddit.com/r/learnmachinelearning/comments/1ey0mfu/list_of_youtube_channels_for_learning_mlai/?utm_source=chatgpt.com \"List of YouTube Channels for Learning ML/AI\"",
+    "title": "List of YouTube Channels for Learning ML/AI",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/list-of-youtube-channels-for-learning-ml-ai.md",
+    "summary": "This article compiles a list of YouTube channels that offer high-quality content for learning machine learning and artificial intelligence. The channels range from comprehensive tutorials by experts to fun breakdowns of core concepts, making it a valuable resource for learners at all levels.",
+    "tags": [
+      "Machine Learning",
+      "Artificial Intelligence",
+      "YouTube Channels",
+      "Education",
+      "Online Learning"
+    ],
+    "processed_at": "2025-10-09T20:48:05.813210",
+    "source_files": [
+      "ref_youtube_channels.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.simplypsychology.org/cognitive-bias.html",
+    "title": "Understanding Cognitive Bias: Definitions, Examples, and Implications",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-cognitive-bias.md",
+    "summary": "Cognitive bias refers to systematic errors in thinking that affect how we process information and make decisions. This article explores various types of cognitive biases, such as confirmation bias and hindsight bias, and discusses their implications in daily life and decision-making. Strategies for recognizing and mitigating these biases are also provided.",
+    "tags": [
+      "Cognitive Bias",
+      "Psychology",
+      "Decision Making",
+      "Heuristics",
+      "Behavioral Science"
+    ],
+    "processed_at": "2025-10-09T20:48:09.245571",
+    "source_files": [
+      "reading_09_psychology_maslow_jung_cialdini.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.datadoghq.com/blog/ai-powered-metrics-monitoring/",
+    "title": "AI-Powered Metrics Monitoring with Datadog",
+    "category": "web_article",
+    "author": "Racheal Ou, Tom Sobolik",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/ai-powered-metrics-monitoring.md",
+    "summary": "This article discusses the benefits of AI-assisted metrics monitoring tools, including anomaly detection, predictive correlations, and automated root cause analysis (RCA). These tools help organizations quickly identify and resolve issues in complex distributed systems, improving overall system health and performance.",
+    "tags": [
+      "AI",
+      "Metrics Monitoring",
+      "Anomaly Detection",
+      "Root Cause Analysis",
+      "Datadog"
+    ],
+    "processed_at": "2025-10-09T20:48:14.104736",
+    "source_files": [
+      "williams_data_kpi.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://thedecisionlab.com/reference-guide/philosophy/system-1-and-system-2-thinking",
+    "title": "System 1 and System 2 Thinking",
+    "category": "web_article",
+    "author": "Joshua Loo",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/system-1-and-system-2-thinking.md",
+    "summary": "System 1 and System 2 thinking are two cognitive processing modes introduced by Daniel Kahneman. System 1 is fast and intuitive, while System 2 is slow and analytical, highlighting the interplay between automatic responses and deliberate thought in decision-making.",
+    "tags": [
+      "cognitive psychology",
+      "decision making",
+      "behavioral science",
+      "Kahneman",
+      "System 1 and System 2"
+    ],
+    "processed_at": "2025-10-09T20:48:18.726235",
+    "source_files": [
+      "williams_design.md",
+      "psych_williams.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "http://www.ed.gov/about/news/press-release/us-department-of-education-issues-guidance-artificial-intelligence-use-schools-proposes-additional-supplemental-priority",
+    "title": "U.S. Department of Education Issues Guidance on AI Use in Schools",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "2025-07-21",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/us-department-of-education-ai-guidance.md",
+    "summary": "The U.S. Department of Education released a Dear Colleague Letter on leveraging AI to improve educational outcomes. It outlines principles for responsible AI use and proposes a supplemental grantmaking priority to advance AI in education, emphasizing stakeholder engagement and ethical considerations.",
+    "tags": [
+      "Artificial Intelligence",
+      "Education",
+      "Federal Grants",
+      "Policy",
+      "Technology in Education"
+    ],
+    "processed_at": "2025-10-09T19:36:22.130335",
+    "source_files": [
+      "curriculum_freshman_project_brief.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.promptingguide.ai/",
+    "title": "Prompt Engineering Guide",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/prompt-engineering-guide.md",
+    "summary": "Prompt engineering is a new discipline focused on optimizing prompts for language models, enhancing their capabilities across various tasks. This guide offers resources, techniques, and learning materials for researchers and developers interested in leveraging large language models effectively.",
+    "tags": [
+      "prompt engineering",
+      "language models",
+      "AI techniques",
+      "machine learning",
+      "research"
+    ],
+    "processed_at": "2025-10-09T20:48:29.202349",
+    "source_files": [
+      "reading_01_technical_foundations.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://valerelabs.medium.com/examples-of-ai-use-case-prioritization-framework-kpi-measurement-plan-and-responsible-ai-policy-805f61f48ca8",
+    "title": "Examples of AI Use Case Prioritization Framework, KPI Measurement Plan, and Responsible AI Policy Guidelines",
+    "category": "blog_post",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/blog_posts/ai-use-case-prioritization-framework.md",
+    "summary": "This article outlines a structured approach for retailers to integrate AI by prioritizing use cases, defining KPIs, and establishing responsible AI policies. It includes example templates for each key document to ensure effective implementation and ethical practices.",
+    "tags": [
+      "AI",
+      "Retail",
+      "KPI",
+      "Responsible AI",
+      "Use Case Prioritization"
+    ],
+    "processed_at": "2025-10-09T20:48:29.452643",
+    "source_files": [
+      "williams_kpi_playbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.shopify.com/blog/ecommerce-conversion-rate",
+    "title": "Understanding Ecommerce Conversion Rates and Optimization Strategies",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-ecommerce-conversion-rates.md",
+    "summary": "This article discusses the importance of ecommerce conversion rates for online businesses and provides insights into how to measure and improve these rates. It covers common misconceptions, benchmarks, and practical strategies for optimizing conversion rates to enhance business success.",
+    "tags": [
+      "ecommerce",
+      "conversion rate",
+      "optimization",
+      "analytics",
+      "marketing"
+    ],
+    "processed_at": "2025-10-09T20:48:38.197519",
+    "source_files": [
+      "williams_research_workbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://arxiv.org/abs/2104.12871",
+    "title": "Why AI is Harder Than We Think",
+    "category": "arxiv_paper",
+    "author": "Melanie Mitchell",
+    "date": "2021-04-28",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/arxiv_papers/why-ai-is-harder-than-we-think.md",
+    "summary": "This paper discusses the cyclical nature of optimism and disappointment in AI development, highlighting four fallacies that contribute to overconfidence in AI predictions. It emphasizes the challenges of achieving human-like common sense in machines and the complexities of intelligence that are often underestimated.",
+    "tags": [
+      "Artificial Intelligence",
+      "Machine Learning",
+      "Common Sense",
+      "AI Predictions",
+      "Cognitive Science"
+    ],
+    "processed_at": "2025-10-09T20:49:36.952096",
+    "source_files": [
+      "reading_08_diverse_perspectives_critics.md"
+    ],
+    "processor": "AsyncPDFProcessor"
+  },
+  {
+    "url": "https://videos.feedspot.com/ai_youtube_channels/?utm_source=chatgpt.com \"100 AI YouTubers You Must Follow in 2025\"",
+    "title": "100 AI YouTubers You Must Follow in 2025",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/100-ai-youtubers-you-must-follow-in-2025.md",
+    "summary": "This article presents a curated list of 100 influential AI YouTubers to follow in 2025, focusing on their engagement and influence in the AI space. It includes details about each YouTuber, such as their channel links, subscriber counts, and areas of expertise.",
+    "tags": [
+      "AI",
+      "YouTube",
+      "Influencers",
+      "Technology",
+      "Education"
+    ],
+    "processed_at": "2025-10-09T20:50:08.057900",
+    "source_files": [
+      "ref_youtube_channels.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.owox.com/blog/articles/digital-marketing-metrics-and-kpis",
+    "title": "Understanding Digital Marketing Metrics and KPIs",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "2025-05-01",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-digital-marketing-metrics-kpis.md",
+    "summary": "This article explores the importance of key performance indicators (KPIs) and digital marketing metrics in evaluating marketing effectiveness. It emphasizes the need for accurate measurement and analysis to optimize marketing strategies and improve business outcomes.",
+    "tags": [
+      "digital marketing",
+      "KPIs",
+      "metrics",
+      "analytics",
+      "performance"
+    ],
+    "processed_at": "2025-10-09T20:50:18.280476",
+    "source_files": [
+      "williams_design.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.funnelytics.io/blog/sales-funnel-vs-customer-journey",
+    "title": "Understanding Sales Funnels and Customer Journeys",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-sales-funnels-and-customer-journeys.md",
+    "summary": "This article explores the differences between sales funnels and customer journeys, emphasizing their roles in enhancing customer experiences and optimizing marketing strategies. It highlights how understanding these concepts can lead to better customer engagement and loyalty.",
+    "tags": [
+      "sales funnel",
+      "customer journey",
+      "marketing strategy",
+      "customer experience",
+      "business insights"
+    ],
+    "processed_at": "2025-10-09T20:50:51.408029",
+    "source_files": [
+      "williams_product_framework.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://english.www.gov.cn/news/202412/03/content_WS674e4959c6d0868f4e8ed9ae.html",
+    "title": "China Enhances AI Education for Future Generations",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "2024-12-02",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/china-enhances-ai-education.md",
+    "summary": "China's Ministry of Education is enhancing AI education in primary and secondary schools to prepare students for the technology era. The initiative includes developing curriculums, hands-on experiences, and collaboration with colleges and companies to improve accessibility to AI resources.",
+    "tags": [
+      "AI Education",
+      "China",
+      "Ministry of Education",
+      "Technology",
+      "Curriculum Development"
+    ],
+    "processed_at": "2025-10-09T19:36:39.571389",
+    "source_files": [
+      "curriculum_freshman_project_brief.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.deeplearningbook.org/",
+    "title": "Untitled Content",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/httpswwwdeeplearningbookorg.md",
+    "summary": "Content processed but AI enhancement failed.",
+    "tags": [
+      "web_article"
+    ],
+    "processed_at": "2025-10-09T20:51:06.203278",
+    "source_files": [
+      "reading_01_technical_foundations.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.simplypsychology.org/self-efficacy.html",
+    "title": "Understanding Self-Efficacy: Concepts and Influences",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-self-efficacy.md",
+    "summary": "Self-efficacy, introduced by psychologist Albert Bandura, is the belief in one's ability to execute behaviors necessary to achieve specific outcomes. It influences motivation, resilience, and personal accomplishment, shaped by mastery experiences, vicarious experiences, verbal persuasion, and emotional states.",
+    "tags": [
+      "self-efficacy",
+      "psychology",
+      "motivation",
+      "Bandura",
+      "behavioral science"
+    ],
+    "processed_at": "2025-10-09T20:51:19.552179",
+    "source_files": [
+      "reading_09_psychology_maslow_jung_cialdini.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.rockerbox.com/blog/6-common-attribution-models-and-when-to-use-them",
+    "title": "Understanding Common Marketing Attribution Models",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-common-marketing-attribution-models.md",
+    "summary": "This article explores various marketing attribution models that help marketers measure the effectiveness of their campaigns. It discusses single touch models like Last-Click and First-Click, as well as multi-touch models including Linear, Time Decay, Position-Based, and Data-Driven approaches, highlighting their unique advantages and applications.",
+    "tags": [
+      "marketing",
+      "attribution models",
+      "campaign effectiveness",
+      "conversion tracking",
+      "digital marketing"
+    ],
+    "processed_at": "2025-10-09T20:51:42.811866",
+    "source_files": [
+      "williams_data_kpi.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.kdnuggets.com/10-youtube-channels-every-aspiring-data-scientist-should-follow-in-2025?utm_source=chatgpt.com \"10 YouTube Channels Every Aspiring Data Scientist ...\"",
+    "title": "10 YouTube Channels Every Aspiring Data Scientist Should Follow in 2025",
+    "category": "web_article",
+    "author": "Jayita Gulati",
+    "date": "2023-10-01",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/10-youtube-channels-every-aspiring-data-scientist.md",
+    "summary": "This article highlights 10 YouTube channels that are essential for aspiring data scientists in 2025. Each channel offers valuable tutorials and insights on various data science topics, from Python programming to machine learning techniques.",
+    "tags": [
+      "data science",
+      "YouTube channels",
+      "machine learning",
+      "Python",
+      "data analytics"
+    ],
+    "processed_at": "2025-10-09T20:52:16.411493",
+    "source_files": [
+      "ref_youtube_channels.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.pixeltie.com.sg/blog/2022/09/15/why-are-vanity-metrics-still-problematic/",
+    "title": "Why Vanity Metrics Are Still Problematic",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "2022-09-15",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/why-vanity-metrics-are-still-problematic.md",
+    "summary": "This article discusses the issues surrounding vanity metrics, which create an illusion of success without providing actionable insights. It highlights the systemic problems caused by vanity metrics in marketing and design, and offers strategies for operationalizing them effectively.",
+    "tags": [
+      "vanity metrics",
+      "digital marketing",
+      "data analysis",
+      "KPI",
+      "business strategy"
+    ],
+    "processed_at": "2025-10-09T20:52:28.738327",
+    "source_files": [
+      "williams_kpi_playbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.mailmodo.com/guides/customer-engagement-score/",
+    "title": "Understanding Customer Engagement Score (CES) and Its Importance",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-customer-engagement-score.md",
+    "summary": "The customer engagement score (CES) measures customer interactions with a product, providing insights into engagement levels. Calculating CES helps identify at-risk customers, optimize features, enhance customer experience, and improve retention strategies.",
+    "tags": [
+      "Customer Engagement",
+      "Metrics",
+      "Retention",
+      "Customer Experience",
+      "Business Strategy"
+    ],
+    "processed_at": "2025-10-09T20:53:15.238980",
+    "source_files": [
+      "williams_design.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.simplypsychology.org/social-cognitive-theory.html",
+    "title": "Understanding Albert Bandura's Social Cognitive Theory",
+    "category": "web_article",
+    "author": "Saul McLeod, PhD; Olivia Guy-Evans; Charlotte Nickerson",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-albert-bandura-social-cognitive-theory.md",
+    "summary": "Albert Bandura's social cognitive theory emphasizes the interplay between personal factors, behavior, and environmental influences in shaping human actions. Key concepts include observational learning, self-efficacy, and reciprocal determinism, highlighting how individuals actively shape their environments while being influenced by them.",
+    "tags": [
+      "Social Cognitive Theory",
+      "Albert Bandura",
+      "Observational Learning",
+      "Self-Efficacy",
+      "Behavioral Psychology"
+    ],
+    "processed_at": "2025-10-09T20:53:24.070484",
+    "source_files": [
+      "reading_09_psychology_maslow_jung_cialdini.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.scmp.com/economy/china-economy/article/3323082/chinas-hangzhou-makes-ai-classes-compulsory-schools-amid-nationwide-push",
+    "title": "China’s Hangzhou Makes AI Classes Compulsory in Schools Amid Nationwide Push",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/chinas-hangzhou-makes-ai-classes-compulsory.md",
+    "summary": "Hangzhou has made AI classes compulsory for primary and secondary students as part of a nationwide initiative by Beijing to enhance tech education. The program aims to build a talent pipeline and improve educators' skills in using smart tools while emphasizing responsible technology use.",
+    "tags": [
+      "AI Education",
+      "China",
+      "Technology",
+      "Education Policy",
+      "Hangzhou"
+    ],
+    "processed_at": "2025-10-09T19:37:00.182786",
+    "source_files": [
+      "curriculum_freshman_project_brief.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://nautil.us/deep-learning-is-hitting-a-wall-238440/",
+    "title": "Deep Learning's Limitations and the Case for Hybrid AI",
+    "category": "web_article",
+    "author": "Gary Marcus",
+    "date": "2023-10-01",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/deep-learning-limitations-and-hybrid-ai.md",
+    "summary": "Geoffrey Hinton's predictions about deep learning in radiology have not materialized, as current AI systems still struggle with high-stakes tasks. The article argues for a hybrid approach that combines deep learning with symbolic manipulation to achieve more reliable and trustworthy AI systems.",
+    "tags": [
+      "Deep Learning",
+      "Artificial Intelligence",
+      "Hybrid AI",
+      "Machine Learning",
+      "Symbolic AI"
+    ],
+    "processed_at": "2025-10-09T20:53:37.909376",
+    "source_files": [
+      "reading_08_diverse_perspectives_critics.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.kaushik.net/avinash/measure-choose-smarter-kpis-incentives/",
+    "title": "Choosing Smarter KPIs: The Impact of Metrics on Business Success",
+    "category": "web_article",
+    "author": "Avinash Kaushik",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/choosing-smarter-kpis.md",
+    "summary": "This article discusses the importance of selecting the right key performance indicators (KPIs) in organizations. It highlights how different metrics can lead to vastly different outcomes, emphasizing the need for a focus on customer experience and long-term value over short-term gains.",
+    "tags": [
+      "KPIs",
+      "Metrics",
+      "Digital Marketing",
+      "Analytics",
+      "Business Strategy"
+    ],
+    "processed_at": "2025-10-09T20:53:42.467164",
+    "source_files": [
+      "williams_kpi_playbook.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://aisafetyfundamentals.com/",
+    "title": "BlueDot Impact: Accelerating Talent for Beneficial AI",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/bluedot-impact-accelerating-talent.md",
+    "summary": "BlueDot Impact is a non-profit organization focused on building educational courses to ensure that emerging technologies benefit humanity. Since 2021, they have trained over 4,500 professionals, including technical staff and government policymakers, to tackle critical challenges in AI.",
+    "tags": [
+      "AI",
+      "Education",
+      "Non-profit",
+      "Technology",
+      "Societal Resilience"
+    ],
+    "processed_at": "2025-10-09T20:53:43.844807",
+    "source_files": [
+      "reading_03_safety_risk_pdoom.md",
+      "ref_reading_list_master_index.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.reddit.com/r/artificial/comments/1is2mgl/what_are_some_great_youtube_channels_that_explain/?utm_source=chatgpt.com \"What are some great Youtube channels that explain the ...\"",
+    "title": "Great YouTube Channels for AI Developments",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "2025-02-18",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/great-youtube-channels-for-ai.md",
+    "summary": "This Reddit post asks users to share their favorite YouTube channels that explain the latest advancements in artificial intelligence. It serves as a community-driven resource for discovering educational content related to AI.",
+    "tags": [
+      "AI",
+      "YouTube",
+      "Education",
+      "Technology",
+      "Community"
+    ],
+    "processed_at": "2025-10-09T20:53:46.682223",
+    "source_files": [
+      "ref_youtube_channels.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://henrykpano.medium.com/a-b-testing-calculating-lift-rate-of-a-test-3d071514deb4",
+    "title": "A/B Testing: Calculating Lift Rate of a Test",
+    "category": "blog_post",
+    "author": "Henry K. Pano",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/blog_posts/ab-testing-calculating-lift-rate.md",
+    "summary": "This article discusses the concept of lift rate in A/B testing, its importance, and how to calculate it. It provides a practical example involving conversion rates for control and treatment groups, ultimately guiding analysts on whether to roll out a new feature based on statistical significance.",
+    "tags": [
+      "A/B Testing",
+      "Lift Rate",
+      "Data Analysis",
+      "Conversion Rate",
+      "Statistical Significance"
+    ],
+    "processed_at": "2025-10-09T19:56:57.755079",
+    "source_files": [
+      "williams_design.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.quanthub.com/how-is-decision-making-bias-related-to-data-ethics/",
+    "title": "Understanding Decision-Making Bias and Data Ethics",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/understanding-decision-making-bias-and-data-ethics.md",
+    "summary": "Bias in decision-making can lead to unfair outcomes, particularly in data-driven contexts. Data ethics aims to ensure responsible use of data, emphasizing the importance of fairness and transparency in decision-making processes.",
+    "tags": [
+      "decision-making",
+      "data ethics",
+      "bias",
+      "transparency",
+      "accountability"
+    ],
+    "processed_at": "2025-10-09T20:53:55.433861",
+    "source_files": [
+      "williams_data_kpi.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "http://nlp.seas.harvard.edu/annotated-transformer/",
+    "title": "Untitled Content",
+    "category": "educational",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/educational/httpnlpseasharvardeduannotated-transformer.md",
+    "summary": "Content processed but AI enhancement failed.",
+    "tags": [
+      "educational"
+    ],
+    "processed_at": "2025-10-09T20:54:03.612527",
+    "source_files": [
+      "reading_01_technical_foundations.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://ai-act-law.eu/recital/56/",
+    "title": "AI Systems in Education: Risks and Implications",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/ai-systems-in-education-risks-and-implications.md",
+    "summary": "The deployment of AI systems in education is crucial for enhancing digital skills among learners and educators. However, these systems can pose significant risks if misused, potentially leading to discrimination and violations of educational rights.",
+    "tags": [
+      "AI in Education",
+      "High-Risk AI Systems",
+      "Digital Skills",
+      "Discrimination",
+      "Educational Rights"
+    ],
+    "processed_at": "2025-10-09T19:37:05.313012",
+    "source_files": [
+      "curriculum_freshman_project_brief.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "http://web.stanford.edu/class/cs224n/",
+    "title": "CS224N Coursework Overview and Policies",
+    "category": "educational",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/educational/cs224n-coursework-overview.md",
+    "summary": "This document outlines the coursework, assignments, final project details, and participation policies for CS224N. It includes information on grading, collaboration, late submissions, and resources for students.",
+    "tags": [
+      "education",
+      "coursework",
+      "assignments",
+      "final project",
+      "policies"
+    ],
+    "processed_at": "2025-10-09T19:57:49.229469",
+    "source_files": [
+      "reading_01_technical_foundations.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://www.launchnotes.com/blog/mastering-brand-messaging-strategies-for-success",
+    "title": "Mastering Brand Messaging: Strategies for Success",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/mastering-brand-messaging-strategies-for-success.md",
+    "summary": "This article explores the critical role of effective brand messaging in establishing a business's identity and connecting with customers. It provides strategies for product managers to create cohesive and authentic messaging that resonates with target audiences and fosters customer loyalty.",
+    "tags": [
+      "Brand Messaging",
+      "Marketing Strategies",
+      "Product Management",
+      "Customer Engagement",
+      "Brand Loyalty"
+    ],
+    "processed_at": "2025-10-09T19:57:36.994949",
+    "source_files": [
+      "product_messaging_williams.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://injmr.com/index.php/IJHMP/article/view/55",
+    "title": "Overcoming Data Literacy Barriers: Empowering Non-Technical Teams",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/overcoming-data-literacy-barriers-empowering-non-technical-teams.md",
+    "summary": "This paper explores strategies for overcoming data literacy barriers faced by non-technical teams, emphasizing the importance of data literacy for informed decision-making. It discusses tailored training programs, user-friendly tools, and effective communication strategies to empower these teams and enhance organizational success.",
+    "tags": [
+      "Data Literacy",
+      "Non-Technical Teams",
+      "Organizational Success",
+      "Training Programs",
+      "Data-Driven Culture"
+    ],
+    "processed_at": "2025-10-09T19:57:39.708824",
+    "source_files": [
+      "williams_data_kpi.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://fabswill.com/blog/fabianproductmanagementframework2025/",
+    "title": "A Product Management Framework for 2024",
+    "category": "web_article",
+    "author": "Fabian G. Williams",
+    "date": "2023-10-01",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/product-management-framework-2024.md",
+    "summary": "This article outlines five best practices for Product Managers to enhance their effectiveness, emphasizing customer-centric approaches, data-informed decision-making, and stakeholder alignment. It also discusses the integration of Large Language Models (LLMs) to improve productivity and strategic thinking in product management.",
+    "tags": [
+      "Product Management",
+      "Best Practices",
+      "Customer Experience",
+      "Data Analysis",
+      "LLMs"
+    ],
+    "processed_at": "2025-10-09T20:54:12.267631",
+    "source_files": [
+      "williams_product_framework.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  },
+  {
+    "url": "https://blog.hubspot.com/sales/customer-journey-sales-funnel",
+    "title": "Building Effective Customer Journey Sales Funnels",
+    "category": "web_article",
+    "author": "Unknown",
+    "date": "Unknown",
+    "file_path": "/home/kwilliams/is373/aireport/data/extracted_content/web_articles/building-effective-customer-journey-sales-funnels.md",
+    "summary": "This article discusses the importance of creating a customer journey sales funnel that aligns with the buyer's experience. It emphasizes the need for clarity, personalization, and structured communication to effectively guide prospects through their decision-making process, ultimately leading to increased conversions and revenue.",
+    "tags": [
+      "Customer Journey",
+      "Sales Funnel",
+      "Sales Strategy",
+      "Marketing Alignment",
+      "Lead Generation"
+    ],
+    "processed_at": "2025-10-09T20:54:29.376027",
+    "source_files": [
+      "williams_product_framework.md"
+    ],
+    "processor": "AsyncWebProcessor"
+  }
+]
