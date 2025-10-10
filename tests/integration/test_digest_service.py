@@ -27,7 +27,8 @@ def create_sample_library_content(title: str, quality: float, days_ago: int = 0)
         'quality_score': quality,
         'tier': 'tier-a' if quality >= 9.0 else 'tier-b' if quality >= 7.0 else 'tier-c',
         'tags': ['ai', 'ml'],
-        'added_date': date
+        'added_date': date,
+        'days_ago': days_ago
     }
 
 
@@ -129,12 +130,19 @@ class TestDigestSelection:
         ]
         
         for record in records:
-            await postgres_repo.create_processing_record(
-                record_id=str(uuid4()),
-                content_url=record['url'],
-                operation='add_to_library',
-                status='completed',
-                metadata=json.dumps({
+            # Insert with custom started_at timestamp
+            started_at = datetime.now() - timedelta(days=record['days_ago'])
+            await postgres_repo.execute("""
+                INSERT INTO processing_records 
+                (record_id, content_url, operation, status, started_at, metadata)
+                VALUES ($1, $2, $3, $4, $5, $6)
+            """, 
+                str(uuid4()),
+                record['url'],
+                'add_to_library',
+                'completed',
+                started_at,
+                json.dumps({
                     'title': record['title'],
                     'quality_score': record['quality_score'],
                     'tier': record['tier'],

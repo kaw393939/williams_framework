@@ -11,27 +11,33 @@ class TestDigestItem:
     def test_digest_item_valid(self):
         """Test creating valid DigestItem."""
         item = DigestItem(
-            content_url="https://example.com/article",
+            url="https://example.com/article",
             title="Great Article",
             summary="This is a great article",
             quality_score=8.5,
-            digest_date=datetime(2025, 10, 10)
+            tier="tier-b",
+            tags=["tech", "ai"],
+            added_date=datetime(2025, 10, 10)
         )
         assert item.title == "Great Article"
         assert item.quality_score == 8.5
-        assert item.sent is False
+        assert item.tier == "tier-b"
+        assert len(item.tags) == 2
 
-    def test_digest_item_sent_flag(self):
-        """Test sent flag."""
-        item = DigestItem(
-            content_url="https://example.com/article",
-            title="Article",
-            summary="Summary",
-            quality_score=9.0,
-            digest_date=datetime.now(),
-            sent=True
-        )
-        assert item.sent is True
+    def test_digest_item_tier_validation(self):
+        """Test tier validation."""
+        # Valid tiers
+        for tier in ["tier-a", "tier-b", "tier-c", "tier-d"]:
+            item = DigestItem(
+                url="https://example.com/article",
+                title="Article",
+                summary="Summary",
+                quality_score=9.0,
+                tier=tier,
+                tags=[],
+                added_date=datetime.now()
+            )
+            assert item.tier == tier
 
 
 class TestMaintenanceTask:
