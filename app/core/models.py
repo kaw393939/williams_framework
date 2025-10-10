@@ -236,3 +236,248 @@ class LibraryFile(BaseModel):
         default_factory=datetime.now,
         description="Timestamp when file was created"
     )
+
+
+class KnowledgeGraphNode(BaseModel):
+    """Node in the knowledge graph.
+    
+    Represents entities, concepts, topics, people, or organizations
+    extracted from content and connected in the knowledge graph.
+    
+    Attributes:
+        node_id: Unique identifier for the node
+        label: Human-readable label
+        node_type: Type of entity (concept, topic, person, organization, technology)
+        properties: Flexible dict for additional attributes
+        created_at: Timestamp when node was created
+    """
+    
+    node_id: str = Field(
+        ...,
+        min_length=1,
+        description="Unique identifier for the node"
+    )
+    
+    label: str = Field(
+        ...,
+        min_length=1,
+        description="Human-readable label for the node"
+    )
+    
+    node_type: Literal["concept", "topic", "person", "organization", "technology"] = Field(
+        ...,
+        description="Type of entity this node represents"
+    )
+    
+    properties: dict[str, Any] = Field(
+        default_factory=dict,
+        description="Flexible properties for the node"
+    )
+    
+    created_at: datetime = Field(
+        default_factory=datetime.now,
+        description="Timestamp when node was created"
+    )
+
+
+class Relationship(BaseModel):
+    """Relationship between two nodes in the knowledge graph.
+    
+    Represents connections between entities with a type and weight.
+    
+    Attributes:
+        source_id: ID of the source node
+        target_id: ID of the target node
+        relationship_type: Type of relationship
+        weight: Strength of relationship (0-1)
+        created_at: Timestamp when relationship was created
+    """
+    
+    source_id: str = Field(
+        ...,
+        min_length=1,
+        description="ID of the source node"
+    )
+    
+    target_id: str = Field(
+        ...,
+        min_length=1,
+        description="ID of the target node"
+    )
+    
+    relationship_type: Literal["related_to", "mentions", "references", "derived_from", "similar_to"] = Field(
+        ...,
+        description="Type of relationship between nodes"
+    )
+    
+    weight: float = Field(
+        ...,
+        ge=0.0,
+        le=1.0,
+        description="Strength of the relationship (0-1)"
+    )
+    
+    created_at: datetime = Field(
+        default_factory=datetime.now,
+        description="Timestamp when relationship was created"
+    )
+
+
+class DigestItem(BaseModel):
+    """Item for inclusion in a daily/weekly digest.
+    
+    Represents a curated content item selected for digest delivery.
+    
+    Attributes:
+        content_url: URL of the content
+        title: Title of the content
+        summary: Brief summary
+        quality_score: Quality score
+        selected_at: Timestamp when selected for digest
+        digest_date: Date of the digest
+        sent: Whether digest has been sent
+    """
+    
+    content_url: HttpUrl = Field(
+        ...,
+        description="URL of the content"
+    )
+    
+    title: str = Field(
+        ...,
+        min_length=1,
+        description="Title of the content"
+    )
+    
+    summary: str = Field(
+        ...,
+        min_length=1,
+        description="Brief summary for digest"
+    )
+    
+    quality_score: float = Field(
+        ...,
+        ge=0.0,
+        le=10.0,
+        description="Quality score (0-10)"
+    )
+    
+    selected_at: datetime = Field(
+        default_factory=datetime.now,
+        description="Timestamp when selected for digest"
+    )
+    
+    digest_date: datetime = Field(
+        ...,
+        description="Date of the digest this item belongs to"
+    )
+    
+    sent: bool = Field(
+        default=False,
+        description="Whether the digest has been sent"
+    )
+
+
+class MaintenanceTask(BaseModel):
+    """Scheduled maintenance task for library management.
+    
+    Represents automated maintenance operations like re-screening,
+    quality updates, or cleanup tasks.
+    
+    Attributes:
+        task_id: Unique task identifier
+        task_type: Type of maintenance task
+        status: Current status
+        scheduled_for: When task should run
+        completed_at: When task completed (if done)
+        details: Additional task details
+    """
+    
+    task_id: str = Field(
+        ...,
+        min_length=1,
+        description="Unique task identifier"
+    )
+    
+    task_type: Literal["rescreen", "quality_update", "cleanup", "digest", "backup"] = Field(
+        ...,
+        description="Type of maintenance task"
+    )
+    
+    status: Literal["pending", "running", "completed", "failed"] = Field(
+        default="pending",
+        description="Current task status"
+    )
+    
+    scheduled_for: datetime = Field(
+        ...,
+        description="When the task should run"
+    )
+    
+    completed_at: datetime | None = Field(
+        default=None,
+        description="When the task completed (if done)"
+    )
+    
+    details: dict[str, Any] = Field(
+        default_factory=dict,
+        description="Additional task-specific details"
+    )
+
+
+class ProcessingRecord(BaseModel):
+    """Record of content processing operations.
+    
+    Tracks the processing history for audit and debugging purposes.
+    
+    Attributes:
+        record_id: Unique record identifier
+        content_url: URL of processed content
+        operation: Type of operation performed
+        status: Operation status
+        started_at: When processing started
+        completed_at: When processing completed
+        error_message: Error details if failed
+        metadata: Additional processing metadata
+    """
+    
+    record_id: str = Field(
+        ...,
+        min_length=1,
+        description="Unique record identifier"
+    )
+    
+    content_url: HttpUrl = Field(
+        ...,
+        description="URL of the processed content"
+    )
+    
+    operation: Literal["extract", "screen", "process", "store", "index"] = Field(
+        ...,
+        description="Type of operation performed"
+    )
+    
+    status: Literal["started", "completed", "failed"] = Field(
+        ...,
+        description="Operation status"
+    )
+    
+    started_at: datetime = Field(
+        default_factory=datetime.now,
+        description="When processing started"
+    )
+    
+    completed_at: datetime | None = Field(
+        default=None,
+        description="When processing completed (if done)"
+    )
+    
+    error_message: str | None = Field(
+        default=None,
+        description="Error message if operation failed"
+    )
+    
+    metadata: dict[str, Any] = Field(
+        default_factory=dict,
+        description="Additional processing metadata"
+    )
