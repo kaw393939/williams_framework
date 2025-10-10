@@ -103,14 +103,26 @@ class Settings(BaseSettings):
         description="Redis database number"
     )
     
-    # ChromaDB Configuration
-    chroma_persist_dir: str = Field(
-        default="./data/chroma",
-        description="ChromaDB persistence directory"
+    # Qdrant Configuration
+    qdrant_host: str = Field(
+        default="localhost",
+        description="Qdrant host"
     )
-    chroma_collection_name: str = Field(
-        default="librarian_collection",
-        description="ChromaDB collection name"
+    qdrant_port: int = Field(
+        default=6333,
+        gt=0,
+        lt=65536,
+        description="Qdrant REST API port"
+    )
+    qdrant_grpc_port: int = Field(
+        default=6334,
+        gt=0,
+        lt=65536,
+        description="Qdrant gRPC port"
+    )
+    qdrant_collection_name: str = Field(
+        default="librarian_embeddings",
+        description="Qdrant collection name for content embeddings"
     )
     
     # Library Configuration
