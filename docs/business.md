@@ -196,10 +196,21 @@ Transforming how you learn, create, and interact with knowledge
 
 **Key Features:**
 - Browser extension for one-click saving
+- Native connectors for Google Drive, Notion, and Dropbox
+- Voice commands that can trigger new research runs ("Find fresh insights on autonomous agents")
 - Quality-tiered organization (Essential → Low)
 - Multi-format export (PDF, Markdown, Audio)
 - Collaboration and sharing
 - Mobile app for voice conversations
+
+### Slide 6.5: Platform Vision (MCP-Ready)
+
+**Williams AI as a Model Context Protocol (MCP) Server**
+- Expose every capability—ingest, search, generation, maintenance—through standard MCP endpoints
+- Allow IDEs, CLI tools, and autonomous agents to register and orchestrate the knowledge pipeline with zero bespoke integrations
+- Ship first-party agent skills for proactive research ("Monitor transformers research weekly") and scheduled maintenance tasks
+- Enable third-party plugin marketplace where partners can publish extractors, transformers, and visualizations discoverable via MCP
+- Provide enterprise controls: per-tenant throttles, API-level cost reporting, and audit logs for every agent action
 
 ### Slide 7: Technology & IP
 
@@ -222,6 +233,11 @@ Transforming how you learn, create, and interact with knowledge
 - Multi-stage validation
 - Knowledge graph for connections
 - Continuous quality assessment
+
+**4. MCP-Native Platform:**
+- Model Context Protocol server exposes ingest, search, and generation to any compatible client
+- Fine-grained auth, observability, and rate controls per workspace/agent
+- Shared schema registry for plugins ensures safety and versioned upgrades
 
 **Defensibility:**
 - Proprietary cost optimization algorithms
@@ -297,6 +313,15 @@ Transforming how you learn, create, and interact with knowledge
 **Voice Training:** $5K-$50K custom voice models for brands  
 **API Access:** $0.10 per API call for developers  
 **Professional Services:** Implementation, training, customization
+
+### Slide 10.5: Feature Expansion Roadmap
+
+**Next 12-18 Months**
+- **Autonomous Research Agents:** Voice or MCP-triggered jobs that scout new content, auto-screen it, and notify users when high-quality sources land
+- **Enterprise Connectors:** Google Drive, SharePoint, Confluence, Slack, email ingestion, and S3 archives with policy-based governance
+- **Knowledge Marketplace:** Curated playlists and generated courses that creators can sell; revenue share built into the platform
+- **Compliance & Trust Layer:** Source provenance tracking, citation graphs, opt-in redaction for sensitive data, SOC2 and HIPAA readiness artifacts
+- **Developer Ecosystem:** SDKs + template repo for building certified plugins, marketplace QA, and revenue incentives
 
 ### Slide 10: Go-To-Market Strategy
 
@@ -375,12 +400,14 @@ Transforming how you learn, create, and interact with knowledge
 - ✅ Production-grade design patterns
 - ✅ Cost optimization strategy validated
 - ✅ Plugin architecture for extensibility
+- ✅ MCP server interface design drafted (ingest, search, generation endpoints)
 - 🏗️ MVP development (Phase 1 of 5)
 
 **6-Month Milestones:**
 - ✅ Core curation engine (Month 1-2)
 - ✅ Content generation (Month 3-4)
 - ✅ Voice interface (Month 5-6)
+- ✅ MCP alpha endpoints for IDE/agent integrations
 - 🎯 100 beta users
 - 🎯 First paying customer
 
@@ -390,6 +417,7 @@ Transforming how you learn, create, and interact with knowledge
 - $600K ARR run rate
 - 30% MoM growth
 - 85% retention rate
+- 50+ external plugins in marketplace; 10 certified enterprise connectors
 
 **Validation to Date:**
 - Architecture review by senior engineers: "Production-ready design"

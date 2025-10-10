@@ -36,7 +36,6 @@ async def postgres_repo():
     yield repo
     
     await repo.execute("DELETE FROM processing_records")
-    await repo.execute("DELETE FROM library_files")
     await repo.close()
 
 
@@ -147,17 +146,17 @@ class TestLibraryAddContent:
         
         assert library_file is not None
         assert library_file.title == "Test Article"
-        assert library_file.tier == "b"  # 8.5 should be tier B (7-9)
+        assert library_file.tier == "tier-b"  # 8.5 should be tier B (7-9)
         assert library_file.quality_score == 8.5
     
     @pytest.mark.asyncio
     async def test_add_assigns_correct_tier(self, library_service):
         """Should assign correct tier based on quality score."""
         test_cases = [
-            (9.5, "a"),  # >= 9.0
-            (8.0, "b"),  # >= 7.0
-            (6.5, "c"),  # >= 5.0
-            (4.0, "d"),  # < 5.0
+            (9.5, "tier-a"),  # >= 9.0
+            (8.0, "tier-b"),  # >= 7.0
+            (6.5, "tier-c"),  # >= 5.0
+            (4.0, "tier-d"),  # < 5.0
         ]
         
         with patch('app.services.library_service.generate_embedding', return_value=[0.1] * 384):
@@ -213,10 +212,10 @@ class TestLibraryRetrieve:
                 await library_service.add_to_library(content)
         
         # Get tier B files
-        tier_b_files = await library_service.get_files_by_tier("b", limit=10)
+        tier_b_files = await library_service.get_files_by_tier("tier-b", limit=10)
         
         assert len(tier_b_files) == 2
-        assert all(f.tier == "b" for f in tier_b_files)
+        assert all(f.tier == "tier-b" for f in tier_b_files)
     
     @pytest.mark.asyncio
     async def test_get_files_pagination(self, library_service):
@@ -228,11 +227,11 @@ class TestLibraryRetrieve:
                 await library_service.add_to_library(content)
         
         # Get first page (limit 2)
-        page1 = await library_service.get_files_by_tier("b", limit=2, offset=0)
+        page1 = await library_service.get_files_by_tier("tier-b", limit=2, offset=0)
         assert len(page1) == 2
         
         # Get second page
-        page2 = await library_service.get_files_by_tier("b", limit=2, offset=2)
+        page2 = await library_service.get_files_by_tier("tier-b", limit=2, offset=2)
         assert len(page2) == 2
         
         # Files should be different
@@ -256,12 +255,12 @@ class TestLibraryMoveTiers:
         file_id = str(library_file.url)
         
         # Move from B to A
-        moved_file = await library_service.move_between_tiers(file_id, "b", "a")
+        moved_file = await library_service.move_between_tiers(file_id, "tier-b", "tier-a")
         
-        assert moved_file.tier == "a"
+        assert moved_file.tier == "tier-a"
         
         # Verify it's no longer in tier B
-        tier_b_files = await library_service.get_files_by_tier("b")
+        tier_b_files = await library_service.get_files_by_tier("tier-b")
         assert all(str(f.url) != file_id for f in tier_b_files)
     
     @pytest.mark.asyncio
@@ -275,7 +274,7 @@ class TestLibraryMoveTiers:
         file_id = str(library_file.url)
         
         # Move from B to A
-        await library_service.move_between_tiers(file_id, "b", "a")
+        await library_service.move_between_tiers(file_id, "tier-b", "tier-a")
         
         # Verify file is now in tier-a bucket
         original_bucket = minio_repo.bucket_name
@@ -333,11 +332,11 @@ class TestLibrarySearch:
             # Search with tier filter
             results = await library_service.search_library(
                 query="AI",
-                filters={"tier": "a"},
+                filters={"tier": "tier-a"},
                 limit=10
             )
         
-        assert all(r.tier == "a" for r in results)
+        assert all(r.tier == "tier-a" for r in results)
     
     @pytest.mark.asyncio
     async def test_search_caches_results(self, library_service, redis_repo):
@@ -409,9 +408,9 @@ class TestLibraryStatistics:
         
         assert isinstance(stats, LibraryStats)
         assert stats.total_files == 4
-        assert stats.files_by_tier.get("a", 0) == 1
-        assert stats.files_by_tier.get("b", 0) == 2
-        assert stats.files_by_tier.get("c", 0) == 1
+        assert stats.files_by_tier.get("tier-a", 0) == 1
+        assert stats.files_by_tier.get("tier-b", 0) == 2
+        assert stats.files_by_tier.get("tier-c", 0) == 1
         assert 7.0 <= stats.average_quality <= 9.0
     
     @pytest.mark.asyncio
@@ -430,9 +429,9 @@ class TestLibraryStatistics:
         
         stats = await library_service.get_statistics()
         
-        assert stats.files_by_tier["a"] == 3
-        assert stats.files_by_tier["b"] == 2
-        assert stats.files_by_tier["c"] == 1
+        assert stats.files_by_tier["tier-a"] == 3
+        assert stats.files_by_tier["tier-b"] == 2
+        assert stats.files_by_tier["tier-c"] == 1
         assert stats.total_files == 6
 
 
@@ -447,20 +446,20 @@ class TestLibraryIntegration:
         
         with patch('app.services.library_service.generate_embedding', return_value=[0.1] * 384):
             library_file = await library_service.add_to_library(content)
-            assert library_file.tier == "b"
+            assert library_file.tier == "tier-b"
             
             # Step 2: Search for it
             results = await library_service.search_library("workflow test", limit=5)
             assert len(results) > 0
             
             # Step 3: Move to tier A
-            moved = await library_service.move_between_tiers(str(library_file.url), "b", "a")
-            assert moved.tier == "a"
+            moved = await library_service.move_between_tiers(str(library_file.url), "tier-b", "tier-a")
+            assert moved.tier == "tier-a"
             
             # Step 4: Get statistics
             stats = await library_service.get_statistics()
             assert stats.total_files >= 1
-            assert stats.files_by_tier.get("a", 0) >= 1
+            assert stats.files_by_tier.get("tier-a", 0) >= 1
     
     @pytest.mark.asyncio
     async def test_library_with_multiple_files(self, library_service):
@@ -473,9 +472,9 @@ class TestLibraryIntegration:
                 await library_service.add_to_library(content)
         
         # Get all tiers
-        tier_a = await library_service.get_files_by_tier("a")
-        tier_b = await library_service.get_files_by_tier("b")
-        tier_c = await library_service.get_files_by_tier("c")
+        tier_a = await library_service.get_files_by_tier("tier-a")
+        tier_b = await library_service.get_files_by_tier("tier-b")
+        tier_c = await library_service.get_files_by_tier("tier-c")
         
         total_files = len(tier_a) + len(tier_b) + len(tier_c)
         assert total_files == 10
