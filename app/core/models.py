@@ -481,3 +481,117 @@ class ProcessingRecord(BaseModel):
         default_factory=dict,
         description="Additional processing metadata"
     )
+
+
+class SearchResult(BaseModel):
+    """Result from semantic search of the library.
+    
+    Attributes:
+        file_path: Path to the file in the library
+        url: Original source URL
+        title: Content title
+        summary: Content summary
+        tags: List of tags
+        tier: Quality tier
+        quality_score: Quality score
+        relevance_score: Search relevance score (0-1)
+        matched_content: Snippet of matched content
+    """
+    
+    file_path: str = Field(
+        ...,
+        description="Path to the file in the library"
+    )
+    
+    url: str = Field(
+        ...,
+        description="Original source URL"
+    )
+    
+    title: str = Field(
+        ...,
+        description="Content title"
+    )
+    
+    summary: str = Field(
+        ...,
+        description="Content summary"
+    )
+    
+    tags: list[str] = Field(
+        default_factory=list,
+        description="List of tags"
+    )
+    
+    tier: str = Field(
+        ...,
+        description="Quality tier (a, b, c, d)"
+    )
+    
+    quality_score: float = Field(
+        ...,
+        ge=0.0,
+        le=10.0,
+        description="Quality score"
+    )
+    
+    relevance_score: float = Field(
+        ...,
+        ge=0.0,
+        le=1.0,
+        description="Search relevance score"
+    )
+    
+    matched_content: str | None = Field(
+        default=None,
+        description="Snippet of matched content"
+    )
+
+
+class LibraryStats(BaseModel):
+    """Statistics about the library contents.
+    
+    Attributes:
+        total_files: Total number of files in library
+        files_by_tier: Count of files in each tier
+        average_quality: Average quality score
+        total_tags: Total number of unique tags
+        recent_additions: Number of files added recently
+        storage_size_mb: Total storage size in MB
+    """
+    
+    total_files: int = Field(
+        ...,
+        ge=0,
+        description="Total number of files in library"
+    )
+    
+    files_by_tier: dict[str, int] = Field(
+        default_factory=dict,
+        description="Count of files in each tier"
+    )
+    
+    average_quality: float = Field(
+        ...,
+        ge=0.0,
+        le=10.0,
+        description="Average quality score across all files"
+    )
+    
+    total_tags: int = Field(
+        ...,
+        ge=0,
+        description="Total number of unique tags"
+    )
+    
+    recent_additions: int = Field(
+        default=0,
+        ge=0,
+        description="Number of files added in last 7 days"
+    )
+    
+    storage_size_mb: float = Field(
+        default=0.0,
+        ge=0.0,
+        description="Total storage size in MB"
+    )
