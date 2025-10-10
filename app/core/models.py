@@ -106,3 +106,71 @@ class RawContent(BaseModel):
         if not v.strip():
             raise ValueError("raw_text cannot be empty or whitespace")
         return v
+
+
+class ProcessedContent(BaseModel):
+    """Content after AI processing and screening.
+    
+    This model represents content that has been analyzed by the LLM,
+    with extracted title, summary, key points, tags, and screening decision.
+    
+    Attributes:
+        url: Source URL of the content
+        source_type: Type of source (web, youtube, pdf, text)
+        title: Extracted or generated title
+        summary: AI-generated summary
+        key_points: List of key takeaways
+        tags: List of relevant tags/topics
+        screening_result: AI screening decision and scores
+        processed_at: Timestamp when processing completed
+    """
+    
+    url: HttpUrl = Field(
+        ...,
+        description="Source URL of the content"
+    )
+    
+    source_type: ContentSource = Field(
+        ...,
+        description="Type of content source"
+    )
+    
+    title: str = Field(
+        ...,
+        min_length=1,
+        description="Extracted or generated title"
+    )
+    
+    summary: str = Field(
+        ...,
+        min_length=1,
+        description="AI-generated summary of content"
+    )
+    
+    key_points: list[str] = Field(
+        default_factory=list,
+        description="List of key takeaways from the content"
+    )
+    
+    tags: list[str] = Field(
+        default_factory=list,
+        description="List of relevant tags/topics"
+    )
+    
+    screening_result: ScreeningResult = Field(
+        ...,
+        description="AI screening decision and quality assessment"
+    )
+    
+    processed_at: datetime = Field(
+        default_factory=datetime.now,
+        description="Timestamp when processing completed"
+    )
+    
+    @field_validator("title", "summary")
+    @classmethod
+    def text_not_empty(cls, v: str) -> str:
+        """Validate that text fields are not empty or whitespace."""
+        if not v.strip():
+            raise ValueError("Field cannot be empty or whitespace")
+        return v
