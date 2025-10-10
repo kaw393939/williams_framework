@@ -595,3 +595,124 @@ class LibraryStats(BaseModel):
         ge=0.0,
         description="Total storage size in MB"
     )
+
+
+class DigestItem(BaseModel):
+    """Item to include in a digest email.
+    
+    Represents a single piece of content selected for the daily digest,
+    with relevant metadata for presentation in the email.
+    
+    Attributes:
+        url: Source URL
+        title: Content title
+        summary: Brief summary
+        quality_score: Quality score (0-10)
+        tier: Quality tier
+        tags: Content tags
+        added_date: When added to library
+    """
+    
+    url: HttpUrl = Field(
+        ...,
+        description="Source URL"
+    )
+    
+    title: str = Field(
+        ...,
+        min_length=1,
+        description="Content title"
+    )
+    
+    summary: str = Field(
+        ...,
+        description="Brief content summary"
+    )
+    
+    quality_score: float = Field(
+        ...,
+        ge=0.0,
+        le=10.0,
+        description="Quality score"
+    )
+    
+    tier: Literal["tier-a", "tier-b", "tier-c", "tier-d"] = Field(
+        ...,
+        description="Quality tier"
+    )
+    
+    tags: list[str] = Field(
+        default_factory=list,
+        description="Content tags"
+    )
+    
+    added_date: datetime = Field(
+        ...,
+        description="Date added to library"
+    )
+
+
+class Digest(BaseModel):
+    """Email digest of curated content.
+    
+    Represents a daily digest email containing selected high-quality content
+    from the library. Tracks what was sent, when, and to whom.
+    
+    Attributes:
+        digest_id: Unique digest identifier
+        date: Digest date
+        subject: Email subject line
+        items: Content items in digest
+        html_content: HTML email body
+        text_content: Plain text email body
+        recipients: Email recipients
+        sent_at: When digest was sent (None if not sent)
+        created_at: When digest was created
+    """
+    
+    digest_id: str = Field(
+        ...,
+        min_length=1,
+        description="Unique digest identifier"
+    )
+    
+    date: datetime = Field(
+        ...,
+        description="Digest date"
+    )
+    
+    subject: str = Field(
+        ...,
+        min_length=1,
+        description="Email subject line"
+    )
+    
+    items: list[DigestItem] = Field(
+        default_factory=list,
+        description="Content items in digest"
+    )
+    
+    html_content: str | None = Field(
+        default=None,
+        description="HTML email body"
+    )
+    
+    text_content: str | None = Field(
+        default=None,
+        description="Plain text email body"
+    )
+    
+    recipients: list[str] = Field(
+        default_factory=list,
+        description="Email recipients"
+    )
+    
+    sent_at: datetime | None = Field(
+        default=None,
+        description="When digest was sent"
+    )
+    
+    created_at: datetime = Field(
+        default_factory=datetime.now,
+        description="When digest was created"
+    )
