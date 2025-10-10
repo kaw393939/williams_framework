@@ -3,8 +3,11 @@
 This module contains the primary domain models that represent business entities.
 All models use Pydantic for validation and serialization.
 """
-from typing import Literal
-from pydantic import BaseModel, Field, field_validator
+from datetime import datetime
+from typing import Any, Literal
+from pydantic import BaseModel, Field, HttpUrl, field_validator
+
+from app.core.types import ContentSource
 
 
 class ScreeningResult(BaseModel):
@@ -53,4 +56,53 @@ class ScreeningResult(BaseModel):
         """Validate that reasoning is not empty or whitespace."""
         if not v.strip():
             raise ValueError("reasoning cannot be empty or whitespace")
+        return v
+
+
+class RawContent(BaseModel):
+    """Raw extracted content before processing.
+    
+    This model represents content immediately after extraction from its source,
+    before any AI processing or transformation has occurred.
+    
+    Attributes:
+        url: Source URL of the content
+        source_type: Type of source (web, youtube, pdf, text)
+        raw_text: Raw extracted text content
+        metadata: Additional metadata from extraction (flexible dict)
+        extracted_at: Timestamp when content was extracted
+    """
+    
+    url: HttpUrl = Field(
+        ...,
+        description="Source URL of the content"
+    )
+    
+    source_type: ContentSource = Field(
+        ...,
+        description="Type of content source"
+    )
+    
+    raw_text: str = Field(
+        ...,
+        min_length=1,
+        description="Raw extracted text content"
+    )
+    
+    metadata: dict[str, Any] = Field(
+        default_factory=dict,
+        description="Additional metadata from extraction process"
+    )
+    
+    extracted_at: datetime = Field(
+        default_factory=datetime.now,
+        description="Timestamp when content was extracted"
+    )
+    
+    @field_validator("raw_text")
+    @classmethod
+    def raw_text_not_empty(cls, v: str) -> str:
+        """Validate that raw_text is not empty or whitespace."""
+        if not v.strip():
+            raise ValueError("raw_text cannot be empty or whitespace")
         return v
