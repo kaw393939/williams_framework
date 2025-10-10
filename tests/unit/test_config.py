@@ -45,7 +45,7 @@ class TestSettings:
         settings = Settings()
         
         assert settings.library_root == "./library"
-        assert settings.chroma_persist_dir == "./data/chroma"
+        assert settings.qdrant_collection_name == "librarian_embeddings"
         assert settings.cache_dir == "./data/cache"
         assert settings.log_file == "./data/logs/librarian.log"
 
