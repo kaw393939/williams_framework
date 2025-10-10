@@ -25,19 +25,19 @@ You now have a **complete blueprint** for building the Williams Framework AI Lib
 ### Vision
 A **personal AI research assistant** that:
 - Screens and curates content automatically
-- Maintains an organized library (ChromaDB + file system)
+- Maintains an organized library (Qdrant vectors + MinIO object storage)
 - Generates personalized daily digests
 - Builds knowledge graphs from your content
 - Optimizes costs using tiered LLM selection
 
 ### Key Features
 1. **Intelligent Curation**: LLM-powered URL screening with ROI calculation
-2. **Dual Storage**: Semantic search (ChromaDB) + browsable files (organized by quality tier)
+2. **Modern Storage**: Semantic search (Qdrant) + S3-compatible object storage (MinIO) organized by quality tier
 3. **Cost Optimization**: Tiered model selection (nano/mini/standard), caching, batching
 4. **Knowledge Graphs**: Automatic entity extraction and relationship mapping
 5. **Daily Digests**: Personalized recommendations based on your interests
 6. **Plugin System**: Extensible architecture for new content sources
-7. **Production Ready**: Docker deployment, monitoring, backups
+7. **Production Ready**: Docker deployment, S3-compatible storage, monitoring, backups
 
 ---
 
@@ -68,19 +68,23 @@ A **personal AI research assistant** that:
                            ▼
 ┌─────────────────────────────────────────────────────────┐
 │  DATA LAYER (Repositories)                               │
-│  - ChromaDB, FileSystem, PostgreSQL, Redis               │
+│  - Qdrant, MinIO, PostgreSQL, Redis                      │
 └─────────────────────────────────────────────────────────┘
 ```
 
 ### Technology Stack
 
 **Core**: Python 3.11+, Pydantic 2.x, asyncio  
-**AI/ML**: OpenAI GPT-5 family, LangChain, ChromaDB, spaCy, NetworkX  
-**Storage**: PostgreSQL (metadata), Redis (cache), ChromaDB (vectors), File system (markdown)  
+**AI/ML**: OpenAI GPT-5 family, LangChain, spaCy, NetworkX  
+**Storage**: 
+  - **Vector DB**: Qdrant (embeddings & semantic search)
+  - **Object Storage**: MinIO (S3-compatible file storage)
+  - **Metadata**: PostgreSQL (processing records, costs)
+  - **Cache**: Redis (temporary data, rate limiting)  
 **UI**: Streamlit, Plotly, PyVis  
 **ETL**: Trafilatura, yt-dlp, PyPDF, HTTPX  
 **Testing**: pytest, pytest-asyncio, Hypothesis (property-based)  
-**Infrastructure**: Docker, Prometheus, Grafana
+**Infrastructure**: Docker Compose, Prometheus, Grafana
 
 ---
 

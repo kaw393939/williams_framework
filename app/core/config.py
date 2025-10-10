@@ -125,10 +125,32 @@ class Settings(BaseSettings):
         description="Qdrant collection name for content embeddings"
     )
     
+    # MinIO Configuration
+    minio_endpoint: str = Field(
+        default="localhost:9000",
+        description="MinIO endpoint (host:port)"
+    )
+    minio_access_key: str = Field(
+        default="minioadmin",
+        description="MinIO access key"
+    )
+    minio_secret_key: str = Field(
+        default="minioadmin",
+        description="MinIO secret key"
+    )
+    minio_secure: bool = Field(
+        default=False,
+        description="Use HTTPS for MinIO connections"
+    )
+    minio_region: str = Field(
+        default="us-east-1",
+        description="MinIO region (for S3 compatibility)"
+    )
+    
     # Library Configuration
     library_root: str = Field(
         default="./library",
-        description="Root directory for content library"
+        description="Root directory for local content library (deprecated, use MinIO)"
     )
     tier_a_threshold: float = Field(
         default=9.0,

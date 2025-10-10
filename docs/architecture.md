@@ -172,18 +172,22 @@ class KnowledgeGraphBuilder:
 
 **Key Repositories**:
 ```python
-class ChromaRepository:
-    """Vector database operations"""
-    async def add_document(self, doc: Document) -> str: ...
-    async def search(self, query: str, k: int = 5) -> List[Document]: ...
+class QdrantRepository:
+    """Vector database operations with Qdrant"""
+    def add(self, content_id: str, vector: List[float], metadata: Dict) -> None: ...
+    def query(self, query_vector: List[float], limit: int = 5) -> List[Dict]: ...
+    def delete(self, content_id: str) -> None: ...
+    def update_metadata(self, content_id: str, metadata: Dict) -> None: ...
 
-class FileRepository:
-    """File system operations"""
-    async def save_file(self, content: str, path: Path) -> None: ...
-    async def organize_file(self, file: File, topic: str) -> Path: ...
+class MinIORepository:
+    """S3-compatible object storage operations"""
+    async def upload_file(self, bucket: str, key: str, content: bytes) -> str: ...
+    async def download_file(self, bucket: str, key: str) -> bytes: ...
+    async def delete_file(self, bucket: str, key: str) -> None: ...
+    async def list_objects(self, bucket: str, prefix: str) -> List[str]: ...
 
 class GraphRepository:
-    """Knowledge graph operations"""
+    """Knowledge graph operations with NetworkX"""
     async def add_node(self, entity: Entity) -> None: ...
     async def add_edge(self, relationship: Relationship) -> None: ...
     async def get_connected_nodes(self, node_id: str) -> List[Node]: ...
@@ -192,6 +196,12 @@ class MetadataRepository:
     """PostgreSQL metadata storage"""
     async def save_processing_history(self, record: ProcessingRecord): ...
     async def get_cost_summary(self, period: str) -> CostSummary: ...
+
+class CacheRepository:
+    """Redis cache operations"""
+    async def get(self, key: str) -> Optional[Any]: ...
+    async def set(self, key: str, value: Any, ttl: int) -> None: ...
+    async def delete(self, key: str) -> None: ...
 ```
 
 ## Data Flow
@@ -232,7 +242,7 @@ User submits URL
 └──────────────────┘
        ↓
 ┌──────────────────┐
-│ Load             │ ← ChromaDB + FileSystem
+│ Load             │ ← Qdrant (vectors) + MinIO (files)
 └──────────────────┘
        ↓
 ┌──────────────────┐
@@ -256,7 +266,7 @@ User enters query
 └──────────────────┘
        ↓
 ┌──────────────────┐
-│ ChromaRepository │ ← Vector similarity search
+│ QdrantRepository │ ← Vector similarity search (Qdrant)
 └──────────────────┘
        ↓
 ┌──────────────────┐
@@ -412,8 +422,9 @@ class ToolConfig(BaseModel):
 ### Data Privacy
 
 - No data sent to OpenAI stored by default (store=false option)
-- Local ChromaDB for sensitive content
-- Encryption at rest for PostgreSQL
+- Local Qdrant and MinIO for sensitive content
+- Encryption at rest for PostgreSQL and object storage
+- MinIO bucket policies for access control
 
 ### Rate Limiting
 
@@ -452,9 +463,11 @@ logger.info(
 ### Health Checks
 
 - `/health` - Overall system health
-- `/health/chroma` - ChromaDB connectivity
-- `/health/postgres` - Database connectivity
-- `/health/openai` - API key validity
+- `/health/qdrant` - Qdrant vector database connectivity
+- `/health/minio` - MinIO object storage connectivity
+- `/health/postgres` - PostgreSQL database connectivity
+- `/health/redis` - Redis cache connectivity
+- `/health/openai` - OpenAI API key validity
 
 ## Next Steps
 
