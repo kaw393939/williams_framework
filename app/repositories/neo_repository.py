@@ -455,10 +455,19 @@ class NeoRepository:
         return result[0]["c"] if result else {}
 
     def get_chunk(self, chunk_id: str) -> dict[str, Any] | None:
-        """Get chunk by ID."""
-        query = "MATCH (c:Chunk {id: $chunk_id}) RETURN c"
+        """Get chunk by ID with doc_id."""
+        query = """
+        MATCH (c:Chunk {id: $chunk_id})
+        OPTIONAL MATCH (c)-[:PART_OF]->(d:Document)
+        RETURN c, d.id as doc_id
+        """
         result = self.execute_query(query, {"chunk_id": chunk_id})
-        return result[0]["c"] if result else None
+        if result:
+            chunk = dict(result[0]["c"])
+            if result[0]["doc_id"]:
+                chunk["doc_id"] = result[0]["doc_id"]
+            return chunk
+        return None
 
     def get_document_chunks(self, doc_id: str) -> list[dict[str, Any]]:
         """Get all chunks for a document, ordered by offset."""
