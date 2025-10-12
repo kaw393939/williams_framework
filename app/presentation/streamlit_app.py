@@ -5,7 +5,7 @@ from collections.abc import Callable
 
 import streamlit as st
 
-from app.presentation.state import PresentationState, PresentationStats
+from app.presentation.state import PresentationState, PresentationStats, LibraryItem
 
 _TITLE = "Williams Librarian"
 _DESCRIPTION = (
@@ -45,10 +45,8 @@ def render_app(state: PresentationState) -> None:
 def run_app(state_provider=None) -> None:
     """Execute the Streamlit app using the supplied state provider."""
 
-    from app.presentation.app import default_state_provider as fallback_provider, render_app as run_render
-
-    provider = state_provider or fallback_provider
-    run_render(provider())
+    provider = state_provider or default_state_provider
+    render_app(provider())
 
 
 def build_app(state_provider: Callable[[], PresentationState]) -> Callable[[], None]:
@@ -62,10 +60,43 @@ def build_app(state_provider: Callable[[], PresentationState]) -> Callable[[], N
 
 def default_state_provider() -> PresentationState:
     """Return a default, empty state for interactive runs."""
-
+    from pathlib import Path
+    
+    # Load actual library files from data/library
+    library_root = Path("data/library")
+    library_items = []
+    
+    if library_root.exists():
+        for tier_dir in ["tier-a", "tier-b", "tier-c", "tier-d"]:
+            tier_path = library_root / tier_dir
+            if tier_path.exists():
+                for md_file in tier_path.glob("*.md"):
+                    try:
+                        content = md_file.read_text(encoding="utf-8")
+                        # Extract title from first line or use filename
+                        lines = content.split("\n")
+                        title = lines[0].strip("# ").strip() if lines else md_file.stem
+                        
+                        library_items.append(
+                            LibraryItem(
+                                title=title,
+                                tier=tier_dir,
+                                tags=[],
+                                summary=content[:200] + "..." if len(content) > 200 else content,
+                            )
+                        )
+                    except Exception:
+                        # Skip files that can't be read
+                        pass
+    
+    # Calculate stats
+    tier_counts = {}
+    for item in library_items:
+        tier_counts[item.tier] = tier_counts.get(item.tier, 0) + 1
+    
     return PresentationState(
-        library_items=(),
-        stats=PresentationStats(total_items=0, tier_counts={}),
+        library_items=tuple(library_items),
+        stats=PresentationStats(total_items=len(library_items), tier_counts=tier_counts),
     )
 
 

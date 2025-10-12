@@ -1,0 +1,136 @@
+# AI Services Configuration
+# Cloud-agnostic configuration for embedding and LLM providers
+
+embeddings:
+  # Default provider to use (can be overridden at runtime)
+  default: sentence-transformers-local
+  
+  providers:
+    # LOCAL: SentenceTransformers (BERT-based, CPU/GPU)
+    sentence-transformers-local:
+      type: sentence-transformers
+      model: all-MiniLM-L6-v2  # 384 dimensions, fast, good quality
+      dimensions: 384
+      device: cpu  # or 'cuda' for GPU
+      normalize_embeddings: true
+      batch_size: 32
+      cost_per_1k_tokens: 0.0  # Free (local compute)
+      fallback: null
+    
+    sentence-transformers-large:
+      type: sentence-transformers
+      model: all-mpnet-base-v2  # 768 dimensions, higher quality
+      dimensions: 768
+      device: cpu
+      normalize_embeddings: true
+      batch_size: 16
+      cost_per_1k_tokens: 0.0
+      fallback: sentence-transformers-local
+    
+    # LOCAL: Ollama embeddings
+    ollama-local:
+      type: ollama-embedding
+      model: llama3.1  # Uses Llama 3.1's embeddings
+      dimensions: 768
+      base_url: http://localhost:11434
+      cost_per_1k_tokens: 0.0
+      fallback: sentence-transformers-local
+    
+    # HOSTED: OpenAI embeddings
+    openai-ada:
+      type: openai-embedding
+      model: text-embedding-3-small  # 1536 dimensions
+      dimensions: 1536
+      api_key_env: OPENAI_API_KEY
+      cost_per_1k_tokens: 0.0001  # $0.10 per 1M tokens
+      fallback: sentence-transformers-large
+    
+    openai-large:
+      type: openai-embedding
+      model: text-embedding-3-large  # 3072 dimensions, best quality
+      dimensions: 3072
+      api_key_env: OPENAI_API_KEY
+      cost_per_1k_tokens: 0.0005  # $0.50 per 1M tokens
+      fallback: openai-ada
+
+llms:
+  # Default LLM provider
+  default: ollama-local
+  
+  providers:
+    # LOCAL: Ollama with Llama 3.1 8B
+    ollama-local:
+      type: ollama
+      model: llama3.1:8b
+      base_url: http://localhost:11434
+      context_window: 8192
+      temperature: 0.7
+      max_tokens: 2048
+      cost_per_1k_tokens: 0.0  # Free (local compute)
+      streaming: true
+      fallback: null
+    
+    # LOCAL: Ollama with Mistral 7B
+    ollama-mistral:
+      type: ollama
+      model: mistral:7b
+      base_url: http://localhost:11434
+      context_window: 8192
+      temperature: 0.7
+      max_tokens: 2048
+      cost_per_1k_tokens: 0.0
+      streaming: true
+      fallback: ollama-local
+    
+    # HOSTED: OpenAI GPT-4o-mini (cost-effective)
+    openai-mini:
+      type: openai
+      model: gpt-4o-mini
+      api_key_env: OPENAI_API_KEY
+      context_window: 128000
+      temperature: 0.7
+      max_tokens: 4096
+      cost_per_1k_input_tokens: 0.00015  # $0.15 per 1M input tokens
+      cost_per_1k_output_tokens: 0.0006  # $0.60 per 1M output tokens
+      streaming: true
+      fallback: ollama-local
+    
+    # HOSTED: OpenAI GPT-4o (best quality)
+    openai-4o:
+      type: openai
+      model: gpt-4o
+      api_key_env: OPENAI_API_KEY
+      context_window: 128000
+      temperature: 0.7
+      max_tokens: 4096
+      cost_per_1k_input_tokens: 0.0025  # $2.50 per 1M input tokens
+      cost_per_1k_output_tokens: 0.010   # $10.00 per 1M output tokens
+      streaming: true
+      fallback: openai-mini
+    
+    # HOSTED: Anthropic Claude 3.5 Sonnet
+    anthropic-sonnet:
+      type: anthropic
+      model: claude-3-5-sonnet-20241022
+      api_key_env: ANTHROPIC_API_KEY
+      context_window: 200000
+      temperature: 0.7
+      max_tokens: 4096
+      cost_per_1k_input_tokens: 0.003   # $3.00 per 1M input tokens
+      cost_per_1k_output_tokens: 0.015  # $15.00 per 1M output tokens
+      streaming: true
+      fallback: openai-mini
+
+# Cost tracking (optional)
+cost_tracking:
+  enabled: false
+  log_file: data/logs/ai_costs.jsonl
+  alert_threshold_usd: 100.0  # Alert if monthly costs exceed this
+
+# Performance optimization
+optimization:
+  cache_embeddings: true
+  cache_ttl_seconds: 3600
+  batch_embed_threshold: 10  # Batch if >= 10 texts
+  retry_attempts: 3
+  retry_backoff_seconds: 1
