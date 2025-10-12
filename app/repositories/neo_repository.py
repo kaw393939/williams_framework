@@ -52,7 +52,12 @@ class NeoRepository:
         self.uri = uri
         self.user = user
         self.database = database
-        self._driver = GraphDatabase.driver(uri, auth=(user, password))
+        # Add a small connection timeout to avoid hangs when Neo4j is unreachable
+        self._driver = GraphDatabase.driver(
+            uri,
+            auth=(user, password),
+            connection_timeout=5.0,
+        )
         
         logger.info(f"Connected to Neo4j at {uri}")
     
@@ -103,7 +108,8 @@ class NeoRepository:
         parameters = parameters or {}
         
         with self._driver.session(database=self.database) as session:
-            result = session.run(query, parameters)
+            # Add per-query timeout (seconds) to prevent long-running operations from hanging tests
+            result = session.run(query, parameters, timeout=5.0)
             return [dict(record) for record in result]
     
     def execute_write(self, query: str, parameters: Optional[Dict[str, Any]] = None) -> List[Dict[str, Any]]:
@@ -120,7 +126,7 @@ class NeoRepository:
         parameters = parameters or {}
         
         def _write_tx(tx):
-            result = tx.run(query, parameters)
+            result = tx.run(query, parameters, timeout=5.0)
             return [dict(record) for record in result]
         
         with self._driver.session(database=self.database) as session:
