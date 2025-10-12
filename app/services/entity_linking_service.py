@@ -49,14 +49,23 @@ class EntityLinkingService:
 
         Returns:
             Canonical entity ID
+            
+        Raises:
+            ValueError: If mention_id does not exist
         """
+        # Validate that mention exists
+        mention_text = self._neo_repo.get_mention_text(mention_id)
+        if mention_text is None:
+            raise ValueError(f"Mention with id '{mention_id}' does not exist")
+        
         # First, try to find an existing similar entity (fuzzy matching)
         similar_entity = self._find_similar_entity(canonical_name, entity_type)
         
         if similar_entity:
-            # Use existing entity's ID and canonical name
+            # Use existing entity's ID
             entity_id = similar_entity["id"]
-            existing_canonical_name = similar_entity.get("canonical_name", canonical_name)
+            # If entity already has canonical_name, use it; otherwise use the NEW canonical_name we're setting
+            existing_canonical_name = similar_entity.get("canonical_name") or canonical_name
         else:
             # Generate new deterministic entity ID
             entity_id = generate_entity_id(canonical_name, entity_type)
@@ -82,8 +91,9 @@ class EntityLinkingService:
             # Note: mention_count is already tracked by Sprint 5's create_entity
             # which increments on each create_entity_mention call
             
-            # Calculate confidence based on similarity to existing canonical name
-            confidence = self._calculate_confidence(canonical_name, existing_canonical_name)
+            # Calculate confidence between mention text and existing canonical name
+            confidence = self._calculate_confidence(mention_text, existing_canonical_name)
+            
             self._neo_repo.link_mention_to_entity(
                 mention_id=mention_id,
                 entity_id=entity_id,
@@ -99,11 +109,13 @@ class EntityLinkingService:
                 entity_type=entity_type,
                 aliases=[canonical_name],
             )
-            # Link mention with exact confidence
+            # Calculate confidence between mention text and canonical name
+            confidence = self._calculate_confidence(mention_text, canonical_name)
+            
             self._neo_repo.link_mention_to_entity(
                 mention_id=mention_id,
                 entity_id=entity_id,
-                confidence=1.0,
+                confidence=confidence,
             )
 
         return entity_id
@@ -203,6 +215,21 @@ class EntityLinkingService:
             # Longer match = higher score
             return 0.85 + (len(shorter) / len(longer)) * 0.15
         
+        # Check if they match when spaces removed (e.g., "open ai" vs "openai")
+        s1_no_space = s1.replace(" ", "")
+        s2_no_space = s2.replace(" ", "")
+        
+        if s1_no_space == s2_no_space:
+            # Same text, just different spacing - high fuzzy match (0.95)
+            return 0.95
+        
+        # Check substring without spaces
+        shorter_no_space = s1_no_space if len(s1_no_space) < len(s2_no_space) else s2_no_space
+        longer_no_space = s2_no_space if len(s1_no_space) < len(s2_no_space) else s1_no_space
+        
+        if shorter_no_space in longer_no_space:
+            return 0.85 + (len(shorter_no_space) / len(longer_no_space)) * 0.10
+        
         # Otherwise use character-level similarity
         common = sum(c1 == c2 for c1, c2 in zip(s1, s2))
         max_len = max(len(s1), len(s2))
@@ -238,9 +265,15 @@ class EntityLinkingService:
             # Calculate similarity
             similarity = self._string_similarity(search_norm, entity_norm)
             
+            has_canonical = entity.get("canonical_name") is not None
+            
             # If very similar (>80%), consider it a match
-            if similarity > 0.8 and similarity > best_score:
-                best_match = entity
-                best_score = similarity
-        
+            # Prefer entities that already have canonical_name set (already linked)
+            if similarity > 0.8:
+                # Boost score for entities with canonical_name (prefer already-linked entities)
+                effective_score = similarity + (0.1 if has_canonical else 0.0)
+                
+                if effective_score > best_score:
+                    best_match = entity
+                    best_score = effective_score
         return best_match

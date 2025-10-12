@@ -874,3 +874,20 @@ class NeoRepository:
         
         results = self.execute_query(query, {"entity_type": entity_type})
         return [dict(result["e"]) for result in results]
+    
+    def get_mention_text(self, mention_id: str) -> str | None:
+        """Get the text of a mention.
+
+        Args:
+            mention_id: Mention ID
+
+        Returns:
+            Mention text (from related Entity), or None if not found
+        """
+        query = """
+        MATCH (m:Mention {id: $mention_id})-[:REFERS_TO]->(e:Entity)
+        RETURN e.text as text
+        """
+        
+        result = self.execute_query(query, {"mention_id": mention_id})
+        return result[0]["text"] if result else None
