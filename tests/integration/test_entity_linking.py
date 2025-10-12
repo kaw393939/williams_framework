@@ -245,7 +245,7 @@ class TestEntityLinking:
         # Arrange - create two documents with entity variants
         url1 = "https://example.com/doc1"
         doc1_id = generate_doc_id(url1)
-        neo_repo.create_document(doc1_id, url1, "Doc 1", {})
+        neo_repo.create_document(doc_id=doc1_id, url=url1, title="Doc 1", metadata={})
         
         chunk1_id = generate_chunk_id(doc1_id, 0)
         neo_repo.create_chunk(chunk1_id, doc1_id, "OpenAI released GPT-4.", 0, 22, None)
@@ -255,7 +255,7 @@ class TestEntityLinking:
         
         url2 = "https://example.com/doc2"
         doc2_id = generate_doc_id(url2)
-        neo_repo.create_document(doc2_id, url2, "Doc 2", {})
+        neo_repo.create_document(doc_id=doc2_id, url=url2, title="Doc 2", metadata={})
         
         chunk2_id = generate_chunk_id(doc2_id, 0)
         neo_repo.create_chunk(chunk2_id, doc2_id, "OpenAI Inc. is an AI company.", 0, 30, None)
@@ -298,7 +298,7 @@ class TestEntityLinking:
         # Arrange
         url = "https://example.com/fuzzy"
         doc_id = generate_doc_id(url)
-        neo_repo.create_document(doc_id, url, "Fuzzy Test", {})
+        neo_repo.create_document(doc_id=doc_id, url=url, title="Fuzzy Test", metadata={})
         
         chunk_id = generate_chunk_id(doc_id, 0)
         neo_repo.create_chunk(chunk_id, doc_id, "Open AI is innovative.", 0, 22, None)
@@ -335,7 +335,7 @@ class TestEntityLinking:
         # Test exact match
         url = "https://example.com/confidence"
         doc_id = generate_doc_id(url)
-        neo_repo.create_document(doc_id, url, "Confidence Test", {})
+        neo_repo.create_document(doc_id=doc_id, url=url, title="Confidence Test", metadata={})
         
         chunk_id = generate_chunk_id(doc_id, 0)
         neo_repo.create_chunk(chunk_id, doc_id, "Tesla Inc. makes cars.", 0, 22, None)
@@ -400,7 +400,7 @@ class TestEntityLinking:
         # Arrange
         url = "https://example.com/attrs"
         doc_id = generate_doc_id(url)
-        neo_repo.create_document(doc_id, url, "Attrs Test", {})
+        neo_repo.create_document(doc_id=doc_id, url=url, title="Attrs Test", metadata={})
         
         chunk_id = generate_chunk_id(doc_id, 0)
         neo_repo.create_chunk(chunk_id, doc_id, "Microsoft is big.", 0, 17, None)
@@ -442,7 +442,7 @@ class TestEntityLinking:
         # Arrange - create 100 entity mentions
         url = "https://example.com/batch"
         doc_id = generate_doc_id(url)
-        neo_repo.create_document(doc_id, url, "Batch Test", {})
+        neo_repo.create_document(doc_id=doc_id, url=url, title="Batch Test", metadata={})
         
         chunk_id = generate_chunk_id(doc_id, 0)
         neo_repo.create_chunk(chunk_id, doc_id, "Batch test chunk.", 0, 17, None)
@@ -485,7 +485,7 @@ class TestEntityLinking:
         # Arrange - create valid mentions + intentionally trigger error
         url = "https://example.com/rollback"
         doc_id = generate_doc_id(url)
-        neo_repo.create_document(doc_id, url, "Rollback Test", {})
+        neo_repo.create_document(doc_id=doc_id, url=url, title="Rollback Test", metadata={})
         
         chunk_id = generate_chunk_id(doc_id, 0)
         neo_repo.create_chunk(chunk_id, doc_id, "Rollback test.", 0, 14, None)

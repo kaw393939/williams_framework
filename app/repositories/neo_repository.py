@@ -783,8 +783,8 @@ class NeoRepository:
             e.mention_count = 1,
             e.created_at = datetime()
         ON MATCH SET
-            e.canonical_name = CASE WHEN e.canonical_name IS NULL THEN $canonical_name ELSE e.canonical_name END,
-            e.aliases = CASE WHEN e.aliases IS NULL THEN $aliases ELSE e.aliases END
+            e.canonical_name = coalesce(e.canonical_name, $canonical_name),
+            e.aliases = coalesce(e.aliases, $aliases)
         RETURN e.id as id
         """
         
@@ -857,3 +857,20 @@ class NeoRepository:
         """
         
         self.execute_write(query, {"entity_id": entity_id, "alias": alias})
+
+    def get_entities_by_type(self, entity_type: str) -> list[dict[str, Any]]:
+        """Get all entities of a specific type.
+
+        Args:
+            entity_type: Entity type (PERSON, ORG, etc.)
+
+        Returns:
+            List of entity nodes
+        """
+        query = """
+        MATCH (e:Entity {entity_type: $entity_type})
+        RETURN e
+        """
+        
+        results = self.execute_query(query, {"entity_type": entity_type})
+        return [dict(result["e"]) for result in results]

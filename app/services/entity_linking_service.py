@@ -36,10 +36,11 @@ class EntityLinkingService:
         """Link a mention to a canonical entity.
 
         This method:
-        1. Finds or creates canonical Entity node
-        2. Creates LINKED_TO relationship with confidence score
-        3. Updates entity mention_count and aliases
-        4. Returns canonical entity ID
+        1. Fuzzy matches to find existing similar entities
+        2. Finds or creates canonical Entity node
+        3. Creates LINKED_TO relationship with confidence score
+        4. Updates entity mention_count and aliases
+        5. Returns canonical entity ID
 
         Args:
             mention_id: Mention ID to link
@@ -49,22 +50,45 @@ class EntityLinkingService:
         Returns:
             Canonical entity ID
         """
-        # Generate deterministic entity ID (Sprint 5 convention)
-        entity_id = generate_entity_id(canonical_name, entity_type)
+        # First, try to find an existing similar entity (fuzzy matching)
+        similar_entity = self._find_similar_entity(canonical_name, entity_type)
+        
+        if similar_entity:
+            # Use existing entity's ID and canonical name
+            entity_id = similar_entity["id"]
+            existing_canonical_name = similar_entity.get("canonical_name", canonical_name)
+        else:
+            # Generate new deterministic entity ID
+            entity_id = generate_entity_id(canonical_name, entity_type)
+            existing_canonical_name = canonical_name
 
         # Check if canonical entity already exists
         existing_entity = self._neo_repo.get_entity(entity_id)
 
         if existing_entity:
-            # Entity exists - add link and update count
-            confidence = self._calculate_confidence(canonical_name, canonical_name)
+            # Entity exists - ensure it has canonical fields
+            # (it might have been created by EntityExtractor without canonical_name)
+            has_canonical = existing_entity.get("canonical_name") is not None
+            
+            if not has_canonical:
+                # Add canonical fields to existing entity
+                # Don't increment count - entity already has mention_count from creation
+                self._neo_repo.create_canonical_entity(
+                    entity_id=entity_id,
+                    canonical_name=canonical_name,
+                    entity_type=entity_type,
+                    aliases=[canonical_name],
+                )
+            # Note: mention_count is already tracked by Sprint 5's create_entity
+            # which increments on each create_entity_mention call
+            
+            # Calculate confidence based on similarity to existing canonical name
+            confidence = self._calculate_confidence(canonical_name, existing_canonical_name)
             self._neo_repo.link_mention_to_entity(
                 mention_id=mention_id,
                 entity_id=entity_id,
                 confidence=confidence,
             )
-            # Update mention count
-            self._neo_repo.increment_entity_mention_count(entity_id)
             # Add to aliases if needed
             self._neo_repo.add_entity_alias(entity_id, canonical_name)
         else:
@@ -154,7 +178,7 @@ class EntityLinkingService:
         return " ".join(text.lower().split())
 
     def _string_similarity(self, s1: str, s2: str) -> float:
-        """Calculate string similarity using character-level comparison.
+        """Calculate string similarity using substring and character matching.
 
         Args:
             s1: First string
@@ -163,13 +187,60 @@ class EntityLinkingService:
         Returns:
             Similarity score (0.0-1.0)
         """
-        # Simple character-level similarity
-        # (In production, could use Levenshtein distance or other algorithms)
         if not s1 or not s2:
             return 0.0
 
-        # Count common characters
+        # Check for exact match first
+        if s1 == s2:
+            return 1.0
+
+        # Check for substring match (e.g., "openai" in "openai inc")
+        shorter = s1 if len(s1) < len(s2) else s2
+        longer = s2 if len(s1) < len(s2) else s1
+        
+        if shorter in longer:
+            # Substring match - give high similarity score (0.85+)
+            # Longer match = higher score
+            return 0.85 + (len(shorter) / len(longer)) * 0.15
+        
+        # Otherwise use character-level similarity
         common = sum(c1 == c2 for c1, c2 in zip(s1, s2))
         max_len = max(len(s1), len(s2))
         
         return common / max_len if max_len > 0 else 0.0
+
+    def _find_similar_entity(
+        self, canonical_name: str, entity_type: str
+    ) -> dict[str, Any] | None:
+        """Find existing entity with similar name (fuzzy matching).
+
+        Args:
+            canonical_name: Canonical name to search for
+            entity_type: Entity type to filter by
+
+        Returns:
+            Existing entity dict or None if no match found
+        """
+        # Get all entities of this type
+        all_entities = self._neo_repo.get_entities_by_type(entity_type)
+        
+        # Normalize the search name
+        search_norm = self._normalize_text(canonical_name)
+        
+        # Find best match
+        best_match = None
+        best_score = 0.0
+        
+        for entity in all_entities:
+            entity_name = entity.get("canonical_name") or entity.get("text", "")
+            entity_norm = self._normalize_text(entity_name)
+            
+            # Calculate similarity
+            similarity = self._string_similarity(search_norm, entity_norm)
+            
+            # If very similar (>80%), consider it a match
+            if similarity > 0.8 and similarity > best_score:
+                best_match = entity
+                best_score = similarity
+        
+        return best_match
