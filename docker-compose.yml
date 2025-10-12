@@ -91,6 +91,31 @@ services:
       retries: 10
       start_period: 40s
 
+  ollama:
+    image: ollama/ollama:latest
+    container_name: williams-librarian-ollama
+    ports:
+      - "11434:11434"  # Ollama API
+    volumes:
+      - ollama_models:/root/.ollama
+    environment:
+      - OLLAMA_HOST=0.0.0.0:11434
+    # GPU support (NVIDIA RTX 4060)
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    restart: unless-stopped
+
 volumes:
   postgres_data:
     driver: local
@@ -107,4 +132,6 @@ volumes:
   neo4j_import:
     driver: local
   neo4j_plugins:
+    driver: local
+  ollama_models:
     driver: local
