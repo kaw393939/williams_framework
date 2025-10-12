@@ -28,10 +28,11 @@ def test_build_app_uses_state_provider(monkeypatch):
     provider = make_state_provider()
     calls = []
 
-    def fake_run_app(state_provider):
+    def fake_run_app(state_provider=None):
         calls.append(state_provider)
 
-    monkeypatch.setattr("app.presentation.app.run_app", fake_run_app)
+    # Patch the actual implementation in streamlit_app, not the re-export
+    monkeypatch.setattr("app.presentation.streamlit_app.run_app", fake_run_app)
 
     runner = build_app(provider)
     runner()
