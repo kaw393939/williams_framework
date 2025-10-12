@@ -28,7 +28,7 @@ class AnthropicLLMProvider(AbstractLLMProvider):
     
     def __init__(
         self,
-        model_name: str = "claude-sonnet-4.5-20250110",
+        model_name: str = "claude-3-5-sonnet-20241022",
         api_key_env: str = "ANTHROPIC_API_KEY",
         temperature: float = 0.7,
         context_window: int = 200000,
@@ -38,7 +38,7 @@ class AnthropicLLMProvider(AbstractLLMProvider):
         Initialize Anthropic LLM provider.
         
         Args:
-            model_name: Model to use (e.g., claude-sonnet-4.5-20250110, claude-opus-4.1-20250110)
+            model_name: Model to use (e.g., claude-3-5-sonnet-20241022, claude-3-opus-20240229)
             api_key_env: Environment variable containing API key
             temperature: Default temperature (0.0-1.0)
             context_window: Maximum context window size

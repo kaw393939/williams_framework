@@ -119,7 +119,7 @@ def anthropic_provider():
     from app.intelligence.providers.anthropic_llm_provider import AnthropicLLMProvider
     
     provider = AnthropicLLMProvider(
-        model_name="claude-sonnet-4.5-20250110",
+        model_name="claude-3-5-sonnet-20241022",
         temperature=0.7
     )
     
@@ -129,7 +129,7 @@ def anthropic_provider():
 @pytest.mark.skipif(not ANTHROPIC_KEY_AVAILABLE, reason="ANTHROPIC_API_KEY not set")
 def test_anthropic_initialization(anthropic_provider):
     """Test Anthropic provider initialization."""
-    assert anthropic_provider.model_name == "claude-sonnet-4.5-20250110"
+    assert anthropic_provider.model_name == "claude-3-5-sonnet-20241022"
     assert anthropic_provider.get_context_window() == 200000
     assert anthropic_provider.client is not None
 
