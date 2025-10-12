@@ -13,7 +13,7 @@ _DESCRIPTION = (
 )
 
 
-def render_app(state: PresentationState) -> None:
+def render_app(state: PresentationState) -> None:  # pragma: no cover - Streamlit UI rendering
     """Render the Streamlit UI for a given presentation state."""
 
     st.set_page_config(page_title=_TITLE, layout="wide")
@@ -42,7 +42,7 @@ def render_app(state: PresentationState) -> None:
             st.divider()
 
 
-def run_app(state_provider=None) -> None:
+def run_app(state_provider=None) -> None:  # pragma: no cover - Streamlit execution
     """Execute the Streamlit app using the supplied state provider."""
 
     provider = state_provider or default_state_provider
@@ -100,7 +100,7 @@ def default_state_provider() -> PresentationState:
     )
 
 
-def main() -> None:
+def main() -> None:  # pragma: no cover - CLI entry point
     """Entry point used by `streamlit run`."""
 
     run_app()
