@@ -22,7 +22,7 @@ class PluginRegistry:
             PluginError: If a plugin with the same ID is already registered.
         """
         plugin_id = plugin.plugin_id
-        
+
         if plugin_id in self._plugins:
             existing = self._plugins[plugin_id]
             raise PluginError(
@@ -31,7 +31,7 @@ class PluginRegistry:
                 f"Cannot register duplicate plugin ID. "
                 f"Please use a unique plugin_id or unregister the existing plugin first."
             )
-        
+
         self._plugins[plugin_id] = plugin
 
     def get(self, plugin_id: str) -> Optional[Any]:

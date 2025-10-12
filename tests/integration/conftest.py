@@ -10,7 +10,7 @@ def is_neo4j_available() -> bool:
         result = sock.connect_ex(('localhost', 7687))
         sock.close()
         return result == 0
-    except:
+    except Exception:
         return False
 
 
@@ -27,14 +27,14 @@ pytestmark = pytest.mark.skipif(
 def neo_repo():
     """Fixture providing NeoRepository instance with cleanup."""
     from app.repositories.neo_repository import NeoRepository
-    
+
     repo = NeoRepository()
-    
+
     # Verify connection
     assert repo.verify_connectivity(), "Failed to connect to Neo4j"
-    
+
     yield repo
-    
+
     # Cleanup: Clear test data
     try:
         repo.clear_database()

@@ -5,6 +5,7 @@ This test should FAIL initially since ScreeningResult doesn't exist yet.
 """
 import pytest
 from pydantic import ValidationError
+
 from app.core.models import ScreeningResult
 
 
@@ -20,10 +21,10 @@ class TestScreeningResult:
             "reasoning": "High quality content with clear value",
             "estimated_quality": 8.7
         }
-        
+
         # Act
         result = ScreeningResult(**data)
-        
+
         # Assert
         assert result.screening_score == 8.5
         assert result.decision == "ACCEPT"
@@ -39,10 +40,10 @@ class TestScreeningResult:
             "reasoning": "Low quality content with minimal value",
             "estimated_quality": 3.0
         }
-        
+
         # Act
         result = ScreeningResult(**data)
-        
+
         # Assert
         assert result.screening_score == 3.2
         assert result.decision == "REJECT"
@@ -59,7 +60,7 @@ class TestScreeningResult:
                 estimated_quality=0.0
             )
         assert "screening_score" in str(exc_info.value)
-        
+
         # Test upper bound violation
         with pytest.raises(ValidationError) as exc_info:
             ScreeningResult(
@@ -69,7 +70,7 @@ class TestScreeningResult:
                 estimated_quality=10.0
             )
         assert "screening_score" in str(exc_info.value)
-        
+
         # Test valid boundaries
         result_min = ScreeningResult(
             screening_score=0.0,
@@ -78,7 +79,7 @@ class TestScreeningResult:
             estimated_quality=0.0
         )
         assert result_min.screening_score == 0.0
-        
+
         result_max = ScreeningResult(
             screening_score=10.0,
             decision="ACCEPT",
@@ -98,7 +99,7 @@ class TestScreeningResult:
                 estimated_quality=-0.5
             )
         assert "estimated_quality" in str(exc_info.value)
-        
+
         # Test upper bound violation
         with pytest.raises(ValidationError) as exc_info:
             ScreeningResult(
@@ -120,7 +121,7 @@ class TestScreeningResult:
                 estimated_quality=5.0
             )
             assert result.decision == decision
-        
+
         # Invalid decision
         with pytest.raises(ValidationError) as exc_info:
             ScreeningResult(
@@ -141,7 +142,7 @@ class TestScreeningResult:
                 estimated_quality=5.0
             )
         assert "reasoning" in str(exc_info.value)
-        
+
         # Empty reasoning
         with pytest.raises(ValidationError) as exc_info:
             ScreeningResult(
@@ -161,10 +162,10 @@ class TestScreeningResult:
             reasoning="Good content",
             estimated_quality=7.8
         )
-        
+
         # Act
         json_data = result.model_dump()
-        
+
         # Assert
         assert json_data["screening_score"] == 7.5
         assert json_data["decision"] == "ACCEPT"
@@ -180,10 +181,10 @@ class TestScreeningResult:
             "reasoning": "Needs review",
             "estimated_quality": 6.0
         }
-        
+
         # Act
         result = ScreeningResult(**json_data)
-        
+
         # Assert
         assert result.screening_score == 6.5
         assert result.decision == "MAYBE"
@@ -197,7 +198,7 @@ class TestScreeningResult:
             reasoning="Test",
             estimated_quality=8.0
         )
-        
+
         # Act & Assert
         with pytest.raises((ValidationError, AttributeError)):
             result.screening_score = 9.0

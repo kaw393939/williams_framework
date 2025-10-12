@@ -1,7 +1,10 @@
 import io
 import json
+
 import pytest
+
 from app.pipeline.cli import main
+
 
 @pytest.mark.integration
 def test_cli_ingests_youtube_and_outputs_json(monkeypatch):

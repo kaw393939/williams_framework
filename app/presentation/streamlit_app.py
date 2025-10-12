@@ -5,7 +5,7 @@ from collections.abc import Callable
 
 import streamlit as st
 
-from app.presentation.state import PresentationState, PresentationStats, LibraryItem
+from app.presentation.state import LibraryItem, PresentationState, PresentationStats
 
 _TITLE = "Williams Librarian"
 _DESCRIPTION = (
@@ -61,11 +61,11 @@ def build_app(state_provider: Callable[[], PresentationState]) -> Callable[[], N
 def default_state_provider() -> PresentationState:
     """Return a default, empty state for interactive runs."""
     from pathlib import Path
-    
+
     # Load actual library files from data/library
     library_root = Path("data/library")
     library_items = []
-    
+
     if library_root.exists():
         for tier_dir in ["tier-a", "tier-b", "tier-c", "tier-d"]:
             tier_path = library_root / tier_dir
@@ -76,7 +76,7 @@ def default_state_provider() -> PresentationState:
                         # Extract title from first line or use filename
                         lines = content.split("\n")
                         title = lines[0].strip("# ").strip() if lines else md_file.stem
-                        
+
                         library_items.append(
                             LibraryItem(
                                 title=title,
@@ -88,12 +88,12 @@ def default_state_provider() -> PresentationState:
                     except Exception:
                         # Skip files that can't be read
                         pass
-    
+
     # Calculate stats
     tier_counts = {}
     for item in library_items:
         tier_counts[item.tier] = tier_counts.get(item.tier, 0) + 1
-    
+
     return PresentationState(
         library_items=tuple(library_items),
         stats=PresentationStats(total_items=len(library_items), tier_counts=tier_counts),

@@ -4,6 +4,7 @@ Following TDD RED-GREEN-REFACTOR cycle.
 This test should FAIL initially since ContentSource doesn't exist yet.
 """
 import pytest
+
 from app.core.types import ContentSource
 
 
@@ -14,7 +15,7 @@ class TestContentSource:
         """Test that ContentSource has all required source types."""
         # Arrange & Act
         sources = list(ContentSource)
-        
+
         # Assert
         assert ContentSource.WEB in sources
         assert ContentSource.YOUTUBE in sources
@@ -34,10 +35,10 @@ class TestContentSource:
         """Test creating ContentSource from string value."""
         # Arrange
         source_str = "web"
-        
+
         # Act
         source = ContentSource(source_str)
-        
+
         # Assert
         assert source == ContentSource.WEB
 
@@ -45,7 +46,7 @@ class TestContentSource:
         """Test that invalid source type raises ValueError."""
         # Arrange
         invalid_source = "invalid_source"
-        
+
         # Act & Assert
         with pytest.raises(ValueError):
             ContentSource(invalid_source)
@@ -56,7 +57,7 @@ class TestContentSource:
         source1 = ContentSource.WEB
         source2 = ContentSource.WEB
         source3 = ContentSource.YOUTUBE
-        
+
         # Act & Assert
         assert source1 == source2
         assert source1 != source3
@@ -65,7 +66,7 @@ class TestContentSource:
         """Test ContentSource can be used in collections."""
         # Arrange
         sources = {ContentSource.WEB, ContentSource.PDF}
-        
+
         # Act & Assert
         assert ContentSource.WEB in sources
         assert ContentSource.YOUTUBE not in sources

@@ -1,7 +1,6 @@
 """Unit tests for remaining domain models: DigestItem, MaintenanceTask, ProcessingRecord."""
 from datetime import datetime
-import pytest
-from pydantic import ValidationError
+
 from app.core.models import DigestItem, MaintenanceTask, ProcessingRecord
 
 

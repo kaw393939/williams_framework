@@ -1,8 +1,8 @@
 """Typed presentation state shared between the Streamlit app and tests."""
 from __future__ import annotations
 
+from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
-from typing import Mapping, Sequence
 
 
 @dataclass(frozen=True)

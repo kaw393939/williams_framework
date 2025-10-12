@@ -31,7 +31,7 @@ class PromptLoader:
         if base_path is None:
             # Default to config/prompts relative to project root
             base_path = Path(__file__).resolve().parent.parent.parent / "config" / "prompts"
-        
+
         self._base_path = base_path
         self._cache: dict[str, PromptTemplate] = {}
 
@@ -69,8 +69,8 @@ class PromptLoader:
         checksum = hashlib.sha256(content.encode("utf-8")).hexdigest()
 
         template = PromptTemplate(name=name, content=content, checksum=checksum)
-        
+
         # Cache for future use
         self._cache[name] = template
-        
+
         return template

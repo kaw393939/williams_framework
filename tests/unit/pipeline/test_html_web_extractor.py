@@ -1,9 +1,9 @@
 import httpx
 import pytest
 
-from app.core.types import ContentSource
 from app.core.exceptions import ExtractionError
 from app.core.models import RawContent
+from app.core.types import ContentSource
 from app.pipeline.extractors.html import HTMLWebExtractor
 
 

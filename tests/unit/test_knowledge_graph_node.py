@@ -3,8 +3,10 @@
 Following TDD RED-GREEN-REFACTOR cycle.
 """
 from datetime import datetime
+
 import pytest
 from pydantic import ValidationError
+
 from app.core.models import KnowledgeGraphNode
 
 
@@ -24,10 +26,10 @@ class TestKnowledgeGraphNode:
             },
             "created_at": datetime(2025, 10, 9, 12, 0, 0)
         }
-        
+
         # Act
         node = KnowledgeGraphNode(**data)
-        
+
         # Assert
         assert node.node_id == "concept-neural-networks"
         assert node.label == "Neural Networks"
@@ -37,7 +39,7 @@ class TestKnowledgeGraphNode:
     def test_knowledge_graph_node_types(self):
         """Test valid node types."""
         valid_types = ["concept", "topic", "person", "organization", "technology"]
-        
+
         for node_type in valid_types:
             node = KnowledgeGraphNode(
                 node_id=f"test-{node_type}",
@@ -56,7 +58,7 @@ class TestKnowledgeGraphNode:
                 properties={}
             )
         assert "node_id" in str(exc_info.value).lower()
-        
+
         # Empty node_id
         with pytest.raises(ValidationError) as exc_info:
             KnowledgeGraphNode(
@@ -106,14 +108,14 @@ class TestKnowledgeGraphNode:
     def test_knowledge_graph_node_created_at_defaults(self):
         """Test that created_at defaults to current time."""
         before = datetime.now()
-        
+
         node = KnowledgeGraphNode(
             node_id="test-node",
             label="Test",
             node_type="topic",
             properties={}
         )
-        
+
         after = datetime.now()
         assert before <= node.created_at <= after
 
@@ -126,7 +128,7 @@ class TestKnowledgeGraphNode:
             properties={"version": "2.0"},
             created_at=datetime(2025, 10, 9, 12, 0, 0)
         )
-        
+
         json_data = node.model_dump()
         assert json_data["node_id"] == "serialize-test"
         assert json_data["node_type"] == "technology"

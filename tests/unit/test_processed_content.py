@@ -3,8 +3,10 @@
 Following TDD RED-GREEN-REFACTOR cycle.
 """
 from datetime import datetime
+
 import pytest
 from pydantic import ValidationError
+
 from app.core.models import ProcessedContent, ScreeningResult
 from app.core.types import ContentSource
 
@@ -21,7 +23,7 @@ class TestProcessedContent:
             reasoning="High quality",
             estimated_quality=8.7
         )
-        
+
         data = {
             "url": "https://example.com/article",
             "source_type": ContentSource.WEB,
@@ -32,10 +34,10 @@ class TestProcessedContent:
             "screening_result": screening,
             "processed_at": datetime(2025, 10, 9, 12, 0, 0)
         }
-        
+
         # Act
         content = ProcessedContent(**data)
-        
+
         # Assert
         assert str(content.url) == "https://example.com/article"
         assert content.source_type == ContentSource.WEB
@@ -52,7 +54,7 @@ class TestProcessedContent:
             reasoning="Good",
             estimated_quality=8.0
         )
-        
+
         # Missing title
         with pytest.raises(ValidationError) as exc_info:
             ProcessedContent(
@@ -64,7 +66,7 @@ class TestProcessedContent:
                 screening_result=screening
             )
         assert "title" in str(exc_info.value).lower()
-        
+
         # Empty title
         with pytest.raises(ValidationError) as exc_info:
             ProcessedContent(
@@ -86,7 +88,7 @@ class TestProcessedContent:
             reasoning="Good",
             estimated_quality=8.0
         )
-        
+
         with pytest.raises(ValidationError) as exc_info:
             ProcessedContent(
                 url="https://example.com",
@@ -106,7 +108,7 @@ class TestProcessedContent:
             reasoning="Uncertain",
             estimated_quality=5.0
         )
-        
+
         # Act
         content = ProcessedContent(
             url="https://example.com",
@@ -117,7 +119,7 @@ class TestProcessedContent:
             tags=[],
             screening_result=screening
         )
-        
+
         # Assert
         assert content.key_points == []
 
@@ -129,7 +131,7 @@ class TestProcessedContent:
             reasoning="Good",
             estimated_quality=7.0
         )
-        
+
         # Act
         content = ProcessedContent(
             url="https://example.com",
@@ -140,7 +142,7 @@ class TestProcessedContent:
             tags=[],
             screening_result=screening
         )
-        
+
         # Assert
         assert content.tags == []
 
@@ -152,9 +154,9 @@ class TestProcessedContent:
             reasoning="Good",
             estimated_quality=8.0
         )
-        
+
         before = datetime.now()
-        
+
         content = ProcessedContent(
             url="https://example.com",
             source_type=ContentSource.WEB,
@@ -164,9 +166,9 @@ class TestProcessedContent:
             tags=[],
             screening_result=screening
         )
-        
+
         after = datetime.now()
-        
+
         assert before <= content.processed_at <= after
 
     def test_processed_content_with_multiple_tags(self):
@@ -177,7 +179,7 @@ class TestProcessedContent:
             reasoning="Excellent",
             estimated_quality=9.2
         )
-        
+
         content = ProcessedContent(
             url="https://example.com",
             source_type=ContentSource.YOUTUBE,
@@ -187,7 +189,7 @@ class TestProcessedContent:
             tags=["artificial-intelligence", "machine-learning", "deep-learning", "neural-networks"],
             screening_result=screening
         )
-        
+
         assert len(content.tags) == 4
         assert "neural-networks" in content.tags
 
@@ -199,7 +201,7 @@ class TestProcessedContent:
             reasoning="Good",
             estimated_quality=8.0
         )
-        
+
         content = ProcessedContent(
             url="https://example.com",
             source_type=ContentSource.WEB,
@@ -210,9 +212,9 @@ class TestProcessedContent:
             screening_result=screening,
             processed_at=datetime(2025, 10, 9, 12, 0, 0)
         )
-        
+
         json_data = content.model_dump()
-        
+
         assert json_data["title"] == "Test"
         assert json_data["source_type"] == "web"
         assert json_data["screening_result"]["decision"] == "ACCEPT"
@@ -225,7 +227,7 @@ class TestProcessedContent:
             reasoning="Low quality content",
             estimated_quality=2.5
         )
-        
+
         content = ProcessedContent(
             url="https://example.com/bad",
             source_type=ContentSource.WEB,
@@ -235,6 +237,6 @@ class TestProcessedContent:
             tags=[],
             screening_result=screening
         )
-        
+
         assert content.screening_result.decision == "REJECT"
         assert content.screening_result.screening_score == 2.0

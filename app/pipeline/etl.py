@@ -2,13 +2,13 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Optional, Any
+from typing import Any, Optional
 
-from app.core.models import RawContent, ProcessedContent, LibraryFile
+from app.core.models import LibraryFile, ProcessedContent, RawContent
 
 from .extractors.base import ContentExtractor
-from .transformers.base import ContentTransformer
 from .loaders.base import ContentLoader
+from .transformers.base import ContentTransformer
 
 
 @dataclass(slots=True)
@@ -51,20 +51,20 @@ class ContentPipeline:
 
     async def initialize(self) -> None:
         """Initialize the pipeline and execute plugin on_load hooks."""
-        from app.core.telemetry import log_event
         from app.core.config import get_settings
-        
+        from app.core.telemetry import log_event
+
         if self._initialized:
             return
-        
+
         settings = get_settings()
-        
+
         if self._plugin_registry and settings.enable_plugins:
             plugins = self._plugin_registry.all()
             for plugin in plugins:
                 context = {"pipeline": "initialized"}
                 result = await plugin.on_load(context)
-                
+
                 # Support both dict and object responses
                 if isinstance(result, dict):
                     plugin_id = result.get("plugin_id")
@@ -74,7 +74,7 @@ class ContentPipeline:
                     plugin_id = result.plugin_id
                     event = result.event
                     payload = result.payload
-                
+
                 log_event({
                     "event_type": "plugin.on_load",
                     "timestamp": None,
@@ -82,22 +82,22 @@ class ContentPipeline:
                     "event": event,
                     "payload": payload,
                 })
-        
+
         self._initialized = True
 
     async def before_store(self, content: dict[str, Any]) -> dict[str, Any]:
         """Execute plugin before_store hooks and return modified content."""
-        from app.core.telemetry import log_event
         from app.core.config import get_settings
-        
+        from app.core.telemetry import log_event
+
         modified_content = content
         settings = get_settings()
-        
+
         if self._plugin_registry and settings.enable_plugins:
             plugins = self._plugin_registry.all()
             for plugin in plugins:
                 result = await plugin.before_store(modified_content)
-                
+
                 # Support both dict and object responses
                 if isinstance(result, dict):
                     plugin_id = result.get("plugin_id")
@@ -107,9 +107,9 @@ class ContentPipeline:
                     plugin_id = result.plugin_id
                     event = result.event
                     payload = result.payload
-                
+
                 modified_content = payload
-                
+
                 log_event({
                     "event_type": "plugin.before_store",
                     "timestamp": None,
@@ -117,7 +117,7 @@ class ContentPipeline:
                     "event": event,
                     "payload": payload,
                 })
-        
+
         return modified_content
 
     async def run(self, url: str) -> PipelineResult:

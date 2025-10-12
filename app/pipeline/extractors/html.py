@@ -6,8 +6,8 @@ from typing import Optional
 from urllib.parse import urlparse
 
 import httpx
-from bs4 import BeautifulSoup
 import trafilatura
+from bs4 import BeautifulSoup
 
 from app.core.exceptions import ExtractionError
 from app.core.models import RawContent

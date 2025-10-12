@@ -5,13 +5,11 @@ import math
 import re
 from collections import Counter
 from datetime import datetime
-from typing import Iterable
 from urllib.parse import urlparse
 
 from app.core.models import ProcessedContent, RawContent, ScreeningResult
 
 from .base import ContentTransformer
-
 
 STOPWORDS: set[str] = {
     "the",

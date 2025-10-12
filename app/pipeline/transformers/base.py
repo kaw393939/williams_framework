@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 
-from app.core.models import RawContent, ProcessedContent
+from app.core.models import ProcessedContent, RawContent
 
 
 class ContentTransformer(ABC):

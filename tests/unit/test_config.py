@@ -4,6 +4,7 @@ Following TDD RED-GREEN-REFACTOR cycle.
 """
 import pytest
 from pydantic import ValidationError
+
 from app.core.config import Settings
 
 
@@ -13,7 +14,7 @@ class TestSettings:
     def test_settings_with_defaults(self):
         """Test Settings with default values."""
         settings = Settings()
-        
+
         # Check defaults
         assert settings.log_level == "INFO"
         assert settings.monthly_budget == 100.0
@@ -25,7 +26,7 @@ class TestSettings:
     def test_settings_model_names(self):
         """Test model name defaults."""
         settings = Settings()
-        
+
         assert settings.model_nano == "gpt-5-nano"
         assert settings.model_mini == "gpt-5-mini"
         assert settings.model_standard == "gpt-5"
@@ -33,7 +34,7 @@ class TestSettings:
     def test_settings_database_config(self):
         """Test database configuration."""
         settings = Settings()
-        
+
         assert settings.postgres_host == "localhost"
         assert settings.postgres_port == 5432
         assert settings.postgres_db == "williams_librarian"
@@ -43,7 +44,7 @@ class TestSettings:
     def test_settings_paths(self):
         """Test path configurations."""
         settings = Settings()
-        
+
         assert settings.library_root == "./library"
         assert settings.qdrant_collection_name == "librarian_embeddings"
         assert settings.cache_dir == "./data/cache"
@@ -52,7 +53,7 @@ class TestSettings:
     def test_settings_feature_flags(self):
         """Test feature flag defaults."""
         settings = Settings()
-        
+
         assert settings.enable_caching is True
         assert settings.enable_batch_processing is True
         assert settings.enable_knowledge_graph is True
@@ -65,9 +66,9 @@ class TestSettings:
         monkeypatch.setenv("MONTHLY_BUDGET", "200.0")
         monkeypatch.setenv("POSTGRES_HOST", "db.example.com")
         monkeypatch.setenv("ENABLE_CACHING", "false")
-        
+
         settings = Settings()
-        
+
         assert settings.log_level == "DEBUG"
         assert settings.monthly_budget == 200.0
         assert settings.postgres_host == "db.example.com"
@@ -84,11 +85,11 @@ class TestSettings:
         # Monthly budget
         with pytest.raises(ValidationError):
             Settings(monthly_budget=-10.0)
-        
+
         # Daily budget
         with pytest.raises(ValidationError):
             Settings(daily_budget=-1.0)
-        
+
         # Per request limit
         with pytest.raises(ValidationError):
             Settings(per_request_limit=-0.5)
@@ -96,7 +97,7 @@ class TestSettings:
     def test_settings_tier_thresholds_order(self):
         """Test that tier thresholds are in correct order."""
         settings = Settings()
-        
+
         # tier-a > tier-b > tier-c
         assert settings.tier_a_threshold > settings.tier_b_threshold
         assert settings.tier_b_threshold > settings.tier_c_threshold
@@ -107,10 +108,10 @@ class TestSettings:
         # Postgres port
         with pytest.raises(ValidationError):
             Settings(postgres_port=-1)
-        
+
         with pytest.raises(ValidationError):
             Settings(postgres_port=70000)
-        
+
         # Redis port
         with pytest.raises(ValidationError):
             Settings(redis_port=0)
@@ -118,7 +119,7 @@ class TestSettings:
     def test_settings_worker_config(self):
         """Test worker configuration."""
         settings = Settings()
-        
+
         assert settings.worker_concurrency == 4
         assert settings.batch_size == 10
         assert settings.retry_max_attempts == 3
@@ -127,7 +128,7 @@ class TestSettings:
     def test_settings_immutable(self):
         """Test that Settings is immutable (frozen)."""
         settings = Settings()
-        
+
         with pytest.raises((ValidationError, AttributeError)):
             settings.log_level = "ERROR"
 

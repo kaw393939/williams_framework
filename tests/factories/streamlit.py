@@ -1,11 +1,9 @@
 """Factories for deterministic Streamlit presentation state."""
 from __future__ import annotations
 
-from collections.abc import Callable
-from typing import Sequence
+from collections.abc import Callable, Sequence
 
 from app.presentation.state import LibraryItem, PresentationState, PresentationStats
-
 
 _LIBRARY_FIXTURES: Sequence[LibraryItem] = (
     LibraryItem(

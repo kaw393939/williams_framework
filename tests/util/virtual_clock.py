@@ -1,12 +1,11 @@
 """Deterministic virtual clock utilities for async worker tests."""
 from __future__ import annotations
 
+import asyncio
 from collections.abc import Awaitable, Callable
 from dataclasses import dataclass, field
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from typing import Any
-
-import asyncio
 
 
 @dataclass
@@ -20,7 +19,7 @@ class VirtualClock:
     """A controllable clock that coordinates with asyncio sleepers."""
 
     start_at: datetime = field(
-        default_factory=lambda: datetime(2025, 1, 1, tzinfo=timezone.utc)
+        default_factory=lambda: datetime(2025, 1, 1, tzinfo=UTC)
     )
     loop: asyncio.AbstractEventLoop | None = None
 

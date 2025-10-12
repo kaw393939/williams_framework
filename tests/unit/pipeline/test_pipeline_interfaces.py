@@ -1,20 +1,18 @@
 import inspect
-from dataclasses import dataclass
+from pathlib import Path
 
 import pytest
 
-from pathlib import Path
-
-from app.core.models import RawContent, ProcessedContent, ScreeningResult, LibraryFile
+from app.core.models import LibraryFile, ProcessedContent, RawContent, ScreeningResult
 from app.core.types import ContentSource
 
 
 @pytest.mark.asyncio
 async def test_content_pipeline_runs_in_sequence():
-    from app.pipeline.extractors.base import ContentExtractor
-    from app.pipeline.transformers.base import ContentTransformer
-    from app.pipeline.loaders.base import ContentLoader
     from app.pipeline.etl import ContentPipeline, PipelineResult
+    from app.pipeline.extractors.base import ContentExtractor
+    from app.pipeline.loaders.base import ContentLoader
+    from app.pipeline.transformers.base import ContentTransformer
 
     class DummyExtractor(ContentExtractor):
         async def extract(self, url: str) -> RawContent:

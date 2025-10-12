@@ -3,8 +3,10 @@
 Following TDD RED-GREEN-REFACTOR cycle.
 """
 from datetime import datetime
+
 import pytest
 from pydantic import ValidationError
+
 from app.core.models import Relationship
 
 
@@ -20,9 +22,9 @@ class TestRelationship:
             "weight": 0.8,
             "created_at": datetime(2025, 10, 9, 12, 0, 0)
         }
-        
+
         rel = Relationship(**data)
-        
+
         assert rel.source_id == "node-1"
         assert rel.target_id == "node-2"
         assert rel.relationship_type == "related_to"
@@ -31,7 +33,7 @@ class TestRelationship:
     def test_relationship_types(self):
         """Test valid relationship types."""
         types = ["related_to", "mentions", "references", "derived_from", "similar_to"]
-        
+
         for rel_type in types:
             rel = Relationship(
                 source_id="source",
@@ -51,7 +53,7 @@ class TestRelationship:
                 relationship_type="related_to",
                 weight=-0.1
             )
-        
+
         # Above bounds
         with pytest.raises(ValidationError):
             Relationship(
@@ -60,7 +62,7 @@ class TestRelationship:
                 relationship_type="related_to",
                 weight=1.1
             )
-        
+
         # Valid bounds
         rel_min = Relationship(
             source_id="a",
@@ -69,7 +71,7 @@ class TestRelationship:
             weight=0.0
         )
         assert rel_min.weight == 0.0
-        
+
         rel_max = Relationship(
             source_id="a",
             target_id="b",
@@ -86,7 +88,7 @@ class TestRelationship:
                 relationship_type="related_to",
                 weight=0.5
             )
-        
+
         with pytest.raises(ValidationError):
             Relationship(
                 source_id="source",
@@ -97,14 +99,14 @@ class TestRelationship:
     def test_relationship_created_at_defaults(self):
         """Test created_at defaults to current time."""
         before = datetime.now()
-        
+
         rel = Relationship(
             source_id="a",
             target_id="b",
             relationship_type="mentions",
             weight=0.7
         )
-        
+
         after = datetime.now()
         assert before <= rel.created_at <= after
 
@@ -117,7 +119,7 @@ class TestRelationship:
             weight=0.95,
             created_at=datetime(2025, 10, 9, 12, 0, 0)
         )
-        
+
         json_data = rel.model_dump()
         assert json_data["source_id"] == "concept-ai"
         assert json_data["weight"] == 0.95

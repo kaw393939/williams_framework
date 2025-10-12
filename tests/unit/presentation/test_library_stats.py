@@ -7,18 +7,19 @@ These tests verify that:
 4. Component analyzes tag frequency
 5. Integration with Streamlit chart rendering
 """
+
 import pytest
-from unittest.mock import Mock, patch
 
 
 @pytest.mark.unit
 def test_stats_component_calculates_tier_distribution():
     """Test that component calculates distribution of items across tiers."""
-    from app.presentation.components.library_stats import LibraryStatsComponent
+    from datetime import datetime
+
     from app.core.models import LibraryFile
     from app.core.types import ContentSource
-    from datetime import datetime
-    
+    from app.presentation.components.library_stats import LibraryStatsComponent
+
     items = [
         LibraryFile(
             url="https://example.com/1",
@@ -57,10 +58,10 @@ def test_stats_component_calculates_tier_distribution():
             updated_at=datetime.now(),
         ),
     ]
-    
+
     component = LibraryStatsComponent()
     stats = component.calculate_stats(items)
-    
+
     assert stats["tier_distribution"]["tier-a"] == 2
     assert stats["tier_distribution"]["tier-b"] == 1
     assert stats["tier_distribution"]["tier-c"] == 0
@@ -69,11 +70,12 @@ def test_stats_component_calculates_tier_distribution():
 @pytest.mark.unit
 def test_stats_component_calculates_average_quality_score():
     """Test that component calculates average quality score."""
-    from app.presentation.components.library_stats import LibraryStatsComponent
+    from datetime import datetime
+
     from app.core.models import LibraryFile
     from app.core.types import ContentSource
-    from datetime import datetime
-    
+    from app.presentation.components.library_stats import LibraryStatsComponent
+
     items = [
         LibraryFile(
             url="https://example.com/1",
@@ -100,21 +102,22 @@ def test_stats_component_calculates_average_quality_score():
             updated_at=datetime.now(),
         ),
     ]
-    
+
     component = LibraryStatsComponent()
     stats = component.calculate_stats(items)
-    
+
     assert stats["average_quality_score"] == 8.0
 
 
 @pytest.mark.unit
 def test_stats_component_tracks_total_count():
     """Test that component tracks total item count."""
-    from app.presentation.components.library_stats import LibraryStatsComponent
+    from datetime import datetime
+
     from app.core.models import LibraryFile
     from app.core.types import ContentSource
-    from datetime import datetime
-    
+    from app.presentation.components.library_stats import LibraryStatsComponent
+
     items = [
         LibraryFile(
             url=f"https://example.com/{i}",
@@ -130,21 +133,22 @@ def test_stats_component_tracks_total_count():
         )
         for i in range(5)
     ]
-    
+
     component = LibraryStatsComponent()
     stats = component.calculate_stats(items)
-    
+
     assert stats["total_count"] == 5
 
 
 @pytest.mark.unit
 def test_stats_component_analyzes_tag_frequency():
     """Test that component analyzes tag frequency."""
-    from app.presentation.components.library_stats import LibraryStatsComponent
+    from datetime import datetime
+
     from app.core.models import LibraryFile
     from app.core.types import ContentSource
-    from datetime import datetime
-    
+    from app.presentation.components.library_stats import LibraryStatsComponent
+
     items = [
         LibraryFile(
             url="https://example.com/1",
@@ -183,10 +187,10 @@ def test_stats_component_analyzes_tag_frequency():
             updated_at=datetime.now(),
         ),
     ]
-    
+
     component = LibraryStatsComponent()
     stats = component.calculate_stats(items)
-    
+
     assert stats["tag_frequency"]["python"] == 2
     assert stats["tag_frequency"]["machine-learning"] == 2
     assert stats["tag_frequency"]["web"] == 1
@@ -196,10 +200,10 @@ def test_stats_component_analyzes_tag_frequency():
 def test_stats_component_handles_empty_library():
     """Test that component handles empty library gracefully."""
     from app.presentation.components.library_stats import LibraryStatsComponent
-    
+
     component = LibraryStatsComponent()
     stats = component.calculate_stats([])
-    
+
     assert stats["total_count"] == 0
     assert stats["average_quality_score"] == 0.0
     assert stats["tier_distribution"] == {"tier-a": 0, "tier-b": 0, "tier-c": 0}
@@ -209,11 +213,12 @@ def test_stats_component_handles_empty_library():
 @pytest.mark.unit
 def test_stats_component_returns_top_tags():
     """Test that component returns top N most frequent tags."""
-    from app.presentation.components.library_stats import LibraryStatsComponent
+    from datetime import datetime
+
     from app.core.models import LibraryFile
     from app.core.types import ContentSource
-    from datetime import datetime
-    
+    from app.presentation.components.library_stats import LibraryStatsComponent
+
     items = [
         LibraryFile(
             url=f"https://example.com/{i}",
@@ -229,10 +234,10 @@ def test_stats_component_returns_top_tags():
         )
         for i in range(1)
     ]
-    
+
     component = LibraryStatsComponent()
     top_tags = component.get_top_tags(items, top_n=2)
-    
+
     assert len(top_tags) == 2
     assert top_tags[0][0] == "python"
     assert top_tags[0][1] == 3
@@ -244,9 +249,9 @@ def test_stats_component_returns_top_tags():
 def test_stats_component_has_qa_ids():
     """Test that stats component has QA IDs for testing."""
     from app.presentation.components.library_stats import LibraryStatsComponent
-    
+
     component = LibraryStatsComponent()
-    
+
     assert hasattr(component, "total_count_qa_id")
     assert hasattr(component, "avg_score_qa_id")
     assert hasattr(component, "tier_chart_qa_id")
@@ -256,11 +261,12 @@ def test_stats_component_has_qa_ids():
 @pytest.mark.integration
 def test_stats_component_formats_tier_chart_data():
     """Test that component formats data for Streamlit tier distribution chart."""
-    from app.presentation.components.library_stats import LibraryStatsComponent
+    from datetime import datetime
+
     from app.core.models import LibraryFile
     from app.core.types import ContentSource
-    from datetime import datetime
-    
+    from app.presentation.components.library_stats import LibraryStatsComponent
+
     items = [
         LibraryFile(
             url=f"https://example.com/{i}",
@@ -276,10 +282,10 @@ def test_stats_component_formats_tier_chart_data():
         )
         for i in range(3)
     ]
-    
+
     component = LibraryStatsComponent()
     chart_data = component.format_tier_chart_data(items)
-    
+
     assert "tier" in chart_data
     assert "count" in chart_data
     assert len(chart_data["tier"]) == 3  # tier-a, tier-b, tier-c
@@ -289,11 +295,12 @@ def test_stats_component_formats_tier_chart_data():
 @pytest.mark.integration
 def test_stats_component_formats_tag_chart_data():
     """Test that component formats data for tag frequency chart."""
-    from app.presentation.components.library_stats import LibraryStatsComponent
+    from datetime import datetime
+
     from app.core.models import LibraryFile
     from app.core.types import ContentSource
-    from datetime import datetime
-    
+    from app.presentation.components.library_stats import LibraryStatsComponent
+
     items = [
         LibraryFile(
             url="https://example.com/1",
@@ -308,10 +315,10 @@ def test_stats_component_formats_tag_chart_data():
             updated_at=datetime.now(),
         ),
     ]
-    
+
     component = LibraryStatsComponent()
     chart_data = component.format_tag_chart_data(items, top_n=5)
-    
+
     assert "tag" in chart_data
     assert "count" in chart_data
     assert "python" in chart_data["tag"]

@@ -57,10 +57,10 @@ class EnrichmentPlugin:
         # Enrich content with additional metadata
         enriched = dict(content)
         tags = list(enriched.get("tags", []))
-        
+
         # Add enrichment tags
         tags.extend(["enriched", "sample-plugin"])
-        
+
         # Add metadata
         enriched["tags"] = tags
         enriched["enrichment_applied"] = True

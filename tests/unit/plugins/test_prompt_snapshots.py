@@ -7,7 +7,6 @@ import pytest
 
 from tests.plugins import prompts
 
-
 EXPECTED_SUMMARIZE_PROMPT = (
     "You are the Williams Librarian summarizer.\n"
     "Summarize the provided research artifact into three tiers:\n"

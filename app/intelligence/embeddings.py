@@ -10,8 +10,9 @@ from __future__ import annotations
 import hashlib
 import math
 import re
+from collections.abc import Iterable
 from functools import lru_cache
-from typing import Final, Iterable
+from typing import Final
 
 DEFAULT_DIMENSIONS: Final[int] = 384
 
@@ -54,7 +55,7 @@ def _generate_embedding(text: str, dimensions: int = DEFAULT_DIMENSIONS) -> tupl
     raw_values: list[float] = []
     for idx in range(dimensions):
         token = tokens[idx % len(tokens)]
-        token_seed = int(hashlib.sha256(f"{token}-{idx}-{base_seed}".encode("utf-8")).hexdigest(), 16)
+        token_seed = int(hashlib.sha256(f"{token}-{idx}-{base_seed}".encode()).hexdigest(), 16)
         # Map 256-bit value to the range [-1, 1].
         normalised = (token_seed % 10_000_000) / 5_000_000 - 1.0
         raw_values.append(normalised)

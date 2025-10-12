@@ -1,9 +1,9 @@
 """Tests for the async virtual clock fixture used by worker suites."""
 from __future__ import annotations
 
-from datetime import timedelta, timezone
-
 import asyncio
+from datetime import UTC, timedelta
+
 import pytest
 
 
@@ -30,7 +30,7 @@ def test_virtual_clock_now_is_timezone_aware(virtual_clock):
     """The clock should expose UTC-aware timestamps for deterministic comparisons."""
 
     now = virtual_clock.now()
-    assert now.tzinfo is timezone.utc
+    assert now.tzinfo is UTC
 
 
 def test_virtual_clock_advance_returns_updated_now(virtual_clock):

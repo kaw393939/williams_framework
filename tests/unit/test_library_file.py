@@ -4,8 +4,10 @@ Following TDD RED-GREEN-REFACTOR cycle.
 """
 from datetime import datetime
 from pathlib import Path
+
 import pytest
 from pydantic import ValidationError
+
 from app.core.models import LibraryFile
 from app.core.types import ContentSource
 
@@ -26,10 +28,10 @@ class TestLibraryFile:
             "tags": ["ai", "ml"],
             "created_at": datetime(2025, 10, 9, 12, 0, 0)
         }
-        
+
         # Act
         file = LibraryFile(**data)
-        
+
         # Assert
         assert file.file_path == Path("/library/tier-a/document.md")
         assert file.tier == "tier-a"
@@ -50,7 +52,7 @@ class TestLibraryFile:
                 tags=[]
             )
             assert file.tier == tier
-        
+
         # Invalid tier
         with pytest.raises(ValidationError) as exc_info:
             LibraryFile(
@@ -78,7 +80,7 @@ class TestLibraryFile:
                 tags=[]
             )
         assert "quality_score" in str(exc_info.value).lower()
-        
+
         # Test upper bound violation
         with pytest.raises(ValidationError) as exc_info:
             LibraryFile(
@@ -91,7 +93,7 @@ class TestLibraryFile:
                 tags=[]
             )
         assert "quality_score" in str(exc_info.value).lower()
-        
+
         # Valid boundaries
         file_min = LibraryFile(
             file_path=Path("/library/tier-d/file.md"),
@@ -103,7 +105,7 @@ class TestLibraryFile:
             tags=[]
         )
         assert file_min.quality_score == 0.0
-        
+
         file_max = LibraryFile(
             file_path=Path("/library/tier-a/file.md"),
             url="https://example.com",
@@ -118,7 +120,7 @@ class TestLibraryFile:
     def test_library_file_created_at_defaults(self):
         """Test that created_at defaults to current time."""
         before = datetime.now()
-        
+
         file = LibraryFile(
             file_path=Path("/library/tier-b/file.md"),
             url="https://example.com",
@@ -128,7 +130,7 @@ class TestLibraryFile:
             title="Video",
             tags=[]
         )
-        
+
         after = datetime.now()
         assert before <= file.created_at <= after
 
@@ -199,7 +201,7 @@ class TestLibraryFile:
             tags=["tag1", "tag2"],
             created_at=datetime(2025, 10, 9, 12, 0, 0)
         )
-        
+
         json_data = file.model_dump()
         assert json_data["tier"] == "tier-b"
         assert json_data["quality_score"] == 7.5
@@ -219,7 +221,7 @@ class TestLibraryFile:
         )
         assert file_a.tier == "tier-a"
         assert file_a.quality_score >= 9.0
-        
+
         # Medium quality in tier-c
         file_c = LibraryFile(
             file_path=Path("/library/tier-c/medium.md"),

@@ -5,17 +5,16 @@ import argparse
 import asyncio
 import json
 import sys
+from collections.abc import Callable, Iterable
 from pathlib import Path
-from typing import Any, Callable, Iterable, TextIO
+from typing import Any, TextIO
 from urllib.parse import urlparse
-
-from app.core.models import LibraryFile, ProcessedContent, RawContent
 
 from .etl import ContentPipeline, PipelineResult
 from .extractors import HTMLWebExtractor, PDFDocumentExtractor
 from .extractors.youtube import YouTubeExtractor
-from .transformers import BasicContentTransformer
 from .loaders import LibraryContentLoader
+from .transformers import BasicContentTransformer
 
 
 async def run_pipeline(url: str, *, pipeline: ContentPipeline | None = None) -> PipelineResult:

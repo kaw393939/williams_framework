@@ -3,7 +3,7 @@ import json
 
 import pytest
 
-from app.core.models import RawContent, ProcessedContent, ScreeningResult
+from app.core.models import ProcessedContent, RawContent, ScreeningResult
 from app.core.types import ContentSource
 from app.pipeline import cli as cli_module
 from app.pipeline.cli import main

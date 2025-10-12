@@ -8,10 +8,10 @@ from pathlib import Path
 from typing import Any
 from uuid import uuid4
 
-from app.core.models import LibraryFile, ProcessedContent
-from app.core.types import ContentSource
 from app.core.exceptions import StorageError
+from app.core.models import LibraryFile, ProcessedContent
 from app.core.telemetry import log_event
+from app.core.types import ContentSource
 from app.intelligence.embeddings import generate_embedding
 
 from .base import ContentLoader

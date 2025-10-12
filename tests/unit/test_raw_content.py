@@ -4,8 +4,10 @@ Following TDD RED-GREEN-REFACTOR cycle.
 This test should FAIL initially since RawContent doesn't exist yet.
 """
 from datetime import datetime
+
 import pytest
-from pydantic import ValidationError, HttpUrl
+from pydantic import ValidationError
+
 from app.core.models import RawContent
 from app.core.types import ContentSource
 
@@ -23,10 +25,10 @@ class TestRawContent:
             "metadata": {"title": "Example Article", "author": "John Doe"},
             "extracted_at": datetime(2025, 10, 9, 12, 0, 0)
         }
-        
+
         # Act
         content = RawContent(**data)
-        
+
         # Assert
         assert str(content.url) == "https://example.com/article"
         assert content.source_type == ContentSource.WEB
@@ -48,10 +50,10 @@ class TestRawContent:
             },
             "extracted_at": datetime.now()
         }
-        
+
         # Act
         content = RawContent(**data)
-        
+
         # Assert
         assert content.source_type == ContentSource.YOUTUBE
         assert "youtube.com" in str(content.url)
@@ -81,7 +83,7 @@ class TestRawContent:
                 extracted_at=datetime.now()
             )
         assert "raw_text" in str(exc_info.value).lower()
-        
+
         # Empty raw_text
         with pytest.raises(ValidationError) as exc_info:
             RawContent(
@@ -103,7 +105,7 @@ class TestRawContent:
             metadata={},
             extracted_at=datetime.now()
         )
-        
+
         # Assert
         assert content.metadata == {}
 
@@ -111,7 +113,7 @@ class TestRawContent:
         """Test that extracted_at defaults to current time if not provided."""
         # Arrange
         before = datetime.now()
-        
+
         # Act
         content = RawContent(
             url="https://example.com",
@@ -119,9 +121,9 @@ class TestRawContent:
             raw_text="content",
             metadata={}
         )
-        
+
         after = datetime.now()
-        
+
         # Assert
         assert before <= content.extracted_at <= after
 
@@ -139,7 +141,7 @@ class TestRawContent:
             },
             extracted_at=datetime.now()
         )
-        
+
         # Assert
         assert content.source_type == ContentSource.PDF
         assert content.metadata["pages"] == 10
@@ -155,10 +157,10 @@ class TestRawContent:
             metadata={"key": "value"},
             extracted_at=datetime(2025, 10, 9, 12, 0, 0)
         )
-        
+
         # Act
         json_data = content.model_dump()
-        
+
         # Assert
         assert "url" in json_data
         assert json_data["source_type"] == "web"
@@ -175,10 +177,10 @@ class TestRawContent:
             "metadata": {"views": 1000},
             "extracted_at": "2025-10-09T12:00:00"
         }
-        
+
         # Act
         content = RawContent(**json_data)
-        
+
         # Assert
         assert content.source_type == ContentSource.YOUTUBE
         assert content.metadata["views"] == 1000
@@ -187,7 +189,7 @@ class TestRawContent:
         """Test RawContent can handle large text content."""
         # Arrange
         large_text = "A" * 1000000  # 1MB of text
-        
+
         # Act
         content = RawContent(
             url="https://example.com/long",
@@ -196,7 +198,7 @@ class TestRawContent:
             metadata={},
             extracted_at=datetime.now()
         )
-        
+
         # Assert
         assert len(content.raw_text) == 1000000
 
@@ -204,7 +206,7 @@ class TestRawContent:
         """Test RawContent handles special characters and unicode."""
         # Arrange
         special_text = "Hello 世界 🌍 Test €$¥ \n\t Special chars!"
-        
+
         # Act
         content = RawContent(
             url="https://example.com",
@@ -213,7 +215,7 @@ class TestRawContent:
             metadata={},
             extracted_at=datetime.now()
         )
-        
+
         # Assert
         assert content.raw_text == special_text
         assert "世界" in content.raw_text

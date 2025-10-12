@@ -1,28 +1,26 @@
 """Qdrant Repository for vector similarity search."""
-import inspect
 from typing import Any
-from uuid import UUID
 
 from qdrant_client import QdrantClient
 from qdrant_client.models import (
     Distance,
-    VectorParams,
-    PointStruct,
-    Filter,
     FieldCondition,
+    Filter,
     MatchValue,
-    Range
+    PointStruct,
+    Range,
+    VectorParams,
 )
 
 
 class QdrantRepository:
     """
     Repository for managing content embeddings in Qdrant.
-    
+
     Provides methods for adding, querying, updating, and deleting vector embeddings
     with associated metadata.
     """
-    
+
     def __init__(
         self,
         client: QdrantClient,
@@ -31,7 +29,7 @@ class QdrantRepository:
     ):
         """
         Initialize QdrantRepository.
-        
+
         Args:
             client: Qdrant client instance
             collection_name: Name of the collection to use
@@ -40,10 +38,10 @@ class QdrantRepository:
         self.client = client
         self.collection_name = collection_name
         self.vector_size = vector_size
-        
+
         # Create collection if it doesn't exist
         self._ensure_collection_exists()
-    
+
     def _ensure_collection_exists(self) -> None:
         """Create collection if it doesn't exist."""
         try:
@@ -57,7 +55,7 @@ class QdrantRepository:
                     distance=Distance.COSINE
                 )
             )
-    
+
     def add(
         self,
         content_id: str,
@@ -66,12 +64,12 @@ class QdrantRepository:
     ) -> None:
         """
         Add a single embedding with metadata.
-        
+
         Args:
             content_id: Unique identifier for the content
             vector: Embedding vector
             metadata: Associated metadata
-            
+
         Raises:
             ValueError: If vector is empty or wrong size
         """
@@ -81,22 +79,22 @@ class QdrantRepository:
             raise ValueError(
                 f"Vector size {len(vector)} doesn't match collection size {self.vector_size}"
             )
-        
+
         point = PointStruct(
             id=content_id,
             vector=vector,
             payload=metadata
         )
-        
+
         self.client.upsert(
             collection_name=self.collection_name,
             points=[point]
         )
-    
+
     def add_batch(self, embeddings: list[dict[str, Any]]) -> None:
         """
         Add multiple embeddings in a batch.
-        
+
         Args:
             embeddings: List of dicts with keys: content_id, vector, metadata
         """
@@ -108,19 +106,19 @@ class QdrantRepository:
                 payload=emb["metadata"]
             )
             points.append(point)
-        
+
         self.client.upsert(
             collection_name=self.collection_name,
             points=points
         )
-    
+
     def get_by_id(self, content_id: str) -> dict[str, Any] | None:
         """
         Retrieve embedding by content ID.
-        
+
         Args:
             content_id: Content identifier
-            
+
         Returns:
             Dict with id, vector, and metadata, or None if not found
         """
@@ -130,10 +128,10 @@ class QdrantRepository:
                 ids=[content_id],
                 with_vectors=True
             )
-            
+
             if not result:
                 return None
-            
+
             point = result[0]
             return {
                 "id": point.id,
@@ -142,7 +140,7 @@ class QdrantRepository:
             }
         except Exception:
             return None
-    
+
     def query(
         self,
         query_vector: list[float],
@@ -151,12 +149,12 @@ class QdrantRepository:
     ) -> list[dict[str, Any]]:
         """
         Query for similar embeddings.
-        
+
         Args:
             query_vector: Query embedding vector
             limit: Maximum number of results
             filter_conditions: Optional metadata filters
-            
+
         Returns:
             List of results with id, score, and metadata
         """
@@ -164,7 +162,7 @@ class QdrantRepository:
         query_filter = None
         if filter_conditions:
             query_filter = self._build_filter(filter_conditions)
-        
+
         try:
             import inspect
 
@@ -188,7 +186,7 @@ class QdrantRepository:
                 limit=limit,
                 query_filter=query_filter
             )
-        
+
         return [
             {
                 "id": result.id,
@@ -197,19 +195,19 @@ class QdrantRepository:
             }
             for result in results
         ]
-    
+
     def _build_filter(self, conditions: dict[str, Any]) -> Filter:
         """
         Build Qdrant filter from conditions dict.
-        
+
         Args:
             conditions: Filter conditions (e.g., {"quality_score": {"$gte": 8.0}})
-            
+
         Returns:
             Qdrant Filter object
         """
         field_conditions = []
-        
+
         for field, condition in conditions.items():
             if isinstance(condition, dict):
                 # Handle range conditions like {"$gte": 8.0}
@@ -243,13 +241,13 @@ class QdrantRepository:
                         match=MatchValue(value=condition)
                     )
                 )
-        
+
         return Filter(must=field_conditions)
-    
+
     def delete(self, content_id: str) -> None:
         """
         Delete embedding by content ID.
-        
+
         Args:
             content_id: Content identifier
         """
@@ -260,11 +258,11 @@ class QdrantRepository:
             )
         except Exception:
             pass  # Silently ignore if doesn't exist
-    
+
     def delete_batch(self, content_ids: list[str]) -> None:
         """
         Delete multiple embeddings.
-        
+
         Args:
             content_ids: List of content identifiers
         """
@@ -275,7 +273,7 @@ class QdrantRepository:
             )
         except Exception:
             pass
-    
+
     def update_metadata(
         self,
         content_id: str,
@@ -283,7 +281,7 @@ class QdrantRepository:
     ) -> None:
         """
         Update metadata without changing vector.
-        
+
         Args:
             content_id: Content identifier
             metadata: New metadata
@@ -293,11 +291,11 @@ class QdrantRepository:
             payload=metadata,
             points=[content_id]
         )
-    
+
     def count(self) -> int:
         """
         Get total number of embeddings in collection.
-        
+
         Returns:
             Count of embeddings
         """

@@ -9,18 +9,18 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     """Application settings loaded from environment variables.
-    
+
     All settings can be overridden via environment variables.
     See .env.example for all available options.
     """
-    
+
     model_config = SettingsConfigDict(
         env_file=".env",
         env_file_encoding="utf-8",
         case_sensitive=False,
         frozen=True,  # Make immutable
     )
-    
+
     # OpenAI Configuration
     openai_api_key: str | None = Field(
         default=None,
@@ -30,7 +30,33 @@ class Settings(BaseSettings):
         default=None,
         description="OpenAI organization ID (optional)"
     )
-    
+
+    # Anthropic Configuration
+    anthropic_api_key: str | None = Field(
+        default=None,
+        description="Anthropic API key (required for Claude models)"
+    )
+
+    # Ollama Configuration
+    ollama_host: str = Field(
+        default="http://localhost:11434",
+        description="Ollama API host URL"
+    )
+
+    # Neo4j Configuration
+    neo4j_uri: str = Field(
+        default="bolt://localhost:7687",
+        description="Neo4j database URI"
+    )
+    neo4j_user: str = Field(
+        default="neo4j",
+        description="Neo4j username"
+    )
+    neo4j_password: str = Field(
+        default="dev_password_change_in_production",
+        description="Neo4j password"
+    )
+
     # Model Configuration
     model_nano: str = Field(
         default="gpt-5-nano",
@@ -44,7 +70,7 @@ class Settings(BaseSettings):
         default="gpt-5",
         description="Standard model for complex tasks"
     )
-    
+
     # Cost Limits (USD)
     monthly_budget: float = Field(
         default=100.0,
@@ -61,7 +87,7 @@ class Settings(BaseSettings):
         gt=0,
         description="Per-request cost limit in USD"
     )
-    
+
     # Database Configuration
     postgres_host: str = Field(
         default="localhost",
@@ -85,7 +111,7 @@ class Settings(BaseSettings):
         default="dev_password_change_in_production",
         description="PostgreSQL password"
     )
-    
+
     # Redis Configuration
     redis_host: str = Field(
         default="localhost",
@@ -102,7 +128,7 @@ class Settings(BaseSettings):
         ge=0,
         description="Redis database number"
     )
-    
+
     # Qdrant Configuration
     qdrant_host: str = Field(
         default="localhost",
@@ -124,7 +150,7 @@ class Settings(BaseSettings):
         default="librarian_embeddings",
         description="Qdrant collection name for content embeddings"
     )
-    
+
     # MinIO Configuration
     minio_endpoint: str = Field(
         default="localhost:9000",
@@ -146,7 +172,7 @@ class Settings(BaseSettings):
         default="us-east-1",
         description="MinIO region (for S3 compatibility)"
     )
-    
+
     # Library Configuration
     library_root: str = Field(
         default="./library",
@@ -170,7 +196,7 @@ class Settings(BaseSettings):
         le=10,
         description="Minimum quality score for tier-c (5.0-6.9)"
     )
-    
+
     # Application Configuration
     log_level: str = Field(
         default="INFO",
@@ -189,7 +215,7 @@ class Settings(BaseSettings):
         gt=0,
         description="Maximum cache size in GB"
     )
-    
+
     # Worker Configuration
     worker_concurrency: int = Field(
         default=4,
@@ -211,7 +237,7 @@ class Settings(BaseSettings):
         gt=0,
         description="Retry backoff in seconds"
     )
-    
+
     # UI Configuration
     streamlit_server_port: int = Field(
         default=8501,
@@ -223,7 +249,7 @@ class Settings(BaseSettings):
         default="dark",
         description="Streamlit theme"
     )
-    
+
     # Feature Flags
     enable_caching: bool = Field(
         default=True,
@@ -249,9 +275,9 @@ settings = Settings()
 
 def get_settings() -> Settings:
     """Get the global settings instance.
-    
+
     This function exists to allow for easier mocking in tests.
-    
+
     Returns:
         The global Settings instance.
     """

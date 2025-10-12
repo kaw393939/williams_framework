@@ -5,9 +5,9 @@ import pytest
 
 from app.core.models import LibraryFile, ProcessedContent, RawContent, ScreeningResult
 from app.core.types import ContentSource
-from app.pipeline.cli import main, run_pipeline, format_result, build_pipeline_for_url
-from app.pipeline.extractors import PDFDocumentExtractor
+from app.pipeline.cli import build_pipeline_for_url, format_result, main, run_pipeline
 from app.pipeline.etl import PipelineResult
+from app.pipeline.extractors import PDFDocumentExtractor
 
 
 class FakePipeline:
@@ -194,11 +194,11 @@ def test_batch_json_output_includes_per_url_status(sample_result):
     output = json.loads(buffer.getvalue())
     assert "results" in output
     assert len(output["results"]) == 2
-    
+
     # First URL should succeed
     assert output["results"][0]["url"] == "https://example.com/ok"
     assert output["results"][0]["status"] == "success"
-    
+
     # Second URL should fail
     assert output["results"][1]["url"] == "https://example.com/fail"
     assert output["results"][1]["status"] == "error"

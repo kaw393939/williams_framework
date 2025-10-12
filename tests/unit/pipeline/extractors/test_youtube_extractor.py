@@ -29,7 +29,7 @@ async def test_youtube_extractor_fetches_transcript_and_metadata(monkeypatch):
     class MockYouTube:
         def __init__(self, url):
             assert url == url
-        
+
         @property
         def title(self):
             return video_details["title"]
@@ -45,7 +45,7 @@ async def test_youtube_extractor_fetches_transcript_and_metadata(monkeypatch):
         @property
         def publish_date(self):
             return video_details["publish_date"]
-        
+
         @property
         def description(self):
             return "Video description."
@@ -83,7 +83,7 @@ async def test_youtube_extractor_falls_back_to_description(monkeypatch):
         @property
         def description(self):
             return video_description
-        
+
         # Add other properties to satisfy the extractor
         title = "A Video"
         author = "An Author"

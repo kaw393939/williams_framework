@@ -3,15 +3,16 @@
 Following TDD RED-GREEN-REFACTOR cycle.
 """
 import pytest
+
 from app.core.exceptions import (
-    LibrarianException,
-    ExtractionError,
-    ScreeningError,
     BudgetExceededError,
+    ExtractionError,
+    LibrarianException,
     PluginError,
-    ValidationError as LibrarianValidationError,
-    StorageError
+    ScreeningError,
+    StorageError,
 )
+from app.core.exceptions import ValidationError as LibrarianValidationError
 
 
 class TestLibrarianException:
@@ -115,7 +116,7 @@ class TestBudgetExceededError:
         """Test that budget error can prevent operations."""
         def expensive_operation():
             raise BudgetExceededError("Daily limit exceeded")
-        
+
         with pytest.raises(BudgetExceededError) as exc_info:
             expensive_operation()
         assert "limit exceeded" in str(exc_info.value).lower()
@@ -205,6 +206,6 @@ class TestExceptionDetails:
         """Test that different exceptions have independent details."""
         exc1 = ExtractionError("Error 1", details={"id": 1})
         exc2 = ExtractionError("Error 2", details={"id": 2})
-        
+
         assert exc1.details["id"] == 1
         assert exc2.details["id"] == 2

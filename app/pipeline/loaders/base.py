@@ -4,7 +4,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Optional
 
-from app.core.models import ProcessedContent, LibraryFile
+from app.core.models import LibraryFile, ProcessedContent
 
 
 class ContentLoader(ABC):

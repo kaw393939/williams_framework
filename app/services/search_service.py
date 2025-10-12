@@ -3,30 +3,29 @@
 This module provides real-time semantic search capabilities using
 embedding-based retrieval, ranked results, and top-K filtering.
 """
-from typing import List, Optional
 import logging
+from typing import Optional
 
 from app.core.models import SearchResult
-
 
 logger = logging.getLogger(__name__)
 
 
 class SearchService:
     """Service for semantic search of library content.
-    
+
     This service provides:
     - Embedding-based semantic search using Qdrant
     - Ranked results by relevance score (cosine similarity)
     - Top-K filtering for most relevant results
     - Integration with SearchCache for embedding reuse
     - Minimum score filtering
-    
+
     Example:
         >>> search_service = SearchService(qdrant_repository=repo, embedder=embedder)
         >>> results = await search_service.search("machine learning", top_k=5)
     """
-    
+
     def __init__(
         self,
         qdrant_client: Optional[any] = None,
@@ -35,7 +34,7 @@ class SearchService:
         search_cache: Optional[any] = None
     ):
         """Initialize search service.
-        
+
         Args:
             qdrant_client: Direct Qdrant client (for testing)
             qdrant_repository: QdrantRepository instance
@@ -46,20 +45,20 @@ class SearchService:
         self.qdrant_repository = qdrant_repository
         self.embedder = embedder
         self.search_cache = search_cache
-    
+
     async def search(
         self,
         query: str,
         top_k: int = 10,
         min_score: float = 0.0
-    ) -> List[SearchResult]:
+    ) -> list[SearchResult]:
         """Perform semantic search on library content.
-        
+
         Args:
             query: Search query text
             top_k: Maximum number of results to return
             min_score: Minimum relevance score (0.0-1.0)
-        
+
         Returns:
             List of SearchResult objects ranked by relevance score
         """
@@ -67,7 +66,7 @@ class SearchService:
         if not query or not query.strip():
             logger.warning("Empty query provided to search")
             return []
-        
+
         # Get query embedding (using cache if available)
         if self.search_cache:
             query_embedding = await self.search_cache.get_or_compute(query)
@@ -76,7 +75,7 @@ class SearchService:
         else:
             logger.error("No embedder or cache available for search")
             return []
-        
+
         # Perform vector search
         if self.qdrant_client:
             raw_results = await self.qdrant_client.search(
@@ -91,7 +90,7 @@ class SearchService:
         else:
             logger.error("No Qdrant client or repository available for search")
             return []
-        
+
         # Convert raw results to SearchResult models
         search_results = []
         for raw_result in raw_results:
@@ -102,11 +101,11 @@ class SearchService:
             else:
                 score = getattr(raw_result, "score", 0.0)
                 payload = getattr(raw_result, "payload", {})
-            
+
             # Apply minimum score filter
             if score < min_score:
                 continue
-            
+
             # Create SearchResult
             try:
                 result = SearchResult(
@@ -124,6 +123,6 @@ class SearchService:
             except Exception as e:
                 logger.error(f"Failed to create SearchResult: {e}")
                 continue
-        
+
         # Results are already sorted by score from Qdrant (descending)
         return search_results

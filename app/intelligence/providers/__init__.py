@@ -2,7 +2,7 @@
 AI Provider Abstraction Layer
 
 This package provides cloud-agnostic interfaces for embedding and LLM providers,
-allowing seamless switching between local (SentenceTransformers, Ollama) and 
+allowing seamless switching between local (SentenceTransformers, Ollama) and
 hosted (OpenAI, Anthropic) services via configuration.
 
 Key Components:

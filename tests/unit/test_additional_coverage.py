@@ -1,21 +1,21 @@
 import smtplib
 from datetime import datetime
 from typing import Any
-from unittest.mock import AsyncMock, MagicMock, call, ANY
+from unittest.mock import ANY, AsyncMock, MagicMock, call
 
 import httpx
 import pytest
 from minio.error import S3Error
 
-from app.core.models import ScreeningResult, RawContent, ProcessedContent, Digest, DigestItem
+from app.core.models import Digest, ProcessedContent, RawContent, ScreeningResult
 from app.core.types import ContentSource
 from app.intelligence import embeddings
+from app.repositories.minio_repository import MinIORepository
+from app.repositories.postgres_repository import PostgresRepository
+from app.repositories.qdrant_repository import QdrantRepository
+from app.repositories.redis_repository import RedisRepository
 from app.services import content_service, digest_service, library_service
 from app.services.maintenance_service import MaintenanceService
-from app.repositories.minio_repository import MinIORepository
-from app.repositories.qdrant_repository import QdrantRepository
-from app.repositories.postgres_repository import PostgresRepository
-from app.repositories.redis_repository import RedisRepository
 
 
 class DummyAsyncClientError:
@@ -345,7 +345,7 @@ async def test_maintenance_service_paths():
     postgres.queries[(
         StubPostgres._key(
             """
-                SELECT COUNT(*) as count FROM processing_records 
+                SELECT COUNT(*) as count FROM processing_records
                 WHERE content_url LIKE $1
             """
         ),
@@ -354,7 +354,7 @@ async def test_maintenance_service_paths():
     postgres.queries[(
         StubPostgres._key(
             """
-                SELECT COUNT(*) as count FROM processing_records 
+                SELECT COUNT(*) as count FROM processing_records
                 WHERE content_url LIKE $1
             """
         ),
@@ -363,7 +363,7 @@ async def test_maintenance_service_paths():
     postgres.queries[(
         StubPostgres._key(
             """
-                SELECT COUNT(*) as count FROM processing_records 
+                SELECT COUNT(*) as count FROM processing_records
                 WHERE status NOT IN ('started', 'completed', 'failed', 'pending')
             """
         ),

@@ -1,12 +1,14 @@
 """Integration test for YouTubeExtractor in the ContentPipeline."""
+from pathlib import Path
+
 import pytest
+
+from app.core.models import LibraryFile, ProcessedContent
 from app.pipeline.etl import ContentPipeline
 from app.pipeline.extractors.youtube import YouTubeExtractor
-from app.pipeline.transformers.basic import BasicContentTransformer
 from app.pipeline.loaders.base import ContentLoader
-from app.core.models import RawContent, ProcessedContent, LibraryFile
-from app.core.types import ContentSource
-from pathlib import Path
+from app.pipeline.transformers.basic import BasicContentTransformer
+
 
 class DummyLoader(ContentLoader):
     def __init__(self):

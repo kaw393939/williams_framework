@@ -17,9 +17,9 @@ def test_registry_allows_unique_plugin_registration():
     """Test that registry successfully registers plugins with unique IDs."""
     registry = PluginRegistry()
     plugin = make_stub_plugin()
-    
+
     registry.register(plugin)
-    
+
     assert registry.get(plugin.plugin_id) is plugin
     assert len(registry.all()) == 1
 
@@ -30,12 +30,12 @@ def test_registry_prevents_duplicate_plugin_registration():
     registry = PluginRegistry()
     plugin1 = make_stub_plugin()
     plugin2 = make_stub_plugin()
-    
+
     registry.register(plugin1)
-    
+
     with pytest.raises(PluginError) as exc_info:
         registry.register(plugin2)
-    
+
     error_message = str(exc_info.value)
     assert plugin1.plugin_id in error_message
     assert "already registered" in error_message.lower()
@@ -47,12 +47,12 @@ def test_registry_provides_actionable_duplicate_error_context():
     registry = PluginRegistry()
     plugin1 = make_stub_plugin()
     plugin2 = make_stub_plugin()
-    
+
     registry.register(plugin1)
-    
+
     with pytest.raises(PluginError) as exc_info:
         registry.register(plugin2)
-    
+
     error_message = str(exc_info.value)
     # Should include plugin ID and clear action to take
     assert plugin1.plugin_id in error_message
@@ -64,9 +64,9 @@ def test_registry_provides_actionable_duplicate_error_context():
 def test_registry_get_returns_none_for_unknown_plugin():
     """Test that get() returns None for plugins that aren't registered."""
     registry = PluginRegistry()
-    
+
     result = registry.get("unknown.plugin.id")
-    
+
     assert result is None
 
 
@@ -75,9 +75,9 @@ def test_registry_all_returns_registered_plugins():
     """Test that all() returns list of all registered plugins."""
     registry = PluginRegistry()
     plugin = make_stub_plugin()
-    
+
     assert registry.all() == []
-    
+
     registry.register(plugin)
-    
+
     assert registry.all() == [plugin]
