@@ -54,24 +54,71 @@ embeddings:
       fallback: openai-ada
 
 llms:
-  # Default LLM provider
-  default: ollama-local
+  # Default LLM provider (local for $0/month development)
+  default: local-nano
+  
+  # Model tiers for different use cases
+  tiers:
+    # NANO: Fast responses, high volume, straightforward tasks
+    nano:
+      local: local-nano
+      openai: openai-nano
+      anthropic: anthropic-nano
+    
+    # MINI: Balanced intelligence and speed
+    mini:
+      local: local-mini
+      openai: openai-mini
+      anthropic: anthropic-mini
+    
+    # STANDARD: Complex reasoning, advanced capabilities
+    standard:
+      local: local-standard
+      openai: openai-standard
+      anthropic: anthropic-standard
+    
+    # PRO: Maximum capability, autonomous agents, complex coding
+    pro:
+      local: null  # No local equivalent for this tier
+      openai: openai-pro
+      anthropic: anthropic-pro
   
   providers:
-    # LOCAL: Ollama with Llama 3.1 8B
-    ollama-local:
+    # ============= LOCAL MODELS (Ollama) =============
+    # NANO: llama3.2 (3B) - Fast, cost-effective
+    local-nano:
+      type: ollama
+      model: llama3.2
+      base_url: http://localhost:11434
+      context_window: 8192
+      temperature: 0.7
+      max_tokens: 2048
+      cost_per_1k_tokens: 0.0
+      streaming: true
+      fallback: null
+      use_cases:
+        - Basic customer support
+        - High volume formulaic content
+        - Straightforward data extraction
+    
+    # MINI: llama3.1 (8B) - Balanced performance
+    local-mini:
       type: ollama
       model: llama3.1:8b
       base_url: http://localhost:11434
       context_window: 8192
       temperature: 0.7
       max_tokens: 2048
-      cost_per_1k_tokens: 0.0  # Free (local compute)
+      cost_per_1k_tokens: 0.0
       streaming: true
-      fallback: null
+      fallback: local-nano
+      use_cases:
+        - General agentic tasks
+        - Code generation
+        - Data analysis
     
-    # LOCAL: Ollama with Mistral 7B
-    ollama-mistral:
+    # STANDARD: mistral (7B) - Higher reasoning
+    local-standard:
       type: ollama
       model: mistral:7b
       base_url: http://localhost:11434
@@ -80,46 +127,136 @@ llms:
       max_tokens: 2048
       cost_per_1k_tokens: 0.0
       streaming: true
-      fallback: ollama-local
+      fallback: local-mini
+      use_cases:
+        - Complex reasoning
+        - Scientific analysis
+        - Advanced coding
     
-    # HOSTED: OpenAI GPT-4o-mini (cost-effective)
-    openai-mini:
+    # ============= OPENAI MODELS =============
+    # NANO: gpt-4o-mini - Fast and cost-effective
+    openai-nano:
       type: openai
       model: gpt-4o-mini
       api_key_env: OPENAI_API_KEY
       context_window: 128000
       temperature: 0.7
       max_tokens: 4096
-      cost_per_1k_input_tokens: 0.00015  # $0.15 per 1M input tokens
-      cost_per_1k_output_tokens: 0.0006  # $0.60 per 1M output tokens
+      cost_per_1k_input_tokens: 0.00015
+      cost_per_1k_output_tokens: 0.0006
       streaming: true
-      fallback: ollama-local
+      fallback: local-nano
     
-    # HOSTED: OpenAI GPT-4o (best quality)
-    openai-4o:
+    # MINI: gpt-4o - Balanced intelligence
+    openai-mini:
       type: openai
       model: gpt-4o
       api_key_env: OPENAI_API_KEY
       context_window: 128000
       temperature: 0.7
       max_tokens: 4096
-      cost_per_1k_input_tokens: 0.0025  # $2.50 per 1M input tokens
-      cost_per_1k_output_tokens: 0.010   # $10.00 per 1M output tokens
+      cost_per_1k_input_tokens: 0.0025
+      cost_per_1k_output_tokens: 0.010
+      streaming: true
+      fallback: openai-nano
+    
+    # STANDARD: gpt-4o (same as mini for now)
+    openai-standard:
+      type: openai
+      model: gpt-4o
+      api_key_env: OPENAI_API_KEY
+      context_window: 128000
+      temperature: 0.7
+      max_tokens: 8192
+      cost_per_1k_input_tokens: 0.0025
+      cost_per_1k_output_tokens: 0.010
       streaming: true
       fallback: openai-mini
     
-    # HOSTED: Anthropic Claude 3.5 Sonnet
-    anthropic-sonnet:
+    # PRO: o1-preview - Maximum reasoning
+    openai-pro:
+      type: openai
+      model: o1-preview
+      api_key_env: OPENAI_API_KEY
+      context_window: 128000
+      temperature: 1.0  # o1 uses fixed temperature
+      max_tokens: 32768
+      cost_per_1k_input_tokens: 0.015
+      cost_per_1k_output_tokens: 0.060
+      streaming: false  # o1 doesn't support streaming
+      fallback: openai-standard
+    
+    # ============= ANTHROPIC MODELS =============
+    # NANO: Claude 3.5 Haiku - Fast, cost-effective
+    anthropic-nano:
       type: anthropic
-      model: claude-3-5-sonnet-20241022
+      model: claude-3-5-haiku-20241022
       api_key_env: ANTHROPIC_API_KEY
       context_window: 200000
       temperature: 0.7
       max_tokens: 4096
-      cost_per_1k_input_tokens: 0.003   # $3.00 per 1M input tokens
-      cost_per_1k_output_tokens: 0.015  # $15.00 per 1M output tokens
+      cost_per_1k_input_tokens: 0.0008
+      cost_per_1k_output_tokens: 0.004
       streaming: true
-      fallback: openai-mini
+      fallback: local-nano
+      use_cases:
+        - Basic customer support
+        - High volume content generation
+        - Data extraction
+    
+    # MINI: Claude Sonnet 4 - Balanced performance
+    anthropic-mini:
+      type: anthropic
+      model: claude-sonnet-4-20250514
+      api_key_env: ANTHROPIC_API_KEY
+      context_window: 200000
+      temperature: 0.7
+      max_tokens: 4096
+      cost_per_1k_input_tokens: 0.003
+      cost_per_1k_output_tokens: 0.015
+      streaming: true
+      fallback: anthropic-nano
+      use_cases:
+        - Complex customer chatbot
+        - Code generation
+        - Data analysis
+        - General agentic tasks
+    
+    # STANDARD: Claude Sonnet 4.5 - High intelligence
+    anthropic-standard:
+      type: anthropic
+      model: claude-sonnet-4.5-20250110
+      api_key_env: ANTHROPIC_API_KEY
+      context_window: 200000
+      temperature: 0.7
+      max_tokens: 8192
+      cost_per_1k_input_tokens: 0.003
+      cost_per_1k_output_tokens: 0.015
+      streaming: true
+      fallback: anthropic-mini
+      use_cases:
+        - Autonomous coding agents
+        - Cybersecurity automation
+        - Complex financial analysis
+        - Multi-hour research tasks
+        - Multi-agent frameworks
+    
+    # PRO: Claude Opus 4.1 - Maximum capability
+    anthropic-pro:
+      type: anthropic
+      model: claude-opus-4.1-20250110
+      api_key_env: ANTHROPIC_API_KEY
+      context_window: 200000
+      temperature: 0.7
+      max_tokens: 16384
+      cost_per_1k_input_tokens: 0.015
+      cost_per_1k_output_tokens: 0.075
+      streaming: true
+      fallback: anthropic-standard
+      use_cases:
+        - Highly complex codebase refactoring
+        - Nuanced creative writing
+        - Specialized scientific analysis
 
 # Cost tracking (optional)
 cost_tracking:
