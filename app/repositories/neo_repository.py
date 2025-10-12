@@ -749,3 +749,111 @@ class NeoRepository:
 
         result = self.execute_query(query, {"doc_id": doc_id})
         return result
+
+    # ========== ENTITY LINKING OPERATIONS (Sprint 6 - Story S6-602) ==========
+
+    def create_canonical_entity(
+        self,
+        entity_id: str,
+        canonical_name: str,
+        entity_type: str,
+        aliases: list[str] | None = None,
+    ) -> str:
+        """Create or update a canonical Entity node for entity linking.
+
+        This merges with existing Entity nodes created by entity extraction,
+        adding canonical fields for entity linking.
+
+        Args:
+            entity_id: Deterministic entity ID
+            canonical_name: Canonical name for the entity
+            entity_type: Entity type (PERSON, ORG, etc.)
+            aliases: List of alias names
+
+        Returns:
+            Entity ID
+        """
+        query = """
+        MERGE (e:Entity {id: $entity_id})
+        ON CREATE SET
+            e.canonical_name = $canonical_name,
+            e.text = $canonical_name,
+            e.entity_type = $entity_type,
+            e.aliases = $aliases,
+            e.mention_count = 1,
+            e.created_at = datetime()
+        ON MATCH SET
+            e.canonical_name = CASE WHEN e.canonical_name IS NULL THEN $canonical_name ELSE e.canonical_name END,
+            e.aliases = CASE WHEN e.aliases IS NULL THEN $aliases ELSE e.aliases END
+        RETURN e.id as id
+        """
+        
+        parameters = {
+            "entity_id": entity_id,
+            "canonical_name": canonical_name,
+            "entity_type": entity_type,
+            "aliases": aliases or [canonical_name],
+        }
+        
+        result = self.execute_write(query, parameters)
+        return result[0]["id"] if result else entity_id
+
+    def link_mention_to_entity(
+        self,
+        mention_id: str,
+        entity_id: str,
+        confidence: float,
+    ) -> None:
+        """Link a mention to a canonical entity with LINKED_TO relationship.
+
+        Args:
+            mention_id: Mention ID
+            entity_id: Canonical entity ID
+            confidence: Confidence score (0.0-1.0)
+        """
+        query = """
+        MATCH (m:Mention {id: $mention_id})
+        MATCH (e:Entity {id: $entity_id})
+        MERGE (m)-[r:LINKED_TO]->(e)
+        ON CREATE SET
+            r.confidence = $confidence,
+            r.linked_at = datetime()
+        """
+        
+        parameters = {
+            "mention_id": mention_id,
+            "entity_id": entity_id,
+            "confidence": confidence,
+        }
+        
+        self.execute_write(query, parameters)
+
+    def increment_entity_mention_count(self, entity_id: str) -> None:
+        """Increment the mention count for an entity.
+
+        Args:
+            entity_id: Entity ID
+        """
+        query = """
+        MATCH (e:Entity {id: $entity_id})
+        SET e.mention_count = COALESCE(e.mention_count, 0) + 1
+        """
+        
+        self.execute_write(query, {"entity_id": entity_id})
+
+    def add_entity_alias(self, entity_id: str, alias: str) -> None:
+        """Add an alias to an entity's aliases list.
+
+        Args:
+            entity_id: Entity ID
+            alias: Alias to add
+        """
+        query = """
+        MATCH (e:Entity {id: $entity_id})
+        SET e.aliases = CASE
+            WHEN $alias IN COALESCE(e.aliases, []) THEN e.aliases
+            ELSE COALESCE(e.aliases, []) + [$alias]
+        END
+        """
+        
+        self.execute_write(query, {"entity_id": entity_id, "alias": alias})
