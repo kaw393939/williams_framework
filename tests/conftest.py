@@ -4,8 +4,12 @@ import asyncio
 from pathlib import Path
 
 import pytest
+from dotenv import load_dotenv
 
 from tests.util.virtual_clock import VirtualClock, patch_asyncio_sleep
+
+# Load .env at test startup
+load_dotenv()
 
 
 @pytest.fixture
