@@ -580,3 +580,121 @@ class NeoRepository:
         """
         result = self.execute_query(query, {"entity_id": entity_id})
         return result
+
+    # ========== COREFERENCE OPERATIONS (Sprint 6) ==========
+
+    def create_pronoun_mention(
+        self,
+        mention_id: str,
+        chunk_id: str,
+        text: str,
+        start_offset: int,
+        end_offset: int,
+    ) -> dict[str, Any]:
+        """Create a pronoun mention node.
+
+        Args:
+            mention_id: Deterministic mention ID
+            chunk_id: Chunk where pronoun appears
+            text: Pronoun text (e.g., "he", "it")
+            start_offset: Start character offset
+            end_offset: End character offset
+
+        Returns:
+            Created mention node
+        """
+        query = """
+        MATCH (c:Chunk {id: $chunk_id})
+        MERGE (m:Mention {id: $mention_id})
+        ON CREATE SET
+            m.text = $text,
+            m.start_offset = $start_offset,
+            m.end_offset = $end_offset,
+            m.mention_type = 'pronoun',
+            m.created_at = datetime()
+        MERGE (c)-[:CONTAINS_MENTION]->(m)
+        RETURN m
+        """
+
+        parameters = {
+            "mention_id": mention_id,
+            "chunk_id": chunk_id,
+            "text": text,
+            "start_offset": start_offset,
+            "end_offset": end_offset,
+        }
+
+        result = self.execute_write(query, parameters)
+        return result[0]["m"] if result else {}
+
+    def create_coref_relationship(
+        self,
+        source_mention_id: str,
+        target_mention_id: str,
+        cluster_id: str,
+    ) -> bool:
+        """Create COREF_WITH relationship between mentions.
+
+        Args:
+            source_mention_id: Source mention (usually pronoun)
+            target_mention_id: Target mention (usually entity)
+            cluster_id: Coreference cluster ID
+
+        Returns:
+            True if relationship created successfully
+        """
+        query = """
+        MATCH (m1:Mention {id: $source_mention_id})
+        MATCH (m2:Mention {id: $target_mention_id})
+        MERGE (m1)-[r:COREF_WITH {cluster_id: $cluster_id}]->(m2)
+        ON CREATE SET
+            r.created_at = datetime(),
+            r.text = m1.text
+        RETURN r
+        """
+
+        parameters = {
+            "source_mention_id": source_mention_id,
+            "target_mention_id": target_mention_id,
+            "cluster_id": cluster_id,
+        }
+
+        result = self.execute_write(query, parameters)
+        return len(result) > 0
+
+    def get_coref_chains(self, doc_id: str) -> list[dict[str, Any]]:
+        """Get all coreference chains for a document.
+
+        Args:
+            doc_id: Document ID
+
+        Returns:
+            List of coref chains with structure:
+            [
+                {
+                    "cluster_id": "abc123",
+                    "mentions": [
+                        {"mention_id": "...", "text": "Sam Altman", "type": "entity"},
+                        {"mention_id": "...", "text": "He", "type": "pronoun"},
+                    ]
+                }
+            ]
+        """
+        query = """
+        MATCH (d:Document {id: $doc_id})-[:HAS_CHUNK]->(c:Chunk)
+        -[:CONTAINS_MENTION]->(m1:Mention)-[r:COREF_WITH]->(m2:Mention)
+        RETURN DISTINCT
+            r.cluster_id AS cluster_id,
+            collect(DISTINCT {
+                mention_id: m1.id,
+                text: m1.text,
+                type: COALESCE(m1.mention_type, 'entity')
+            }) + collect(DISTINCT {
+                mention_id: m2.id,
+                text: m2.text,
+                type: COALESCE(m2.mention_type, 'entity')
+            }) AS mentions
+        """
+
+        result = self.execute_query(query, {"doc_id": doc_id})
+        return result
