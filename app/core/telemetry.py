@@ -1,6 +1,6 @@
 """Central telemetry event logger for pipeline instrumentation."""
 import logging
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Any, Dict, List
 
 logger = logging.getLogger("app.telemetry")
@@ -10,7 +10,7 @@ def log_event(event: Dict[str, Any]) -> None:
     """Log a structured telemetry event as JSON."""
     event = dict(event)  # Defensive copy
     if "timestamp" not in event:
-        event["timestamp"] = datetime.utcnow().isoformat() + "Z"
+        event["timestamp"] = datetime.now(timezone.utc).isoformat()
     logger.info("TELEMETRY_EVENT: %s", event)
 
 
@@ -37,7 +37,7 @@ class TelemetryService:
         event = {
             "event_type": "cache_hit",
             "cache_type": cache_type,
-            "timestamp": datetime.utcnow().isoformat() + "Z",
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             **context
         }
         self._events.append(event)
@@ -53,7 +53,7 @@ class TelemetryService:
         event = {
             "event_type": "cache_miss",
             "cache_type": cache_type,
-            "timestamp": datetime.utcnow().isoformat() + "Z",
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             **context
         }
         self._events.append(event)
