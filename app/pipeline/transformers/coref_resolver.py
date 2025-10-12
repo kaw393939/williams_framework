@@ -17,7 +17,7 @@ import spacy
 from spacy.tokens import Doc
 
 from app.core.id_generator import generate_doc_id, generate_mention_id
-from app.core.models import ProcessedContent, RawContent
+from app.core.models import RawContent
 
 from .base import ContentTransformer
 
@@ -81,7 +81,7 @@ class CorefResolver(ContentTransformer):
             )
             self.nlp = spacy.load(spacy_model)
 
-    def transform(self, raw_content: RawContent) -> ProcessedContent:
+    def transform(self, raw_content: RawContent) -> RawContent:
         """Resolve coreferences in document and store in Neo4j.
 
         This method:
@@ -95,16 +95,11 @@ class CorefResolver(ContentTransformer):
             raw_content: Raw extracted content
 
         Returns:
-            ProcessedContent with coref metadata
+            RawContent with updated metadata
         """
         if not self.enabled:
             # Coref disabled, pass through
-            return ProcessedContent(
-                url=raw_content.url,
-                text=raw_content.content,
-                metadata=raw_content.metadata,
-                tags=[],
-            )
+            return raw_content
         
         url_str = str(raw_content.url)
         doc_id = generate_doc_id(url_str)
@@ -119,9 +114,8 @@ class CorefResolver(ContentTransformer):
         
         # Process each chunk for coreference
         for chunk in chunks:
-            chunk_dict = dict(chunk)
-            chunk_id = chunk_dict["chunk_id"]
-            chunk_text = chunk_dict["text"]
+            chunk_id = chunk["id"]  # Neo4j node property
+            chunk_text = chunk["text"]
             
             # Run spaCy NLP pipeline
             doc_obj = self.nlp(chunk_text)
@@ -134,16 +128,9 @@ class CorefResolver(ContentTransformer):
             for cluster in coref_clusters:
                 self._store_coref_cluster(cluster, chunk_id)
         
-        # Return processed content
-        return ProcessedContent(
-            url=raw_content.url,
-            text=raw_content.content,
-            metadata={
-                **raw_content.metadata,
-                "coref_processed": True,
-            },
-            tags=[],
-        )
+        # Return raw content with updated metadata
+        raw_content.metadata["coref_processed"] = True
+        return raw_content
 
     def _extract_coref_clusters(self, doc: Doc, chunk_id: str) -> list[dict]:
         """Extract coreference clusters from spaCy Doc.
@@ -253,8 +240,8 @@ class CorefResolver(ContentTransformer):
         entity_mention = mentions[0]
         entity_mention_id = generate_mention_id(
             chunk_id,
+            entity_mention["text"],
             entity_mention["start"],
-            entity_mention["end"],
         )
         
         # For each pronoun mention, create COREF_WITH relationship
@@ -262,8 +249,8 @@ class CorefResolver(ContentTransformer):
             pronoun_mention = mentions[i]
             pronoun_mention_id = generate_mention_id(
                 chunk_id,
+                pronoun_mention["text"],
                 pronoun_mention["start"],
-                pronoun_mention["end"],
             )
             
             # Create pronoun mention node in Neo4j (if not exists)

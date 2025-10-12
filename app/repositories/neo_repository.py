@@ -583,6 +583,57 @@ class NeoRepository:
 
     # ========== COREFERENCE OPERATIONS (Sprint 6) ==========
 
+    def create_entity_mention(
+        self,
+        mention_id: str,
+        chunk_id: str,
+        text: str,
+        entity_type: str,
+        start_offset: int,
+        end_offset: int,
+        confidence: float | None = None,
+    ) -> str:
+        """Create entity and mention in one operation.
+        
+        Helper method that creates both Entity and Mention nodes and links them.
+        Used by tests and entity extraction pipeline.
+        
+        Args:
+            mention_id: Deterministic mention ID
+            chunk_id: Chunk where entity appears
+            text: Entity text (e.g., "Sam Altman")
+            entity_type: Entity type (PERSON, ORG, etc.)
+            start_offset: Start character offset in chunk
+            end_offset: End character offset in chunk
+            confidence: Optional NER confidence score
+            
+        Returns:
+            Entity ID (for linking coreferences)
+        """
+        from app.core.id_generator import generate_entity_id
+        
+        # Generate entity ID
+        entity_id = generate_entity_id(text, entity_type)
+        
+        # Create entity node
+        self.create_entity(
+            entity_id=entity_id,
+            text=text,
+            entity_type=entity_type,
+            confidence=confidence,
+        )
+        
+        # Create mention node and link to entity and chunk
+        self.create_mention(
+            mention_id=mention_id,
+            chunk_id=chunk_id,
+            entity_id=entity_id,
+            offset_in_chunk=start_offset,
+            confidence=confidence,
+        )
+        
+        return entity_id
+
     def create_pronoun_mention(
         self,
         mention_id: str,

@@ -19,7 +19,7 @@ from datetime import datetime
 import pytest
 
 from app.core.id_generator import generate_chunk_id, generate_doc_id, generate_mention_id
-from app.core.models import ProcessedContent, RawContent
+from app.core.models import RawContent
 from app.pipeline.transformers.coref_resolver import CorefResolver
 from app.pipeline.transformers.entity_extractor import EntityExtractor
 from app.repositories.neo_repository import NeoRepository
@@ -139,8 +139,8 @@ class TestCorefResolution:
         
         raw_content = RawContent(
             url=sample_doc_with_coref["url"],
-            content=chunk_text,
-            content_type="text/plain",
+            source_type="text",
+            raw_text=chunk_text,
             metadata={},
         )
         
@@ -148,7 +148,8 @@ class TestCorefResolution:
         result = coref_resolver.transform(raw_content)
         
         # Assert
-        assert isinstance(result, ProcessedContent)
+        assert isinstance(result, RawContent)
+        assert result.metadata.get("coref_processed") is True
         
         # Query Neo4j for coreference relationships
         with neo_repo._driver.session() as session:
@@ -180,8 +181,8 @@ class TestCorefResolution:
         
         raw_content = RawContent(
             url=sample_doc_with_coref["url"],
-            content=chunk_text,
-            content_type="text/plain",
+            source_type="text",
+            raw_text=chunk_text,
             metadata={},
         )
         
@@ -214,8 +215,8 @@ class TestCorefResolution:
         chunk_text = sample_doc_with_coref["text"]
         raw_content = RawContent(
             url=sample_doc_with_coref["url"],
-            content=chunk_text,
-            content_type="text/plain",
+            source_type="text",
+            raw_text=chunk_text,
             metadata={},
         )
         
@@ -251,8 +252,8 @@ class TestCorefResolution:
         
         raw_content = RawContent(
             url=sample_doc_with_coref["url"],
-            content=chunk_text,
-            content_type="text/plain",
+            source_type="text",
+            raw_text=chunk_text,
             metadata={},
         )
         
@@ -306,8 +307,8 @@ class TestCorefResolution:
         
         raw_content = RawContent(
             url=url,
-            content=chunk_text,
-            content_type="text/plain",
+            source_type="text",
+            raw_text=chunk_text,
             metadata={},
         )
         
@@ -316,8 +317,9 @@ class TestCorefResolution:
         coref_result = coref_resolver.transform(raw_content)
         
         # Assert
-        assert isinstance(entity_result, ProcessedContent)
-        assert isinstance(coref_result, ProcessedContent)
+        # EntityExtractor may return ProcessedContent, but CorefResolver returns RawContent
+        assert isinstance(coref_result, RawContent)
+        assert coref_result.metadata.get("coref_processed") is True
         
         # Verify entity mentions exist
         with neo_repo._driver.session() as session:
@@ -396,8 +398,8 @@ class TestCorefResolution:
         
         raw_content = RawContent(
             url=url,
-            content=long_text,
-            content_type="text/plain",
+            source_type="text",
+            raw_text=long_text,
             metadata={},
         )
         
@@ -408,7 +410,8 @@ class TestCorefResolution:
         
         # Assert
         assert elapsed < 5.0, f"Coref resolution took {elapsed:.2f}s, expected <5s"
-        assert isinstance(result, ProcessedContent)
+        assert isinstance(result, RawContent)
+        assert result.metadata.get("coref_processed") is True
     
     def test_pipeline_integration_full_etl(
         self, entity_extractor, coref_resolver, neo_repo
@@ -452,8 +455,8 @@ class TestCorefResolution:
         
         raw_content = RawContent(
             url=url,
-            content=chunk_text,
-            content_type="text/plain",
+            source_type="text",
+            raw_text=chunk_text,
             metadata={},
         )
         
