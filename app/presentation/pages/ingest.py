@@ -8,7 +8,7 @@ from typing import Any
 from urllib.parse import urlparse
 
 
-class IngestForm:
+class IngestForm:  # pragma: no cover - Streamlit UI component requiring browser interaction
     """Form component for URL ingestion.
 
     This component provides:

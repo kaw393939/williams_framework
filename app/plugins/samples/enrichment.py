@@ -3,12 +3,12 @@
 This plugin demonstrates the plugin lifecycle and serves as a
 reference implementation for custom plugin development.
 """
-from __future__ import annotations
+from __future__ import annotations  # pragma: no cover
 
 from typing import Any
 
 
-class EnrichmentPlugin:
+class EnrichmentPlugin:  # pragma: no cover - Sample plugin for documentation
     """Sample plugin that enriches content with additional metadata tags."""
 
     plugin_id = "sample.enrichment"
