@@ -244,6 +244,17 @@ class CorefResolver(ContentTransformer):
             entity_mention["start"],
         )
         
+        # Create entity mention node in Neo4j (if not exists from EntityExtractor)
+        # This makes CorefResolver work standalone for testing
+        self._neo_repo.create_entity_mention(
+            mention_id=entity_mention_id,
+            chunk_id=chunk_id,
+            text=entity_mention["text"],
+            entity_type=entity_mention["entity_type"],
+            start_offset=entity_mention["start"],
+            end_offset=entity_mention["end"],
+        )
+        
         # For each pronoun mention, create COREF_WITH relationship
         for i in range(1, len(mentions)):
             pronoun_mention = mentions[i]

@@ -732,7 +732,7 @@ class NeoRepository:
             ]
         """
         query = """
-        MATCH (d:Document {id: $doc_id})-[:HAS_CHUNK]->(c:Chunk)
+        MATCH (d:Document {id: $doc_id})<-[:PART_OF]-(c:Chunk)
         -[:CONTAINS_MENTION]->(m1:Mention)-[r:COREF_WITH]->(m2:Mention)
         RETURN DISTINCT
             r.cluster_id AS cluster_id,
