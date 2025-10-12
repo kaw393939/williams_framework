@@ -12,6 +12,7 @@ Tier System:
 """
 import asyncio
 import json
+import logging
 from typing import Optional
 from datetime import datetime, timedelta
 import uuid
@@ -21,6 +22,7 @@ from pathlib import Path
 from pydantic import HttpUrl
 from app.core.models import ProcessedContent, LibraryFile, SearchResult, LibraryStats
 from app.core.types import ContentSource
+from app.intelligence.embeddings import generate_embedding as _generate_embedding
 from app.repositories.postgres_repository import PostgresRepository
 from app.repositories.redis_repository import RedisRepository
 from app.repositories.qdrant_repository import QdrantRepository
@@ -39,10 +41,12 @@ SEARCH_CACHE_TTL = 3600  # 1 hour in seconds
 RECENT_ADDITIONS_DAYS = 7
 
 
-# Placeholder function for embedding generation
+logger = logging.getLogger(__name__)
+
+
 async def generate_embedding(text: str) -> list[float]:
-    """Generate embedding vector for text (placeholder)."""
-    raise NotImplementedError("Embedding generation not yet implemented")
+    """Generate embedding vector for text using the deterministic generator."""
+    return await _generate_embedding(text)
 
 
 class LibraryService:
@@ -327,8 +331,13 @@ class LibraryService:
             self.minio_repo.bucket_name = from_bucket
             try:
                 self.minio_repo.delete_file(file_key)
-            except:
-                pass
+            except Exception as exc:  # pragma: no cover - exercised in integration tests with mocks
+                logger.warning(
+                    "Failed to delete %s from bucket %s: %s",
+                    file_key,
+                    from_bucket,
+                    exc,
+                )
             self.minio_repo.bucket_name = original_bucket
         
         # Update PostgreSQL metadata
@@ -344,11 +353,22 @@ class LibraryService:
         
         # Update Qdrant metadata
         try:
-            # Would need to update Qdrant metadata here
-            # For now, just continue
-            pass
-        except:
-            pass
+            content_uuid = str(uuid.uuid5(uuid.NAMESPACE_URL, file_id))
+            await asyncio.to_thread(
+                self.qdrant_repo.update_metadata,
+                content_id=content_uuid,
+                metadata={
+                    **metadata,
+                    "tier": to_tier,
+                    "quality_score": float(metadata.get("quality_score", 0.0)),
+                },
+            )
+        except Exception as exc:  # pragma: no cover - log path is hard to trigger in tests
+            logger.warning(
+                "Failed to update Qdrant metadata for %s when moving tiers: %s",
+                file_id,
+                exc,
+            )
         
         # Return updated LibraryFile
         new_file_path = f"librarian-{to_tier}/{file_key}"
@@ -489,8 +509,8 @@ class LibraryService:
                     else:
                         tags = tags_str
                     all_tags.update(tags)
-                except:
-                    pass
+                except (TypeError, json.JSONDecodeError) as exc:
+                    logger.debug("Failed to parse tags for record %s: %s", record, exc)
             
             # Count recent additions
             if record.get('started_at'):

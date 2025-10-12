@@ -1,8 +1,5 @@
-"""
-Qdrant Repository for vector similarity search.
-
-Manages embeddings in Qdrant vector database with CRUD operations.
-"""
+"""Qdrant Repository for vector similarity search."""
+import inspect
 from typing import Any
 from uuid import UUID
 
@@ -168,12 +165,29 @@ class QdrantRepository:
         if filter_conditions:
             query_filter = self._build_filter(filter_conditions)
         
-        results = self.client.search(
-            collection_name=self.collection_name,
-            query_vector=query_vector,
-            limit=limit,
-            query_filter=query_filter
-        )
+        try:
+            import inspect
+
+            signature = inspect.signature(self.client.query_points)
+            kwargs = {
+                "collection_name": self.collection_name,
+                "query": query_vector,
+                "limit": limit,
+            }
+            if query_filter is not None:
+                param_name = "query_filter" if "query_filter" in signature.parameters else "filter"
+                kwargs[param_name] = query_filter
+
+            response = self.client.query_points(**kwargs)
+            results = getattr(response, "points", response)
+        except AttributeError:
+            # Older clients expose the deprecated search API.
+            results = self.client.search(
+                collection_name=self.collection_name,
+                query_vector=query_vector,
+                limit=limit,
+                query_filter=query_filter
+            )
         
         return [
             {

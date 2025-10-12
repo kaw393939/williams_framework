@@ -117,3 +117,18 @@ class StorageError(LibrarianException):
         )
     """
     pass
+
+
+class ConfigurationError(LibrarianException):
+    """Raised when configuration is invalid or missing.
+    
+    This covers missing config files, invalid settings, missing
+    templates, and any other configuration-related errors.
+    
+    Example:
+        raise ConfigurationError(
+            "Required template not found",
+            details={"template": "summarize.prompt", "path": "/config/prompts"}
+        )
+    """
+    pass

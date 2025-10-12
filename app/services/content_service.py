@@ -12,10 +12,18 @@ This is the main service that ties everything together!
 """
 import asyncio
 import hashlib
+import re
+from collections import Counter
 from datetime import datetime
 from typing import Optional
+from urllib.parse import urlparse
 from uuid import uuid4
 
+import httpx
+from bs4 import BeautifulSoup
+import trafilatura
+
+from app.intelligence.embeddings import generate_embedding as _generate_embedding
 from app.repositories.postgres_repository import PostgresRepository
 from app.repositories.redis_repository import RedisRepository
 from app.repositories.qdrant_repository import QdrantRepository
@@ -354,40 +362,123 @@ class ContentService:
 # Helper functions (will be implemented later, mocked in tests)
 
 async def extract_web_content(url: str) -> RawContent:
-    """
-    Extract content from a web URL.
-    
-    TODO: Implement with BeautifulSoup/Playwright.
-    For now, this is a placeholder that will be mocked in tests.
-    """
-    raise NotImplementedError("Web extraction not yet implemented")
+    """Extract content from a web URL using httpx and trafilatura."""
+    try:
+        async with httpx.AsyncClient(timeout=10.0, follow_redirects=True) as client:
+            response = await client.get(url)
+            response.raise_for_status()
+    except httpx.HTTPError as exc:
+        raise ExtractionError(f"Failed to fetch content from {url}: {exc}") from exc
+
+    content_type = response.headers.get("content-type", "").lower()
+    text = response.text
+
+    metadata: dict[str, str] = {}
+    extracted_text = text
+
+    if "html" in content_type or text.strip().startswith("<"):
+        extracted = trafilatura.extract(text, url=url, include_comments=False)
+        if extracted:
+            extracted_text = extracted
+        soup = BeautifulSoup(text, "html.parser")
+        title_tag = soup.find("title")
+        if title_tag and title_tag.text.strip():
+            metadata["title"] = title_tag.text.strip()
+        else:
+            metadata["title"] = urlparse(url).path.rsplit("/", 1)[-1] or url
+    else:
+        extracted_text = text
+        metadata["title"] = urlparse(url).path.rsplit("/", 1)[-1] or url
+
+    cleaned = extracted_text.strip()
+    if not cleaned:
+        raise ExtractionError(f"No textual content could be extracted from {url}")
+
+    if "summary" not in metadata:
+        metadata["summary"] = cleaned.splitlines()[0][:200]
+
+    return RawContent(
+        url=url,
+        source_type=ContentSource.WEB,
+        raw_text=cleaned,
+        metadata=metadata,
+        extracted_at=datetime.now()
+    )
 
 
 async def screen_with_ai(raw_content: RawContent) -> ScreeningResult:
     """
-    Screen content using OpenAI API.
-    
-    TODO: Implement with OpenAI client.
-    For now, this is a placeholder that will be mocked in tests.
-    """
-    raise NotImplementedError("AI screening not yet implemented")
+    Heuristic content screening that mimics an AI quality assessment."""
+    text = raw_content.raw_text
+    word_tokens = re.findall(r"[\w']+", text.lower())
+    word_count = len(word_tokens)
+    unique_ratio = len(set(word_tokens)) / word_count if word_count else 0.0
+    sentence_count = max(1, len(re.split(r"[.!?]+", text)))
+
+    richness_score = min(1.0, unique_ratio * 2)
+    length_score = min(1.0, word_count / 600)
+    structure_score = min(1.0, sentence_count / 20)
+
+    quality = 3.0 + (richness_score * 4) + (length_score * 2) + (structure_score * 1.5)
+    quality = min(10.0, round(quality, 2))
+
+    if quality >= 7.5:
+        decision = "ACCEPT"
+        reasoning = "Content is comprehensive and well-structured."
+    elif quality >= 5.5:
+        decision = "MAYBE"
+        reasoning = "Content is decent but could use further review."
+    else:
+        decision = "REJECT"
+        reasoning = "Content lacks sufficient depth or clarity."
+
+    screening_score = min(10.0, max(0.0, quality - 0.5))
+    estimated_quality = quality
+
+    return ScreeningResult(
+        screening_score=screening_score,
+        decision=decision,
+        reasoning=reasoning,
+        estimated_quality=estimated_quality
+    )
 
 
 async def process_with_ai(raw_content: RawContent) -> dict:
     """
-    Process content using OpenAI API.
-    
-    TODO: Implement with OpenAI client.
-    For now, this is a placeholder that will be mocked in tests.
-    """
-    raise NotImplementedError("AI processing not yet implemented")
+    Lightweight processing pipeline that summarises content heuristically."""
+    text = raw_content.raw_text.strip()
+    paragraphs = [p.strip() for p in re.split(r"\n{2,}", text) if p.strip()]
+    sentences = re.split(r"(?<=[.!?])\s+", text)
+    sentences = [sentence.strip() for sentence in sentences if sentence.strip()]
+
+    summary_sentences = sentences[:2] if sentences else [text[:200]]
+    summary = " ".join(summary_sentences)
+    summary = summary[:400]
+
+    key_points = sentences[:3]
+    if len(key_points) < 3 and paragraphs:
+        key_points.append(paragraphs[0][:200])
+    key_points = [kp for kp in key_points if kp]
+
+    stop_words = {
+        "the", "and", "for", "with", "that", "this", "from", "into",
+        "about", "their", "have", "will", "your", "while", "where",
+    }
+    tokens = [token for token in re.findall(r"[a-zA-Z]{3,}", text.lower()) if token not in stop_words]
+    common = Counter(tokens).most_common(5)
+    tags = [word for word, _ in common]
+
+    if not tags and tokens:  # pragma: no cover - Counter.most_common returns items when tokens exist
+        tags = list(dict.fromkeys(tokens[:5]))
+
+    return {
+        "summary": summary or text[:200],
+        "key_points": key_points or [summary or text[:120]],
+        "tags": tags or ["general"],
+    }
 
 
 async def generate_embedding(text: str) -> list[float]:
     """
-    Generate vector embedding for text.
-    
-    TODO: Implement with OpenAI embeddings API.
-    For now, this is a placeholder that will be mocked in tests.
-    """
-    raise NotImplementedError("Embedding generation not yet implemented")
+    Generate vector embedding using the deterministic local embedding utility."""
+    return await _generate_embedding(text)

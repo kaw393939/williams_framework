@@ -30,6 +30,8 @@ trafilatura = "^1.6.0"
 yt-dlp = "^2024.3.0"
 pypdf = "^4.0.0"
 beautifulsoup4 = "^4.12.0"
+pytube = "^15.0.0"
+youtube-transcript-api = "^0.6.2"
 # UI
 streamlit = "^1.30.0"
 plotly = "^5.18.0"
@@ -42,6 +44,7 @@ pytest = "^7.4.0"
 pytest-asyncio = "^0.21.0"
 pytest-cov = "^4.1.0"
 pytest-watch = "^4.2.0"
+pytest-timeout = "^2.2.0"
 hypothesis = "^6.92.0"
 mypy = "^1.7.0"
 ruff = "^0.1.0"
@@ -61,6 +64,7 @@ markers = [
     "unit: Unit tests (fast, no I/O)",
     "integration: Integration tests (real DBs)",
     "e2e: End-to-end tests (full workflows)",
+    "ui: Streamlit or UI tests (headless rendering)",
     "slow: Tests that take > 5 seconds",
     "requires_api: Tests that call OpenAI API",
     "requires_db: Tests that need database",

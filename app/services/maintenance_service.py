@@ -13,6 +13,12 @@ from app.repositories.qdrant_repository import QdrantRepository
 from app.repositories.minio_repository import MinIORepository
 
 
+# Constants
+DEFAULT_CACHE_CLEANUP_DAYS = 7
+CACHE_EXPIRY_THRESHOLD_SECONDS = 60  # Keys expiring in less than this are cleaned
+VALID_PROCESSING_STATUSES = ['started', 'completed', 'failed', 'pending']
+
+
 class MaintenanceService:
     """
     Service for system maintenance and background tasks.
@@ -46,7 +52,26 @@ class MaintenanceService:
         self.qdrant_repo = qdrant_repo
         self.minio_repo = minio_repo
     
-    async def cleanup_old_cache_entries(self, days: int = 7) -> int:
+    @staticmethod
+    async def _safe_repository_call(repo_name: str, operation: callable, *args, **kwargs) -> dict:
+        """
+        Safely call a repository operation and return status.
+        
+        Args:
+            repo_name: Name of repository for logging
+            operation: Async callable to execute
+            *args, **kwargs: Arguments to pass to operation
+            
+        Returns:
+            Dict with status and result or error
+        """
+        try:
+            result = await operation(*args, **kwargs) if operation else None
+            return {'status': 'success', 'result': result}
+        except Exception as e:
+            return {'status': 'error', 'error': str(e)}
+    
+    async def cleanup_old_cache_entries(self, days: int = DEFAULT_CACHE_CLEANUP_DAYS) -> int:
         """
         Remove Redis cache entries older than specified days.
         
@@ -72,7 +97,7 @@ class MaintenanceService:
                 
                 # If TTL is very short or key is about to expire, delete it
                 # (This helps clean up nearly-expired entries)
-                if ttl_seconds >= 0 and ttl_seconds < 60:  # Less than 60 seconds
+                if ttl_seconds >= 0 and ttl_seconds < CACHE_EXPIRY_THRESHOLD_SECONDS:
                     await self.redis_repo.delete(key)
                     deleted_count += 1
             except:
@@ -268,9 +293,10 @@ class MaintenanceService:
         
         # Check 1: Verify processing records have valid status
         try:
-            query = """
+            status_list = "', '".join(VALID_PROCESSING_STATUSES)
+            query = f"""
                 SELECT COUNT(*) as count FROM processing_records 
-                WHERE status NOT IN ('started', 'completed', 'failed', 'pending')
+                WHERE status NOT IN ('{status_list}')
             """
             result = await self.postgres_repo.fetch_one(query)
             report['checks_performed'].append('processing_record_status_validation')

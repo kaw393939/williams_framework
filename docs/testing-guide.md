@@ -5,6 +5,28 @@
 **We do NOT use mocks for integration tests.**  
 We use real instances of services to ensure the system works in production conditions.
 
+## Coverage Expectations
+
+- Continuous Integration enforces **90% global coverage** via `pytest --cov=app`.
+- When iterating locally on a subset of tests, append `--no-cov` to skip the global gate.
+- Before committing or opening a PR, run the full suite with:
+
+    ```bash
+    poetry run pytest
+    ```
+
+    This command exercises unit + integration suites and refreshes the HTML coverage report under `htmlcov/`.
+
+- Segmented CI lanes can be reproduced locally:
+
+    ```bash
+    poetry run pytest -m "unit and not slow"
+    poetry run pytest -m "integration and not slow"
+    poetry run pytest -m "ui and not slow"
+    ```
+
+    Tests inherit their marker automatically from the top-level folder (`tests/unit`, `tests/integration`, `tests/presentation`/`tests/ui`, etc.), so you rarely need to tag them manually.
+
 ## Test Pyramid
 
 ```
@@ -67,6 +89,7 @@ markers =
     unit: Unit tests (fast, no I/O)
     integration: Integration tests (real DBs)
     e2e: End-to-end tests (full workflows)
+    ui: Streamlit or UI tests (headless rendering)
     slow: Tests that take > 5 seconds
     requires_api: Tests that call OpenAI API (costs money)
     requires_db: Tests that need database
@@ -86,6 +109,8 @@ asyncio_mode = auto
 # Timeout
 timeout = 300
 ```
+
+Markers are assigned automatically during collection based on the directory structure (see `tests/conftest.py`), so adding a new test under `tests/unit/` will automatically participate in the unit lane in CI.
 
 ### conftest.py (Shared Fixtures)
 
@@ -369,6 +394,17 @@ def test_helpers():
 
 ## Unit Tests (Fast, Isolated)
 
+### pipeline/test_pdf_extractor.py
+
+- Validates the async `PDFDocumentExtractor` without real network calls by stubbing `PdfReader` and the HTTP client.
+- Confirms metadata normalization, including filename fallbacks when the PDF lacks a title.
+- Verifies that extraction fails fast when no text can be recovered from any page.
+
+### pipeline/test_pipeline_cli.py
+
+- Covers CLI utilities, including JSON formatting and the new PDF-aware pipeline selection helper.
+- Ensures errors produce URL-scoped log messages, keeping failure output actionable.
+
 ### test_model_router.py
 
 ```python
@@ -512,6 +548,16 @@ class TestScreeningResult:
 ```
 
 ## Integration Tests (Real Services)
+
+### pipeline/test_pdf_pipeline.py
+
+- Runs the `ContentPipeline` with the PDF extractor, basic transformer, and a capturing loader to emulate production ingest.
+- Asserts the resulting `LibraryFile` preserves extracted text and metadata, giving confidence in real PDF workflows.
+
+### pipeline/test_pdf_cli.py
+
+- Executes the CLI end-to-end for PDF URLs by patching network/storage edges, verifying JSON output and tier assignment.
+- Confirms the default pipeline builder routes to the PDF extractor when the URL targets a document.
 
 ### test_chroma_repository.py
 

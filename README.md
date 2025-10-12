@@ -193,12 +193,41 @@ poetry install
 cp .env.example .env
 # Edit .env with your OPENAI_API_KEY
 
-# Run tests
+# Run tests (full suite keeps coverage ≥ 90%)
 poetry run pytest
 
 # Start application
 poetry run streamlit run app/main.py
 ```
+
+## ⚙️ Content Pipeline CLI
+
+The ETL stack can run independently from the Streamlit UI via the dedicated CLI:
+
+```bash
+poetry run python -m app.pipeline.cli https://example.com/article --json
+```
+
+This command:
+
+- Extracts the URL using the default HTML extractor
+- Transforms the content with the basic heuristic transformer
+- Loads the result into the local library structure (`data/library/<tier>/`)
+- Emits either a terse text summary (default) or full JSON payload (`--json`)
+
+### Custom wiring
+
+The CLI accepts a custom pipeline factory so you can inject production repositories:
+
+```python
+from app.pipeline.cli import main
+from my_project.pipeline_factory import build_pipeline
+
+if __name__ == "__main__":
+    raise SystemExit(main(pipeline_factory=build_pipeline))
+```
+
+See `app/pipeline/cli.py` for the in-memory defaults and extension points.
 
 ## 📚 Documentation
 

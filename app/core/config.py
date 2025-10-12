@@ -245,3 +245,14 @@ class Settings(BaseSettings):
 
 # Global settings instance
 settings = Settings()
+
+
+def get_settings() -> Settings:
+    """Get the global settings instance.
+    
+    This function exists to allow for easier mocking in tests.
+    
+    Returns:
+        The global Settings instance.
+    """
+    return settings

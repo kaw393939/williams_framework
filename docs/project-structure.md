@@ -40,27 +40,20 @@ williams-librarian/
 │   │
 │   ├── pipeline/                  # ETL pipeline
 │   │   ├── __init__.py
-│   │   ├── etl.py                 # Main pipeline orchestrator
+│   │   ├── cli.py                 # Command-line entry point
+│   │   ├── etl.py                 # Pipeline orchestrator
 │   │   ├── extractors/            # Content extractors
 │   │   │   ├── __init__.py
 │   │   │   ├── base.py
-│   │   │   ├── web_extractor.py   # Web scraping
-│   │   │   ├── youtube_extractor.py # YouTube + transcripts
-│   │   │   └── pdf_extractor.py   # PDF parsing
+│   │   │   └── html.py            # HTML web extractor
 │   │   ├── transformers/          # Content transformers
 │   │   │   ├── __init__.py
 │   │   │   ├── base.py
-│   │   │   ├── content_transformer.py # Cleaning/structuring
-│   │   │   ├── summarizer.py      # Summarization
-│   │   │   └── ner_extractor.py   # Named entity recognition
-│   │   ├── loaders/               # Data loaders
-│   │   │   ├── __init__.py
-│   │   │   ├── chroma_loader.py   # Load to ChromaDB
-│   │   │   └── filesystem_loader.py # Save to file system
-│   │   └── knowledge_graph/       # Knowledge graph builder
+│   │   │   └── basic.py           # Heuristic summariser/tagger
+│   │   └── loaders/               # Data loaders
 │   │       ├── __init__.py
-│   │       ├── graph_builder.py   # Graph construction
-│   │       └── entity_resolver.py # Entity linking
+│   │       ├── base.py
+│   │       └── library.py         # Persist to library + vector store
 │   │
 │   ├── presentation/              # UI layer (Streamlit)
 │   │   ├── __init__.py
@@ -279,12 +272,16 @@ Key components:
 
 **Purpose**: ETL pipeline for content processing
 
-Flow: `Extract → Transform → Load → Knowledge Graph`
+Flow: `Extract → Transform → Load`
 
-Each stage has multiple implementations (Strategy pattern):
-- Extractors: Web, YouTube, PDF, ...
-- Transformers: Cleaning, Summarization, NER, ...
-- Loaders: ChromaDB, FileSystem, ...
+Key components shipped today:
+
+- **CLI (`cli.py`)** – lightweight command-line runner with file-system friendly defaults.
+- **`HTMLWebExtractor`** – async HTML retrieval with trafilatura enrichment.
+- **`BasicContentTransformer`** – deterministic heuristics for summaries, key points, and tags.
+- **`LibraryContentLoader`** – writes Markdown snapshots, seeds the vector store, and caches processed payloads.
+
+The pipeline orchestrator (`etl.py`) wires these strategies and returns a `PipelineResult` with raw, processed, and stored artifacts.
 
 ### `app/presentation/`
 
