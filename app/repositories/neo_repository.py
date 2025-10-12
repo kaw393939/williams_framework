@@ -256,3 +256,321 @@ class NeoRepository:
         query = "MATCH (n) DETACH DELETE n"
         self.execute_write(query)
         logger.warning("Database cleared!")
+    
+    # ========== SCHEMA INITIALIZATION ==========
+    
+    def initialize_schema(self):
+        """
+        Initialize Neo4j schema with constraints and indexes.
+        
+        Creates:
+        - Uniqueness constraints on IDs
+        - Indexes for common queries
+        - Node labels: Document, Chunk, Mention, Entity
+        """
+        constraints = [
+            # Document constraints
+            "CREATE CONSTRAINT document_id_unique IF NOT EXISTS FOR (d:Document) REQUIRE d.id IS UNIQUE",
+            "CREATE CONSTRAINT document_url_unique IF NOT EXISTS FOR (d:Document) REQUIRE d.url IS UNIQUE",
+            
+            # Chunk constraints
+            "CREATE CONSTRAINT chunk_id_unique IF NOT EXISTS FOR (c:Chunk) REQUIRE c.id IS UNIQUE",
+            
+            # Entity constraints
+            "CREATE CONSTRAINT entity_id_unique IF NOT EXISTS FOR (e:Entity) REQUIRE e.id IS UNIQUE",
+            
+            # Mention constraints
+            "CREATE CONSTRAINT mention_id_unique IF NOT EXISTS FOR (m:Mention) REQUIRE m.id IS UNIQUE",
+        ]
+        
+        indexes = [
+            # Performance indexes
+            "CREATE INDEX document_created_idx IF NOT EXISTS FOR (d:Document) ON (d.created_at)",
+            "CREATE INDEX chunk_offset_idx IF NOT EXISTS FOR (c:Chunk) ON (c.start_offset)",
+            "CREATE INDEX entity_type_idx IF NOT EXISTS FOR (e:Entity) ON (e.entity_type)",
+            "CREATE INDEX entity_text_idx IF NOT EXISTS FOR (e:Entity) ON (e.text)",
+        ]
+        
+        # Create constraints
+        for constraint in constraints:
+            try:
+                self.execute_write(constraint)
+                logger.info(f"Created constraint: {constraint[:60]}...")
+            except Exception as e:
+                logger.debug(f"Constraint may already exist: {e}")
+        
+        # Create indexes
+        for index in indexes:
+            try:
+                self.execute_write(index)
+                logger.info(f"Created index: {index[:60]}...")
+            except Exception as e:
+                logger.debug(f"Index may already exist: {e}")
+        
+        logger.info("Schema initialization complete")
+    
+    # ========== DOCUMENT OPERATIONS ==========
+    
+    def create_document(
+        self,
+        doc_id: str,
+        url: str,
+        title: str,
+        content_hash: Optional[str] = None,
+        metadata: Optional[Dict[str, Any]] = None
+    ) -> Dict[str, Any]:
+        """
+        Create or update a Document node.
+        
+        Args:
+            doc_id: Deterministic document ID (SHA256 of URL)
+            url: Document URL
+            title: Document title
+            content_hash: Optional content hash for version tracking
+            metadata: Additional metadata (author, published_date, etc.)
+            
+        Returns:
+            Created/updated document node
+        """
+        import json
+        
+        # Convert metadata dict to JSON string (Neo4j doesn't support nested maps)
+        metadata_json = json.dumps(metadata) if metadata else "{}"
+        
+        query = """
+        MERGE (d:Document {id: $doc_id})
+        ON CREATE SET
+            d.url = $url,
+            d.title = $title,
+            d.content_hash = $content_hash,
+            d.created_at = datetime(),
+            d.metadata = $metadata_json
+        ON MATCH SET
+            d.url = $url,
+            d.title = $title,
+            d.content_hash = $content_hash,
+            d.updated_at = datetime(),
+            d.metadata = $metadata_json
+        RETURN d
+        """
+        
+        parameters = {
+            "doc_id": doc_id,
+            "url": url,
+            "title": title,
+            "content_hash": content_hash,
+            "metadata_json": metadata_json
+        }
+        
+        result = self.execute_write(query, parameters)
+        if result:
+            doc_node = result[0]["d"]
+            # Convert Node to dict
+            doc = dict(doc_node)
+            # Parse metadata JSON back to dict for convenience
+            if "metadata" in doc and doc["metadata"]:
+                doc["metadata"] = json.loads(doc["metadata"])
+            return doc
+        return {}
+    
+    def get_document(self, doc_id: str) -> Optional[Dict[str, Any]]:
+        """Get document by ID."""
+        import json
+        
+        query = "MATCH (d:Document {id: $doc_id}) RETURN d"
+        result = self.execute_query(query, {"doc_id": doc_id})
+        
+        if result:
+            doc_node = result[0]["d"]
+            # Convert Node to dict
+            doc = dict(doc_node)
+            # Parse metadata JSON back to dict
+            if "metadata" in doc and doc["metadata"]:
+                doc["metadata"] = json.loads(doc["metadata"])
+            return doc
+        return None
+    
+    # ========== CHUNK OPERATIONS ==========
+    
+    def create_chunk(
+        self,
+        chunk_id: str,
+        doc_id: str,
+        text: str,
+        start_offset: int,
+        end_offset: int,
+        page_number: Optional[int] = None,
+        heading: Optional[str] = None,
+        embedding: Optional[List[float]] = None
+    ) -> Dict[str, Any]:
+        """
+        Create a Chunk node and link to Document.
+        
+        Args:
+            chunk_id: Deterministic chunk ID (doc_id + offset)
+            doc_id: Parent document ID
+            text: Chunk text content
+            start_offset: Byte offset where chunk starts
+            end_offset: Byte offset where chunk ends
+            page_number: Optional page number (for PDFs)
+            heading: Optional heading context (for markdown)
+            embedding: Optional embedding vector
+            
+        Returns:
+            Created chunk node
+        """
+        query = """
+        MATCH (d:Document {id: $doc_id})
+        MERGE (c:Chunk {id: $chunk_id})
+        ON CREATE SET
+            c.text = $text,
+            c.start_offset = $start_offset,
+            c.end_offset = $end_offset,
+            c.page_number = $page_number,
+            c.heading = $heading,
+            c.embedding = $embedding,
+            c.created_at = datetime()
+        MERGE (c)-[:PART_OF]->(d)
+        RETURN c
+        """
+        
+        parameters = {
+            "chunk_id": chunk_id,
+            "doc_id": doc_id,
+            "text": text,
+            "start_offset": start_offset,
+            "end_offset": end_offset,
+            "page_number": page_number,
+            "heading": heading,
+            "embedding": embedding
+        }
+        
+        result = self.execute_write(query, parameters)
+        return result[0]["c"] if result else {}
+    
+    def get_chunk(self, chunk_id: str) -> Optional[Dict[str, Any]]:
+        """Get chunk by ID."""
+        query = "MATCH (c:Chunk {id: $chunk_id}) RETURN c"
+        result = self.execute_query(query, {"chunk_id": chunk_id})
+        return result[0]["c"] if result else None
+    
+    def get_document_chunks(self, doc_id: str) -> List[Dict[str, Any]]:
+        """Get all chunks for a document, ordered by offset."""
+        query = """
+        MATCH (c:Chunk)-[:PART_OF]->(d:Document {id: $doc_id})
+        RETURN c
+        ORDER BY c.start_offset
+        """
+        result = self.execute_query(query, {"doc_id": doc_id})
+        return [r["c"] for r in result]
+    
+    # ========== ENTITY OPERATIONS ==========
+    
+    def create_entity(
+        self,
+        entity_id: str,
+        text: str,
+        entity_type: str,
+        confidence: Optional[float] = None
+    ) -> Dict[str, Any]:
+        """
+        Create or update an Entity node.
+        
+        Args:
+            entity_id: Deterministic entity ID (hash of text + type)
+            text: Entity text (e.g., "Albert Einstein")
+            entity_type: Type (PERSON, ORG, GPE, LAW, DATE, etc.)
+            confidence: Optional confidence score from NER
+            
+        Returns:
+            Created/updated entity node
+        """
+        query = """
+        MERGE (e:Entity {id: $entity_id})
+        ON CREATE SET
+            e.text = $text,
+            e.entity_type = $entity_type,
+            e.confidence = $confidence,
+            e.mention_count = 1,
+            e.created_at = datetime()
+        ON MATCH SET
+            e.mention_count = e.mention_count + 1,
+            e.updated_at = datetime()
+        RETURN e
+        """
+        
+        parameters = {
+            "entity_id": entity_id,
+            "text": text,
+            "entity_type": entity_type,
+            "confidence": confidence
+        }
+        
+        result = self.execute_write(query, parameters)
+        return result[0]["e"] if result else {}
+    
+    def get_entity(self, entity_id: str) -> Optional[Dict[str, Any]]:
+        """Get entity by ID."""
+        query = "MATCH (e:Entity {id: $entity_id}) RETURN e"
+        result = self.execute_query(query, {"entity_id": entity_id})
+        return result[0]["e"] if result else None
+    
+    # ========== MENTION OPERATIONS ==========
+    
+    def create_mention(
+        self,
+        mention_id: str,
+        chunk_id: str,
+        entity_id: str,
+        offset_in_chunk: int,
+        confidence: Optional[float] = None
+    ) -> Dict[str, Any]:
+        """
+        Create a Mention node linking Chunk to Entity.
+        
+        A "mention" is a specific occurrence of an entity in a chunk.
+        
+        Args:
+            mention_id: Deterministic mention ID
+            chunk_id: Chunk where entity appears
+            entity_id: Entity that is mentioned
+            offset_in_chunk: Character offset within chunk
+            confidence: Optional NER confidence score
+            
+        Returns:
+            Created mention node
+        """
+        query = """
+        MATCH (c:Chunk {id: $chunk_id})
+        MATCH (e:Entity {id: $entity_id})
+        MERGE (m:Mention {id: $mention_id})
+        ON CREATE SET
+            m.offset_in_chunk = $offset_in_chunk,
+            m.confidence = $confidence,
+            m.created_at = datetime()
+        MERGE (m)-[:FOUND_IN]->(c)
+        MERGE (m)-[:REFERS_TO]->(e)
+        RETURN m
+        """
+        
+        parameters = {
+            "mention_id": mention_id,
+            "chunk_id": chunk_id,
+            "entity_id": entity_id,
+            "offset_in_chunk": offset_in_chunk,
+            "confidence": confidence
+        }
+        
+        result = self.execute_write(query, parameters)
+        return result[0]["m"] if result else {}
+    
+    def get_entity_mentions(self, entity_id: str) -> List[Dict[str, Any]]:
+        """Get all mentions of an entity across all documents."""
+        query = """
+        MATCH (m:Mention)-[:REFERS_TO]->(e:Entity {id: $entity_id})
+        MATCH (m)-[:FOUND_IN]->(c:Chunk)-[:PART_OF]->(d:Document)
+        RETURN m, c, d
+        ORDER BY d.created_at DESC, c.start_offset
+        """
+        result = self.execute_query(query, {"entity_id": entity_id})
+        return result
