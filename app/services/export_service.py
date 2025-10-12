@@ -6,7 +6,6 @@ with support for filtering and ZIP archive generation.
 
 import re
 from io import BytesIO
-from typing import Optional
 from zipfile import ZipFile
 
 from app.core.models import LibraryFile
@@ -50,8 +49,8 @@ class ExportService:
     def filter_for_export(
         self,
         items: list[LibraryFile],
-        tier_filter: Optional[str] = None,
-        tag_filter: Optional[list[str]] = None,
+        tier_filter: str | None = None,
+        tag_filter: list[str] | None = None,
     ) -> list[LibraryFile]:
         """Filter library items for export.
 

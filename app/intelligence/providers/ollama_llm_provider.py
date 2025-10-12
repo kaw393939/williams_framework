@@ -9,7 +9,6 @@ import json
 import logging
 import os
 from collections.abc import Generator
-from typing import Optional
 
 import httpx
 
@@ -32,7 +31,7 @@ class OllamaLLMProvider(AbstractLLMProvider):
     def __init__(
         self,
         model_name: str = "llama3.2",
-        host: Optional[str] = None,
+        host: str | None = None,
         timeout: int = 120,
         temperature: float = 0.7,
         context_window: int = 8192,
@@ -67,9 +66,9 @@ class OllamaLLMProvider(AbstractLLMProvider):
     def generate(
         self,
         prompt: str,
-        system_prompt: Optional[str] = None,
-        max_tokens: Optional[int] = None,
-        temperature: Optional[float] = None,
+        system_prompt: str | None = None,
+        max_tokens: int | None = None,
+        temperature: float | None = None,
         **kwargs
     ) -> str:
         """
@@ -114,14 +113,14 @@ class OllamaLLMProvider(AbstractLLMProvider):
 
         except httpx.HTTPError as e:
             logger.error(f"Ollama generation failed: {e}")
-            raise RuntimeError(f"Ollama generation failed: {e}")
+            raise RuntimeError(f"Ollama generation failed: {e}") from e
 
     def stream_generate(
         self,
         prompt: str,
-        system_prompt: Optional[str] = None,
-        max_tokens: Optional[int] = None,
-        temperature: Optional[float] = None,
+        system_prompt: str | None = None,
+        max_tokens: int | None = None,
+        temperature: float | None = None,
         **kwargs
     ) -> Generator[str, None, None]:
         """
@@ -178,7 +177,7 @@ class OllamaLLMProvider(AbstractLLMProvider):
 
         except httpx.HTTPError as e:
             logger.error(f"Ollama streaming failed: {e}")
-            raise RuntimeError(f"Ollama streaming failed: {e}")
+            raise RuntimeError(f"Ollama streaming failed: {e}") from e
 
     def get_context_window(self) -> int:
         """Get maximum context window size."""

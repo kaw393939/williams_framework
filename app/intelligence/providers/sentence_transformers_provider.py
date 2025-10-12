@@ -6,7 +6,6 @@ Supports CPU and GPU acceleration, batch processing.
 """
 
 import logging
-from typing import Union
 
 import numpy as np
 
@@ -44,7 +43,7 @@ class SentenceTransformerProvider(AbstractEmbeddingProvider):
 
         logger.info(f"Loaded SentenceTransformer model: {model_name} on {device}")
 
-    def embed(self, text: Union[str, list[str]]) -> Union[np.ndarray, list[np.ndarray]]:
+    def embed(self, text: str | list[str]) -> np.ndarray | list[np.ndarray]:
         """
         Generate embeddings using SentenceTransformers.
 

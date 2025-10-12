@@ -6,7 +6,7 @@ Handles connections, Cypher queries, and vector index management.
 
 import logging
 import os
-from typing import Any, Optional
+from typing import Any
 
 logger = logging.getLogger(__name__)
 
@@ -26,7 +26,7 @@ class NeoRepository:
         self,
         uri: str = "bolt://localhost:7687",
         user: str = "neo4j",
-        password: Optional[str] = None,
+        password: str | None = None,
         database: str = "neo4j"
     ):
         """
@@ -40,11 +40,11 @@ class NeoRepository:
         """
         try:
             from neo4j import GraphDatabase
-        except ImportError:
+        except ImportError as e:
             raise ImportError(
                 "neo4j package not installed. "
                 "Install with: poetry add neo4j"
-            )
+            ) from e
 
         if password is None:
             password = os.getenv("NEO4J_PASSWORD", "dev_password_change_in_production")
@@ -92,9 +92,9 @@ class NeoRepository:
                 return record["num"] == 1
         except Exception as e:
             logger.error(f"Neo4j connectivity check failed: {e}")
-            raise RuntimeError(f"Failed to connect to Neo4j: {e}")
+            raise RuntimeError(f"Failed to connect to Neo4j: {e}") from e
 
-    def execute_query(self, query: str, parameters: Optional[dict[str, Any]] = None) -> list[dict[str, Any]]:
+    def execute_query(self, query: str, parameters: dict[str, Any] | None = None) -> list[dict[str, Any]]:
         """
         Execute a Cypher query and return results.
 
@@ -112,7 +112,7 @@ class NeoRepository:
             result = session.run(query, parameters, timeout=5.0)
             return [dict(record) for record in result]
 
-    def execute_write(self, query: str, parameters: Optional[dict[str, Any]] = None) -> list[dict[str, Any]]:
+    def execute_write(self, query: str, parameters: dict[str, Any] | None = None) -> list[dict[str, Any]]:
         """
         Execute a write query (CREATE, MERGE, etc.).
 
@@ -182,7 +182,7 @@ class NeoRepository:
             return True
         except Exception as e:
             logger.error(f"Failed to create vector index: {e}")
-            raise RuntimeError(f"Vector index creation failed: {e}")
+            raise RuntimeError(f"Vector index creation failed: {e}") from e
 
     def vector_search(
         self,
@@ -239,7 +239,7 @@ class NeoRepository:
         result = self.execute_write(query, {"props": properties})
         return result[0]["n"] if result else {}
 
-    def get_node_count(self, label: Optional[str] = None) -> int:
+    def get_node_count(self, label: str | None = None) -> int:
         """
         Get count of nodes.
 
@@ -322,8 +322,8 @@ class NeoRepository:
         doc_id: str,
         url: str,
         title: str,
-        content_hash: Optional[str] = None,
-        metadata: Optional[dict[str, Any]] = None
+        content_hash: str | None = None,
+        metadata: dict[str, Any] | None = None
     ) -> dict[str, Any]:
         """
         Create or update a Document node.
@@ -379,7 +379,7 @@ class NeoRepository:
             return doc
         return {}
 
-    def get_document(self, doc_id: str) -> Optional[dict[str, Any]]:
+    def get_document(self, doc_id: str) -> dict[str, Any] | None:
         """Get document by ID."""
         import json
 
@@ -405,9 +405,9 @@ class NeoRepository:
         text: str,
         start_offset: int,
         end_offset: int,
-        page_number: Optional[int] = None,
-        heading: Optional[str] = None,
-        embedding: Optional[list[float]] = None
+        page_number: int | None = None,
+        heading: str | None = None,
+        embedding: list[float] | None = None
     ) -> dict[str, Any]:
         """
         Create a Chunk node and link to Document.
@@ -454,7 +454,7 @@ class NeoRepository:
         result = self.execute_write(query, parameters)
         return result[0]["c"] if result else {}
 
-    def get_chunk(self, chunk_id: str) -> Optional[dict[str, Any]]:
+    def get_chunk(self, chunk_id: str) -> dict[str, Any] | None:
         """Get chunk by ID."""
         query = "MATCH (c:Chunk {id: $chunk_id}) RETURN c"
         result = self.execute_query(query, {"chunk_id": chunk_id})
@@ -477,7 +477,7 @@ class NeoRepository:
         entity_id: str,
         text: str,
         entity_type: str,
-        confidence: Optional[float] = None
+        confidence: float | None = None
     ) -> dict[str, Any]:
         """
         Create or update an Entity node.
@@ -515,7 +515,7 @@ class NeoRepository:
         result = self.execute_write(query, parameters)
         return result[0]["e"] if result else {}
 
-    def get_entity(self, entity_id: str) -> Optional[dict[str, Any]]:
+    def get_entity(self, entity_id: str) -> dict[str, Any] | None:
         """Get entity by ID."""
         query = "MATCH (e:Entity {id: $entity_id}) RETURN e"
         result = self.execute_query(query, {"entity_id": entity_id})
@@ -529,7 +529,7 @@ class NeoRepository:
         chunk_id: str,
         entity_id: str,
         offset_in_chunk: int,
-        confidence: Optional[float] = None
+        confidence: float | None = None
     ) -> dict[str, Any]:
         """
         Create a Mention node linking Chunk to Entity.

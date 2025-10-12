@@ -165,7 +165,7 @@ async def test_full_ingest_flow_from_url_to_library():
     page = IngestPage(etl_pipeline=mock_etl, library_service=mock_library)
 
     # Simulate form submission
-    result = await page.handle_submit("https://example.com/article")
+    await page.handle_submit("https://example.com/article")
 
     # Verify ETL was called
     mock_etl.ingest_url.assert_called_once_with("https://example.com/article")

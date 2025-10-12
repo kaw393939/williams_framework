@@ -5,7 +5,7 @@ from .base import ContentTransformer
 from .basic import BasicContentTransformer
 
 __all__ = [
-	"ContentTransformer",
-	"BasicContentTransformer",
+    "ContentTransformer",
+    "BasicContentTransformer",
 ]
 

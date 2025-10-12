@@ -61,7 +61,7 @@ class TestMinIORepositoryInitialization:
         assert not minio_client.bucket_exists(test_bucket)
 
         # Create repository - should create bucket
-        repo = MinIORepository(
+        MinIORepository(
             client=minio_client,
             bucket_name=test_bucket
         )
@@ -80,7 +80,7 @@ class TestMinIORepositoryInitialization:
         minio_client.make_bucket(test_bucket)
 
         # Create repository - should not fail
-        repo = MinIORepository(
+        MinIORepository(
             client=minio_client,
             bucket_name=test_bucket
         )
@@ -324,7 +324,7 @@ class TestMinIORepositoryTierOperations:
         content = "High quality content"
 
         # Upload to tier-a
-        result = repo.upload_to_tier(
+        repo.upload_to_tier(
             key=key,
             content=content,
             tier="tier-a",
@@ -369,7 +369,7 @@ class TestMinIORepositoryTierOperations:
         for tier in ["tier-a", "tier-b", "tier-c", "tier-d"]:
             try:
                 minio_client.remove_bucket(f"{prefix}-{tier}")
-            except:
+            except Exception:
                 pass
 
 

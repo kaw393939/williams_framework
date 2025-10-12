@@ -16,7 +16,6 @@ import logging
 import uuid
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Optional
 from uuid import uuid4
 
 from pydantic import HttpUrl
@@ -390,7 +389,7 @@ class LibraryService:
     async def search_library(
         self,
         query: str,
-        filters: Optional[dict] = None,
+        filters: dict | None = None,
         limit: int = 10
     ) -> list[SearchResult]:
         """

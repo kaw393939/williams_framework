@@ -4,7 +4,7 @@ MinIO Repository for S3-compatible object storage.
 Manages file storage in MinIO with bucket organization and metadata support.
 """
 from io import BytesIO
-from typing import Any, Optional
+from typing import Any
 
 from minio import Minio
 from minio.commonconfig import CopySource
@@ -22,7 +22,7 @@ class MinIORepository:
     def __init__(
         self,
         client: Minio,
-        bucket_name: Optional[str] = None
+        bucket_name: str | None = None
     ):
         """
         Initialize MinIORepository.
@@ -64,7 +64,7 @@ class MinIORepository:
         self,
         key: str,
         content: str | bytes,
-        metadata: Optional[dict[str, str]] = None,
+        metadata: dict[str, str] | None = None,
         content_type: str = "text/markdown"
     ) -> dict[str, Any]:
         """
@@ -112,7 +112,7 @@ class MinIORepository:
         content: str | bytes,
         tier: str,
         bucket_prefix: str = "librarian",
-        metadata: Optional[dict[str, str]] = None,
+        metadata: dict[str, str] | None = None,
         content_type: str = "text/markdown"
     ) -> dict[str, Any]:
         """
@@ -161,7 +161,7 @@ class MinIORepository:
         self,
         key: str,
         as_bytes: bool = False
-    ) -> Optional[str | bytes]:
+    ) -> str | bytes | None:
         """
         Download file from default bucket.
 
@@ -256,7 +256,7 @@ class MinIORepository:
         except S3Error:
             return []
 
-    def get_file_metadata(self, key: str) -> Optional[Any]:
+    def get_file_metadata(self, key: str) -> Any | None:
         """
         Get file metadata and stats.
 

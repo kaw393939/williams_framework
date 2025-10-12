@@ -4,7 +4,7 @@ This module provides the ingest form and page for submitting URLs
 to the ETL pipeline. It includes URL validation, error handling,
 and success notifications.
 """
-from typing import Any, Optional
+from typing import Any
 from urllib.parse import urlparse
 
 
@@ -24,8 +24,8 @@ class IngestForm:
 
     def __init__(
         self,
-        etl_pipeline: Optional[Any] = None,
-        library_service: Optional[Any] = None
+        etl_pipeline: Any | None = None,
+        library_service: Any | None = None
     ):
         """Initialize ingest form.
 
@@ -102,8 +102,8 @@ class IngestPage:
 
     def __init__(
         self,
-        etl_pipeline: Optional[Any] = None,
-        library_service: Optional[Any] = None
+        etl_pipeline: Any | None = None,
+        library_service: Any | None = None
     ):
         """Initialize ingest page.
 
@@ -113,8 +113,8 @@ class IngestPage:
         """
         self.etl_pipeline = etl_pipeline
         self.library_service = library_service
-        self.notification_type: Optional[str] = None
-        self.notification_message: Optional[str] = None
+        self.notification_type: str | None = None
+        self.notification_message: str | None = None
         self.notification_qa_id = "ingest-notification"
 
     def set_notification(self, notification_type: str, message: str) -> None:

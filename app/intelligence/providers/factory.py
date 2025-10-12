@@ -7,7 +7,7 @@ with automatic fallback logic.
 
 import logging
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 
 import yaml
 
@@ -24,7 +24,7 @@ class ProviderFactory:
     Supports automatic fallback from hosted to local providers if configured.
     """
 
-    def __init__(self, config_path: Optional[str] = None):
+    def __init__(self, config_path: str | None = None):
         """
         Initialize the provider factory.
 
@@ -62,7 +62,7 @@ class ProviderFactory:
 
     def create_embedding_provider(
         self,
-        provider_name: Optional[str] = None
+        provider_name: str | None = None
     ) -> AbstractEmbeddingProvider:
         """
         Create an embedding provider instance.
@@ -106,11 +106,11 @@ class ProviderFactory:
             if fallback:
                 logger.warning(f"Provider {provider_name} failed, trying fallback {fallback}: {e}")
                 return self.create_embedding_provider(fallback)
-            raise RuntimeError(f"Failed to create provider {provider_name}: {e}")
+            raise RuntimeError(f"Failed to create provider {provider_name}: {e}") from e
 
     def create_llm_provider(
         self,
-        provider_name: Optional[str] = None
+        provider_name: str | None = None
     ) -> AbstractLLMProvider:
         """
         Create an LLM provider instance.
@@ -154,7 +154,7 @@ class ProviderFactory:
             if fallback:
                 logger.warning(f"Provider {provider_name} failed, trying fallback {fallback}: {e}")
                 return self.create_llm_provider(fallback)
-            raise RuntimeError(f"Failed to create provider {provider_name}: {e}")
+            raise RuntimeError(f"Failed to create provider {provider_name}: {e}") from e
 
     def _instantiate_embedding_provider(self, config: dict[str, Any]) -> AbstractEmbeddingProvider:
         """

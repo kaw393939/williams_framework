@@ -6,7 +6,6 @@ This allows seamless switching between SentenceTransformers, Ollama, OpenAI, etc
 """
 
 from abc import ABC, abstractmethod
-from typing import Union
 
 import numpy as np
 
@@ -31,7 +30,7 @@ class AbstractEmbeddingProvider(ABC):
         self.config = kwargs
 
     @abstractmethod
-    def embed(self, text: Union[str, list[str]]) -> Union[np.ndarray, list[np.ndarray]]:
+    def embed(self, text: str | list[str]) -> np.ndarray | list[np.ndarray]:
         """
         Generate embeddings for input text.
 
@@ -75,7 +74,7 @@ class AbstractEmbeddingProvider(ABC):
         """Get the configuration for this provider."""
         return self.config
 
-    def validate_dimensions(self, embeddings: Union[np.ndarray, list[np.ndarray]]) -> bool:
+    def validate_dimensions(self, embeddings: np.ndarray | list[np.ndarray]) -> bool:
         """
         Validate that embeddings have correct dimensions.
 

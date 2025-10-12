@@ -1,7 +1,7 @@
 """Plugin registry for managing plugin lifecycle and preventing duplicates."""
 from __future__ import annotations
 
-from typing import Any, Optional
+from typing import Any
 
 from app.core.exceptions import PluginError
 
@@ -34,7 +34,7 @@ class PluginRegistry:
 
         self._plugins[plugin_id] = plugin
 
-    def get(self, plugin_id: str) -> Optional[Any]:
+    def get(self, plugin_id: str) -> Any | None:
         """Get a registered plugin by ID.
 
         Args:

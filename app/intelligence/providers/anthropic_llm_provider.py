@@ -8,7 +8,6 @@ with streaming support.
 import logging
 import os
 from collections.abc import Generator
-from typing import Optional
 
 from app.intelligence.providers.abstract_llm import AbstractLLMProvider
 
@@ -48,11 +47,11 @@ class AnthropicLLMProvider(AbstractLLMProvider):
 
         try:
             from anthropic import Anthropic
-        except ImportError:
+        except ImportError as e:
             raise ImportError(
                 "anthropic package not installed. "
                 "Install with: poetry add anthropic"
-            )
+            ) from e
 
         api_key = os.getenv(api_key_env)
         if not api_key:
@@ -70,9 +69,9 @@ class AnthropicLLMProvider(AbstractLLMProvider):
     def generate(
         self,
         prompt: str,
-        system_prompt: Optional[str] = None,
-        max_tokens: Optional[int] = None,
-        temperature: Optional[float] = None,
+        system_prompt: str | None = None,
+        max_tokens: int | None = None,
+        temperature: float | None = None,
         **kwargs
     ) -> str:
         """
@@ -107,14 +106,14 @@ class AnthropicLLMProvider(AbstractLLMProvider):
 
         except Exception as e:
             logger.error(f"Anthropic generation failed: {e}")
-            raise RuntimeError(f"Anthropic generation failed: {e}")
+            raise RuntimeError(f"Anthropic generation failed: {e}") from e
 
     def stream_generate(
         self,
         prompt: str,
-        system_prompt: Optional[str] = None,
-        max_tokens: Optional[int] = None,
-        temperature: Optional[float] = None,
+        system_prompt: str | None = None,
+        max_tokens: int | None = None,
+        temperature: float | None = None,
         **kwargs
     ) -> Generator[str, None, None]:
         """
@@ -144,12 +143,11 @@ class AnthropicLLMProvider(AbstractLLMProvider):
                 kwargs_dict["system"] = system_prompt
 
             with self.client.messages.stream(**kwargs_dict) as stream:
-                for text in stream.text_stream:
-                    yield text
+                yield from stream.text_stream
 
         except Exception as e:
             logger.error(f"Anthropic streaming failed: {e}")
-            raise RuntimeError(f"Anthropic streaming failed: {e}")
+            raise RuntimeError(f"Anthropic streaming failed: {e}") from e
 
     def get_context_window(self) -> int:
         """Get maximum context window size."""

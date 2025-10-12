@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Optional
 from urllib.parse import urlparse
 
 import httpx
@@ -19,7 +18,7 @@ from .base import ContentExtractor
 class HTMLWebExtractor(ContentExtractor):
     """Retrieve and normalise HTML content from the public web."""
 
-    def __init__(self, client: Optional[httpx.AsyncClient] = None, *, timeout: float = 10.0):
+    def __init__(self, client: httpx.AsyncClient | None = None, *, timeout: float = 10.0):
         self._client = client
         self._timeout = timeout
 

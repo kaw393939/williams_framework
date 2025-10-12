@@ -58,7 +58,7 @@ class TestQdrantRepositoryInitialization:
         assert test_collection_name not in collection_names
 
         # Create repository - should create collection
-        repo = QdrantRepository(
+        QdrantRepository(
             client=qdrant_client,
             collection_name=test_collection_name,
             vector_size=384
@@ -83,7 +83,7 @@ class TestQdrantRepositoryInitialization:
         )
 
         # Create repository - should not fail
-        repo = QdrantRepository(
+        QdrantRepository(
             client=qdrant_client,
             collection_name=test_collection_name,
             vector_size=384

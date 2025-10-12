@@ -6,7 +6,7 @@ are tracked via telemetry for observability.
 """
 import hashlib
 import json
-from typing import Any, Optional
+from typing import Any
 
 from app.core.telemetry import TelemetryService
 
@@ -27,9 +27,9 @@ class SearchCache:
 
     def __init__(
         self,
-        redis_client: Optional[Any] = None,
-        embedder: Optional[Any] = None,
-        telemetry: Optional[TelemetryService] = None,
+        redis_client: Any | None = None,
+        embedder: Any | None = None,
+        telemetry: TelemetryService | None = None,
         ttl_seconds: int = 3600
     ):
         """Initialize search cache.
@@ -59,7 +59,7 @@ class SearchCache:
         query_hash = hashlib.sha256(query.encode()).hexdigest()
         return f"search:{query_hash}"
 
-    async def get(self, query: str) -> Optional[list[float]]:
+    async def get(self, query: str) -> list[float] | None:
         """Get cached embedding for query.
 
         Args:

@@ -175,7 +175,7 @@ class TestLibraryAddContent:
         content = create_sample_content(title="Multi Repo Test", quality_score=8.5)
 
         with patch('app.services.library_service.generate_embedding', return_value=[0.1] * 384):
-            library_file = await library_service.add_to_library(content)
+            await library_service.add_to_library(content)
 
         # Verify in PostgreSQL
         records = await postgres_repo.list_processing_records()

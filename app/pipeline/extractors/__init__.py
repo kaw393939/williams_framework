@@ -6,8 +6,8 @@ from .html import HTMLWebExtractor
 from .pdf import PDFDocumentExtractor
 
 __all__ = [
-	"ContentExtractor",
-	"HTMLWebExtractor",
-	"PDFDocumentExtractor",
+    "ContentExtractor",
+    "HTMLWebExtractor",
+    "PDFDocumentExtractor",
 ]
 

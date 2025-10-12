@@ -7,7 +7,6 @@ Requires OPENAI_API_KEY environment variable.
 
 import logging
 import os
-from typing import Union
 
 import numpy as np
 
@@ -51,7 +50,7 @@ class OpenAIEmbeddingProvider(AbstractEmbeddingProvider):
 
         logger.info(f"Initialized OpenAI embedding provider: {model_name} ({self._dimensions} dims)")
 
-    def embed(self, text: Union[str, list[str]]) -> Union[np.ndarray, list[np.ndarray]]:
+    def embed(self, text: str | list[str]) -> np.ndarray | list[np.ndarray]:
         """
         Generate embeddings using OpenAI API.
 
@@ -77,7 +76,7 @@ class OpenAIEmbeddingProvider(AbstractEmbeddingProvider):
 
             except Exception as e:
                 logger.error(f"OpenAI API error: {e}")
-                raise RuntimeError(f"Failed to generate embedding: {e}")
+                raise RuntimeError(f"Failed to generate embedding: {e}") from e
 
         elif isinstance(text, list):
             if not text:
@@ -103,7 +102,7 @@ class OpenAIEmbeddingProvider(AbstractEmbeddingProvider):
 
             except Exception as e:
                 logger.error(f"OpenAI API error: {e}")
-                raise RuntimeError(f"Failed to generate embeddings: {e}")
+                raise RuntimeError(f"Failed to generate embeddings: {e}") from e
 
         else:
             raise TypeError("Text must be str or List[str]")

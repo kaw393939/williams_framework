@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Any, Optional
+from typing import Any
 
 from app.core.models import LibraryFile, ProcessedContent, RawContent
 
@@ -17,7 +17,7 @@ class PipelineResult:
 
     raw_content: RawContent
     processed_content: ProcessedContent
-    load_result: Optional[LibraryFile]
+    load_result: LibraryFile | None
 
 
 class ContentPipeline:
@@ -26,10 +26,10 @@ class ContentPipeline:
     def __init__(
         self,
         *,
-        extractor: Optional[ContentExtractor] = None,
-        transformer: Optional[ContentTransformer] = None,
-        loader: Optional[ContentLoader] = None,
-        plugin_registry: Optional[Any] = None,
+        extractor: ContentExtractor | None = None,
+        transformer: ContentTransformer | None = None,
+        loader: ContentLoader | None = None,
+        plugin_registry: Any | None = None,
     ) -> None:
         self._extractor = extractor
         self._transformer = transformer
@@ -38,15 +38,15 @@ class ContentPipeline:
         self._initialized = False
 
     @property
-    def extractor(self) -> Optional[ContentExtractor]:
+    def extractor(self) -> ContentExtractor | None:
         return self._extractor
 
     @property
-    def transformer(self) -> Optional[ContentTransformer]:
+    def transformer(self) -> ContentTransformer | None:
         return self._transformer
 
     @property
-    def loader(self) -> Optional[ContentLoader]:
+    def loader(self) -> ContentLoader | None:
         return self._loader
 
     async def initialize(self) -> None:

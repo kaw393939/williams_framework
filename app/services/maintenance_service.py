@@ -246,7 +246,7 @@ class MaintenanceService:
             # Get all buckets
             buckets = self.minio_repo.list_buckets() if hasattr(self.minio_repo, 'list_buckets') else []
 
-            for bucket in buckets:
+            for _bucket in buckets:
                 try:
                     # Get all objects in bucket
                     objects = self.minio_repo.list_files() if hasattr(self.minio_repo, 'list_files') else []

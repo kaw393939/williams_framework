@@ -95,7 +95,6 @@ async def test_pipeline_records_plugin_hook_output_in_telemetry():
 
         # Verify telemetry includes plugin metadata
         for call in plugin_events:
-            event_data = call.kwargs if call.kwargs else {}
             # Should include plugin_id from stub
             assert "plugin_id" in str(call) or stub.plugin_id in str(call)
 

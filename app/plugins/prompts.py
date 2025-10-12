@@ -4,7 +4,6 @@ from __future__ import annotations
 import hashlib
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Optional
 
 from app.core.exceptions import ConfigurationError
 
@@ -21,7 +20,7 @@ class PromptTemplate:
 class PromptLoader:
     """Production prompt loader with validation and caching."""
 
-    def __init__(self, base_path: Optional[Path] = None) -> None:
+    def __init__(self, base_path: Path | None = None) -> None:
         """Initialize the prompt loader.
 
         Args:

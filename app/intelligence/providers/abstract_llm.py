@@ -7,7 +7,6 @@ This allows seamless switching between Ollama, OpenAI, Anthropic, etc.
 
 from abc import ABC, abstractmethod
 from collections.abc import Generator
-from typing import Optional
 
 
 class AbstractLLMProvider(ABC):
@@ -33,9 +32,9 @@ class AbstractLLMProvider(ABC):
     def generate(
         self,
         prompt: str,
-        system_prompt: Optional[str] = None,
-        max_tokens: Optional[int] = None,
-        temperature: Optional[float] = None,
+        system_prompt: str | None = None,
+        max_tokens: int | None = None,
+        temperature: float | None = None,
         **kwargs
     ) -> str:
         """
@@ -61,9 +60,9 @@ class AbstractLLMProvider(ABC):
     def stream_generate(
         self,
         prompt: str,
-        system_prompt: Optional[str] = None,
-        max_tokens: Optional[int] = None,
-        temperature: Optional[float] = None,
+        system_prompt: str | None = None,
+        max_tokens: int | None = None,
+        temperature: float | None = None,
         **kwargs
     ) -> Generator[str, None, None]:
         """
@@ -116,7 +115,7 @@ class AbstractLLMProvider(ABC):
         """Get the configuration for this provider."""
         return self.config
 
-    def validate_prompt_length(self, prompt: str, system_prompt: Optional[str] = None) -> bool:
+    def validate_prompt_length(self, prompt: str, system_prompt: str | None = None) -> bool:
         """
         Validate that prompt fits within context window.
 

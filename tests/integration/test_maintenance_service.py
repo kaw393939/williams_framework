@@ -125,7 +125,7 @@ class TestCacheCleanup:
         await asyncio.sleep(2)
 
         # Cleanup entries older than 1 day (should find expired ones)
-        deleted_count = await maintenance_service.cleanup_old_cache_entries(days=1)
+        await maintenance_service.cleanup_old_cache_entries(days=1)
 
         # Recent keys should still exist
         assert await redis_repo.get("recent_key_1") is not None
@@ -140,7 +140,7 @@ class TestCacheCleanup:
         await redis_repo.set("key3", "value3", ttl=86400)
 
         # Cleanup old entries (should not affect recent ones)
-        deleted_count = await maintenance_service.cleanup_old_cache_entries(days=7)
+        await maintenance_service.cleanup_old_cache_entries(days=7)
 
         # All keys should still exist
         assert await redis_repo.get("key1") == "value1"

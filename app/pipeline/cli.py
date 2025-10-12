@@ -131,7 +131,7 @@ def main(
     # Batch mode (multiple URLs)
     results = []
     for url in urls:
-        factory = pipeline_factory or (lambda: build_pipeline_for_url(url))
+        factory = pipeline_factory or (lambda u=url: build_pipeline_for_url(u))
         try:
             pipeline = factory()
             result = asyncio.run(run_pipeline(url, pipeline=pipeline))

@@ -6,7 +6,6 @@ containing curated high-quality content from the library.
 """
 import json
 from datetime import datetime, timedelta
-from typing import Optional
 
 from app.core.models import Digest, DigestItem
 from app.repositories.postgres_repository import PostgresRepository
@@ -126,7 +125,7 @@ class DigestService:
         date: datetime,
         min_quality: float = DEFAULT_MIN_QUALITY,
         days_back: int = DEFAULT_DAYS_BACK,
-        preferred_tiers: Optional[list[str]] = None,
+        preferred_tiers: list[str] | None = None,
         limit: int = DEFAULT_LIMIT
     ) -> list[DigestItem]:
         """

@@ -4,7 +4,6 @@ This module provides real-time semantic search capabilities using
 embedding-based retrieval, ranked results, and top-K filtering.
 """
 import logging
-from typing import Optional
 
 from app.core.models import SearchResult
 
@@ -28,10 +27,10 @@ class SearchService:
 
     def __init__(
         self,
-        qdrant_client: Optional[any] = None,
-        qdrant_repository: Optional[any] = None,
-        embedder: Optional[any] = None,
-        search_cache: Optional[any] = None
+        qdrant_client: any | None = None,
+        qdrant_repository: any | None = None,
+        embedder: any | None = None,
+        search_cache: any | None = None
     ):
         """Initialize search service.
 

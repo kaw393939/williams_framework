@@ -4,7 +4,6 @@ from __future__ import annotations
 import io
 from datetime import datetime
 from pathlib import Path
-from typing import Optional
 from urllib.parse import urlparse
 
 import httpx
@@ -20,7 +19,7 @@ from .base import ContentExtractor
 class PDFDocumentExtractor(ContentExtractor):
     """Retrieve and normalize textual content from PDF documents."""
 
-    def __init__(self, client: Optional[httpx.AsyncClient] = None, *, timeout: float = 10.0) -> None:
+    def __init__(self, client: httpx.AsyncClient | None = None, *, timeout: float = 10.0) -> None:
         self._client = client
         self._timeout = timeout
 

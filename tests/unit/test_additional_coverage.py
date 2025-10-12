@@ -367,11 +367,11 @@ async def test_maintenance_service_paths():
                 WHERE status NOT IN ('started', 'completed', 'failed', 'pending')
             """
         ),
-        tuple(),
+        (),
     )] = {"count": 2}
     postgres.queries[(
         StubPostgres._key("SELECT COUNT(*) as count FROM processing_records WHERE content_url IS NULL"),
-        tuple(),
+        (),
     )] = {"count": 1}
 
     redis = StubRedis()

@@ -12,7 +12,6 @@ This enables deduplication and idempotent operations.
 """
 
 import hashlib
-from typing import Optional
 from urllib.parse import parse_qs, urlencode, urlparse, urlunparse
 
 
@@ -194,7 +193,7 @@ def generate_entity_id(entity_text: str, entity_type: str) -> str:
     return hashlib.sha256(entity_key.encode('utf-8')).hexdigest()
 
 
-def generate_file_id(file_path: str, content: Optional[bytes] = None) -> str:
+def generate_file_id(file_path: str, content: bytes | None = None) -> str:
     """
     Generate deterministic file ID.
 

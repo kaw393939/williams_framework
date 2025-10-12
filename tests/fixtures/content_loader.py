@@ -6,7 +6,6 @@ Loads real extracted content from the fixtures directory for use in tests.
 import json
 from datetime import datetime
 from pathlib import Path
-from typing import Optional
 
 from pydantic import HttpUrl
 
@@ -82,7 +81,7 @@ def load_markdown_file(relative_path: str) -> tuple[dict, str]:
 
 def load_as_raw_content(
     relative_path: str,
-    url: Optional[str] = None,
+    url: str | None = None,
     source_type: ContentSource = ContentSource.WEB
 ) -> RawContent:
     """

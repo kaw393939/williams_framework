@@ -15,7 +15,6 @@ import hashlib
 import re
 from collections import Counter
 from datetime import datetime
-from typing import Optional
 from urllib.parse import urlparse
 from uuid import uuid4
 
@@ -186,7 +185,7 @@ class ContentService:
         self,
         raw_content: RawContent,
         screening_result: ScreeningResult
-    ) -> Optional[ProcessedContent]:
+    ) -> ProcessedContent | None:
         """
         Process approved content: summarize, extract key points, generate tags.
 

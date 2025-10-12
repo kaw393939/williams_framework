@@ -68,7 +68,6 @@ async def test_youtube_extractor_fetches_transcript_and_metadata(monkeypatch):
 async def test_youtube_extractor_falls_back_to_description(monkeypatch):
     """If transcript is unavailable, the description should be used as raw_text."""
     url = "https://www.youtube.com/watch?v=no-transcript"
-    video_id = "no-transcript"
     video_description = "This is the video description."
 
     class MockYouTubeTranscriptApi:

@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import re
-from typing import Any, Optional, cast
+from typing import Any, cast
 
 from app.core.exceptions import ExtractionError
 from app.core.models import RawContent
@@ -24,8 +24,8 @@ except ImportError:  # pragma: no cover - handled in extractor logic
     _YouTube = None
 
 # Expose the imported symbols (or sentinel None) for monkeypatching in tests.
-YouTubeTranscriptApi: Optional[Any] = _YouTubeTranscriptApi
-YouTube: Optional[Any] = _YouTube
+YouTubeTranscriptApi: Any | None = _YouTubeTranscriptApi
+YouTube: Any | None = _YouTube
 
 
 class YouTubeExtractor(ContentExtractor):
@@ -64,7 +64,7 @@ class YouTubeExtractor(ContentExtractor):
         try:
             yt = cast(Any, YouTube)(url)
         except Exception as e:
-            raise ExtractionError(f"Failed to fetch video data: {e}")
+            raise ExtractionError(f"Failed to fetch video data: {e}") from e
 
         # Try to fetch transcript
         transcript_text = None
