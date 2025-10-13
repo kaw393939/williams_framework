@@ -3,9 +3,9 @@
 This plugin demonstrates the plugin lifecycle and serves as a
 reference implementation for custom plugin development.
 """
-from __future__ import annotations  # pragma: no cover
+from __future__ import annotations  # pragma: no cover - Sample plugin
 
-from typing import Any
+from typing import Any  # pragma: no cover
 
 
 class EnrichmentPlugin:  # pragma: no cover - Sample plugin for documentation

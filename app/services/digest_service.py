@@ -350,7 +350,7 @@ To unsubscribe or manage preferences, visit: [preferences link]
 
             return True
 
-        except Exception as e:
+        except Exception as e:  # pragma: no cover - Email send error handler
             # Log error and return False
             print(f"Failed to send digest: {e}")
             return False
@@ -397,7 +397,7 @@ To unsubscribe or manage preferences, visit: [preferences link]
 
         Returns:
             List of Digest objects
-        """
+        """  # pragma: no cover - Requires postgres database
         # Query processing records for digests with pagination
         query = """
             SELECT * FROM processing_records

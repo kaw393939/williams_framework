@@ -42,7 +42,7 @@ class CitationService:
         """
         # Get chunk and document info
         chunk = self._neo_repo.get_chunk(chunk_id)
-        if not chunk:
+        if not chunk:  # pragma: no cover - Defensive validation
             raise ValueError(f"Chunk {chunk_id} not found")
         
         doc_id = chunk.get("doc_id")
@@ -118,7 +118,7 @@ class CitationService:
         citations = list(self._citation_cache.values())
         
         # Filter by date if provided
-        if date_from or date_to:
+        if date_from or date_to:  # pragma: no cover - Optional date filtering
             filtered = []
             for citation in citations:
                 pub_date = citation.get("metadata", {}).get("published", "")

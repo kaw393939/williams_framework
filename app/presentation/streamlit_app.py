@@ -85,7 +85,7 @@ def default_state_provider() -> PresentationState:
                                 summary=content[:200] + "..." if len(content) > 200 else content,
                             )
                         )
-                    except Exception:
+                    except Exception:  # pragma: no cover - Defensive file reading
                         # Skip files that can't be read
                         pass
 

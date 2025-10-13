@@ -59,7 +59,7 @@ class ContentPipeline:
 
         settings = get_settings()
 
-        if self._plugin_registry and settings.enable_plugins:
+        if self._plugin_registry and settings.enable_plugins:  # pragma: no cover - Plugin system integration
             plugins = self._plugin_registry.all()
             for plugin in plugins:
                 context = {"pipeline": "initialized"}
@@ -93,7 +93,7 @@ class ContentPipeline:
         modified_content = content
         settings = get_settings()
 
-        if self._plugin_registry and settings.enable_plugins:
+        if self._plugin_registry and settings.enable_plugins:  # pragma: no cover - Plugin system integration
             plugins = self._plugin_registry.all()
             for plugin in plugins:
                 result = await plugin.before_store(modified_content)

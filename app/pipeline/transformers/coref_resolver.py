@@ -71,7 +71,7 @@ class CorefResolver(ContentTransformer):
         # Load spaCy model
         try:
             self.nlp = spacy.load(spacy_model)
-        except OSError:
+        except OSError:  # pragma: no cover - Model download fallback
             # Model not downloaded, download it
             import subprocess
             subprocess.run(

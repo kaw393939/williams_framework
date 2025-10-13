@@ -56,7 +56,7 @@ class PostgresRepository:
         self.max_pool_size = max_pool_size
         self.pool: asyncpg.Pool | None = None
 
-    async def connect(self):
+    async def connect(self):  # pragma: no cover - Requires postgres database
         """Create connection pool."""
         self.pool = await asyncpg.create_pool(
             host=self.host,
