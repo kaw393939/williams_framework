@@ -900,3 +900,408 @@ class NeoRepository:
         
         result = self.execute_query(query, {"mention_id": mention_id})
         return result[0]["text"] if result else None
+    
+    # ============================================================================
+    # Video Provenance Methods
+    # ============================================================================
+    
+    def create_video_node(
+        self,
+        video_id: str,
+        title: str,
+        source_ids: list[str],
+        parameters: dict[str, Any],
+        creator_id: str | None = None
+    ) -> str:
+        """
+        Create a Video node in Neo4j for provenance tracking.
+        
+        Args:
+            video_id: Unique video identifier
+            title: Video title
+            source_ids: List of source document IDs
+            parameters: Generation parameters
+            creator_id: User who created the video
+            
+        Returns:
+            video_id
+        """
+        import json
+        
+        query = """
+        CREATE (v:Video {
+            video_id: $video_id,
+            title: $title,
+            status: 'generating',
+            created_at: datetime(),
+            parameters_json: $parameters_json,
+            requested_sources: $source_ids
+        })
+        RETURN v.video_id AS video_id
+        """
+        
+        result = self.execute_write(
+            query,
+            {
+                "video_id": video_id,
+                "title": title,
+                "parameters_json": json.dumps(parameters),
+                "source_ids": source_ids
+            }
+        )
+        
+        # Link to creator if provided
+        if creator_id:
+            self.link_video_to_creator(video_id, creator_id)
+        
+        return result[0]["video_id"] if result else video_id
+    
+    def link_video_to_creator(self, video_id: str, creator_id: str) -> None:
+        """Link a video to its creator."""
+        query = """
+        MATCH (v:Video {video_id: $video_id})
+        MERGE (u:User {user_id: $creator_id})
+        CREATE (u)-[:CREATED {timestamp: datetime()}]->(v)
+        """
+        
+        self.execute_write(query, {"video_id": video_id, "creator_id": creator_id})
+    
+    def link_video_to_sources(self, video_id: str, source_ids: list[str]) -> None:
+        """
+        Link a video to its source documents with GENERATED_FROM relationships.
+        
+        Args:
+            video_id: Video identifier
+            source_ids: List of source document IDs
+        """
+        query = """
+        MATCH (v:Video {video_id: $video_id})
+        
+        WITH v
+        UNWIND $source_ids AS source_id
+        
+        MATCH (d:Document {doc_id: source_id})
+        CREATE (v)-[:GENERATED_FROM {timestamp: datetime()}]->(d)
+        """
+        
+        self.execute_write(query, {"video_id": video_id, "source_ids": source_ids})
+    
+    def create_video_scene(
+        self,
+        video_id: str,
+        scene_num: int,
+        text: str,
+        source_ids: list[str],
+        attribution_text: str = ""
+    ) -> str:
+        """
+        Create a VideoScene node and link it to sources.
+        
+        Args:
+            video_id: Parent video ID
+            scene_num: Scene number
+            text: Scene narration text
+            source_ids: Source documents used for this scene
+            attribution_text: Human-readable attribution
+            
+        Returns:
+            scene_id
+        """
+        scene_id = f"scene_{video_id}_{scene_num}"
+        
+        query = """
+        MATCH (v:Video {video_id: $video_id})
+        
+        CREATE (s:VideoScene {
+            scene_id: $scene_id,
+            scene_num: $scene_num,
+            text: $text,
+            attribution: $attribution_text,
+            created_at: datetime()
+        })
+        
+        CREATE (v)-[:HAS_SCENE]->(s)
+        
+        WITH s
+        UNWIND $source_ids AS source_id
+        
+        MATCH (d:Document {doc_id: source_id})
+        CREATE (s)-[:SOURCED_FROM]->(d)
+        
+        RETURN s.scene_id AS scene_id
+        """
+        
+        result = self.execute_write(
+            query,
+            {
+                "video_id": video_id,
+                "scene_id": scene_id,
+                "scene_num": scene_num,
+                "text": text,
+                "attribution_text": attribution_text,
+                "source_ids": source_ids
+            }
+        )
+        
+        return result[0]["scene_id"] if result else scene_id
+    
+    def track_ai_model_usage(
+        self,
+        video_id: str,
+        model_name: str,
+        model_version: str,
+        provider: str | None = None
+    ) -> None:
+        """
+        Track which AI model was used to generate the video.
+        
+        Args:
+            video_id: Video identifier
+            model_name: Model name (e.g., 'kling', 'veo3')
+            model_version: Model version
+            provider: Provider name (e.g., 'Kuaishou', 'Google')
+        """
+        query = """
+        MATCH (v:Video {video_id: $video_id})
+        
+        MERGE (m:AIModel {
+            name: $model_name,
+            version: $model_version
+        })
+        ON CREATE SET m.provider = $provider, m.created_at = datetime()
+        
+        CREATE (v)-[:GENERATED_BY {timestamp: datetime()}]->(m)
+        """
+        
+        self.execute_write(
+            query,
+            {
+                "video_id": video_id,
+                "model_name": model_name,
+                "model_version": model_version,
+                "provider": provider
+            }
+        )
+    
+    def finalize_video_provenance(
+        self,
+        video_id: str,
+        duration: float | None = None,
+        file_size: int | None = None,
+        artifact_id: str | None = None
+    ) -> None:
+        """
+        Update video node with final metadata after generation completes.
+        
+        Args:
+            video_id: Video identifier
+            duration: Video duration in seconds
+            file_size: File size in bytes
+            artifact_id: Storage artifact ID
+        """
+        query = """
+        MATCH (v:Video {video_id: $video_id})
+        
+        SET v.completed_at = datetime(),
+            v.status = 'completed'
+        """
+        
+        params: dict[str, Any] = {"video_id": video_id}
+        
+        if duration is not None:
+            query += ", v.duration = $duration"
+            params["duration"] = duration
+        
+        if file_size is not None:
+            query += ", v.file_size = $file_size"
+            params["file_size"] = file_size
+        
+        if artifact_id is not None:
+            query += ", v.artifact_id = $artifact_id"
+            params["artifact_id"] = artifact_id
+        
+        self.execute_write(query, params)
+    
+    def get_video_genealogy(self, video_id: str) -> dict[str, Any] | None:
+        """
+        Get complete genealogy of a video including all provenance relationships.
+        
+        Args:
+            video_id: Video identifier
+            
+        Returns:
+            Dictionary containing video, sources, scenes, models, creator, versions, related content
+        """
+        query = """
+        MATCH (v:Video {video_id: $video_id})
+        
+        // Get source documents
+        OPTIONAL MATCH (v)-[:GENERATED_FROM]->(d:Document)
+        OPTIONAL MATCH (d)-[:CITES]->(cited:Document)
+        
+        // Get scenes and their sources
+        OPTIONAL MATCH (v)-[:HAS_SCENE]->(scene:VideoScene)
+        OPTIONAL MATCH (scene)-[:SOURCED_FROM]->(scene_doc:Document)
+        
+        // Get AI models used
+        OPTIONAL MATCH (v)-[:GENERATED_BY]->(model:AIModel)
+        
+        // Get creator
+        OPTIONAL MATCH (user:User)-[:CREATED]->(v)
+        
+        // Get version history
+        OPTIONAL MATCH (v)-[:VERSION_OF]->(prev:Video)
+        OPTIONAL MATCH (next:Video)-[:VERSION_OF]->(v)
+        
+        // Get related content
+        OPTIONAL MATCH (v)-[:RELATED_TO]->(related)
+        
+        // Collect scene sources separately to avoid nested aggregates
+        WITH v, d, cited, scene, model, user, prev, next, related, 
+             collect(DISTINCT scene_doc.doc_id) AS scene_sources
+        ORDER BY scene.scene_num
+        
+        RETURN 
+            v AS video,
+            collect(DISTINCT d) AS source_documents,
+            collect(DISTINCT cited) AS citations,
+            collect(DISTINCT {
+                scene_num: scene.scene_num,
+                scene_id: scene.scene_id,
+                text: scene.text,
+                attribution: scene.attribution,
+                sources: scene_sources
+            }) AS scenes,
+            collect(DISTINCT model) AS ai_models,
+            user,
+            prev AS previous_version,
+            next AS next_version,
+            collect(DISTINCT related) AS related_content
+        """
+        
+        results = self.execute_query(query, {"video_id": video_id})
+        
+        if not results:
+            return None
+        
+        result = results[0]
+        
+        # Convert Neo4j nodes to dictionaries
+        return {
+            "video": dict(result["video"]) if result["video"] else None,
+            "source_documents": [dict(d) for d in result["source_documents"] if d],
+            "citations": [dict(c) for c in result["citations"] if c],
+            "scenes": [s for s in result["scenes"] if s.get("scene_num") is not None],
+            "ai_models": [dict(m) for m in result["ai_models"] if m],
+            "creator": dict(result["user"]) if result["user"] else None,
+            "previous_version": dict(result["previous_version"]) if result["previous_version"] else None,
+            "next_version": dict(result["next_version"]) if result["next_version"] else None,
+            "related_content": [dict(r) for r in result["related_content"] if r]
+        }
+    
+    def get_video_impact(self, video_id: str) -> dict[str, Any]:
+        """
+        Get impact metrics for a video (views, shares, derivatives, citations).
+        
+        Args:
+            video_id: Video identifier
+            
+        Returns:
+            Dictionary with impact metrics
+        """
+        query = """
+        MATCH (v:Video {video_id: $video_id})
+        
+        // Get views
+        OPTIONAL MATCH (v)<-[view:VIEWED]-(:User)
+        
+        // Get shares
+        OPTIONAL MATCH (v)<-[share:SHARED]-(:User)
+        
+        // Get derivative works (videos that used this video as source)
+        OPTIONAL MATCH (derivative:Video)-[:GENERATED_FROM]->(v)
+        
+        // Get citations (other videos that reference this one)
+        OPTIONAL MATCH (citing:Video)-[:CITES]->(v)
+        
+        RETURN 
+            v,
+            count(DISTINCT view) AS view_count,
+            count(DISTINCT share) AS share_count,
+            collect(DISTINCT derivative) AS derivative_works,
+            collect(DISTINCT citing) AS citing_videos
+        """
+        
+        results = self.execute_query(query, {"video_id": video_id})
+        
+        if not results:
+            return {
+                "video_id": video_id,
+                "view_count": 0,
+                "share_count": 0,
+                "derivative_count": 0,
+                "citation_count": 0,
+                "derivative_works": [],
+                "citing_videos": []
+            }
+        
+        result = results[0]
+        
+        derivatives = [dict(d) for d in result["derivative_works"] if d]
+        citations = [dict(c) for c in result["citing_videos"] if c]
+        
+        return {
+            "video_id": video_id,
+            "view_count": result["view_count"],
+            "share_count": result["share_count"],
+            "derivative_count": len(derivatives),
+            "citation_count": len(citations),
+            "derivative_works": derivatives,
+            "citing_videos": citations
+        }
+    
+    def get_generated_content_from_document(self, doc_id: str) -> dict[str, list[dict]]:
+        """
+        Get all content generated from a source document.
+        
+        Args:
+            doc_id: Document identifier
+            
+        Returns:
+            Dictionary with videos, podcasts, and other exports
+        """
+        query = """
+        MATCH (d:Document {doc_id: $doc_id})
+        
+        // Get videos
+        OPTIONAL MATCH (v:Video)-[:GENERATED_FROM]->(d)
+        
+        // Get podcasts
+        OPTIONAL MATCH (p:Podcast)-[:GENERATED_FROM]->(d)
+        
+        // Get other exports
+        OPTIONAL MATCH (e:Export)-[:GENERATED_FROM]->(d)
+        
+        RETURN 
+            d,
+            collect(DISTINCT v) AS videos,
+            collect(DISTINCT p) AS podcasts,
+            collect(DISTINCT e) AS other_exports
+        """
+        
+        results = self.execute_query(query, {"doc_id": doc_id})
+        
+        if not results:
+            return {
+                "videos": [],
+                "podcasts": [],
+                "other_exports": []
+            }
+        
+        result = results[0]
+        
+        return {
+            "videos": [dict(v) for v in result["videos"] if v],
+            "podcasts": [dict(p) for p in result["podcasts"] if p],
+            "other_exports": [dict(e) for e in result["other_exports"] if e]
+        }

@@ -1,5 +1,6 @@
 """Qdrant Repository for vector similarity search."""
 from typing import Any
+from uuid import UUID
 
 from qdrant_client import QdrantClient
 from qdrant_client.models import (
@@ -66,12 +67,12 @@ class QdrantRepository:
         Add a single embedding with metadata.
 
         Args:
-            content_id: Unique identifier for the content
+            content_id: Unique identifier for the content (must be UUID string or integer)
             vector: Embedding vector
             metadata: Associated metadata
 
         Raises:
-            ValueError: If vector is empty or wrong size
+            ValueError: If vector is empty or wrong size, or if content_id is invalid
         """
         if not vector:
             raise ValueError("Vector cannot be empty")
@@ -80,8 +81,23 @@ class QdrantRepository:
                 f"Vector size {len(vector)} doesn't match collection size {self.vector_size}"
             )
 
+        # Validate content_id is a valid UUID string or can be converted to int
+        point_id: str | int
+        try:
+            # Try parsing as UUID to validate format
+            UUID(content_id)
+            point_id = content_id  # Keep as string UUID
+        except (ValueError, AttributeError, TypeError):
+            # Not a valid UUID, try as integer
+            try:
+                point_id = int(content_id)
+            except (ValueError, TypeError):
+                raise ValueError(
+                    f"content_id must be a valid UUID string or integer, got: {content_id}"
+                )
+
         point = PointStruct(
-            id=content_id,
+            id=point_id,
             vector=vector,
             payload=metadata
         )
@@ -100,8 +116,22 @@ class QdrantRepository:
         """
         points = []
         for emb in embeddings:
+            content_id = emb["content_id"]
+            # Validate and convert content_id
+            point_id: str | int
+            try:
+                UUID(content_id)
+                point_id = content_id  # Keep as string UUID
+            except (ValueError, AttributeError, TypeError):
+                try:
+                    point_id = int(content_id)
+                except (ValueError, TypeError):
+                    raise ValueError(
+                        f"content_id must be a valid UUID string or integer, got: {content_id}"
+                    )
+            
             point = PointStruct(
-                id=emb["content_id"],
+                id=point_id,
                 vector=emb["vector"],
                 payload=emb["metadata"]
             )

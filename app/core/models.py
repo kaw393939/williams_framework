@@ -548,6 +548,33 @@ class SearchResult(BaseModel):
         description="Snippet of matched content"
     )
 
+    # Optional fields for chunk-based results
+    content_id: str | None = Field(
+        default=None,
+        description="Content ID for chunk-based results"
+    )
+
+    chunk_index: int | None = Field(
+        default=None,
+        description="Chunk index within content"
+    )
+
+    # Optional YouTube-specific fields
+    video_id: str | None = Field(
+        default=None,
+        description="YouTube video ID"
+    )
+
+    channel: str | None = Field(
+        default=None,
+        description="YouTube channel name"
+    )
+
+    timestamp: str | None = Field(
+        default=None,
+        description="Timestamp in video (for YouTube)"
+    )
+
 
 class LibraryStats(BaseModel):
     """Statistics about the library contents.

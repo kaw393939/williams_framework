@@ -4,6 +4,7 @@ MaintenanceService - System maintenance and background tasks.
 This service handles system maintenance operations including cache cleanup,
 embedding recomputation, system health reports, and data integrity checks.
 """
+import logging
 from datetime import datetime
 
 from app.repositories.minio_repository import MinIORepository
@@ -15,6 +16,8 @@ from app.repositories.redis_repository import RedisRepository
 DEFAULT_CACHE_CLEANUP_DAYS = 7
 CACHE_EXPIRY_THRESHOLD_SECONDS = 60  # Keys expiring in less than this are cleaned
 VALID_PROCESSING_STATUSES = ['started', 'completed', 'failed', 'pending']
+
+logger = logging.getLogger(__name__)
 
 
 class MaintenanceService:
@@ -230,7 +233,7 @@ class MaintenanceService:
             await self.postgres_repo.execute("ANALYZE")
             return True
         except Exception as e:
-            print(f"Database vacuum failed: {e}")
+            logger.error("Database vacuum failed", exc_info=True, extra={"error": str(e)})
             return False
 
     async def cleanup_orphaned_files(self) -> int:
@@ -272,7 +275,7 @@ class MaintenanceService:
                     # Skip this bucket if error
                     continue
         except Exception as e:
-            print(f"Orphan cleanup error: {e}")
+            logger.error("Orphan cleanup error", exc_info=True, extra={"error": str(e)})
 
         return cleaned_count
 

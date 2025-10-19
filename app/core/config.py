@@ -3,8 +3,22 @@
 This module provides centralized configuration management,
 loading settings from environment variables with validation.
 """
-from pydantic import Field
+import logging
+
+from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+logger = logging.getLogger(__name__)
+
+# Weak passwords that should trigger warnings
+WEAK_PASSWORDS = {
+    "password",
+    "password123",
+    "admin",
+    "dev_password_change_in_production",
+    "minioadmin",
+    "",
+}
 
 
 class Settings(BaseSettings):
@@ -56,6 +70,17 @@ class Settings(BaseSettings):
         default="dev_password_change_in_production",
         description="Neo4j password"
     )
+
+    @field_validator("neo4j_password")
+    @classmethod
+    def validate_neo4j_password(cls, v: str) -> str:
+        """Validate Neo4j password is not weak."""
+        if v in WEAK_PASSWORDS:
+            logger.warning(
+                "⚠️  SECURITY WARNING: Weak Neo4j password detected! "
+                "Set NEO4J_PASSWORD environment variable with a strong password."
+            )
+        return v
 
     # Model Configuration
     model_nano: str = Field(
@@ -112,6 +137,17 @@ class Settings(BaseSettings):
         description="PostgreSQL password"
     )
 
+    @field_validator("postgres_password")
+    @classmethod
+    def validate_postgres_password(cls, v: str) -> str:
+        """Validate PostgreSQL password is not weak."""
+        if v in WEAK_PASSWORDS:
+            logger.warning(
+                "⚠️  SECURITY WARNING: Weak PostgreSQL password detected! "
+                "Set POSTGRES_PASSWORD environment variable with a strong password."
+            )
+        return v
+
     # Redis Configuration
     redis_host: str = Field(
         default="localhost",
@@ -164,6 +200,18 @@ class Settings(BaseSettings):
         default="minioadmin",
         description="MinIO secret key"
     )
+
+    @field_validator("minio_secret_key")
+    @classmethod
+    def validate_minio_secret(cls, v: str) -> str:
+        """Validate MinIO secret key is not weak."""
+        if v in WEAK_PASSWORDS:
+            logger.warning(
+                "⚠️  SECURITY WARNING: Weak MinIO secret key detected! "
+                "Set MINIO_SECRET_KEY environment variable with a strong password."
+            )
+        return v
+
     minio_secure: bool = Field(
         default=False,
         description="Use HTTPS for MinIO connections"

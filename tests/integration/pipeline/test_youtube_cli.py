@@ -22,27 +22,28 @@ def test_cli_ingests_youtube_and_outputs_json(monkeypatch):
         def get_transcript(vid_id):
             return [{"text": transcript_text}]
 
-    class MockYouTube:
-        def __init__(self, url):
-            pass
-        @property
-        def title(self):
-            return video_details["title"]
-        @property
-        def author(self):
-            return video_details["author"]
-        @property
-        def length(self):
-            return video_details["length"]
-        @property
-        def publish_date(self):
-            return video_details["publish_date"]
-        @property
-        def description(self):
-            return "CLI fallback description."
+    class MockYtDlp:
+        class YoutubeDL:
+            def __init__(self, *args, **kwargs):
+                pass
+            def __enter__(self):
+                return self
+            def __exit__(self, *args):
+                pass
+            def extract_info(self, url, download=False):
+                return {
+                    "title": video_details["title"],
+                    "uploader": video_details["author"],
+                    "channel": video_details["author"],
+                    "duration": video_details["length"],
+                    "upload_date": video_details["publish_date"],
+                    "view_count": 1000,
+                    "like_count": 100,
+                    "description": "CLI fallback description."
+                }
 
     monkeypatch.setattr("app.pipeline.extractors.youtube.YouTubeTranscriptApi", MockYouTubeTranscriptApi)
-    monkeypatch.setattr("app.pipeline.extractors.youtube.YouTube", MockYouTube)
+    monkeypatch.setattr("app.pipeline.extractors.youtube.yt_dlp", MockYtDlp)
 
     buffer = io.StringIO()
     exit_code = main([url, "--json"], stream=buffer)

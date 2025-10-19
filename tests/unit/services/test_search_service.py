@@ -273,3 +273,209 @@ async def test_search_service_filters_by_minimum_score():
 
     assert len(results) == 1
     assert results[0].relevance_score >= 0.6
+
+
+@pytest.mark.unit
+def test_query_with_citations_basic():
+    """Test basic RAG query with citations."""
+    from app.services.search_service import SearchService
+    
+    mock_neo_repo = Mock()
+    mock_citation_service = Mock()
+    
+    # Mock chunks
+    mock_neo_repo.execute_query.return_value = [
+        {"id": "chunk1", "text": "AI is a field of computer science", "url": "test.com"},
+        {"id": "chunk2", "text": "Machine learning is a subset of AI", "url": "test.com"}
+    ]
+    
+    # Mock citation creation
+    mock_citation_service.create_citation.side_effect = [
+        {"citation_id": "[1]", "citation_number": 1, "quote_text": "AI is a field of computer science"},
+        {"citation_id": "[2]", "citation_number": 2, "quote_text": "Machine learning is a subset of AI"}
+    ]
+    
+    service = SearchService(
+        neo_repo=mock_neo_repo,
+        citation_service=mock_citation_service
+    )
+    
+    result = service.query_with_citations("What is AI?", max_citations=2)
+    
+    assert "answer" in result
+    assert len(result["citations"]) == 2
+    assert result["total_count"] == 2
+    assert result["citations"][0]["citation_id"] == "[1]"
+
+
+@pytest.mark.unit
+def test_query_with_citations_pagination_mismatch():
+    """Test that demonstrates the pagination bug with citation references.
+    
+    BUG: When paginating citations, the answer references ALL citations
+    but only a subset is returned. This causes citation numbers to mismatch.
+    """
+    from app.services.search_service import SearchService
+    
+    mock_neo_repo = Mock()
+    mock_citation_service = Mock()
+    mock_llm_provider = Mock()
+    
+    # Mock 10 chunks
+    mock_neo_repo.execute_query.return_value = [
+        {"id": f"chunk{i}", "text": f"Content {i}", "url": "test.com"}
+        for i in range(1, 11)
+    ]
+    
+    # Mock citation creation - creates citations [1] through [10]
+    mock_citation_service.create_citation.side_effect = [
+        {
+            "citation_id": f"[{i}]",
+            "citation_number": i,
+            "quote_text": f"Content {i}"
+        }
+        for i in range(1, 11)
+    ]
+    
+    # LLM generates answer referencing citations [1], [2], [3]
+    mock_llm_provider.generate.return_value = "According to [1], [2], and [3], AI is important."
+    
+    service = SearchService(
+        neo_repo=mock_neo_repo,
+        citation_service=mock_citation_service,
+        llm_provider=mock_llm_provider
+    )
+    
+    # Request page 2 with page_size=5 (should return citations 6-10)
+    result = service.query_with_citations(
+        "What is AI?",
+        max_citations=10,
+        page=2,
+        page_size=5
+    )
+    
+    # BUG DEMONSTRATION:
+    # Answer mentions [1], [2], [3]
+    assert "[1]" in result["answer"]
+    assert "[2]" in result["answer"]
+    assert "[3]" in result["answer"]
+    
+    # But paginated citations start at [6]!
+    # This is the bug - citation numbers don't match
+    assert len(result["citations"]) == 5
+    assert result["citations"][0]["citation_number"] == 6  # Should be 6, not 1
+    
+    # User sees answer referencing [1], [2], [3]
+    # But citations shown are [6], [7], [8], [9], [10]
+    # Citations [1], [2], [3] are NOT in the result!
+
+
+@pytest.mark.unit
+def test_query_with_citations_with_llm():
+    """Test RAG query generates answer with LLM."""
+    from app.services.search_service import SearchService
+    
+    mock_neo_repo = Mock()
+    mock_citation_service = Mock()
+    mock_llm_provider = Mock()
+    
+    mock_neo_repo.execute_query.return_value = [
+        {"id": "chunk1", "text": "ML is AI", "url": "test.com"}
+    ]
+    
+    mock_citation_service.create_citation.return_value = {
+        "citation_id": "[1]",
+        "quote_text": "ML is AI"
+    }
+    
+    mock_llm_provider.generate.return_value = "Machine learning is AI [1]."
+    
+    service = SearchService(
+        neo_repo=mock_neo_repo,
+        citation_service=mock_citation_service,
+        llm_provider=mock_llm_provider
+    )
+    
+    result = service.query_with_citations("What is ML?")
+    
+    # Should use LLM
+    mock_llm_provider.generate.assert_called_once()
+    assert result["answer"] == "Machine learning is AI [1]."
+    assert "Question: What is ML?" in mock_llm_provider.generate.call_args[0][0]
+
+
+@pytest.mark.unit
+def test_query_with_citations_without_llm():
+    """Test RAG query without LLM generates fallback answer."""
+    from app.services.search_service import SearchService
+    
+    mock_neo_repo = Mock()
+    mock_citation_service = Mock()
+    
+    mock_neo_repo.execute_query.return_value = [
+        {"id": "chunk1", "text": "Test", "url": "test.com"}
+    ]
+    
+    mock_citation_service.create_citation.return_value = {
+        "citation_id": "[1]",
+        "quote_text": "Test"
+    }
+    
+    service = SearchService(
+        neo_repo=mock_neo_repo,
+        citation_service=mock_citation_service
+        # No LLM provider
+    )
+    
+    result = service.query_with_citations("test query")
+    
+    assert "Found" in result["answer"]
+    assert "relevant sources" in result["answer"]
+
+
+@pytest.mark.unit
+def test_query_with_citations_no_services():
+    """Test query_with_citations without required services."""
+    from app.services.search_service import SearchService
+    
+    service = SearchService()  # No neo_repo or citation_service
+    
+    result = service.query_with_citations("test")
+    
+    assert "not properly configured" in result["answer"]
+    assert result["citations"] == []
+    assert result["total_count"] == 0
+
+
+@pytest.mark.unit
+def test_get_relevant_chunks():
+    """Test _get_relevant_chunks queries Neo4j."""
+    from app.services.search_service import SearchService
+    
+    mock_neo_repo = Mock()
+    mock_neo_repo.execute_query.return_value = [
+        {"id": "chunk1", "text": "Test content", "url": "example.com"}
+    ]
+    
+    service = SearchService(neo_repo=mock_neo_repo)
+    
+    chunks = service._get_relevant_chunks("test query", limit=5)
+    
+    assert len(chunks) == 1
+    assert chunks[0]["id"] == "chunk1"
+    
+    # Verify limit was passed
+    call_args = mock_neo_repo.execute_query.call_args
+    assert call_args[0][1]["limit"] == 5
+
+
+@pytest.mark.unit
+def test_get_relevant_chunks_no_neo_repo():
+    """Test _get_relevant_chunks without Neo4j repo."""
+    from app.services.search_service import SearchService
+    
+    service = SearchService()
+    
+    chunks = service._get_relevant_chunks("test")
+    
+    assert chunks == []

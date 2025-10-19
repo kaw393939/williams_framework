@@ -5,6 +5,7 @@ This service manages the creation and delivery of daily email digests
 containing curated high-quality content from the library.
 """
 import json
+import logging
 from datetime import datetime, timedelta
 
 from app.core.models import Digest, DigestItem
@@ -29,6 +30,8 @@ TIER_COLORS = {
     'tier-c': '#f59e0b',  # amber
     'tier-d': '#6b7280'   # gray
 }
+
+logger = logging.getLogger(__name__)
 
 
 class DigestService:
@@ -352,7 +355,7 @@ To unsubscribe or manage preferences, visit: [preferences link]
 
         except Exception as e:  # pragma: no cover - Email send error handler
             # Log error and return False
-            print(f"Failed to send digest: {e}")
+            logger.error("Failed to send digest", exc_info=True, extra={"error": str(e)})
             return False
 
     async def mark_digest_as_sent(

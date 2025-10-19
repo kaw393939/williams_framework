@@ -3,6 +3,7 @@
 This module provides real-time semantic search capabilities using
 embedding-based retrieval, ranked results, and top-K filtering.
 """
+import asyncio
 import logging
 from typing import Any
 
@@ -92,10 +93,17 @@ class SearchService:
                 limit=top_k
             )
         elif self.qdrant_repository:
-            raw_results = await self.qdrant_repository.search_by_vector(
+            # QdrantRepository.query is synchronous, wrap in to_thread
+            raw_results = await asyncio.to_thread(
+                self.qdrant_repository.query,
                 query_vector=query_embedding,
-                top_k=top_k
+                limit=top_k
             )
+            # DEBUG: Log raw results
+            if raw_results:
+                logger.info(f"[DEBUG] Raw search results count: {len(raw_results)}")
+                logger.info(f"[DEBUG] First raw result keys: {raw_results[0].keys() if raw_results else 'N/A'}")
+                logger.info(f"[DEBUG] First raw result metadata keys: {raw_results[0].get('metadata', {}).keys() if raw_results else 'N/A'}")
         else:
             logger.error("No Qdrant client or repository available for search")
             return []
@@ -117,20 +125,32 @@ class SearchService:
 
             # Create SearchResult
             try:
+                # Handle both chunk-based results (new format) and legacy results
+                # Chunks have: text, content_id, chunk_index, source, video_id, etc.
+                # Legacy has: file_path, url, title, summary
+                
+                # Use text as matched_content (for chunks) or summary (for legacy)
+                text = payload.get("text", payload.get("summary", ""))
+                
                 result = SearchResult(
                     file_path=payload.get("file_path", ""),
-                    url=payload.get("url", ""),
+                    url=payload.get("url", payload.get("source", "")),  # YouTube chunks use 'source'
                     title=payload.get("title", ""),
-                    summary=payload.get("summary", ""),
+                    summary=text[:500] if text else "",  # First 500 chars as summary
                     tags=payload.get("tags", []),
                     tier=payload.get("tier", ""),
-                    quality_score=payload.get("quality_score", 0.0),
+                    quality_score=float(payload.get("quality_score", 0.0)),
                     relevance_score=score,
-                    matched_content=payload.get("matched_content")
+                    matched_content=text,  # Full text for context
+                    content_id=payload.get("content_id"),  # Preserve content_id
+                    chunk_index=payload.get("chunk_index"),  # Preserve chunk info
+                    video_id=payload.get("video_id"),  # YouTube metadata
+                    channel=payload.get("channel"),  # YouTube metadata
+                    timestamp=payload.get("timestamp_start")  # YouTube timestamp
                 )
                 search_results.append(result)
             except Exception as e:
-                logger.error(f"Failed to create SearchResult: {e}")
+                logger.error(f"Failed to create SearchResult from payload {payload}: {e}")
                 continue
 
         # Results are already sorted by score from Qdrant (descending)

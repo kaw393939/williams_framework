@@ -22,7 +22,7 @@ from pydantic import HttpUrl
 
 from app.core.models import LibraryFile, LibraryStats, ProcessedContent, SearchResult
 from app.core.types import ContentSource
-from app.intelligence.embeddings import generate_embedding as _generate_embedding
+from app.intelligence.embeddings import generate_embedding
 from app.repositories.minio_repository import MinIORepository
 from app.repositories.postgres_repository import PostgresRepository
 from app.repositories.qdrant_repository import QdrantRepository
@@ -41,11 +41,6 @@ RECENT_ADDITIONS_DAYS = 7
 
 
 logger = logging.getLogger(__name__)
-
-
-async def generate_embedding(text: str) -> list[float]:
-    """Generate embedding vector for text using the deterministic generator."""
-    return await _generate_embedding(text)
 
 
 class LibraryService:

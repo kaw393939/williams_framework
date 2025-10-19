@@ -13,84 +13,90 @@ async def test_youtube_extractor_fetches_transcript_and_metadata(monkeypatch):
     url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     video_id = "dQw4w9WgXcQ"
     transcript_text = "Never gonna give you up, never gonna let you down."
-    video_details = {
-        "title": "Official Music Video",
-        "author": "Rick Astley",
-        "length": 212,
-        "publish_date": "2009-10-25",
-    }
-
+    
     class MockYouTubeTranscriptApi:
         @staticmethod
         def get_transcript(vid_id):
             assert vid_id == video_id
             return [{"text": transcript_text}]
 
-    class MockYouTube:
-        def __init__(self, url):
-            assert url == url
-
-        @property
-        def title(self):
-            return video_details["title"]
-
-        @property
-        def author(self):
-            return video_details["author"]
-
-        @property
-        def length(self):
-            return video_details["length"]
-
-        @property
-        def publish_date(self):
-            return video_details["publish_date"]
-
-        @property
-        def description(self):
-            return "Video description."
+    class MockYoutubeDL:
+        def __init__(self, opts):
+            pass
+        
+        def __enter__(self):
+            return self
+        
+        def __exit__(self, *args):
+            pass
+        
+        def extract_info(self, url, download=False):
+            return {
+                "title": "Official Music Video",
+                "uploader": "Rick Astley",
+                "channel": "RickAstleyVEVO",
+                "duration": 212,
+                "upload_date": "20091025",
+                "view_count": 1000000,
+                "like_count": 50000,
+                "description": "Video description"
+            }
+    
+    class MockYtDlp:
+        YoutubeDL = MockYoutubeDL
 
     monkeypatch.setattr("app.pipeline.extractors.youtube.YouTubeTranscriptApi", MockYouTubeTranscriptApi)
-    monkeypatch.setattr("app.pipeline.extractors.youtube.YouTube", MockYouTube)
+    monkeypatch.setattr("app.pipeline.extractors.youtube.yt_dlp", MockYtDlp)
 
     extractor = YouTubeExtractor()
     raw_content = await extractor.extract(url)
 
     assert str(raw_content.url) == url
     assert raw_content.raw_text == transcript_text
-    assert raw_content.metadata["title"] == video_details["title"]
-    assert raw_content.metadata["author"] == video_details["author"]
-    assert raw_content.metadata["duration"] == video_details["length"]
-    assert raw_content.metadata["published_at"] == video_details["publish_date"]
+    assert raw_content.metadata["title"] == "Official Music Video"
+    assert raw_content.metadata["author"] == "Rick Astley"
+    assert raw_content.metadata["duration"] == 212
+    assert raw_content.metadata["published_at"] == "2009-10-25T00:00:00"
 
 
 @pytest.mark.asyncio
 async def test_youtube_extractor_falls_back_to_description(monkeypatch):
     """If transcript is unavailable, the description should be used as raw_text."""
     url = "https://www.youtube.com/watch?v=no-transcript"
-    video_description = "This is the video description."
+    video_description = "This is the video description, used as fallback text."
 
     class MockYouTubeTranscriptApi:
         @staticmethod
         def get_transcript(vid_id):
             raise Exception("Transcript not available")
 
-    class MockYouTube:
-        def __init__(self, url):
-            assert url == url
-
-        @property
-        def description(self):
-            return video_description
-
-        # Add other properties to satisfy the extractor
-        title = "A Video"
-        author = "An Author"
-        length = 120
-        publish_date = "2025-01-01"
+    class MockYoutubeDL:
+        def __init__(self, opts):
+            pass
+        
+        def __enter__(self):
+            return self
+        
+        def __exit__(self, *args):
+            pass
+        
+        def extract_info(self, url, download=False):
+            return {
+                "title": "A Video",
+                "uploader": "An Author",
+                "channel": "AuthorChannel",
+                "duration": 120,
+                "upload_date": "20250101",
+                "view_count": 1000,
+                "like_count": 100,
+                "description": video_description
+            }
+    
+    class MockYtDlp:
+        YoutubeDL = MockYoutubeDL
 
     monkeypatch.setattr("app.pipeline.extractors.youtube.YouTubeTranscriptApi", MockYouTubeTranscriptApi)
-    monkeypatch.setattr("app.pipeline.extractors.youtube.YouTube", MockYouTube)
+    monkeypatch.setattr("app.pipeline.extractors.youtube.yt_dlp", MockYtDlp)
 
     extractor = YouTubeExtractor()
     raw_content = await extractor.extract(url)
@@ -112,11 +118,29 @@ async def test_youtube_extractor_raises_on_extraction_failure(monkeypatch):
     """A generic error from the YouTube library should be wrapped in ExtractionError."""
     url = "https://www.youtube.com/watch?v=broken"
 
-    class MockYouTube:
-        def __init__(self, url):
+    class MockYoutubeDL:
+        def __init__(self, opts):
+            pass
+        
+        def __enter__(self):
+            return self
+        
+        def __exit__(self, *args):
+            pass
+        
+        def extract_info(self, url, download=False):
             raise Exception("Failed to fetch video data")
+    
+    class MockYtDlp:
+        YoutubeDL = MockYoutubeDL
+    
+    class MockYouTubeTranscriptApi:
+        @staticmethod
+        def get_transcript(vid_id):
+            return []
 
-    monkeypatch.setattr("app.pipeline.extractors.youtube.YouTube", MockYouTube)
+    monkeypatch.setattr("app.pipeline.extractors.youtube.YouTubeTranscriptApi", MockYouTubeTranscriptApi)
+    monkeypatch.setattr("app.pipeline.extractors.youtube.yt_dlp", MockYtDlp)
 
     extractor = YouTubeExtractor()
     with pytest.raises(ExtractionError):

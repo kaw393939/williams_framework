@@ -786,21 +786,6 @@ async def test_content_service_store_content_assigns_mid_tier(monkeypatch):
     assert kwargs["metadata"]["tier"] == "c"
 
 @pytest.mark.asyncio
-async def test_library_service_generate_embedding_delegates(monkeypatch):
-    recorded = {}
-
-    async def fake_generate(text: str):
-        recorded["text"] = text
-        return [0.1, 0.2]
-
-    monkeypatch.setattr(library_service, "_generate_embedding", fake_generate)
-
-    vector = await library_service.generate_embedding("hello world")
-
-    assert vector == [0.1, 0.2]
-    assert recorded["text"] == "hello world"
-
-
 def test_library_service_bucket_prefix_helpers():
     assert library_service.LibraryService._get_bucket_prefix("library-tier-a") == "library-tier"
     assert library_service.LibraryService._get_bucket_prefix("library") == "library"

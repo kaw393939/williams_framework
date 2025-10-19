@@ -90,8 +90,11 @@ class SearchCache:
             return
 
         cache_key = self.get_cache_key(query)
+        # Convert numpy array to list if needed for JSON serialization
+        if hasattr(embedding, 'tolist'):
+            embedding = embedding.tolist()
         serialized = json.dumps(embedding)
-        await self.redis_client.set(cache_key, serialized, ex=self.ttl_seconds)
+        await self.redis_client.set(cache_key, serialized, ttl=self.ttl_seconds)
 
     async def get_or_compute(self, query: str) -> list[float]:
         """Get cached embedding or compute and cache it.
